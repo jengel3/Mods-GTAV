@@ -1,0 +1,20 @@
+{
+  "name": "Mods-GTAV",
+  "version": "0.0.0",
+  "homepage": "https://github.com/Jake0oo0/Mods-GTAV",
+  "authors": [
+    "Jake <jake0oo0dev@gmail.com>"
+  ],
+  "description": "Website for GTA mods.",
+  "keywords": [
+    "mods"
+  ],
+  "license": "All Rights Reserved",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
