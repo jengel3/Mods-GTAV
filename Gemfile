@@ -5,16 +5,17 @@ ruby '2.0.0'
 gem 'rails', '4.2.0'
 gem 'uglifier', '2.7.0'
 
-# API
-gem 'jbuilder'
+# Ember - front end
+gem 'ember-rails'
+gem 'ember-source', '~> 1.9.0'
+gem 'jquery-rails'
+
+# API 
+gem "active_model_serializers", "~> 0.8.0"
 
 # Authentication
 gem 'devise'
 gem 'omniauth-steam'
-
-# Pagination / UI
-gem 'kaminari'
-gem 'jquery-rails'
 
 # File uploads
 gem 'carrierwave-mongoid'
@@ -32,46 +33,39 @@ gem 'mongoid-elasticsearch'
 # Caching
 gem 'redis'
 
-# Job management
+# Background tasks
 gem 'sidekiq'
-
-# News utilities
-gem 'httparty'
-gem 'bb-ruby', github: 'Jake0oo0/bb-ruby'
-gem 'best_in_place', '~> 3.0.1'
-gem 'nokogiri'
-
-# ZIP validation
-# gem 'rubyzip'
-# gem 'zip-zip'
 
 # Email compiler
 gem 'premailer-rails'
-
-# Testing
-gem 'faker'
 
 # Windows Rails fix
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 
-# Testing
+# Use passenger in production
 group :production do
   gem 'passenger'
 end
 
+group :staging do
+  gem 'rails_12factor'
+end
+
+# Use thin in development
 group :development do
   gem 'better_errors'
   gem 'thin'
 end
 
+group :development, :staging, :test do
+  gem 'faker'
+end
+
 group :development, :test do 
   gem 'rspec-rails' 
   gem 'factory_girl_rails'
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-
-  # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
 end 
 

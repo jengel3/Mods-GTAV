@@ -12,5 +12,15 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+//= require jquery
+//= require jquery_ujs
+//= require handlebars
+//= require ember
+//= require ember-data
+//= require_self
+//= require ./mods_gtav
+
+// for more details see: http://emberjs.com/guides/application/
+ModsGtav = Ember.Application.create();
+
 //= require_tree .
