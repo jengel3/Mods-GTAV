@@ -1,0 +1,18 @@
+{
+    "name": "Mods-GTAV",
+    "description": "Website for GTA V Content Submissions",
+    "repository": "https://github.com/Jake0oo0/Mods-GTAV",
+    "keywords": [
+        "gta",
+        "content"
+        "gtav"
+    ],
+    "website": "https://mods-gtav.com/",
+    "env": {
+      "HEROKU": "true",
+      "BUILDPACK_URL": "https://github.com/mojodna/heroku-buildpack-multi.git#build-env"
+    },
+    "addons": [
+        "rediscloud"
+    ]
+}
