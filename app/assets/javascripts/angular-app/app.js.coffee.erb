@@ -1,0 +1,23 @@
+@app = angular.module('gta', [
+  'templates'
+])
+
+# @app.config ($routeProvider, $locationProvider) ->
+#   $locationProvider.html5Mode true
+#   $routeProvider.when('/submissions',
+#     templateUrl: "<%= asset_path('submissions/index.html') %> "
+#     controller: 'SubmissionsListCtrl' )
+#   return
+
+@app.config([
+  '$httpProvider', ($httpProvider)->
+    $httpProvider.defaults.headers.common['X-CSRF-Token'] =
+      $('meta[name=csrf-token]').attr('content')
+])
+
+# @app.config (RestangularProvider) ->
+#   RestangularProvider.setBaseUrl '/api/'
+
+@app.run(->
+  console.log 'angular app running'
+)

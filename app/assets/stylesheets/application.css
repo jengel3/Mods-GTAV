@@ -11,5 +11,8 @@
  * file per style scope.
  *
  *= require_tree .
+ *= require base
+ *= require content
+ *= require index
  *= require_self
  */

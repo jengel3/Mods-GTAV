@@ -3,12 +3,14 @@ source 'https://rubygems.org'
 ruby '2.0.0'
 
 gem 'rails', '4.2.0'
-gem 'uglifier', '2.7.0'
 
-# Ember - front end
-gem 'ember-rails'
-gem 'ember-source', '~> 1.9.0'
+# Minify
+gem 'uglifier', '2.7.0'
+gem 'coffee-rails'
+
+# Front end
 gem 'jquery-rails'
+gem 'angular-rails-templates'
 
 # API 
 gem "active_model_serializers", "~> 0.8.0"
