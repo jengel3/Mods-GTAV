@@ -4,15 +4,15 @@
 
       <div class="contentpage_titlewrap">
         <div class="contentpage_title">
-          {{submission.name}}}
+          {{ submission.name }}
         </div>
         <div class="contentpage_modcreator">
-          by {{submission.creator.name}}
+          by {{ submission.creator.username }}
         </div>
 
       </div>
       <div class="contentpage_mainthumb">
-        <img class="contentpage_mainthumb_img" src="resources/thumbnail.jpg" alt="Main Thumbnail" />
+        <img class="contentpage_mainthumb_img" src="<%= image_path('thumbnail.jpg') %>" alt="Main Thumbnail" />
       </div>
 
     </div>
@@ -36,11 +36,11 @@
         <div class="downloadbutton_text downloadbutton_textsmall">Download</div>
       </div></a>
       <div class="ratingbutton likebutton">
-        <img src="resources/likebuttonicon.png" class="ratingbuttonicon" />
+        <%= image_tag('likebuttonicon.png', class: 'rathingbuttonicon') %>
         <div class="ratingbutton_text">Like</div>
       </div>
       <div class="ratingbutton dislikebutton">
-        <img src="resources/dislikebuttonicon.png" class="ratingbuttonicon" />
+        <%= image_tag('dislikebuttonicon.png', class: 'rathingbuttonicon') %>
         <div  class="ratingbutton_text">Disike</div>
       </div>
       <div class="ratingresults">86 people like this mod</div>
@@ -49,7 +49,7 @@
     <div class="contentpage_descriptionwrap">
       <div class="contentpage_headertitles">Description <a class="collapse_description_icon" href="">&#60;</a></div>
       <div class="descriptionwrap_moddescription">
-      {{submission.body}}
+        {{ submission.body }}
       </div>
       <div class="contentpage_uploaddate"><b>Upload Date:</b> February 10th, 2015</div>
       <div class="contentpage_lastupdated"><b>Last Updated:</b> February 21st, 2015</div>

@@ -11,5 +11,5 @@ angular.module('gta')
       )
 
       list: ()     -> Restangular.all(model).getList(),
-      get: () -> Restangular.one(model, $route.current.params.id).get();
+      get: (id) -> Restangular.one(model, id).get();
   ])

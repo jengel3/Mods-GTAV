@@ -1,8 +1,8 @@
 angular.module('gta').controller("SubmissionViewCtrl", [
-  '$scope', 'SubmissionService',
-  ($scope, SubmissionService)->
+  '$scope', '$routeParams', 'SubmissionService',
+  ($scope, $routeParams, SubmissionService)->
 
-    SubmissionService.get().then((submission) ->
+    SubmissionService.get($routeParams.id).then((submission) ->
       $scope.submission = submission
       
     )
