@@ -9,4 +9,5 @@ class Submission
   field :approved_at, type: Time
 
   belongs_to :creator, class_name: 'User', inverse_of: :submissions
+  has_many :comments
 end

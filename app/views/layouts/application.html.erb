@@ -1,17 +1,62 @@
 <!DOCTYPE html>
 <html ng-app='gta'>
 <head>
+	<title><%= content_for?(:title) ? yield(:title) : "Mods-GTAV" %></title>
+	<meta charset="utf-8">
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
 	<base href="/">
 	<%= stylesheet_link_tag "application" %>
 	<%= javascript_include_tag "application" %>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title><%= content_for?(:title) ? yield(:title) : "Mods-GTAV" %></title>
 	<link href='http://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Niconne' rel='stylesheet' type='text/css'>
 	<%= csrf_meta_tags %>
 </head>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$(".mobile_dropdown_menu").hide();
+		
+		$('.mobilemenulink').on('click', function() {
+			$('.mobile_dropdown_menu').slideToggle(100);
+		}); 
+
+		$.mobile.loading('hide');
+		
+		$('.default_theme').on('click', function() {
+			$('.accentcolor').css('background-color', '#ff4200');
+			$('.accentborder').css('border-color', '#ff4200');
+		});
+		
+		$('.blue_theme').on('click', function() {
+			$('.accentcolor').css('background-color', '#66a3ff');
+			$('.accentborder').css('border-color', '#66a3ff');
+		});
+		
+		$('.green_theme').on('click', function() {
+			$('.accentcolor').css('background-color', '#41b64c');
+			$('.accentborder').css('border-color', '#41b64c');
+		});
+		
+		$('.orange_theme').on('click', function() {
+			$('.accentcolor').css('background-color', '#ff6666');
+			$('.accentborder').css('border-color', '#ff6666');
+		});
+		
+		$(".uploadmod_button").on({
+			mouseenter: function () {
+				$('.uploadmod_slideupeffect').animate({top: '4'}, 'fast');
+				$('.uploadmod_buttontext').animate({color: '#ffffff'}, 'fast');
+			},
+			mouseleave: function () {
+				$('.uploadmod_slideupeffect').animate({top: '40'}, 'fast');
+				$('.uploadmod_buttontext').animate({color: '#cdcdcd'}, 'fast');
+			}
+		});
+		
+	});
+
+</script>
 <body>
+
 	<div class="logoheader">
 		<div class="inner_logoheader_wrap">
 			<img class="sitelogo" src="<%= image_path('sitelogo.png') %>" />
@@ -41,45 +86,45 @@
 			<div class="mobile_menu_option">Textures</div>
 		</div>
 
-		<div class="headerwrap">
+		<div class="headerwrap parallax-window" data-parallax="scroll" data-image-src="<%= asset_path('gtavbackground5.png') %>">
 
 			<div class="mobile_dropdown_menu_icon">
-				<a class="mobilemenulink" href=""><img class="mobilemenuicon" src="<%= image_path('mobilemenuicon.png') %>" /></a>
+				<a class="mobilemenulink" href=""><img class="mobilemenuicon" src="<%= asset_path('mobilemenuicon.png') %>" /></a>
 			</div>
 			<div class="gtavlogomobile">
-				<img src="<%= image_path('gtavlogo.png') %>" />
+				<img src="<%= asset_path('gtavlogo.png') %>" />
 			</div>
 
 			<div class="headericonswrap">
 				<div class="gtavlogowrap">
-					<img src="<%= image_path('gtavlogo.png') %>" />
+					<img src="<%= asset_path('gtavlogo.png') %>" />
 				</div>
 				<div class="headernavigationwrap">
 
 					<a href=""><div class="individual_navigation_icon_wrap">
 						<div class="top_navigation_bar"> </div>
-						<img class="navigation_icon_img" src="<%= image_path('home50color.png') %>" />
+						<img class="navigation_icon_img" src="<%= asset_path('home50color.png') %>" />
 						<div class="navigation_icon_text">
 							Home
 						</div>
 					</div></a>
 					<a href=""><div class="individual_navigation_icon_wrap individual_navigation_icon_wrap_active">
 						<div class="top_navigation_bar top_navigation_bar_active"> </div>
-						<img class="navigation_icon_img" src="<%= image_path('user50color.png') %>" />
+						<img class="navigation_icon_img" src="<%= asset_path('user50color.png') %>" />
 						<div class="navigation_icon_text">
 							Tools
 						</div>
 					</div></a>
 					<a href=""><div class="individual_navigation_icon_wrap">
 						<div class="top_navigation_bar"> </div>
-						<img class="navigation_icon_img" src="<%= image_path('levels50color.png') %>" />
+						<img class="navigation_icon_img" src="<%= asset_path('levels50color.png') %>" />
 						<div class="navigation_icon_text">
 							Maps
 						</div>
 					</div></a>
 					<a href=""><div class="individual_navigation_icon_wrap">
 						<div class="top_navigation_bar"> </div>
-						<img class="navigation_icon_img" src="<%= image_path('car50color.png') %>" />
+						<img class="navigation_icon_img" src="<%= asset_path('car50color.png') %>" />
 						<div class="navigation_icon_text">
 							Vehicles
 						</div>
@@ -87,21 +132,21 @@
 					</div></a>
 					<a href=""><div class="individual_navigation_icon_wrap">
 						<div class="top_navigation_bar"> </div>
-						<img class="navigation_icon_img" src="<%= image_path('user50color2.png') %>" />
+						<img class="navigation_icon_img" src="<%= asset_path('user50color2.png') %>" />
 						<div class="navigation_icon_text">
 							Misc
 						</div>
 					</div></a>
 					<a href=""><div class="individual_navigation_icon_wrap">
 						<div class="top_navigation_bar"> </div>
-						<img class="navigation_icon_img" src="<%= image_path('car50color.png') %>" />
+						<img class="navigation_icon_img" src="<%= asset_path('car50color.png') %>" />
 						<div class="navigation_icon_text">
 							Script
 						</div>
 					</div></a>
 					<a href=""><div class="individual_navigation_icon_wrap">
 						<div class="top_navigation_bar"> </div>
-						<img class="navigation_icon_img" src="<%= image_path('upload50color.png') %>" />
+						<img class="navigation_icon_img" src="<%= asset_path('upload50color.png') %>" />
 						<div class="navigation_icon_text">
 							Textures
 						</div>
@@ -109,36 +154,32 @@
 				</div>
 			</div>
 
-			<div class="headerbottomtransparentbar">
 
-			</div>
 
 		</div>
 		<div class="pagebodywrap">
 			<div class="sidebar sidebar_left">
 				<div class="userprofilebox">
 					<div class="userinfo_profilewrap">
-						<img src="<%= image_path('lcbradley3k.png') %>" />
+						<div class="user_avatar_wrap"><img src="<%= asset_path('lcbradley3k.png') %>" /></div>
 						<div class="userinfo">
 							<div class="username">LCBradley3k</div>
 							<div class="userdesc">Mod Creator</div>
 						</div>
 						<table class="userstats">
 							<tr>
-								<td class="stat_title">Downloads</td>
-								<td> <span class="stat_amount">10,567</span></td>
+								<td class="stat_title"><img class="user_stat_icon accentcolor" src="<%= asset_path('hearticon.png') %>" /></td>
+								<td class="stat_title"><img class="user_stat_icon accentcolor" src="<%= asset_path('commenticon.png') %>" /></td>
+								<td class="stat_title"><img class="user_stat_icon accentcolor" src="<%= asset_path('downloadicon.png') %>" /></td>
 							</tr>
 							<tr>
-								<td class="stat_title">Comments</td>
-								<td><span class="stat_amount">50</span></td>
-							</tr>
-							<tr>
-								<td class="stat_title">Reputation</td>
-								<td><span class="stat_amount">100</span></td>
+								<td><span class="stat_amount">41</span></td>
+								<td><span class="stat_amount">206</span></td>
+								<td> <span class="stat_amount">0</span></td>
 							</tr>
 						</table>
 					</div>
-					
+
 				</div>
 
 				<div class="subcategoriesbox">
@@ -146,101 +187,116 @@
 						<div class="subcategorytext subcategorytitle">Subcategories</div>
 					</div>
 					<div class="subcategory subcategorydark">
-						<div class="subcategory_circle accentborder"></div>
+						<div class="subcategory_circle"></div>
 						<div class="subcategorytext">All</div>
 					</div>
 					<div class="subcategory">
-						<div class="subcategory_circle accentborder"></div>
+						<div class="subcategory_circle"></div>
 						<div class="subcategorytext">Jeep</div>
 					</div>
 					<div class="subcategory subcategorydark">
-						<div class="subcategory_circle accentborder"></div>
+						<div class="subcategory_circle"></div>
 						<div class="subcategorytext">Lamborghini</div>
 					</div>
 					<div class="subcategory">
-						<div class="subcategory_circle accentborder accentcolor"></div>
+						<div class="subcategory_circle accentcolor"></div>
 						<div class="subcategorytext activecategorytext">Ford</div>
 					</div>
 					<div class="subcategory subcategorydark">
-						<div class="subcategory_circle accentborder"></div>
+						<div class="subcategory_circle"></div>
 						<div class="subcategorytext">Nissan</div>
 					</div>
 					<div class="subcategory">
-						<div class="subcategory_circle accentborder"></div>
+						<div class="subcategory_circle"></div>
 						<div class="subcategorytext">Subaru</div>
 					</div>
 					<div class="subcategory subcategorydark">
-						<div class="subcategory_circle accentborder"></div>
+						<div class="subcategory_circle"></div>
 						<div class="subcategorytext">Ferrari</div>
 					</div>
 				</div>
 			</div>
-			<div class='middlepage'>
+			<div class="middlepage">
 				<div ng-view></div>
 			</div>
 			<div class="sidebar sidebar_right">
 				<div class="filteringbox">
 					<div class="searchwrap">
 						<input type="text" name="search" class="search" placeholder="Search" />
-						<img src="<%= image_path('searchbutton.png') %>" class="searchbutton accentcolor" />
+						<img src="<%= asset_path('searchbutton.png') %>" class="searchbutton accentcolor" />
+						<div class="accentborder uploadmod_button">
+							<span class="uploadmod_buttontext">Upload</span>
+							<div class="uploadmod_slideupeffect accentcolor"></div>                            
+						</div>
+
 					</div>	
 					<div class="sortby_box_wrap">
 
 						<div class="sortbyoptiontitle">Time</div>
 						<div class="sortby_options_wrap">
 							<div class="sortbyoption">
-								<div class="sortby_circle sortby_circle_active accentborder"></div>
-								Today
+								<div class="sortby_circle sortby_circle_active"></div>
+								<span class="">Today</span>
 							</div>
 							<div class="sortbyoption">
-								<div class="sortby_circle accentborder accentcolor"></div>
-								Last Week
+								<div class="sortby_circle accentcolor"></div>
+								<span class="activecategorytext">Last Week</span>
 							</div>
 							<div class="sortbyoption">
-								<div class="sortby_circle accentborder"></div>
-								Forever
+								<div class="sortby_circle"></div>
+								<span class="">Forever</span>
 							</div>
 						</div>
-						
+
 						<div class="sortbyoptiontitle">Popularity</div>
 						<div class="sortby_options_wrap">
 							<div class="sortbyoption">
-								<div class="sortby_circle sortby_circle_active accentborder"></div>
-								Newest First
+								<div class="sortby_circle sortby_circle_active"></div>
+								<span class="">Newest First</span>
 							</div>
 							<div class="sortbyoption">
-								<div class="sortby_circle accentborder accentcolor"></div>
-								Most Popular
+								<div class="sortby_circle accentcolor"></div>
+								<span class="activecategorytext">Most Popular</span>
 							</div>
 							<div class="sortbyoption">
-								<div class="sortby_circle accentborder"></div>
-								Recently Updated
+								<div class="sortby_circle"></div>
+								<span class="">Recently Updated</span>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</div>
-	</div>
 
-	<div class="website_footer">
-		<div class="pagination_wrap">
-			<a href="" class="pagination_prev_button"><div class="pagination_link">Prev</div></a>
-			<div class="pagination_numbers_wrap">
-				<a href="" class="pagenumber"><div class="pagination_link">1</div></a>a>
-				<a href="" class="pagenumber activepagenumber"><div class="pagination_link">2</div></a>
-				<a href="" class="pagenumber"><div class="pagination_link">3</div></a>
-				<a href="" class="pagenumber"><div class="pagination_link" >4</div></a>
-				<a href="" class="pagenumber"><div class="pagination_link">5</div></a>
-				<a href="" class="pagenumber"><div class="pagination_link">6</div></a>
-				<a href="" class="pagenumber"><div class="pagination_link">...</div></a>
-				<a href="" class="pagenumber"><div class="pagination_link">18</div></a>
-			</div>
-			<a href="" class="pagination_next_button"><div class="pagination_link">Next</div></a>
-		</div>
-	</div>
-	<div class="bottom_footer_bar">
-		<div class="footer_bar_text"><span class="footer_bar_website_name">Mods-GTAV:</span> Home &bull; Contact &bull; About</div>
-	</div>
+                <!--<div class="todaysfeaturedbox">
+                    <div class="sidebar_featured_today_title_wrap">
+                        <img class="featuredicon" src="<%= asset_path('featuredicon.png') %>" />
+                        <div class="sidebar_featured_today_title">Featured Today</div>
+                    </div>
+                    <img class="sidebar_featured_today_thumb" src="<%= asset_path('thumbnail2.jpg') %>" />
+                    <img class="sidebar_featured_today_thumb" src="<%= asset_path('thumbnail7.jpg') %>" />
+                    <img class="sidebar_featured_today_thumb" src="<%= asset_path('thumbnailweird.png') %>" />
+                </div>-->
+            </div>
+        </div>
+    </div>
+
+    <div class="website_footer">
+    	<div class="pagination_wrap">
+    		<a href="" class="pagination_prev_button"><div class="pagination_link">Prev</div></a>
+    		<div class="pagination_numbers_wrap">
+    			<a href="" class="pagenumber"><div class="pagination_link">1</div></a>a>
+    			<a href="" class="pagenumber activepagenumber"><div class="pagination_link">2</div></a>
+    			<a href="" class="pagenumber"><div class="pagination_link">3</div></a>
+    			<a href="" class="pagenumber"><div class="pagination_link" >4</div></a>
+    			<a href="" class="pagenumber"><div class="pagination_link">5</div></a>
+    			<a href="" class="pagenumber"><div class="pagination_link">6</div></a>
+    			<a href="" class="pagenumber"><div class="pagination_link">...</div></a>
+    			<a href="" class="pagenumber"><div class="pagination_link">18</div></a>
+    		</div>
+    		<a href="" class="pagination_next_button"><div class="pagination_link">Next</div></a>
+    	</div>
+    </div>
+    <div class="bottom_footer_bar">
+    	<div class="footer_bar_text"><span class="footer_bar_website_name">Mods-GTAV:</span> Home &bull; Contact &bull; About</div>
+    </div>
 </body>
 </html>

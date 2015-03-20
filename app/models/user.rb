@@ -29,6 +29,7 @@ class User
   field :username, type: String
 
   has_many :submissions
+  has_many :comments
 
   ## Confirmable
   # field :confirmation_token,   type: String

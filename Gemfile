@@ -6,10 +6,12 @@ gem 'rails', '4.2.0'
 
 # Minify
 gem 'uglifier', '2.7.0'
+gem 'sass-rails'
 gem 'coffee-rails'
 
 # Front end
 gem 'jquery-rails'
+gem 'jquery_mobile_rails'
 gem 'angular-rails-templates'
 
 # API 

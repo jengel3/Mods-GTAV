@@ -22,12 +22,12 @@
         <div class="downloadbutton_text">Download</div>
       </div></a>
       <div class="contentpage_screenshots_wrap">
-        <a href=""><img class="contentpage_screenshot" src="resources/thumbnail2.jpg" /></a>
-        <a href=""><img class="contentpage_screenshot" src="resources/thumbnail7.jpg" /></a>
-        <a href=""><img class="contentpage_screenshot" src="resources/thumbnail3.jpg" /></a>
-        <a href=""><img class="contentpage_screenshot" src="resources/thumbnail4.jpg" /></a>
-        <a href=""><img class="contentpage_screenshot" src="resources/thumbnail5.jpg" /></a>
-        <a href=""><img class="contentpage_screenshot" src="resources/thumbnail6.jpg" /></a>
+        <a href=""><img class="contentpage_screenshot" src="<%= image_path('thumbnail2.jpg') %>" /></a>
+        <a href=""><img class="contentpage_screenshot" src="<%= image_path('thumbnail7.jpg') %>" /></a>
+        <a href=""><img class="contentpage_screenshot" src="<%= image_path('thumbnail3.jpg') %>" /></a>
+        <a href=""><img class="contentpage_screenshot" src="<%= image_path('thumbnail4.jpg') %>" /></a>
+        <a href=""><img class="contentpage_screenshot" src="<%= image_path('thumbnail5.jpg') %>" /></a>
+        <a href=""><img class="contentpage_screenshot" src="<%= image_path('thumbnail6.jpg') %>" /></a>
 
       </div>
     </div>
@@ -69,14 +69,13 @@
             </li>
           </ul>
         </div>
-
-
       </div>
-      <input type="text" class="commentinput" placeholder="What do you think?" />
+      <input type="text" class="commentinput" placeholder="What do you think?"></input>
       <button type="submit" class="comment_submit_button">Submit</button>
-      <div class="usercommentwrap">
-        <div class="commentname">Josh577 <div class="likecomment_score">+3 <a href="" class="likecomment_button">Like</a></div></div>
-        <div class="commenttext">This mod is awesome.</div>
+
+      <div class="usercommentwrap" ng-repeat="comment in submission.comments">
+        <div class="commentname">{{comment.user.username}} <div class="likecomment_score">+3 <a href="" class="likecomment_button">Like</a></div></div>
+        <div class="commenttext">{{comment.text}}</div>
       </div>
     </div>
   </div>

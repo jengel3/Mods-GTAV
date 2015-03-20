@@ -1,8 +1,7 @@
 class SubmissionSerializer < ActiveModel::Serializer
-  attributes :id, :name, :body, :type
+  attributes :text, :created_at
 
-  has_one :creator
-  has_many :comments
+  has_one :user
   def id
     object.id.to_s
   end
