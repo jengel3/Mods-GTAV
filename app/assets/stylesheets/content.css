@@ -8,11 +8,11 @@
     margin-bottom:10px;
 }
 .contentpage_basic_mod_info_wrap {
- height:344px;
- width:540px;
- display: inline-block;
- margin:0;
- margin-left:-5px;
+   height:344px;
+   width:540px;
+   display: inline-block;
+   margin:0;
+   margin-left:-5px;
 }
 
 .contentpage_titlewrap {
@@ -424,10 +424,10 @@ a.likecomment_button:hover {
 
 
 @media(max-width:1100px) {
- .contentpage_wrap {
-     width:100%;
-     margin:0;
- }
+   .contentpage_wrap {
+       width:100%;
+       margin:0;
+   }
 }
 
 @media(max-device-width:500px) {

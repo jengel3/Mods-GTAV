@@ -6,7 +6,8 @@ class User
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :trackable, :validatable
 
-  validates :username, presence: true
+  validates :username, presence: true, uniqueness: true, length: { maximum: 16 }
+  validates_format_of :username, :with => /\A[A-Za-z0-9_-]+\Z/
 
   ## Database authenticatable
   field :email,              type: String, default: ""
@@ -28,8 +29,8 @@ class User
 
   field :username, type: String
 
-  has_many :submissions
-  has_many :comments
+  has_many :submissions, :dependent => :destroy
+  has_many :comments, :dependent => :destroy
 
   ## Confirmable
   # field :confirmation_token,   type: String

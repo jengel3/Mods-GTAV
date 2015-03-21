@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
   devise_for :users
   
-  root 'application#index'
+  resources :submissions do
+    resources :comments
+  end
+
+  root 'submissions#index'
 
   namespace :api do
     resources :submissions, defaults: { format: :json }
   end
-
-  get '*path', to: 'application#index'
 end

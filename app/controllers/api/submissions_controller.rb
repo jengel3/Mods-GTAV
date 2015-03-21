@@ -7,7 +7,6 @@ class Api::SubmissionsController < ApplicationController
     serialized_submissions = ActiveModel::ArraySerializer.new(@submissions, each_serializer: SubmissionSerializer)
 
     respond_to do |format|
-      format.html # index.html.erb
       format.json { render json: serialized_submissions }
     end
   end

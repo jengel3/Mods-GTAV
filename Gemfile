@@ -12,7 +12,6 @@ gem 'coffee-rails'
 # Front end
 gem 'jquery-rails'
 gem 'jquery_mobile_rails'
-gem 'angular-rails-templates'
 
 # API 
 gem "active_model_serializers", "~> 0.8.0"
@@ -44,7 +43,7 @@ gem 'sidekiq'
 gem 'premailer-rails'
 
 # Windows Rails fix
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
 
 
 # Use passenger in production
