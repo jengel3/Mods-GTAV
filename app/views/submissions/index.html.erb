@@ -1,0 +1,12 @@
+<% @submissions.each do |submission| %>
+<div class="modwrap">
+	<div class="modthumbnailwrap">
+		<img class="modthumbnail" src="<%= asset_path 'thumbnail6.png' %>" />
+	</div>
+	<div class="modinfowrap">
+		<div class="modtitle"><%= submission.name %></div>
+		<div class="modcreator"><%= submission.creator.username %></div>
+		<div class="moddescription"> <%= submission.body %></div>
+	</div>
+</div>
+<% end %>

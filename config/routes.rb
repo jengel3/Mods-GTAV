@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get 'submissions/index'
+
+  get 'submissions/show'
+
+  get 'submissions/new'
+
+  get 'submissions/edit'
+
   devise_for :users
   
   resources :submissions do

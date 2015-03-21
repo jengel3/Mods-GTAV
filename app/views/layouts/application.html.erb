@@ -1,60 +1,15 @@
 <!DOCTYPE html>
-<html ng-app='gta'>
+<html>
 <head>
-	<title><%= content_for?(:title) ? yield(:title) : "Mods-GTAV" %></title>
+	<title><%= content_for?(:title) ? yield(:title) + ' :: Mods-GTAV ' : 'Mods-GTAV' %></title>
 	<meta charset="utf-8">
 	<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
-	<base href="/">
 	<%= stylesheet_link_tag "application" %>
 	<%= javascript_include_tag "application" %>
 	<link href='http://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Niconne' rel='stylesheet' type='text/css'>
 	<%= csrf_meta_tags %>
 </head>
-<script type="text/javascript">
-	$(document).ready(function(){
-		$(".mobile_dropdown_menu").hide();
-		
-		$('.mobilemenulink').on('click', function() {
-			$('.mobile_dropdown_menu').slideToggle(100);
-		}); 
-
-		$.mobile.loading('hide');
-		
-		$('.default_theme').on('click', function() {
-			$('.accentcolor').css('background-color', '#ff4200');
-			$('.accentborder').css('border-color', '#ff4200');
-		});
-		
-		$('.blue_theme').on('click', function() {
-			$('.accentcolor').css('background-color', '#66a3ff');
-			$('.accentborder').css('border-color', '#66a3ff');
-		});
-		
-		$('.green_theme').on('click', function() {
-			$('.accentcolor').css('background-color', '#41b64c');
-			$('.accentborder').css('border-color', '#41b64c');
-		});
-		
-		$('.orange_theme').on('click', function() {
-			$('.accentcolor').css('background-color', '#ff6666');
-			$('.accentborder').css('border-color', '#ff6666');
-		});
-		
-		$(".uploadmod_button").on({
-			mouseenter: function () {
-				$('.uploadmod_slideupeffect').animate({top: '4'}, 'fast');
-				$('.uploadmod_buttontext').animate({color: '#ffffff'}, 'fast');
-			},
-			mouseleave: function () {
-				$('.uploadmod_slideupeffect').animate({top: '40'}, 'fast');
-				$('.uploadmod_buttontext').animate({color: '#cdcdcd'}, 'fast');
-			}
-		});
-		
-	});
-
-</script>
 <body>
 
 	<div class="logoheader">
@@ -173,6 +128,7 @@
 								<td class="stat_title"><img class="user_stat_icon accentcolor" src="<%= asset_path('downloadicon.png') %>" /></td>
 							</tr>
 							<tr>
+
 								<td><span class="stat_amount">41</span></td>
 								<td><span class="stat_amount">206</span></td>
 								<td> <span class="stat_amount">0</span></td>
@@ -217,7 +173,7 @@
 				</div>
 			</div>
 			<div class="middlepage">
-				<div ng-view></div>
+				<%= yield %>
 			</div>
 			<div class="sidebar sidebar_right">
 				<div class="filteringbox">
@@ -265,16 +221,6 @@
 						</div>
 					</div>
 				</div>
-
-                <!--<div class="todaysfeaturedbox">
-                    <div class="sidebar_featured_today_title_wrap">
-                        <img class="featuredicon" src="<%= asset_path('featuredicon.png') %>" />
-                        <div class="sidebar_featured_today_title">Featured Today</div>
-                    </div>
-                    <img class="sidebar_featured_today_thumb" src="<%= asset_path('thumbnail2.jpg') %>" />
-                    <img class="sidebar_featured_today_thumb" src="<%= asset_path('thumbnail7.jpg') %>" />
-                    <img class="sidebar_featured_today_thumb" src="<%= asset_path('thumbnailweird.png') %>" />
-                </div>-->
             </div>
         </div>
     </div>
