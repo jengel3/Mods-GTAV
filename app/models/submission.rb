@@ -9,5 +9,8 @@ class Submission
   field :approved_at, type: Time
 
   belongs_to :creator, class_name: 'User', inverse_of: :submissions
+  validates :name, uniqueness: true, presence: true
+  validates :type, presence: true # Add inclusion
+  
   has_many :comments
 end
