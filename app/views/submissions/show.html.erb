@@ -1,2 +1,124 @@
-<h1>Submissions#show</h1>
-<p>Find me in app/views/submissions/show.html.erb</p>
+<script>
+	$(document).ready(function(){
+
+		$('.collapse_description_icon').on('click', function() {
+			$('.contentpage_descriptionwrap').addClass('collapse_description');
+			$('.contentpage_commentswrap').addClass('commentswrap_expanded');
+			/*$('.contentpage_descriptionwrap').hide('slide', {direction: 'left'}, 50);*/
+			$('.expand_description').addClass('expand_description_show_icon');
+		});
+
+		$('.expand_description').on('click', function() {
+			$('.contentpage_descriptionwrap').removeClass('collapse_description');
+			$('.contentpage_commentswrap').removeClass('commentswrap_expanded');
+			$('.expand_description').removeClass('expand_description_show_icon');
+		});
+
+		$(".usercommentwrap").on({
+			mouseenter: function () {
+				$('.likecomment_button', this).show();
+			},
+			mouseleave: function () {
+				$('.likecomment_button', this).hide();
+			}
+		});
+
+	});
+</script>
+<div class="contentpage_wrap">
+	<div class="contentpage_basic_mod_info_wrap">
+
+		<div class="contentpage_titlewrap">
+			<div class="contentpage_title">
+				<%= @submission.name %> 
+			</div>
+			<div class="contentpage_modcreator">
+				by <%= @submission.creator.username %>
+			</div>
+
+		</div>
+		<div class="contentpage_mainthumb">
+			<img class="contentpage_mainthumb_img" src="<%= asset_path('thumbnail.jpg') %>" alt="Main Thumbnail" />
+		</div>
+
+	</div>
+	<div class="contentpage_download_and_screenshots_wrap">
+		<div class="modfilename">Wickerville.zip (34mb)</div>
+		<a class="downloadbutton_link" href=""><div class="downloadbutton">
+			<div class="downloadbutton_text">Download</div>
+		</div></a>
+		<div class="contentpage_screenshots_wrap">
+			<a href=""><img class="contentpage_screenshot" src="<%= asset_path('thumbnail2.jpg') %>" /></a>
+			<a href=""><img class="contentpage_screenshot" src="<%= asset_path('thumbnail7.jpg') %>" /></a>
+			<a href=""><img class="contentpage_screenshot" src="<%= asset_path('thumbnail3.jpg') %>" /></a>
+			<a href=""><img class="contentpage_screenshot" src="<%= asset_path('thumbnail4.jpg') %>" /></a>
+			<a href=""><img class="contentpage_screenshot" src="<%= asset_path('thumbnail5.jpg') %>" /></a>
+			<a href=""><img class="contentpage_screenshot" src="<%= asset_path('thumbnail6.jpg') %>" /></a>
+
+		</div>
+	</div>
+	<div class="contentpage_likebar_wrap">
+		<a class="downloadbutton_link" href=""><div class="downloadbutton downloadbuttonsmall">
+			<div class="downloadbutton_text downloadbutton_textsmall">Download</div>
+		</div></a>
+		<div class="ratingbutton likebutton">
+			<img src="<%= asset_path('likebuttonicon.png') %>" class="ratingbuttonicon" />
+			<div class="ratingbutton_text">Like</div>
+		</div>
+		<div class="ratingbutton dislikebutton">
+			<img src="<%= asset_path('dislikebuttonicon.png') %>" class="ratingbuttonicon" />
+			<div  class="ratingbutton_text">Disike</div>
+		</div>
+		<div class="ratingresults">86 people like this mod</div>
+	</div>
+	<a class="expand_description" href="">&#62;</a>
+	<div class="contentpage_descriptionwrap">
+		<div class="contentpage_headertitles">Description <a class="collapse_description_icon" href="">&#60;</a></div>
+		<div class="descriptionwrap_moddescription">
+			<%= @submission.body %>
+		</div>
+		<div class="contentpage_uploaddate"><b>Upload Date:</b> <%= relative(@submission.created_at) %></div>
+		<div class="contentpage_lastupdated"><b>Last Updated:</b> <%= relative(@submission.updated_at) %></div>
+	</div>
+	<div class="contentpage_commentswrap">
+		<div class="contentpage_headertitles">Comments
+
+			<div id="contentoptions">
+				<ul>
+					<li><a href="#">Oldest First <span class="downarrowsymbol">&#x25BC;</span></a>
+						<ul>
+							<li><a href="#">Newest First</a></li>
+							<li><a href="#">Most Liked</a></li>
+							<li><a href="#">Creator Only</a></li>
+							<li><a href="#">Admin Only</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+
+
+		</div>
+		<input type="text" class="commentinput" placeholder="What do you think?" />
+		<button type="submit" class="comment_submit_button">Submit</button>
+		<div class="usercommentwrap">
+			<div class="commentname">Josh577 <div class="likecomment_score">+3 <a href="" class="likecomment_button">Like</a></div></div>
+			<div class="commenttext">This mod is awesome.</div>
+		</div>
+		<div class="usercommentwrap">
+			<div class="commentname admincomment">Jake0oo0 <div class="likecomment_score"> <a href="" class="likecomment_button">Like</a></div></div>
+			<div class="commenttext">Needs Impovement.</div>
+		</div>
+		<div class="usercommentwrap">
+			<div class="commentname">TheModder <div class="likecomment_score"> <a href="" class="likecomment_button">Like</a></div></div>
+			<div class="commenttext">Hype train motherfuckers lets see how this extra long comment looks.</div>
+		</div>
+		<div class="usercommentwrap">
+			<div class="commentname modcreatorcomment">LCBradley3k <div class="likecomment_score">+1 <a href="" class="likecomment_button">Like</a></div></div>
+			<div class="commenttext">I could do better.</div>
+		</div>
+		<div class="usercommentwrap">
+			<div class="commentname">xXShadovVXx <div class="likecomment_score"> <a href="" class="likecomment_button">Like</a></div></div>
+			<div class="commenttext">IcoulddobetterlongcommentIcoulddobetterlongcommentIcoulddobetterlongcommentIcoulddobetterlongcommentIcoulddobetterlongcomment</div>
+		</div>
+	</div>
+</div>

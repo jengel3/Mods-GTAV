@@ -4,9 +4,21 @@
 		<img class="modthumbnail" src="<%= asset_path 'thumbnail6.png' %>" />
 	</div>
 	<div class="modinfowrap">
-		<div class="modtitle"><%= submission.name %></div>
+		<div class="modtitle"><%= link_to submission.name, submission_path(submission) %></div>
 		<div class="modcreator"><%= submission.creator.username %></div>
 		<div class="moddescription"> <%= submission.body %></div>
 	</div>
 </div>
 <% end %>
+<script>
+	$(".uploadmod_button").on({
+		mouseenter: function () {
+			$('.uploadmod_slideupeffect').animate({top: '4'}, 'fast');
+			$('.uploadmod_buttontext').animate({color: '#ffffff'}, 'fast');
+		},
+		mouseleave: function () {
+			$('.uploadmod_slideupeffect').animate({top: '40'}, 'fast');
+			$('.uploadmod_buttontext').animate({color: '#cdcdcd'}, 'fast');
+		}
+	});
+</script>
