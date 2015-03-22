@@ -100,25 +100,11 @@
 		</div>
 		<input type="text" class="commentinput" placeholder="What do you think?" />
 		<button type="submit" class="comment_submit_button">Submit</button>
+		<% @submission.comments.each do |comment| %>
 		<div class="usercommentwrap">
-			<div class="commentname">Josh577 <div class="likecomment_score">+3 <a href="" class="likecomment_button">Like</a></div></div>
-			<div class="commenttext">This mod is awesome.</div>
+			<div class="commentname"><%= comment.user.username %> <div class="likecomment_score">+3 <a href="" class="likecomment_button">Like</a></div></div>
+			<div class="commenttext"><%= comment.text %></div>
 		</div>
-		<div class="usercommentwrap">
-			<div class="commentname admincomment">Jake0oo0 <div class="likecomment_score"> <a href="" class="likecomment_button">Like</a></div></div>
-			<div class="commenttext">Needs Impovement.</div>
-		</div>
-		<div class="usercommentwrap">
-			<div class="commentname">TheModder <div class="likecomment_score"> <a href="" class="likecomment_button">Like</a></div></div>
-			<div class="commenttext">Hype train motherfuckers lets see how this extra long comment looks.</div>
-		</div>
-		<div class="usercommentwrap">
-			<div class="commentname modcreatorcomment">LCBradley3k <div class="likecomment_score">+1 <a href="" class="likecomment_button">Like</a></div></div>
-			<div class="commenttext">I could do better.</div>
-		</div>
-		<div class="usercommentwrap">
-			<div class="commentname">xXShadovVXx <div class="likecomment_score"> <a href="" class="likecomment_button">Like</a></div></div>
-			<div class="commenttext">IcoulddobetterlongcommentIcoulddobetterlongcommentIcoulddobetterlongcommentIcoulddobetterlongcommentIcoulddobetterlongcomment</div>
-		</div>
+		<% end %>
 	</div>
 </div>
