@@ -28,6 +28,7 @@ class User
   field :last_sign_in_ip,    type: String
 
   field :username, type: String
+  field :admin, type: Boolean, default: false
 
   has_many :submissions, :dependent => :destroy
   has_many :comments, :dependent => :destroy

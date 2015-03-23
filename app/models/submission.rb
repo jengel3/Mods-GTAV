@@ -1,6 +1,8 @@
 class Submission
   include Mongoid::Document
   include Mongoid::Timestamps
+  include GlobalID::Identification
+  include Mongoid::Slug
 
   field :name, type: String
   field :body, type: String
@@ -10,6 +12,8 @@ class Submission
 
   alias_attribute :title, :name
   alias_attribute :description, :body
+
+  slug :name, history: true
 
   belongs_to :creator, class_name: 'User', inverse_of: :submissions
   validates :name, uniqueness: true, presence: true

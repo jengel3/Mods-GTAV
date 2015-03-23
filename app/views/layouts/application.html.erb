@@ -1,57 +1,17 @@
-<!DOCTYPE html>
 <html>
 <head>
 	<title><%= content_for?(:title) ? yield(:title) + ' :: Mods-GTAV ' : 'Mods-GTAV' %></title>
-	<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
 	<%= stylesheet_link_tag "application" %>
 	<%= javascript_include_tag "application" %>
+	<link href='http://fonts.googleapis.com/css?family=Arimo:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Asap:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Niconne' rel='stylesheet' type='text/css'>
 	<%= csrf_meta_tags %>
+
+	<%= yield(:scripts) %>
 </head>
 <body>
-<script type="text/javascript">
-	$(document).ready(function(){
-       $(".mobile_dropdown_menu").hide();
-        
-        $('.mobilemenulink').on('click', function() {
-            $('.mobile_dropdown_menu').slideToggle(100);
-
-        }); 
-        
-         $('.default_theme').on('click', function() {
-            $('.accentcolor').css('background-color', '#ff4200');
-            $('.accentborder').css('border-color', '#ff4200');
-        });
-        
-        $('.blue_theme').on('click', function() {
-            $('.accentcolor').css('background-color', '#66a3ff');
-            $('.accentborder').css('border-color', '#66a3ff');
-        });
-        
-        $('.green_theme').on('click', function() {
-            $('.accentcolor').css('background-color', '#41b64c');
-            $('.accentborder').css('border-color', '#41b64c');
-        });
-        
-        $('.orange_theme').on('click', function() {
-            $('.accentcolor').css('background-color', '#ff6666');
-            $('.accentborder').css('border-color', '#ff6666');
-        });
-        
-        $(".uploadmod_button").on({
-            mouseenter: function () {
-                $('.uploadmod_slideupeffect').animate({top: '4'}, 'fast');
-                $('.uploadmod_buttontext').animate({color: '#ffffff'}, 'fast');
-            },
-            mouseleave: function () {
-                $('.uploadmod_slideupeffect').animate({top: '40'}, 'fast');
-                $('.uploadmod_buttontext').animate({color: '#cdcdcd'}, 'fast');
-            }
-        });
- 
-    });
-</script>
 
 	<div class="logoheader">
 		<div class="inner_logoheader_wrap">
@@ -82,7 +42,7 @@
 			<div class="mobile_menu_option">Textures</div>
 		</div>
 
-		<div class="headerwrap parallax-window" data-parallax="scroll" data-image-src="<%= asset_path('gtavbackground5.png') %>">
+		<div class="headerwrap parallax-window" data-parallax="scroll" data-image-src="<%= image_path('gtavbackground5.png') %>">
 
 			<div class="mobile_dropdown_menu_icon">
 				<a class="mobilemenulink" href=""><img class="mobilemenuicon" src="<%= asset_path('mobilemenuicon.png') %>" /></a>
@@ -97,7 +57,7 @@
 				</div>
 				<div class="headernavigationwrap">
 
-					<a href=""><div class="individual_navigation_icon_wrap">
+					<a href="<%= root_path %>"><div class="individual_navigation_icon_wrap">
 						<div class="top_navigation_bar"> </div>
 						<img class="navigation_icon_img" src="<%= asset_path('home50color.png') %>" />
 						<div class="navigation_icon_text">
@@ -146,7 +106,7 @@
 						<div class="navigation_icon_text">
 							Textures
 						</div>
-					</div></a>
+					</div></a> 
 				</div>
 			</div>
 
@@ -155,11 +115,12 @@
 		</div>
 		<div class="pagebodywrap">
 			<div class="sidebar sidebar_left">
+				<% if current_user %>
 				<div class="userprofilebox">
 					<div class="userinfo_profilewrap">
-						<div class="user_avatar_wrap"><img src="<%= asset_path('lcbradley3k.png') %>" /></div>
+						<div class="user_avatar_wrap"><%= avatar(current_user) %></div>
 						<div class="userinfo">
-							<div class="username">LCBradley3k</div>
+							<div class="username"><%= current_user.username %></div>
 							<div class="userdesc">Mod Creator</div>
 						</div>
 						<table class="userstats">
@@ -170,14 +131,15 @@
 							</tr>
 							<tr>
 
-								<td><span class="stat_amount">41</span></td>
-								<td><span class="stat_amount">206</span></td>
+								<td><span class="stat_amount">0</span></td>
+								<td><span class="stat_amount"><%= current_user.comments.count %></span></td>
 								<td> <span class="stat_amount">0</span></td>
 							</tr>
 						</table>
 					</div>
 
 				</div>
+				<% end %>
 
 				<div class="subcategoriesbox">
 					<div class="subcategory">
@@ -262,30 +224,30 @@
 						</div>
 					</div>
 				</div>
-            </div>
-        </div>
-    </div>
+			</div>
+		</div>
+	</div>
 
-    <div class="website_footer">
-    	<% if params[:controller] == 'submissions' && params[:action] == 'index' %>
-    	<div class="pagination_wrap">
-    		<a href="" class="pagination_prev_button"><div class="pagination_link">Prev</div></a>
-    		<div class="pagination_numbers_wrap">
-    			<a href="" class="pagenumber"><div class="pagination_link">1</div></a>a>
-    			<a href="" class="pagenumber activepagenumber"><div class="pagination_link">2</div></a>
-    			<a href="" class="pagenumber"><div class="pagination_link">3</div></a>
-    			<a href="" class="pagenumber"><div class="pagination_link" >4</div></a>
-    			<a href="" class="pagenumber"><div class="pagination_link">5</div></a>
-    			<a href="" class="pagenumber"><div class="pagination_link">6</div></a>
-    			<a href="" class="pagenumber"><div class="pagination_link">...</div></a>
-    			<a href="" class="pagenumber"><div class="pagination_link">18</div></a>
-    		</div>
-    		<a href="" class="pagination_next_button"><div class="pagination_link">Next</div></a>
-    	</div>
-    	<% end %>
-    </div>
-    <div class="bottom_footer_bar">
-    	<div class="footer_bar_text"><span class="footer_bar_website_name">Mods-GTAV:</span> Home &bull; Contact &bull; About</div>
-    </div>
+	<div class="website_footer">
+		<% if params[:controller] == 'submissions' && params[:action] == 'index' %>
+		<div class="pagination_wrap">
+			<a href="" class="pagination_prev_button"><div class="pagination_link">Prev</div></a>
+			<div class="pagination_numbers_wrap">
+				<a href="" class="pagenumber"><div class="pagination_link">1</div></a>a>
+				<a href="" class="pagenumber activepagenumber"><div class="pagination_link">2</div></a>
+				<a href="" class="pagenumber"><div class="pagination_link">3</div></a>
+				<a href="" class="pagenumber"><div class="pagination_link" >4</div></a>
+				<a href="" class="pagenumber"><div class="pagination_link">5</div></a>
+				<a href="" class="pagenumber"><div class="pagination_link">6</div></a>
+				<a href="" class="pagenumber"><div class="pagination_link">...</div></a>
+				<a href="" class="pagenumber"><div class="pagination_link">18</div></a>
+			</div>
+			<a href="" class="pagination_next_button"><div class="pagination_link">Next</div></a>
+		</div>
+		<% end %>
+	</div>
+	<div class="bottom_footer_bar">
+		<div class="footer_bar_text"><span class="footer_bar_website_name">Mods-GTAV:</span> Home &bull; Contact &bull; About</div>
+	</div>
 </body>
 </html>

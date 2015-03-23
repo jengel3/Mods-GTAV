@@ -1,7 +1,7 @@
 <% @submissions.each do |submission| %>
 <div class="modwrap">
 	<div class="modthumbnailwrap">
-		<img class="modthumbnail" src="<%= asset_path 'thumbnail6.png' %>" />
+		<img class="modthumbnail" src="<%= image_path 'thumbnail6.jpg' %>" />
 	</div>
 	<div class="modinfowrap">
 		<div class="modtitle"><%= link_to submission.name, submission_path(submission) %></div>

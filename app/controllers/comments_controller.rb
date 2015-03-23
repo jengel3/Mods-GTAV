@@ -1,8 +1,10 @@
 class CommentsController < ApplicationController
+  before_filter :authenticate_user!, only: [:create]
   def create
     @comment = Comment.new(comment_params)
     @submission = Submission.find(params[:submission_id])
     @comment.submission = @submission
+    @comment.user = current_user
     if @comment.save
       redirect_to @submission, notice: "Successfully commented on #{@submission.name}."
     else

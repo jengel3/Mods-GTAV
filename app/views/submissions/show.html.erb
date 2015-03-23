@@ -1,30 +1,3 @@
-<script>
-	$(document).ready(function(){
-
-		$('.collapse_description_icon').on('click', function() {
-			$('.contentpage_descriptionwrap').addClass('collapse_description');
-			$('.contentpage_commentswrap').addClass('commentswrap_expanded');
-			/*$('.contentpage_descriptionwrap').hide('slide', {direction: 'left'}, 50);*/
-			$('.expand_description').addClass('expand_description_show_icon');
-		});
-
-		$('.expand_description').on('click', function() {
-			$('.contentpage_descriptionwrap').removeClass('collapse_description');
-			$('.contentpage_commentswrap').removeClass('commentswrap_expanded');
-			$('.expand_description').removeClass('expand_description_show_icon');
-		});
-
-		$(".usercommentwrap").on({
-			mouseenter: function () {
-				$('.likecomment_button', this).show();
-			},
-			mouseleave: function () {
-				$('.likecomment_button', this).hide();
-			}
-		});
-
-	});
-</script>
 <div class="contentpage_wrap">
 	<div class="contentpage_basic_mod_info_wrap">
 
@@ -71,9 +44,9 @@
 		</div>
 		<div class="ratingresults">86 people like this mod</div>
 	</div>
-	<a class="expand_description" href="">&#62;</a>
+	<a class="expand_description" href="#expander">&#62;</a>
 	<div class="contentpage_descriptionwrap">
-		<div class="contentpage_headertitles">Description <a class="collapse_description_icon" href="">&#60;</a></div>
+		<div class="contentpage_headertitles">Description <a class="collapse_description_icon" href="#collapser">&#60;</a></div>
 		<div class="descriptionwrap_moddescription">
 			<%= @submission.body %>
 		</div>
@@ -85,22 +58,28 @@
 
 			<div id="contentoptions">
 				<ul>
-					<li><a href="#">Oldest First <span class="downarrowsymbol">&#x25BC;</span></a>
+					<li>
+						<% if params[:c_sort] && @sort_options.key(params[:c_sort]) %>
+						<a href="#current"><%= @sort_options.key(params[:c_sort]) %> <span class="downarrowsymbol">&#x25BC;</span></a>
+						<% @sort_options.delete(@sort_options.key(params[:c_sort])) %>
+						<% else %>
+						<a href="#current"><%= @sort_options.keys[0] %> <span class="downarrowsymbol">&#x25BC;</span></a>
+						<% @sort_options.delete(@sort_options.keys[0]) %>
+						<% end %>
 						<ul>
-							<li><a href="#">Newest First</a></li>
-							<li><a href="#">Most Liked</a></li>
-							<li><a href="#">Creator Only</a></li>
-							<li><a href="#">Admin Only</a></li>
+							<% @sort_options.each do |k, v| %>
+							<li><%= link_to k, params.merge(c_sort: v) %></li>
+							<% end %>
 						</ul>
 					</li>
 				</ul>
 			</div>
-
-
 		</div>
-		<input type="text" class="commentinput" placeholder="What do you think?" />
-		<button type="submit" class="comment_submit_button">Submit</button>
-		<% @submission.comments.each do |comment| %>
+		<%= form_for([@submission, @submission.comments.build]) do |f| %>
+		<%= f.text_field :text, class: 'commentinput', placeholder: 'What do you think?' %>
+		<%= f.submit 'Submit', class: 'comment_submit_button' %>
+		<% end %>
+		<% @comments.each do |comment| %>
 		<div class="usercommentwrap">
 			<div class="commentname"><%= comment.user.username %> <div class="likecomment_score">+3 <a href="" class="likecomment_button">Like</a></div></div>
 			<div class="commenttext"><%= comment.text %></div>
@@ -108,3 +87,30 @@
 		<% end %>
 	</div>
 </div>
+
+<script>
+	$(document).ready(function(){
+
+		$('.collapse_description_icon').on('click', function() {
+			$('.contentpage_descriptionwrap').addClass('collapse_description');
+			$('.contentpage_commentswrap').addClass('commentswrap_expanded');
+			$('.expand_description').addClass('expand_description_show_icon');
+		});
+
+		$('.expand_description').on('click', function() {
+			$('.contentpage_descriptionwrap').removeClass('collapse_description');
+			$('.contentpage_commentswrap').removeClass('commentswrap_expanded');
+			$('.expand_description').removeClass('expand_description_show_icon');
+		});
+
+		$(".usercommentwrap").on({
+			mouseenter: function () {
+				$('.likecomment_button', this).show();
+			},
+			mouseleave: function () {
+				$('.likecomment_button', this).hide();
+			}
+		});
+
+	});
+</script>
