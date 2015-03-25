@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-class ImageUploader < CarrierWave::Uploader::Base
+class UploadUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
@@ -37,7 +37,13 @@ class ImageUploader < CarrierWave::Uploader::Base
   # end
 
   def extension_white_list
-    %w(jpg jpeg png)
+    %w(zip tar rar)
   end
+
+  # Override the filename of the uploaded files:
+  # Avoid using model.id or version_name here, see uploader/store.rb for details.
+  # def filename
+  #   "something.jpg" if original_filename
+  # end
 
 end

@@ -30,9 +30,11 @@ class User
   field :username, type: String
   field :admin, type: Boolean, default: false
 
+  field :ip_history, type: Array, default: []
+
   has_many :submissions, :dependent => :destroy
   has_many :comments, :dependent => :destroy
-  has_one :apikey
+  has_one :api_key
 
   ## Confirmable
   # field :confirmation_token,   type: String

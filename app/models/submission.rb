@@ -22,4 +22,5 @@ class Submission
   validates :type, presence: true # Add inclusion
   
   has_many :comments
+  has_many :images
 end

@@ -1,6 +1,7 @@
 # /api/v1
 class Api::V1::SubmissionsController < Api::V1::BaseController
-  before_action :set_submission, only: [:show, :edit, :update, :destroy]
+  before_action :set_submission, only: [:show, :update, :destroy]
+  before_filter :verify_permission, only: [:create, :update, :destroy]
 
   # GET /submissions
   def index
@@ -36,7 +37,7 @@ class Api::V1::SubmissionsController < Api::V1::BaseController
   def update
     respond_to do |format|
       if @submission.update_attributes(submission_params)
-        format.json { render json: nil, status: :ok }
+        format.json { render json: {:status => 'okay'}, status: :ok }
       else
         format.json { render json: @submission.errors, status: :unprocessable_entity }
       end
@@ -57,9 +58,18 @@ class Api::V1::SubmissionsController < Api::V1::BaseController
       @submission = Submission.find(params[:id])
     end
 
+    # Verify that this user has the correct permissions to modify this model
+    def verify_permission
+      unless @user == @submission.creator || @user.admin
+        return respond_to do |format|
+          format.json { render json: {:status => 'not permitted'}, status: 401 }
+        end
+      end
+    end
+
     # Only allow a trusted parameter "white list" through.
     def submission_params
       fields = [:name, :body, :type]
-      params.require(:submission).permit(fields)
+      params.permit(fields)
     end
-end
+  end

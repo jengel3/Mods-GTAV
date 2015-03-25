@@ -1,5 +1,8 @@
 # /api/v1
 class Api::V1::BaseController < ApplicationController
+  # not permitted - no permission to modify model
+  # api key for create/destroy/update
+
   skip_before_filter :verify_authenticity_token
  
   before_filter :cors_preflight_check
@@ -28,7 +31,7 @@ class Api::V1::BaseController < ApplicationController
   def verify_user
     key = request.headers['X-API-Key']
     if !key || key.blank?
-      return render :text => 'API key not found. Please verify key.', status: 401
+      return render :text => 'Please provide an API key to access this endpoint.', status: 401
     end
 
     api_key = ApiKey.where(:key => key).first
