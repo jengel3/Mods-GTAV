@@ -1,24 +1,95 @@
 <% @submissions.each do |submission| %>
 <div class="modwrap">
-	<div class="modthumbnailwrap">
-		<img class="modthumbnail" src="<%= image_path 'thumbnail6.jpg' %>" />
-	</div>
-	<div class="modinfowrap">
-		<div class="modtitle"><%= link_to submission.name, submission_path(submission) %></div>
-		<div class="modcreator"><%= submission.creator.username %></div>
-		<div class="moddescription"> <%= submission.body %></div>
-	</div>
+    <div class="mod_thumb_and_title_wrap">
+        <div class="modthumbnailwrap">
+            <div class="submissiondate"><%= relative(submission.updated_at) %></div>
+            <a href="<%= submission_path(submission) %>"><img class="modthumbnail" src="<%= image_path('thumbnail5.jpg') %>" /></a>
+        </div>
+        <div class="modtitlewrap">
+        <%= link_to submission.name, submission_path(submission), class: 'modtitle' %>
+        </div>
+    </div>
+    <div class="mod_creator_and_download_wrap">
+        <div class="mod_creator"><%= submission.creator.username %></div>
+        <div class="downloadcount"><%= submission.total_downloads %> <img src="<%= asset_path('downloadcounticon.png') %>" alt="" /></div>
+    </div>
 </div>
 <% end %>
-<script>
-	$(".uploadmod_button").on({
-		mouseenter: function () {
-			$('.uploadmod_slideupeffect').animate({top: '4'}, 'fast');
-			$('.uploadmod_buttontext').animate({color: '#ffffff'}, 'fast');
-		},
-		mouseleave: function () {
-			$('.uploadmod_slideupeffect').animate({top: '40'}, 'fast');
-			$('.uploadmod_buttontext').animate({color: '#cdcdcd'}, 'fast');
-		}
-	});
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.submissiondate').hide();
+		
+		$(".modthumbnailwrap").on({
+			mouseenter: function () {
+				$('.submissiondate', this).stop().fadeIn(300);
+			},
+			mouseleave: function () {
+				$('.submissiondate', this).stop().fadeOut(100);
+			}
+		});
+		
+		doResize();
+		$(window).on('resize', doResize);  
+            /*$(window).resize(function(){
+                if ($(window).width() <= 1160){  
+                    
+                    $('.right_sidebar_preview').on('click', function() {
+                        $('.right_sidebar_preview').css('display', 'none');
+                        $('.right_sidebar').css('display', 'block');
+                    });
+                    $('.right_sidebar').on('click', function() {
+                        $('.right_sidebar_preview').css('display', 'block');
+                        $('.right_sidebar').css('display', 'none');
+                    });
+                   }
+                
+                });
+            });
+            
+            $(window).resize(function(){
+                
+                
+            });*/
+});
+
+doResize();
+$(window).on('resize', doResize);   
+
+
+
+
+function doResize() {
+	if ($(window).width() <= 1160){  
+		
+		$('.right_sidebar_preview, .right_sidebar').on('click', function() {
+			$('.right_sidebar_preview').toggleClass('showsidebarpreview');
+			$('.right_sidebar').toggleClass('showsidebar');
+		});
+                    /*$('.right_sidebar').on('click', function() {
+                        $('.right_sidebar_preview').removeClass('showsidebarpreview');
+                        $('.right_sidebar').removeClass('showsidebar');
+                    });*/
+}
+}
+
+        /*function doResize() {
+            var mq = window.matchMedia('@media(max-width:1160px)');
+            if(mq.matches) {
+                // the width of browser is more then 700px
+                $('.right_sidebar').css('display', 'block');
+                $('.right_sidebar_preview').css('display', 'none');
+            } else {
+                // the width of browser is less then 700px
+                $('.right_sidebar_preview').on('click', function() {
+                    $('.right_sidebar_preview').css('display', 'none');
+                    $('.right_sidebar').css('display', 'block');
+                });
+                $('.right_sidebar').on('click', function() {
+                    $('.right_sidebar_preview').css('display', 'block');
+                    $('.right_sidebar').css('display', 'none');
+                });
+        }
+    }*/
+    
+    
 </script>

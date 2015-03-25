@@ -1,4 +1,5 @@
 class SubmissionsController < ApplicationController
+  include CommentsHelper
   before_filter :set_submission, only: [:show, :destroy]
 
   def index
@@ -13,7 +14,9 @@ class SubmissionsController < ApplicationController
       'Creator Only' => 'creator',
       'Admin Only' => 'admin'
     }
-    @comments = comment_sort(@submission.comments.unscoped.all).reject(&:new_record?)
+    @sort = params[:c_sort] ||= session['c_sort'] ||= @sort_options.values[0]
+    session['c_sort'] = @sort
+    @comments = comment_sort(@submission.comments.unscoped.all).page(params[:c_page]).per(10).reject(&:new_record?)
   end
 
   def destroy
@@ -30,26 +33,5 @@ class SubmissionsController < ApplicationController
   private
   def set_submission
     @submission = Submission.find(params[:id])
-  end
-
-  def comment_sort(comments)
-    sort = params[:c_sort]
-    if sort
-      sort = sort.downcase
-    else
-      sort = 'oldest'
-    end
-    case sort
-    when 'newest'
-      comments.desc('created_at')
-    when 'oldest'
-      comments.asc('created_at')
-    when 'creator'
-      comments.where(:user => @submission.creator)
-    when 'admin'
-      comments.where(:user_id.in => User.where(:admin => true).distinct(:_id))
-    else
-      comments.asc('created_at')
-    end
   end
 end

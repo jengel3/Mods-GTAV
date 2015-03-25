@@ -1,5 +1,5 @@
 # /api/v1
-class Api::V1::SubmissionsController < BaseController
+class Api::V1::SubmissionsController < Api::V1::BaseController
   before_action :set_submission, only: [:show, :edit, :update, :destroy]
 
   # GET /submissions
@@ -59,6 +59,7 @@ class Api::V1::SubmissionsController < BaseController
 
     # Only allow a trusted parameter "white list" through.
     def submission_params
-      params.require(:submission).permit(:name, :body, :type)
+      fields = [:name, :body, :type]
+      params.require(:submission).permit(fields)
     end
 end

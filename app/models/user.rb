@@ -32,6 +32,7 @@ class User
 
   has_many :submissions, :dependent => :destroy
   has_many :comments, :dependent => :destroy
+  has_one :apikey
 
   ## Confirmable
   # field :confirmation_token,   type: String

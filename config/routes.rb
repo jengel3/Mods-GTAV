@@ -1,14 +1,4 @@
 Rails.application.routes.draw do
-  get 'comments/create'
-
-  get 'submissions/index'
-
-  get 'submissions/show'
-
-  get 'submissions/new'
-
-  get 'submissions/edit'
-
   devise_for :users
   
   resources :submissions do
@@ -17,7 +7,11 @@ Rails.application.routes.draw do
 
   root 'submissions#index'
 
-  namespace :api do
-    resources :submissions, defaults: { format: :json }
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      resources :submissions do
+        resources :comments
+      end
+    end
   end
 end

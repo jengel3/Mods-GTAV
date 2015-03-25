@@ -1,18 +1,19 @@
+  
 .contentpage_wrap {
-    width:830px;
+    width:880px;
     height:auto;
     margin: 0 auto;
     background-color: #f2f2f2;
-    border: 1px solid #c8c8c8;
+    /*border: 1px solid #c8c8c8;*/
     margin-top:10px;
     margin-bottom:10px;
 }
 .contentpage_basic_mod_info_wrap {
-   height:344px;
-   width:540px;
-   display: inline-block;
-   margin:0;
-   margin-left:-5px;
+ height:354px;
+ width:565px;
+ display: inline-block;
+ margin:0;
+ margin-left:5px;
 }
 
 .contentpage_titlewrap {
@@ -47,8 +48,8 @@
 }
 
 .contentpage_mainthumb {
-    height:297px;
-    width:528px;
+    height:308px;
+    width:547px;
     background-color:#3d3d3d;
     text-align:center;
     margin-left:10px;
@@ -57,21 +58,22 @@
 }
 
 .contentpage_mainthumb_img {
-    max-height: 297px;
-    max-width: 528px;
+    max-height: 308px;
+    max-width: 547px;
     overflow: hidden;
 }
 
 .contentpage_download_and_screenshots_wrap {
-    width:276px;
-    height:336px;
+    width:301px;
+    height:354px;
     display: inline-block;
     vertical-align: top;
+    text-align: center;
 }
 
 .downloadbutton {
     width:238px;
-    height:44px;
+    height:40px;
     background-color: #35eb60;
     border: 2px solid #2a971f;
     -webkit-border-radius: 3px;
@@ -96,6 +98,15 @@
 
 .downloadbuttonsmall {
     display: none;
+    width:128px;
+    height:28px;
+    margin-top:0;
+    text-align: center;
+    margin-right: 5px;
+}
+.downloadbutton_textsmall {
+    font-size: 20px;
+    margin-top:3px;
 }
 
 .downloadbutton_link:active {
@@ -109,7 +120,7 @@
 .downloadbutton_text {
     color:white;
     font-weight:bold;
-    font-size:30px;
+    font-size:26px;
     margin-top:5px;
     text-shadow: 0px 0px 3px rgba(100, 100, 100, 1);
     font-family:Arial, sans-serif;
@@ -117,26 +128,25 @@
 }
 
 .contentpage_screenshots_wrap {
-    width:288px;
     height:auto;
-    max-height:241px;
+    max-height:255px;
     overflow-y: auto;
     margin-top:11px;
-    margin-left:-4px;
 }
 
 .contentpage_screenshot {
-    max-width: 122px;
-    max-height: 69px;
+    max-width: 128px;
+    max-height: 72px;
     border: 1px solid #3d3d3d;
-    margin:2px;
+    margin:3px;
 }
 
 .contentpage_likebar_wrap {
     width:95%;
     height:auto;
-    margin-left:11px;
+    margin-left:16px;
     text-align: left;
+    margin-top:2px;
 }
 
 .ratingbutton {
@@ -180,11 +190,11 @@
     margin-top:5px;
 }
 .contentpage_descriptionwrap {
-    width: 320px;
+    width: 345px;
     height: auto;
     padding-right:14px;
     padding-bottom:10px;
-    border-right: 1px solid #dadada;
+    border-right: 1px dashed #dadada;
     text-align: left;
     margin-top:14px;
     display: inline-block;
@@ -238,15 +248,16 @@
 .contentpage_commentswrap {
     display: inline-block;
     margin-top: 14px;
-    width:457px;
+    width:463px;
     height:auto;
     vertical-align: top;
     text-align: left;
     margin-left: 8px;
     margin-bottom:20px;
+    margin-right:12px;
 }
 .commentswrap_expanded {
-    width:770px;
+    width:795px;
     margin-left:0;
     margin-right:22px;
 }
@@ -325,8 +336,8 @@ a.likecomment_button:hover {
     font-size:15px;
     font-weight:normal;
     color:#303030;
-    padding-bottom:8px;
-    border-bottom: 1px solid #dadada;
+    padding-bottom:10px;
+    border-bottom: 1px dashed #dadada;
     max-width: 100%;
     word-wrap:break-word;
 }
@@ -338,223 +349,107 @@ a.likecomment_button:hover {
 .modcreatorcomment {
     color:#285aaf;
 }
-
-
-@media(max-width:1350px) {
-  .contentpage_wrap {
-      width:100%;
-      border:none;
-      margin:0;
-  }
-  .contentpage_basic_mod_info_wrap {
-    width:510px;
-    height:325px;
+.load_comments_button {
+    margin: 0 auto;
+    margin-left:5px;
 }
-.contentpage_download_and_screenshots_wrap {
-    width:150px;
-    height:325px;
-}
-.contentpage_screenshots_wrap {
-    width: 100%;
-    margin: 0;
-    margin-top:38px;
-    max-height: 283px;
-}
-.contentpage_screenshot {
-    margin:0 4px 8px 4px;
+.load_comments_wrap {
+    text-align:center;
 }
 
-.downloadbutton {
-    display: none;
-}
-
-.downloadbuttonsmall {
+#contentoptions {
+    width:186px;
+    right:0;
+    z-index: 2;
+    padding-top:0;
+    font-weight:normal;
     display: inline-block;
-    width:128px;
-    height:28px;
+}
+
+#contentoptions a {
+    text-decoration:none;
+    color:rgb(100,100,100);
+    margin-left:0;
+    padding-bottom:9px;
+    padding-top:0;
     margin-top:0;
-    text-align: center;
-    margin-right: 5px;
+    vertical-align:1px;
 }
-.downloadbutton_textsmall {
-    font-size: 20px;
-    margin-top:3px;
+
+#contentoptions ul {
+    list-style:none;
+    margin:0 auto;
+    /*text-align:right;*/
+    position:relative;
+    display:inline-table;
+    margin-left:0;
+    padding-left:0;
+    padding-right:4px;
+    line-height:14px;
+
 }
-.modfilename {
+
+#contentoptions ul li {
+    color:rgb(100,100,100);
+    font-family:"arial", times, sans-serif;
+    font-size:12px;
+}
+
+.downarrowsymbol {
+    font-size:9px;
+    vertical-align: top;
+}
+
+#contentoptions ul ul {
     display:none;
 }
 
-.contentpage_mainthumb {
-    height:281px;
-    width:500px;
+#contentoptions ul li:hover > ul {
+    display:block;
 }
 
-.contentpage_mainthumb_img {
-    max-height: 281px;
-    max-width: 500px;
+#contentoptions ul ul {
+    position: absolute; 
+    top: 100%;
+    background: white;
+    border: 1px solid #000;
+    overflow:hidden;
+    line-height:normal;
+    margin-right:4px;
 }
-.ratingbutton {
-    margin-top:3px;
+
+#contentoptions ul ul li {
+    position:relative;
+    color:rgb(100,100,100);
+    font-size:13px;
+    display:block;
+    white-space:nowrap;
 }
-.contentpage_likebar_wrap {
-    margin-top: 4px;
+
+#contentoptions ul ul li a{
+    color:#fff;
+    text-align:left;
+    float:left;
+    position:relative;
 }
-.ratingresults {
-    margin-top: 8px;
+
+#contentoptions a:hover {
+    color:rgb(100,100,100);
 }
-.contentpage_descriptionwrap {
-    width: 266px;
-    padding-right:8px;
-}
-.contentpage_commentswrap {
-    width:358px;
-    margin-right:5px;
-}
-.commentswrap_expanded {
-    width:610px;
-    margin-left:0;
-    margin-right:22px;
-}
+
+#contentoptions ul li:hover > li {
+    background-color:transparent;
 
 }
 
-
-
-
-
-
-@media(max-width:1100px) {
-   .contentpage_wrap {
-       width:100%;
-       margin:0;
-   }
+#contentoptions ul ul li:hover > a{
+    color:rgb(50,50,50);
+    background:rgb(240,240,240);
 }
 
-@media(max-device-width:500px) {
-    .middlepage {
-        height:2000px;
-    }
-    .contentpage_wrap {
-        height: 3000px;
-    }
-    .contentpage_titlewrap {
-        text-align: center;
-    }
-    .contentpage_title {
-        font-size:64px;
-        margin-left:0;
-        margin-top:10px;
-        margin-bottom:15px;
-    }
-    
-    .contentpage_modcreator {
-        font-size:64px;
-        margin-top:10px;
-    }
-    .contentpage_basic_mod_info_wrap {
-        width:100%;
-        height:600px;
-        text-align: center;
-    }
-    .contentpage_download_and_screenshots_wrap {
-        display: block;
-        width:100%;
-        height: auto;
-    }
-    .contentpage_mainthumb {
-        height: 500px;
-        width: 889px;
-        display: block;
-        margin: 0 auto;
-        overflow: hidden;
-    }
-    
-    .contentpage_mainthumb_img {
-        max-height:100%;
-        max-width: 100%;
-        overflow: hidden;
-    }
-    .contentpage_screenshots_wrap {
-        width:100%;
-        max-height:800px;
-        overflow: visible;
-    }
-    .contentpage_screenshot {
-        margin:10px;
-        max-width: 400px;
-        max-height: 225px;
-    }
-    
-    .contentpage_likebar_wrap {
-        margin-top:25px;
-        text-align: center;
-    }
-    
-    .downloadbuttonsmall {
-        width:550px;
-        height:100px;
-        display: block;
-        margin: 0 auto;
-        border: 4px solid #2a971f;
-    }
-    
-    .downloadbutton_textsmall {
-        font-size:75px;
-        margin-top: 4px
-    }
-    
-    .ratingbutton {
-        height: 100px;
-        margin-top:45px;
-        margin-left:10px;
-        margin-right: 10px;
-    }
-    .ratingbuttonicon {
-        display: none;
-    }
-    
-    .ratingbutton_text {
-        font-size:65px;
-        margin-top:10px;
-    }
-    .likebutton {
-        width:190px;
-        border:5px solid #8fc78b;
-    }
-    .dislikebutton {
-        width:220px;
-        border: 5px solid #c2c2c2;
-    }
-    .ratingresults {
-        font-size:45px;
-        display: block;
-    }
-    .contentpage_descriptionwrap {
-        width: 100%;
-        padding:0;
-        border: none;
-        margin-top: 60px;
-    }
-    .contentpage_headertitles {
-        font-size: 60px;
-        padding-left: 35px;
-    }
-    .descriptionwrap_moddescription {
-        padding: 40px;
-        font-size:45px;
-    }
-    .contentpage_commentswrap {
-        width:95%;
-        display: block;
-    }
-    .commentcreator {
-        font-size:45px;
-    }
-    .commenttext {
-        font-size:45px;
-    }
-    input.commentinput {
-        height:95px;
-        font-size:50px;
-    }
+#contentoptions ul ul li > a {
+    color:rgb(100,100,100);
+    padding:4px 20px 5px 5px;
+    width:100%;
+    vertical-align:baseline;
 }

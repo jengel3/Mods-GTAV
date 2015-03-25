@@ -1,19 +1,19 @@
 <div class="contentpage_wrap">
 	<div class="contentpage_basic_mod_info_wrap">
-
+		
 		<div class="contentpage_titlewrap">
 			<div class="contentpage_title">
-				<%= @submission.name %> 
+				<%= @submission.name %>
 			</div>
 			<div class="contentpage_modcreator">
 				by <%= @submission.creator.username %>
 			</div>
-
+			
 		</div>
 		<div class="contentpage_mainthumb">
 			<img class="contentpage_mainthumb_img" src="<%= asset_path('thumbnail.jpg') %>" alt="Main Thumbnail" />
 		</div>
-
+		
 	</div>
 	<div class="contentpage_download_and_screenshots_wrap">
 		<div class="modfilename">Wickerville.zip (34mb)</div>
@@ -27,7 +27,7 @@
 			<a href=""><img class="contentpage_screenshot" src="<%= asset_path('thumbnail4.jpg') %>" /></a>
 			<a href=""><img class="contentpage_screenshot" src="<%= asset_path('thumbnail5.jpg') %>" /></a>
 			<a href=""><img class="contentpage_screenshot" src="<%= asset_path('thumbnail6.jpg') %>" /></a>
-
+			
 		</div>
 	</div>
 	<div class="contentpage_likebar_wrap">
@@ -44,24 +44,24 @@
 		</div>
 		<div class="ratingresults">86 people like this mod</div>
 	</div>
-	<a class="expand_description" href="#expander">&#62;</a>
+	<a class="expand_description">&#62;</a>
 	<div class="contentpage_descriptionwrap">
-		<div class="contentpage_headertitles">Description <a class="collapse_description_icon" href="#collapser">&#60;</a></div>
+		<div class="contentpage_headertitles">Description <a class="collapse_description_icon" >&#60;</a></div>
 		<div class="descriptionwrap_moddescription">
-			<%= @submission.body %>
+			<%= @submission.description.html_safe %>
 		</div>
 		<div class="contentpage_uploaddate"><b>Upload Date:</b> <%= relative(@submission.created_at) %></div>
 		<div class="contentpage_lastupdated"><b>Last Updated:</b> <%= relative(@submission.updated_at) %></div>
 	</div>
-	<div class="contentpage_commentswrap">
+	<div class="contentpage_commentswrap" data-api="<%= url_for([:api, :v1, @submission, :comments]) %>" data-sort="<%= @sort %>">
 		<div class="contentpage_headertitles">Comments
 
 			<div id="contentoptions">
 				<ul>
 					<li>
-						<% if params[:c_sort] && @sort_options.key(params[:c_sort]) %>
-						<a href="#current"><%= @sort_options.key(params[:c_sort]) %> <span class="downarrowsymbol">&#x25BC;</span></a>
-						<% @sort_options.delete(@sort_options.key(params[:c_sort])) %>
+						<% if @sort && @sort_options.key(@sort) %>
+						<a href="#current"><%= @sort_options.key(@sort) %> <span class="downarrowsymbol">&#x25BC;</span></a>
+						<% @sort_options.delete(@sort_options.key(@sort)) %>
 						<% else %>
 						<a href="#current"><%= @sort_options.keys[0] %> <span class="downarrowsymbol">&#x25BC;</span></a>
 						<% @sort_options.delete(@sort_options.keys[0]) %>
@@ -85,11 +85,49 @@
 			<div class="commenttext"><%= comment.text %></div>
 		</div>
 		<% end %>
+		<div class="load_comments_wrap"><input class="load_comments_button" type="submit" value="Load More" /></div>
 	</div>
+	<script>
+		var current_page = 1;
+
+		function loadComments() {
+			var api_url = $('.contentpage_commentswrap').attr('data-api');
+			var sort = $('.contentpage_commentswrap').attr('data-sort');
+
+			console.log(api_url)
+
+			current_page += 1;
+			$.getJSON(api_url + '?c_sort=' + sort + '&c_page=' + current_page, function(data) {
+				console.log(data);
+				var parent = $('.load_comments_wrap');
+				$.each( data, function( key, val ) {
+					$(parent).before("<div class='usercommentwrap'><div class='commentname'>" + val['user']['username'] + " <div class='likecomment_score'>+3 <a href='' class='likecomment_button'>Like</a></div></div><div class='commenttext'>" + val['text'] + "</div></div>")
+
+				});
+			});
+
+		}
+
+		$('.load_comments_wrap').click(loadComments);
+
+	</script>
 </div>
 
-<script>
+<script type="text/javascript">
 	$(document).ready(function(){
+		$('.submissiondate').hide();
+
+		$(".modthumbnailwrap").on({
+			mouseenter: function () {
+				$('.submissiondate', this).stop().fadeIn(300);
+			},
+			mouseleave: function () {
+				$('.submissiondate', this).stop().fadeOut(100);
+			}
+		});
+
+		doResize();
+		$(window).on('resize', doResize);  
 
 		$('.collapse_description_icon').on('click', function() {
 			$('.contentpage_descriptionwrap').addClass('collapse_description');
@@ -111,6 +149,23 @@
 				$('.likecomment_button', this).hide();
 			}
 		});
-
 	});
+
+doResize();
+$(window).on('resize', doResize);   
+
+
+
+
+function doResize() {
+	if ($(window).width() <= 1160){  
+
+		$('.right_sidebar_preview, .right_sidebar').on('click', function() {
+			$('.right_sidebar_preview').toggleClass('showsidebarpreview');
+			$('.right_sidebar').toggleClass('showsidebar');
+		});
+	}
+}
+
+
 </script>

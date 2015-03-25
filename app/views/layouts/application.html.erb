@@ -1,11 +1,9 @@
-<html>
 <head>
 	<title><%= content_for?(:title) ? yield(:title) + ' :: Mods-GTAV ' : 'Mods-GTAV' %></title>
 	<%= stylesheet_link_tag "application" %>
 	<%= javascript_include_tag "application" %>
-	<link href='http://fonts.googleapis.com/css?family=Arimo:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-	<link href='http://fonts.googleapis.com/css?family=Asap:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-	<link href='http://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Asap:400,700' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Niconne' rel='stylesheet' type='text/css'>
 	<%= csrf_meta_tags %>
 
@@ -13,241 +11,138 @@
 </head>
 <body>
 
-	<div class="logoheader">
-		<div class="inner_logoheader_wrap">
-			<img class="sitelogo" src="<%= image_path('sitelogo.png') %>" />
-			<div id="contentoptions" class="theme_dropdown_button">
+	<div class="fullpagewrap">
+		<div class="logoheader">
+		</div>
+		<div class="header">
+			<div class="navigation_bar_wrap parallax-window" data-parallax="scroll">
 				<ul>
-					<li><a href="#">Theme <span class="downarrowsymbol">&#x25BC;</span></a>
-						<ul>
-							<li><a class="default_theme" href="#">Default</a></li>
-							<li><a class="blue_theme" href="#">Blue</a></li>
-							<li><a class="green_theme" href="#">Green</a></li>
-							<li><a class="orange_theme" href="#">Orange</a></li>
-						</ul>
-					</li>
+					<li><a href="<%= root_path %>"><h2>Home</h2><img src="<%= asset_path('home50color.png') %>" alt="Navigation Icon" /></a></li>
+					<li><h2>Tools</h2><img src="<%= asset_path('user50color.png') %>" alt="Navigation Icon" /></li>
+					<li><h2>Maps</h2><img src="<%= asset_path('levels50color.png') %>" alt="Navigation Icon" /></li>
+					<li class="active_menu_item"><h2>Vehicles</h2><img src="<%= asset_path('car50color.png') %>" alt="Navigation Icon" /></li>
+					<li><h2>Textures</h2><img src="<%= asset_path('user50color2.png') %>" alt="Navigation Icon" /></li>
+					<li><h2>Script</h2><img src="<%= asset_path('car50color.png') %>" alt="Navigation Icon" /></li>
+					<li><h2>Misc</h2><img src="<%= asset_path('upload50color.png') %>" alt="Navigation Icon" /></li>
+					<li><h2>Weapons</h2><img src="<%= asset_path('levels50color.png') %>" alt="Navigation Icon" /></li>
+					<li><h2>Player</h2><img src="<%= asset_path('user50color.png') %>" alt="Navigation Icon" /></li>
 				</ul>
 			</div>
+			<div class="active_bar_wrap">
+
+			</div>
 		</div>
-	</div>
-	<div class="pagewrap">
-
-		<div class="mobile_dropdown_menu">
-			<div class="mobile_menu_option">Home</div>
-			<div class="mobile_menu_option">Tools</div>
-			<div class="mobile_menu_option">Maps</div>
-			<div class="mobile_menu_option">Vehicles</div>
-			<div class="mobile_menu_option">Misc</div>
-			<div class="mobile_menu_option">Script</div>
-			<div class="mobile_menu_option">Textures</div>
-		</div>
-
-		<div class="headerwrap parallax-window" data-parallax="scroll" data-image-src="<%= image_path('gtavbackground5.png') %>">
-
-			<div class="mobile_dropdown_menu_icon">
-				<a class="mobilemenulink" href=""><img class="mobilemenuicon" src="<%= asset_path('mobilemenuicon.png') %>" /></a>
-			</div>
-			<div class="gtavlogomobile">
-				<img src="<%= asset_path('gtavlogo.png') %>" />
-			</div>
-
-			<div class="headericonswrap">
-				<div class="gtavlogowrap">
-					<img src="<%= asset_path('gtavlogo.png') %>" />
-				</div>
-				<div class="headernavigationwrap">
-
-					<a href="<%= root_path %>"><div class="individual_navigation_icon_wrap">
-						<div class="top_navigation_bar"> </div>
-						<img class="navigation_icon_img" src="<%= asset_path('home50color.png') %>" />
-						<div class="navigation_icon_text">
-							Home
-						</div>
-					</div></a>
-					<a href=""><div class="individual_navigation_icon_wrap individual_navigation_icon_wrap_active">
-						<div class="top_navigation_bar top_navigation_bar_active"> </div>
-						<img class="navigation_icon_img" src="<%= asset_path('user50color.png') %>" />
-						<div class="navigation_icon_text">
-							Tools
-						</div>
-					</div></a>
-					<a href=""><div class="individual_navigation_icon_wrap">
-						<div class="top_navigation_bar"> </div>
-						<img class="navigation_icon_img" src="<%= asset_path('levels50color.png') %>" />
-						<div class="navigation_icon_text">
-							Maps
-						</div>
-					</div></a>
-					<a href=""><div class="individual_navigation_icon_wrap">
-						<div class="top_navigation_bar"> </div>
-						<img class="navigation_icon_img" src="<%= asset_path('car50color.png') %>" />
-						<div class="navigation_icon_text">
-							Vehicles
-						</div>
-
-					</div></a>
-					<a href=""><div class="individual_navigation_icon_wrap">
-						<div class="top_navigation_bar"> </div>
-						<img class="navigation_icon_img" src="<%= asset_path('user50color2.png') %>" />
-						<div class="navigation_icon_text">
-							Misc
-						</div>
-					</div></a>
-					<a href=""><div class="individual_navigation_icon_wrap">
-						<div class="top_navigation_bar"> </div>
-						<img class="navigation_icon_img" src="<%= asset_path('car50color.png') %>" />
-						<div class="navigation_icon_text">
-							Script
-						</div>
-					</div></a>
-					<a href=""><div class="individual_navigation_icon_wrap">
-						<div class="top_navigation_bar"> </div>
-						<img class="navigation_icon_img" src="<%= asset_path('upload50color.png') %>" />
-						<div class="navigation_icon_text">
-							Textures
-						</div>
-					</div></a> 
-				</div>
-			</div>
-
-
-
-		</div>
-		<div class="pagebodywrap">
-			<div class="sidebar sidebar_left">
-				<% if current_user %>
-				<div class="userprofilebox">
-					<div class="userinfo_profilewrap">
-						<div class="user_avatar_wrap"><%= avatar(current_user) %></div>
-						<div class="userinfo">
-							<div class="username"><%= current_user.username %></div>
-							<div class="userdesc">Mod Creator</div>
-						</div>
-						<table class="userstats">
-							<tr>
-								<td class="stat_title"><img class="user_stat_icon accentcolor" src="<%= asset_path('hearticon.png') %>" /></td>
-								<td class="stat_title"><img class="user_stat_icon accentcolor" src="<%= asset_path('commenticon.png') %>" /></td>
-								<td class="stat_title"><img class="user_stat_icon accentcolor" src="<%= asset_path('downloadicon.png') %>" /></td>
-							</tr>
-							<tr>
-
-								<td><span class="stat_amount">0</span></td>
-								<td><span class="stat_amount"><%= current_user.comments.count %></span></td>
-								<td> <span class="stat_amount">0</span></td>
-							</tr>
-						</table>
+		<div class="fullcontentwrap">
+			<div class="sorting_options_wrap parallax-window" data-parallax="scroll">
+				<div class="modsortingoptions_wrap">
+					<div id="modsortingoptions">
+						<ul>
+							<li><a href="#">Newest<span class="downarrowsymbol"><img src="<%= asset_path('downarrow.png') %>" /></span></a>
+								<ul>
+									<li><a href="#">Popular</a></li>
+									<li><a href="#">Most Liked</a></li>
+								</ul>
+							</li>
+						</ul>
 					</div>
-
-				</div>
-				<% end %>
-
-				<div class="subcategoriesbox">
-					<div class="subcategory">
-						<div class="subcategorytext subcategorytitle">Subcategories</div>
-					</div>
-					<div class="subcategory subcategorydark">
-						<div class="subcategory_circle"></div>
-						<div class="subcategorytext">All</div>
-					</div>
-					<div class="subcategory">
-						<div class="subcategory_circle"></div>
-						<div class="subcategorytext">Jeep</div>
-					</div>
-					<div class="subcategory subcategorydark">
-						<div class="subcategory_circle"></div>
-						<div class="subcategorytext">Lamborghini</div>
-					</div>
-					<div class="subcategory">
-						<div class="subcategory_circle accentcolor"></div>
-						<div class="subcategorytext activecategorytext">Ford</div>
-					</div>
-					<div class="subcategory subcategorydark">
-						<div class="subcategory_circle"></div>
-						<div class="subcategorytext">Nissan</div>
-					</div>
-					<div class="subcategory">
-						<div class="subcategory_circle"></div>
-						<div class="subcategorytext">Subaru</div>
-					</div>
-					<div class="subcategory subcategorydark">
-						<div class="subcategory_circle"></div>
-						<div class="subcategorytext">Ferrari</div>
+					<div id="modsortingoptions">
+						<ul>
+							<li><a href="#">Now<span class="downarrowsymbol"><img src="<%= asset_path('downarrow.png') %>" /></span></a>
+								<ul>
+									<li><a href="#">This Week</a></li>
+									<li><a href="#">This Month</a></li>
+									<li><a href="#">All Time</a></li>
+								</ul>
+							</li>
+						</ul>
 					</div>
 				</div>
+				<a href="" class="addmodbutton">
+					Add Mod +
+				</a>
+				<div class="searchwrap">
+					<input type="text" name="search" class="search" placeholder="Search" />
+					<img src="<%= asset_path('searchbutton.png') %>" class="searchbutton accentcolor" />     
+				</div>
 			</div>
-			<div class="middlepage">
-				<%= yield %>
-			</div>
-			<div class="sidebar sidebar_right">
-				<div class="filteringbox">
-					<div class="searchwrap">
-						<input type="text" name="search" class="search" placeholder="Search" />
-						<img src="<%= asset_path('searchbutton.png') %>" class="searchbutton accentcolor" />
-						<div class="accentborder uploadmod_button">
-							<span class="uploadmod_buttontext">Upload</span>
-							<div class="uploadmod_slideupeffect accentcolor"></div>                            
+			<div class="mainpagewrap">
+				<div class="mainpage">
+					<%= yield %>
+				</div>
+				<div class="right_sidebar_preview"><div class="sidebar_expand_button"> < </div></div>
+				<div class="right_sidebar">
+					<% if current_user %>
+					<div class="userprofilebox">
+						<div class="userinfo_profilewrap">
+							<div class="user_avatar_wrap"><%= avatar(current_user) %></div>
+							<div class="userinfo">
+								<div class="username"><%= current_user.username %></div>
+								<div class="userdesc">Mod Creator</div>
+							</div>
+							<table class="userstats">
+								<tr>
+									<td class="stat_title"><img class="user_stat_icon accentcolor" src="<%= asset_path('hearticon.png') %>" /></td>
+									<td class="stat_title"><img class="user_stat_icon accentcolor" src="<%= asset_path('commenticon.png') %>" /></td>
+									<td class="stat_title"><img class="user_stat_icon accentcolor" src="<%= asset_path('downloadicon.png') %>" /></td>
+								</tr>
+								<tr>
+									<td><span class="stat_amount">41</span></td>
+									<td><span class="stat_amount">206</span></td>
+									<td> <span class="stat_amount">0</span></td>
+								</tr>
+							</table>
 						</div>
 
-					</div>	
-					<div class="sortby_box_wrap">
-
-						<div class="sortbyoptiontitle">Time</div>
-						<div class="sortby_options_wrap">
-							<div class="sortbyoption">
-								<div class="sortby_circle sortby_circle_active"></div>
-								<span class="">Today</span>
+					</div>   
+					<% end %>
+					<div class="subcategoriesbox">
+						<h3>Subcategories</h3>
+						<div class="subcategories_wrap">
+							<div class="subcategory">
+								<p>All</p>
 							</div>
-							<div class="sortbyoption">
-								<div class="sortby_circle accentcolor"></div>
-								<span class="activecategorytext">Last Week</span>
+							<div class="subcategory">
+								<p>Jeep</p>
 							</div>
-							<div class="sortbyoption">
-								<div class="sortby_circle"></div>
-								<span class="">Forever</span>
+							<div class="subcategory active_subcategory">
+								<p>Lamborghini</p>
 							</div>
-						</div>
-
-						<div class="sortbyoptiontitle">Popularity</div>
-						<div class="sortby_options_wrap">
-							<div class="sortbyoption">
-								<div class="sortby_circle sortby_circle_active"></div>
-								<span class="">Newest First</span>
+							<div class="subcategory">
+								<p>Ford</p>
 							</div>
-							<div class="sortbyoption">
-								<div class="sortby_circle accentcolor"></div>
-								<span class="activecategorytext">Most Popular</span>
+							<div class="subcategory">
+								<p>Nissan</p>
 							</div>
-							<div class="sortbyoption">
-								<div class="sortby_circle"></div>
-								<span class="">Recently Updated</span>
+							<div class="subcategory">
+								<p>Subaru</p>
+							</div>
+							<div class="subcategory">
+								<p>Ferrari</p>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+			<% if params[:controller] == 'submissions' && params[:action] == 'index' %>
+			<div class="paginationfooter">
+				<div class="paginationwrap">
+					<a href="" class="pagination_prev_button"><div class="pagination_link">Prev</div></a>
+					<div class="pagination_numbers_wrap">
+						<a href="" class="pagenumber"><div class="pagination_link">1</div></a>a>
+						<a href="" class="pagenumber activepagenumber"><div class="pagination_link">2</div></a>
+						<a href="" class="pagenumber"><div class="pagination_link">3</div></a>
+						<a href="" class="pagenumber"><div class="pagination_link" >4</div></a>
+						<a href="" class="pagenumber"><div class="pagination_link">5</div></a>
+						<a href="" class="pagenumber"><div class="pagination_link">6</div></a>
+						<a href="" class="pagenumber"><div class="pagination_link">...</div></a>
+						<a href="" class="pagenumber"><div class="pagination_link">18</div></a>
+					</div>
+					<a href="" class="pagination_next_button"><div class="pagination_link">Next</div></a>        
+				</div>
+			</div>
+			<% end %>
+
 		</div>
 	</div>
 
-	<div class="website_footer">
-		<% if params[:controller] == 'submissions' && params[:action] == 'index' %>
-		<div class="pagination_wrap">
-			<a href="" class="pagination_prev_button"><div class="pagination_link">Prev</div></a>
-			<div class="pagination_numbers_wrap">
-				<a href="" class="pagenumber"><div class="pagination_link">1</div></a>a>
-				<a href="" class="pagenumber activepagenumber"><div class="pagination_link">2</div></a>
-				<a href="" class="pagenumber"><div class="pagination_link">3</div></a>
-				<a href="" class="pagenumber"><div class="pagination_link" >4</div></a>
-				<a href="" class="pagenumber"><div class="pagination_link">5</div></a>
-				<a href="" class="pagenumber"><div class="pagination_link">6</div></a>
-				<a href="" class="pagenumber"><div class="pagination_link">...</div></a>
-				<a href="" class="pagenumber"><div class="pagination_link">18</div></a>
-			</div>
-			<a href="" class="pagination_next_button"><div class="pagination_link">Next</div></a>
-		</div>
-		<% end %>
-	</div>
-	<div class="bottom_footer_bar">
-		<div class="footer_bar_text"><span class="footer_bar_website_name">Mods-GTAV:</span> Home &bull; Contact &bull; About</div>
-	</div>
 </body>
-</html>
