@@ -11,6 +11,7 @@ gem 'sass-rails'
 # Front end
 gem 'jquery-rails'
 gem 'jquery_mobile_rails'
+gem 'kramdown'
 
 # API 
 gem "active_model_serializers", "~> 0.8.0"

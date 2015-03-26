@@ -50,8 +50,8 @@
 		<div class="descriptionwrap_moddescription">
 			<%= @submission.description.html_safe %>
 		</div>
-		<div class="contentpage_uploaddate"><b>Upload Date:</b> <%= relative(@submission.created_at) %></div>
-		<div class="contentpage_lastupdated"><b>Last Updated:</b> <%= relative(@submission.updated_at) %></div>
+		<div class="contentpage_uploaddate tooltip" title='<%= exact(@submission.created_at) %>'><b>Upload Date:</b> <%= relative(@submission.created_at) %></div>
+		<div class="contentpage_lastupdated tooltip" title='<%= exact(@submission.updated_at) %>'><b>Last Updated:</b> <%= relative(@submission.updated_at) %></div>
 	</div>
 	<div class="contentpage_commentswrap" data-api="<%= url_for([:api, :v1, @submission, :comments]) %>" data-sort="<%= @sort %>">
 		<div class="contentpage_headertitles">Comments

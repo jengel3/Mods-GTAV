@@ -48,7 +48,7 @@ class Api::V1::SubmissionsController < Api::V1::BaseController
   def destroy
     @submission.destroy
     respond_to do |format|
-      format.json { render json: nil, status: :ok }
+      format.json { render json: {status: 'okay'}, status: :ok }
     end
   end
 

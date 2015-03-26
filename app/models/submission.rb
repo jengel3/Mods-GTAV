@@ -1,11 +1,15 @@
 class Submission
+  include ApplicationHelper
   include Mongoid::Document
   include Mongoid::Timestamps
   include GlobalID::Identification
   include Mongoid::Slug
 
+  before_save :bake_description
+
   field :name, type: String
   field :body, type: String
+  field :baked_body, type: String
   field :type, type: String
   field :download_count, type: Integer, default: 0
   field :approved_at, type: Time
@@ -23,4 +27,8 @@ class Submission
   
   has_many :comments
   has_many :images
+
+  def bake_description
+    self.body = bake_markdown(self.body)
+  end
 end

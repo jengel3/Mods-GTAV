@@ -2,4 +2,6 @@
  *= require base
  *= require content
  *= require index
+ *= require tooltipster
+ *= require tooltipster-light
 */
