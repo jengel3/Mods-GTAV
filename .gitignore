@@ -3,3 +3,4 @@ vendor/assets/components/
 public/assets/
 log/*.log
 node_modules/
+public/uploads/**
