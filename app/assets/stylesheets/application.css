@@ -2,6 +2,7 @@
  *= require base
  *= require content
  *= require index
+ *= require upload
  *= require tooltipster
  *= require tooltipster-light
 */

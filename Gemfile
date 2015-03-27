@@ -30,6 +30,7 @@ gem 'mongoid_paranoia'
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'mongoid-slug'
 gem 'kaminari'
+gem 'sanitize'
 
 # Searching
 gem 'mongoid-elasticsearch'

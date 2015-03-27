@@ -57,9 +57,7 @@
 						</ul>
 					</div>
 				</div>
-				<a href="" class="addmodbutton">
-					Add Mod +
-				</a>
+				<%= link_to 'Add Mod +', new_submission_path, class: 'addmodbutton' %>
 				<div class="searchwrap">
 					<input type="text" name="search" class="search" placeholder="Search" />
 					<img src="<%= asset_path('searchbutton.png') %>" class="searchbutton accentcolor" />     

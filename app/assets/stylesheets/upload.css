@@ -1,0 +1,135 @@
+input.uploadmod_title  {
+    width:300px;
+    height:30px;
+    margin-left:10px;
+    margin-top:5px;
+    outline:none;
+    border: none;
+    border-bottom:1px solid #ff5a5f;
+    padding-left:5px;
+    margin-right:5px;
+    background-color:#f1f1f1;
+}     
+input.uploadmod_title:focus {
+    background-color:#fdfdfd;
+}
+.contentpage_mainthumb p {
+    font-size:30px;
+    font-weight:bold;
+    margin:0 auto;
+    margin-top:40px;
+    color:#4f4f4f;
+}
+.uploadmod_mainthumb {
+    border-top:5px solid #ff5a5f;
+    margin-top:14px;
+    background-color: #d0d9e6;
+}
+.uploadmod_mainthumb a {
+    text-decoration: none;
+}
+.uploadmod_mainthumb img {
+    max-width:100%;
+    max-height: 100%;
+}
+.uploadmod_basic_mod_info_wrap {
+    margin-left:-8px;
+    
+}
+.uploadmod_descriptionwrap {
+    border: none;
+}
+.contentpage_descriptionwrap textarea {
+    width: 348px;
+    height:300px;
+    outline:none;
+    margin-top:10px;
+    resize:vertical;
+    border:1px solid #c3cbd7;
+    padding:5px;
+    background-color:#f1f1f1;
+}
+
+.contentpage_descriptionwrap textarea:focus {
+    background-color: #fdfdfd;
+}
+
+.uploadmod_download_and_screenshots_wrap {
+    margin-top:0px;
+    height:362px;
+    width: 290px;
+}
+.uploadmod_buttons_wrap {
+    text-align: right;
+}
+.uploadmod_buttons {
+    height:30px;
+    padding-left:15px;
+    padding-right:15px;
+    margin-top:5px;
+    margin-left:5px;
+}
+.uploadmod_screenshots_wrap {
+    margin-top:14px;
+    height:312px;
+    max-height:312px;
+    border:1px solid #c3cbd7;
+    width:282px;
+    margin-left:6px;
+}
+.uploadmod_addsceenshot {
+    text-decoration: none;
+    background-color:#d8e1ef;
+    width:130px;
+    height:73px;
+    margin:6px 0px 0 6px;;
+    display: inline-block;
+    text-decoration: none;
+    color:#4f4f4f;
+    text-align: center;
+    font-size:16px;
+}
+.uploadmod_categorieswrap {
+    height:300px;
+    margin-top:20px;
+    text-align: right;
+    margin-left:0px;
+    width: 472px;
+}
+.uploadmod_categorieswrap form {
+    display: inline-block;
+    vertical-align: top;
+    width:220px;
+    text-align:center;
+}
+.uploadmod_categorieswrap fieldset {
+    border: none;
+}
+.uploadmod_categorieswrap legend {
+    text-align: center;
+    color:#4f4f4f;
+    font-weight:bold;
+}
+.uploadmod_categorieswrap select.maincategory {
+    overflow: auto;
+    overflow-x:hidden;
+    border:1px solid #c3cbd7;
+    outline:none;
+    background-color:#fdfdfd;
+    background-color: transparent;
+    width:200px;
+    text-align: center;
+}
+
+.uploadmod_categorieswrap select.maincategory:focus {
+    background-color:#fdfdfd;
+}
+
+.uploadmod_categorieswrap select.maincategory:nth-child(1) {
+    background-color:red;
+}   
+.uploadmod_categorieswrap select.maincategory option {
+    /*padding:9px 75px 9px 75px;*/
+    padding-top:9px;
+    padding-bottom:9px;
+}

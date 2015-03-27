@@ -1,4 +1,4 @@
-  
+       
 .contentpage_wrap {
     width:880px;
     height:auto;
@@ -72,7 +72,7 @@
 }
 
 .downloadbutton {
-    width:238px;
+    width:248px;
     height:40px;
     background-color: #35eb60;
     border: 2px solid #2a971f;
@@ -124,7 +124,7 @@
     margin-top:5px;
     text-shadow: 0px 0px 3px rgba(100, 100, 100, 1);
     font-family:Arial, sans-serif;
-    
+
 }
 
 .contentpage_screenshots_wrap {
@@ -132,6 +132,8 @@
     max-height:255px;
     overflow-y: auto;
     margin-top:11px;
+    text-align: left;
+    margin-left:14px;
 }
 
 .contentpage_screenshot {
@@ -139,6 +141,8 @@
     max-height: 72px;
     border: 1px solid #3d3d3d;
     margin:3px;
+    vertical-align: top;
+    display: inline-block;
 }
 
 .contentpage_likebar_wrap {

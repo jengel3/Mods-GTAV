@@ -1,4 +1,5 @@
 require 'kramdown'
+require 'sanitize'
 module ApplicationHelper
   @@elems = ['b', 'i', 'a', 'del', 'em', 'br', 'strong']
   def relative(time)
@@ -10,7 +11,7 @@ module ApplicationHelper
   end
 
   def bake_markdown(text)
-    html = Kramdown::Document.new(text).to_html
+    html = Kramdown::Document.new(text.gsub(/\n\r/,"<br/>")).to_html
     sanitized = Sanitize.fragment(html, :elements => @@elems)
     return sanitized
   end

@@ -23,12 +23,12 @@ class Submission
 
   belongs_to :creator, class_name: 'User', inverse_of: :submissions
   validates :name, uniqueness: true, presence: true
-  validates :type, presence: true # Add inclusion
+  # validates :type, presence: true # Add inclusion
   
   has_many :comments
   has_many :images
 
   def bake_description
-    self.body = bake_markdown(self.body)
+    self.baked_body = bake_markdown(self.body)
   end
 end

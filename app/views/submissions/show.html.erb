@@ -48,7 +48,7 @@
 	<div class="contentpage_descriptionwrap">
 		<div class="contentpage_headertitles">Description <a class="collapse_description_icon" >&#60;</a></div>
 		<div class="descriptionwrap_moddescription">
-			<%= @submission.description.html_safe %>
+			<%= @submission.baked_body.html_safe %>
 		</div>
 		<div class="contentpage_uploaddate tooltip" title='<%= exact(@submission.created_at) %>'><b>Upload Date:</b> <%= relative(@submission.created_at) %></div>
 		<div class="contentpage_lastupdated tooltip" title='<%= exact(@submission.updated_at) %>'><b>Last Updated:</b> <%= relative(@submission.updated_at) %></div>
