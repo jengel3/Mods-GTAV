@@ -1,6 +1,6 @@
 class SubmissionsController < ApplicationController
   include CommentsHelper
-  before_filter :set_submission, only: [:show, :destroy, :edit, :update]
+  before_filter :set_submission, only: [:destroy, :edit, :update]
   before_filter :authenticate_user!, only: [:destroy, :edit, :create, :new, :update]
 
   def index
@@ -8,6 +8,7 @@ class SubmissionsController < ApplicationController
   end
 
   def show
+    @submission = Submission.includes(:images).find(params[:id])
     @sort_options = {
       'Oldest First' => 'oldest',
       'Newest First' => 'newest',
@@ -19,16 +20,9 @@ class SubmissionsController < ApplicationController
     session['c_sort'] = @sort
     @comments = comment_sort(@submission.comments.unscoped.all).page(params[:c_page]).per(10).reject(&:new_record?)
   
-    images = @submission.thumbnails.sort_by { |i| [i.location[ -1..-1 ], i] }
     @thumbnails = {}
-    previous = 0
-    images.each do |image|
-      while image.num != previous + 1 do
-        @thumbnails[previous + 1] = nil
-        previous += 1
-      end
-      @thumbnails[previous] = image
-      previous += 1
+    @submission.thumbnails.each do |image|
+      @thumbnails[image.num] = image
     end
   end
 
