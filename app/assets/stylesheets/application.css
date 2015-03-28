@@ -95,6 +95,8 @@ td.img_td {
 .progress-bar > span {
   display: block;
   height: 100%;
+  padding-left: 10px;
+  color: white;
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
   border-top-left-radius: 20px;

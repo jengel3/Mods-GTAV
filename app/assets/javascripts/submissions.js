@@ -1,7 +1,7 @@
 $(document).ready(function () {
 	var willUploadCount = 0;
 	var uploadedCount = 0;
-	var uploadStarted = true;
+	var uploadStarted = false;
 	if ($('#fileupload').length) {
 		$('#fileupload').fileupload({
 			dataType: 'json',
@@ -15,8 +15,11 @@ $(document).ready(function () {
 			add: function (e, data) {
 				$('.open-screenshot').magnificPopup('open');
 				$("#upload_btn").on('click', function () {
-					uploadStarted = true;
 					data.submit();
+					if (!uploadStarted) {
+						$('.progress-bar').css('display', 'inherit');
+						uploadStarted = true;
+					}
 				});
 				$.each(data.files, function (index, file) {
 					var body = $('#file-body');
@@ -33,6 +36,7 @@ $(document).ready(function () {
 			},
 			progressall: function (e, data) {
 				var progress = parseInt(data.loaded / data.total * 100, 10);
+				$('.progress-bar span').text(progress + '%');
 				$('.progress-bar span').css('width', progress + '%');
 			}
 		});
