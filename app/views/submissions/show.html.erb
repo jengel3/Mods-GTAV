@@ -11,7 +11,7 @@
 			
 		</div>
 		<div class="contentpage_mainthumb">
-			<img class="contentpage_mainthumb_img" src="<%= @submission.main_image.image_url %>" alt="Main Thumbnail" />
+			<img class="contentpage_mainthumb_img" src="<%= @submission.main_image ? @submission.main_image.image_url : '' %>" alt="Main Thumbnail" />
 		</div>
 		
 	</div>
@@ -23,7 +23,7 @@
 		<div class="contentpage_screenshots_wrap">
 			<% 6.times do |count| %>
 			<% if @thumbnails[count + 1] %>
-			<a href=""><img class="contentpage_screenshot" src="<%= @thumbnails[count + 1].image_url %>" /></a>
+			<a href=""><img class="contentpage_screenshot" src="<%= @thumbnails[count + 1].image_url(:thumb) %>" /></a>
 			<% end %>
 			<% end %>
 			

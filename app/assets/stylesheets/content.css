@@ -138,7 +138,7 @@
 
 .contentpage_screenshot {
     max-width: 128px;
-    max-height: 72px;
+    height: auto;
     border: 1px solid #3d3d3d;
     margin:3px;
     vertical-align: top;

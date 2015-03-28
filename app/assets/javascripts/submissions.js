@@ -26,12 +26,14 @@ $(document).ready(function () {
 				});
 			}
 		});
-		$(document).ready(function() {
-			$('.open-screenshot').magnificPopup({
-				type:'inline',
-				midClick: true,
-				mainClass: 'mfp-fade'
-			});
+		$('.open-screenshot').magnificPopup({
+			type:'inline',
+			midClick: true,
+			mainClass: 'mfp-fade'
 		});
+		$('.uploadmod_individual_screenshot_wrap').click(function(e) {
+			e.preventDefault();
+			$('.open-screenshot').magnificPopup('open');
+		})
 	}
 });

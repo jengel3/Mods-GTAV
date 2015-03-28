@@ -2,13 +2,13 @@ class SubmissionsController < ApplicationController
   include CommentsHelper
   before_filter :set_submission, only: [:destroy, :edit, :update]
   before_filter :authenticate_user!, only: [:destroy, :edit, :create, :new, :update]
-  before_filter :set_thumbnails, only: [:show, :edit, :new]
   def index
     @submissions = Submission.all
   end
 
   def show
     @submission = Submission.includes(:images).find(params[:id])
+    set_thumbnails
     @sort_options = {
       'Oldest First' => 'oldest',
       'Newest First' => 'newest',
@@ -31,6 +31,7 @@ class SubmissionsController < ApplicationController
   end
 
   def edit
+    set_thumbnails
   end
 
   def create

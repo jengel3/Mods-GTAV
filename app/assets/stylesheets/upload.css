@@ -81,7 +81,7 @@ input.uploadmod_title:focus {
     text-decoration: none;
     background-color:#d8e1ef;
     width:130px;
-    height:73px;
+    height:auto;
     margin:6px 0px 0 6px;;
     display: inline-block;
     text-decoration: none;
@@ -132,4 +132,50 @@ input.uploadmod_title:focus {
     /*padding:9px 75px 9px 75px;*/
     padding-top:9px;
     padding-bottom:9px;
+}
+
+.uploadmod_individual_screenshot_wrap {
+    text-decoration: none;
+    background-color:#d8e1ef;
+    margin:6px 0px 0 6px;;
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+    vertical-align: top;
+    position:relative;
+    width:130px;
+    height:73px;
+}
+.uploadmod_individual_screenshot_wrap img {
+    max-width:130px;
+    max-height:73px;    
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    margin:auto;
+}
+
+.contentpage_mainthumb {
+    height:308px;
+    width:547px;
+    background-color:#3d3d3d;
+    text-align:center;
+    margin-left:10px;
+    margin-top: 5px;
+    padding: 1px;
+    position:relative;
+}
+
+.contentpage_mainthumb_img {
+    max-height: 308px;
+    max-width: 547px;
+    overflow: hidden;
+    position: absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    margin:auto;
 }
