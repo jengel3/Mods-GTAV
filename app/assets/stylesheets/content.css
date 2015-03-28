@@ -127,23 +127,7 @@
 
 }
 
-.contentpage_screenshots_wrap {
-    height:auto;
-    max-height:255px;
-    overflow-y: auto;
-    margin-top:11px;
-    text-align: left;
-    margin-left:14px;
-}
 
-.contentpage_screenshot {
-    max-width: 128px;
-    height: auto;
-    border: 1px solid #3d3d3d;
-    margin:3px;
-    vertical-align: top;
-    display: inline-block;
-}
 
 .contentpage_likebar_wrap {
     width:95%;
@@ -456,4 +440,37 @@ a.likecomment_button:hover {
     padding:4px 20px 5px 5px;
     width:100%;
     vertical-align:baseline;
+}
+
+.contentpage_screenshots_wrap {
+    height:255px;
+    overflow-y: auto;
+    margin-top:11px;
+    text-align: left;
+    margin-left:14px;
+    width:300px;
+}
+.contentpage_individual_screen_wrap {
+    display: inline-block;
+    vertical-align: top;
+    width:128px;
+    height:72px;
+    margin:3px;
+    margin-bottom:6px;
+    text-align: center;
+    position:relative;
+}
+
+.contentpage_screenshot {
+    max-width: 128px;
+    max-height: 72px;
+    border: 1px solid #3d3d3d;
+    margin-bottom:8px;
+    vertical-align: top;
+    position: absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    margin:auto;
 }
