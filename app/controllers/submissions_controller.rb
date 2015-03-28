@@ -18,6 +18,18 @@ class SubmissionsController < ApplicationController
     @sort = params[:c_sort] ||= session['c_sort'] ||= @sort_options.values[0]
     session['c_sort'] = @sort
     @comments = comment_sort(@submission.comments.unscoped.all).page(params[:c_page]).per(10).reject(&:new_record?)
+  
+    images = @submission.thumbnails.sort_by { |i| [i.location[ -1..-1 ], i] }
+    @thumbnails = {}
+    previous = 0
+    images.each do |image|
+      while image.num != previous + 1 do
+        @thumbnails[previous + 1] = nil
+        previous += 1
+      end
+      @thumbnails[previous] = image
+      previous += 1
+    end
   end
 
   def destroy

@@ -21,12 +21,14 @@
 			<div class="downloadbutton_text">Download</div>
 		</div></a>
 		<div class="contentpage_screenshots_wrap">
-			<a href=""><img class="contentpage_screenshot" src="<%= asset_path('thumbnail2.jpg') %>" /></a>
-			<a href=""><img class="contentpage_screenshot" src="<%= asset_path('thumbnail7.jpg') %>" /></a>
-			<a href=""><img class="contentpage_screenshot" src="<%= asset_path('thumbnail3.jpg') %>" /></a>
-			<a href=""><img class="contentpage_screenshot" src="<%= asset_path('thumbnail4.jpg') %>" /></a>
-			<a href=""><img class="contentpage_screenshot" src="<%= asset_path('thumbnail5.jpg') %>" /></a>
-			<a href=""><img class="contentpage_screenshot" src="<%= asset_path('thumbnail6.jpg') %>" /></a>
+			<% 6.times do |count| %>
+			<% thumb = @thumbnails[count] %>
+			<div class='imgwrap'>
+				<% if thumb %>
+				<a href=""><img class="contentpage_screenshot" src="<%= thumb.image_url %>" /></a>
+				<% end %>
+			</div>
+			<% end %>
 			
 		</div>
 	</div>

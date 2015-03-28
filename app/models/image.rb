@@ -11,6 +11,10 @@ class Image
 
   belongs_to :submission
 
+  def num
+    location[ -1..-1 ].to_i
+  end
+
   def to_jq_upload
     {
       "name" => read_attribute(:image),

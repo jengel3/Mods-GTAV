@@ -31,4 +31,12 @@ class Submission
   def bake_description
     self.baked_body = bake_markdown(self.body)
   end
+
+  def main_image
+    images.where(:location => "Main").first
+  end
+
+  def thumbnails
+    images.where(:location.ne => "Main").limit(6)
+  end
 end

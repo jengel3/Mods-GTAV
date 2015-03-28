@@ -117,8 +117,8 @@ GEM
       rails-dom-testing (~> 1.0)
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
-    jquery_mobile_rails (1.4.5)
-      railties (>= 3.1.0)
+    jquery-ui-rails (5.0.3)
+      railties (>= 3.2.16)
     json (1.8.2)
     kaminari (0.16.3)
       actionpack (>= 3.0.0)
@@ -307,7 +307,7 @@ DEPENDENCIES
   factory_girl_rails
   faker
   jquery-rails
-  jquery_mobile_rails
+  jquery-ui-rails
   kaminari
   kramdown
   mongoid

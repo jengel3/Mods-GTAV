@@ -1,5 +1,11 @@
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui/widget
+//= require blueimp-file-upload/js/jquery.iframe-transport.js
+//= require blueimp-file-upload/js/jquery.fileupload.js
+//= require blueimp-file-upload/js/jquery.fileupload-image
 //= require parallax.min
 //= require base
+//= require submissions
 //= require jquery.tooltipster.min
+//= require magnific-popup/dist/jquery.magnific-popup.min

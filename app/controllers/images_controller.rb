@@ -1,18 +1,18 @@
 class ImagesController < ApplicationController
-
+  layout false
   def create
     @submission = Submission.find(params[:submission_id])
-    @image = Image.new(create_params)
-    @image.submission = @submission
-    if @image.save
-      redirect_to [@submission, @image]
-    else
-      render 'edit'
+    if params[:images]
+      params[:images].each { |image|
+        @image = @submission.images.create(image: image, location: params[:location])
+        respond_to do |format|
+          if @image.save
+            format.json { render json: @image }
+          else
+            format.json { render json: @image.errors }
+          end
+        end
+      }
     end
-  end
-
-  private
-  def image_params
-    params.require(:image).permit(:image, :location, :caption)
   end
 end

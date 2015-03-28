@@ -1,33 +1,48 @@
 <div class="contentpage_wrap">
-    <%= form_for(@submission) do |f| %>
-    <div class="contentpage_basic_mod_info_wrap uploadmod_basic_mod_info_wrap">
+  <%= form_for(@submission) do |f| %>
+  <div class="contentpage_basic_mod_info_wrap uploadmod_basic_mod_info_wrap">
 
-        <div class="contentpage_titlewrap">
-            <%= f.text_field :name, class: 'uploadmod_title', placeholder: 'Title' %>
-
-        </div>
-        <div class="contentpage_mainthumb uploadmod_mainthumb">
-            <a href=""><p>&#43; Add Thumbnail</p></a>
-            <img class="contentpage_mainthumb_img" src="" alt="" />
-        </div>
+    <div class="contentpage_titlewrap">
+      <%= f.text_field :name, class: 'uploadmod_title', placeholder: 'Title' %>
 
     </div>
-    <div class="contentpage_download_and_screenshots_wrap uploadmod_download_and_screenshots_wrap">
-        <div class="uploadmod_buttons_wrap">
-            <input type="submit" value="Add File" class="uploadmod_buttons" />
-            <%= f.submit 'Save', class: 'uploadmod_buttons' %>
-        </div>
-        <div class="contentpage_screenshots_wrap uploadmod_screenshots_wrap">
-            <a href='' class="uploadmod_addsceenshot"> &#43; Screenshot</a>
-        </div>
+    <div class="contentpage_mainthumb uploadmod_mainthumb">
+      <a href=""><p>&#43; Add Thumbnail</p></a>
+      <img class="contentpage_mainthumb_img" src="" alt="" />
     </div>
 
-
-    <a class="expand_description">&#62;</a>
-    <div class="contentpage_descriptionwrap uploadmod_descriptionwrap">
-        <%= f.text_area :body, placeholder: 'Detailed mod description' %>
+  </div>
+  <div class="contentpage_download_and_screenshots_wrap uploadmod_download_and_screenshots_wrap">
+    <div class="uploadmod_buttons_wrap">
+      <input type="submit" value="Add File" class="uploadmod_buttons" />
+      <%= f.submit 'Save', class: 'uploadmod_buttons' %>
     </div>
-    <div class="contentpage_commentswrap uploadmod_categorieswrap">
+    <div class='upload_select' style='display: none;'>
+      <%= select_tag :location, options_for_select([["Main Image", "Main"], ["Screenshot #1", "Thumbnail1"], ["Screenshot #2", "Thumbnail2"], ["Screenshot #3", "Thumbnail3"], ["Screenshot #4", "Thumbnail4"], ["Screenshot #5", "Thumbnail5"], ["Screenshot #6", "Thumbnail6"]], "Main"), {} %>
+    </div>
+    <div class="contentpage_screenshots_wrap uploadmod_screenshots_wrap">
+      <a href='' class="uploadmod_addsceenshot"> &#43; Screenshot</a>
+      <a href="#screenshot-popup" class='open-screenshot uploadmod_addsceenshot'> + Screenshot</a>
+    </div>
+  </div>
+
+  <div id="screenshot-popup" class="popup mfp-hide">
+    <p>Use this popup to upload images to represent your submission.</p>
+
+    <p>Before uploading, make sure to select a location to display your images in.</p>
+    <input id="fileupload" type="file" name="images[]" data-url="images.json" style='display: none' multiple>
+    <table>
+      <tbody id="file-body">
+      </tbody>
+    </table>
+    <input type="submit" value='Upload' id="upload_btn" class="upload_submit_button">
+  </div>
+
+  <a class="expand_description">&#62;</a>
+  <div class="contentpage_descriptionwrap uploadmod_descriptionwrap">
+    <%= f.text_area :body, placeholder: 'Detailed mod description' %>
+  </div>
+  <div class="contentpage_commentswrap uploadmod_categorieswrap">
 <!--         <fieldset>
             <legend>Category</legend>
             <select class="maincategory" size="8">
@@ -56,7 +71,7 @@
                 <option>VolksWagon</option>
                 <option>BMW</option>
             </select>
-        </fieldset> -->
-    </div>
-    <% end %>
-</div>
+          </fieldset> -->
+        </div>
+        <% end %>
+      </div>
