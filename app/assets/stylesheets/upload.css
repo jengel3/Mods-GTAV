@@ -82,7 +82,7 @@ input.uploadmod_title:focus {
     background-color:#d8e1ef;
     width:130px;
     height:auto;
-    margin:6px 0px 0 6px;;
+    margin:6px 0px 0 6px;
     display: inline-block;
     text-decoration: none;
     color:#4f4f4f;
@@ -137,7 +137,7 @@ input.uploadmod_title:focus {
 .uploadmod_individual_screenshot_wrap {
     text-decoration: none;
     background-color:#d8e1ef;
-    margin:6px 0px 0 6px;;
+    margin:6px 0px 0 6px;
     display: inline-block;
     text-decoration: none;
     text-align: center;
