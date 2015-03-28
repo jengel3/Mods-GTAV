@@ -5,9 +5,63 @@
 	<link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Asap:400,700' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Niconne' rel='stylesheet' type='text/css'>
+
+	<!-- Social Media Meta -->
+	<meta property="og:title" content="GTA 5 Mods" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="http://www.Mods-GTAV.com" />
+	<meta property="og:image" content="http://i.imgur.com/CPCIBLl.png" />
+	<meta property="og:description" 
+	content="The #1 source for GTA 5 Modifications. PC Mods for Grand Theft Auto V include maps, scipts, tools, textures, models and more!" />
+
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:creator" content="@Mods-GTAV_com">
+
+	<link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link rel="icon" sizes="16x16 32x32 64x64" href="/favicon.ico">
+	<link rel="manifest" href="/manifest.json">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
+
 	<%= csrf_meta_tags %>
 
-	<%= yield(:scripts) %>
+	<!-- Google analytics -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-60401809-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+
+	<script type="application/ld+json">
+		{ "@context" : "http://schema.org",
+		"@type" : "CreativeWork",
+		"name" : "Mods-GTAV",
+		"url" : "http://www.mods-gtav.com",
+		"sameAs" : ["http://twitter.com/Mods_GTAV",
+		"https://plus.google.com/111469834211307832883"],
+		"dateCreated": "2015-03-01",
+		"dateModified": "2015-03-05",
+		"keywords": "GTA 5 Mods, grand theft auto, gta 5 pc, car mods",
+		"audience": "Grand Theft Auto players" }
+	</script>
 </head>
 <body>
 

@@ -7,8 +7,10 @@
 
     </div>
     <div class="contentpage_mainthumb uploadmod_mainthumb">
+      <% if !@submission.main_image %>
       <a href=""><p>&#43; Add Thumbnail</p></a>
-      <img class="contentpage_mainthumb_img" src="" alt="" />
+      <% end %>
+      <img class="contentpage_mainthumb_img" src="<%= @submission.main_image.image_url %>" alt="" />
     </div>
 
   </div>
@@ -21,8 +23,11 @@
       <%= select_tag :location, options_for_select([["Main Image", "Main"], ["Screenshot #1", "Thumbnail1"], ["Screenshot #2", "Thumbnail2"], ["Screenshot #3", "Thumbnail3"], ["Screenshot #4", "Thumbnail4"], ["Screenshot #5", "Thumbnail5"], ["Screenshot #6", "Thumbnail6"]], "Main"), {} %>
     </div>
     <div class="contentpage_screenshots_wrap uploadmod_screenshots_wrap">
-      <a href='' class="uploadmod_addsceenshot"> &#43; Screenshot</a>
-      <a href="#screenshot-popup" class='open-screenshot uploadmod_addsceenshot'> + Screenshot</a>
+      <% 6.times do |count| %>
+      <% if @thumbnails[count + 1] %>
+      <a href="#screenshot-popup"><img class="open-screenshot uploadmod_addsceenshot" src="<%= @thumbnails[count + 1].image_url %>" /></a>
+      <% end %>
+      <% end %>
     </div>
   </div>
 

@@ -22,6 +22,7 @@ gem 'omniauth-steam'
 
 # File uploads
 gem 'carrierwave-mongoid'
+gem 'mini_magick'
 
 # Database
 gem 'mongoid'

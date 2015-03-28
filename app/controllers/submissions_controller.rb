@@ -2,7 +2,7 @@ class SubmissionsController < ApplicationController
   include CommentsHelper
   before_filter :set_submission, only: [:destroy, :edit, :update]
   before_filter :authenticate_user!, only: [:destroy, :edit, :create, :new, :update]
-
+  before_filter :set_thumbnails, only: [:show, :edit, :new]
   def index
     @submissions = Submission.all
   end
@@ -19,11 +19,7 @@ class SubmissionsController < ApplicationController
     @sort = params[:c_sort] ||= session['c_sort'] ||= @sort_options.values[0]
     session['c_sort'] = @sort
     @comments = comment_sort(@submission.comments.unscoped.all).page(params[:c_page]).per(10).reject(&:new_record?)
-  
-    @thumbnails = {}
-    @submission.thumbnails.each do |image|
-      @thumbnails[image.num] = image
-    end
+
   end
 
   def destroy
@@ -62,5 +58,12 @@ class SubmissionsController < ApplicationController
 
   def submission_params
     params.require(:submission).permit(:body, :name)
+  end
+
+  def set_thumbnails
+    @thumbnails = {}
+    @submission.thumbnails.each do |image|
+      @thumbnails[image.num] = image
+    end
   end
 end
