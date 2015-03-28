@@ -2,6 +2,8 @@ class Image
   include Rails.application.routes.url_helpers
   include Mongoid::Document
 
+  before_create :remove_old
+
   field :caption, type: String
   field :location, type: String
 
@@ -10,6 +12,10 @@ class Image
   mount_uploader :image, ImageUploader
 
   belongs_to :submission
+
+  def remove_old
+    submission.images.where(:location => self.location).destroy_all
+  end
 
   def num
     location[ -1..-1 ].to_i
