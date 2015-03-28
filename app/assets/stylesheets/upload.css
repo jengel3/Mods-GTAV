@@ -148,7 +148,8 @@ input.uploadmod_title:focus {
 }
 .uploadmod_individual_screenshot_wrap img {
     max-width:130px;
-    max-height:73px;    
+    max-height:73px;
+    cursor: pointer;
     position:absolute;
     top:0;
     bottom:0;

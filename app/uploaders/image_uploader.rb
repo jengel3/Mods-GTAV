@@ -3,7 +3,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
   version :preview, if: :is_main?
-  version :thumb, if: :is_thumb?
+  version :thumb
 
   # Choose what kind of storage to use for this uploader:
   storage :file
@@ -31,6 +31,6 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   def is_thumb? picture
-    model.location != 'Main'
+    model.location == 'Thumbnail'
   end
 end

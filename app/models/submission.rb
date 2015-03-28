@@ -37,6 +37,6 @@ class Submission
   end
 
   def thumbnails
-    images.where(:location.ne => "Main").limit(6)
+    images.where(:location => "Thumbnail")
   end
 end

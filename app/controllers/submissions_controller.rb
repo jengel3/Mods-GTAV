@@ -8,7 +8,6 @@ class SubmissionsController < ApplicationController
 
   def show
     @submission = Submission.includes(:images).find(params[:id])
-    set_thumbnails
     @sort_options = {
       'Oldest First' => 'oldest',
       'Newest First' => 'newest',
@@ -31,7 +30,6 @@ class SubmissionsController < ApplicationController
   end
 
   def edit
-    set_thumbnails
   end
 
   def create
@@ -61,10 +59,4 @@ class SubmissionsController < ApplicationController
     params.require(:submission).permit(:body, :name)
   end
 
-  def set_thumbnails
-    @thumbnails = {}
-    @submission.thumbnails.each do |image|
-      @thumbnails[image.num] = image
-    end
-  end
 end
