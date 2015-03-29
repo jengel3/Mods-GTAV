@@ -112,7 +112,11 @@
 						</ul>
 					</div>
 				</div>
+				<% if params[:controller] == 'submissions' && params[:action] == 'show' %>
+				<%= link_to 'Edit Mod', edit_submission_path(@submission), class: 'addmodbutton editmodbutton' %>
+				<% else %>
 				<%= link_to 'Add Mod +', new_submission_path, class: 'addmodbutton' %>
+				<% end %>
 				<div class="searchwrap">
 					<input type="text" name="search" class="search" placeholder="Search" />
 					<img src="<%= asset_path('searchbutton.png') %>" class="searchbutton accentcolor" />     
