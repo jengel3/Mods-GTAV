@@ -6,7 +6,7 @@
             <a href="<%= submission_path(submission) %>"><img class="modthumbnail" src="<%= image_path('thumbnail5.jpg') %>" /></a>
         </div>
         <div class="modtitlewrap">
-        <%= link_to submission.name, submission_path(submission), class: 'modtitle' %>
+            <%= link_to submission.name, submission_path(submission), class: 'modtitle' %>
         </div>
     </div>
     <div class="mod_creator_and_download_wrap">
@@ -27,69 +27,5 @@
 				$('.submissiondate', this).stop().fadeOut(100);
 			}
 		});
-		
-		doResize();
-		$(window).on('resize', doResize);  
-            /*$(window).resize(function(){
-                if ($(window).width() <= 1160){  
-                    
-                    $('.right_sidebar_preview').on('click', function() {
-                        $('.right_sidebar_preview').css('display', 'none');
-                        $('.right_sidebar').css('display', 'block');
-                    });
-                    $('.right_sidebar').on('click', function() {
-                        $('.right_sidebar_preview').css('display', 'block');
-                        $('.right_sidebar').css('display', 'none');
-                    });
-                   }
-                
-                });
-            });
-            
-            $(window).resize(function(){
-                
-                
-            });*/
-});
-
-doResize();
-$(window).on('resize', doResize);   
-
-
-
-
-function doResize() {
-	if ($(window).width() <= 1160){  
-		
-		$('.right_sidebar_preview, .right_sidebar').on('click', function() {
-			$('.right_sidebar_preview').toggleClass('showsidebarpreview');
-			$('.right_sidebar').toggleClass('showsidebar');
-		});
-                    /*$('.right_sidebar').on('click', function() {
-                        $('.right_sidebar_preview').removeClass('showsidebarpreview');
-                        $('.right_sidebar').removeClass('showsidebar');
-                    });*/
-}
-}
-
-        /*function doResize() {
-            var mq = window.matchMedia('@media(max-width:1160px)');
-            if(mq.matches) {
-                // the width of browser is more then 700px
-                $('.right_sidebar').css('display', 'block');
-                $('.right_sidebar_preview').css('display', 'none');
-            } else {
-                // the width of browser is less then 700px
-                $('.right_sidebar_preview').on('click', function() {
-                    $('.right_sidebar_preview').css('display', 'none');
-                    $('.right_sidebar').css('display', 'block');
-                });
-                $('.right_sidebar').on('click', function() {
-                    $('.right_sidebar_preview').css('display', 'block');
-                    $('.right_sidebar').css('display', 'none');
-                });
-        }
-    }*/
-    
-    
+    });
 </script>

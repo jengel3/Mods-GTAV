@@ -22,7 +22,7 @@
 		</div></a>
 		<div class="contentpage_screenshots_wrap">
 
-			<%= @submission.thumbnails.each do |thumb| %>
+			<% @submission.thumbnails.each do |thumb| %>
 			 <a href=""><div class="contentpage_individual_screen_wrap"><img class="contentpage_screenshot" src="<%= thumb.image_url(:thumb) %>" /></div></a>
 			<% end %>
 			
@@ -124,9 +124,6 @@
 			}
 		});
 
-		doResize();
-		$(window).on('resize', doResize);  
-
 		$('.collapse_description_icon').on('click', function() {
 			$('.contentpage_descriptionwrap').addClass('collapse_description');
 			$('.contentpage_commentswrap').addClass('commentswrap_expanded');
@@ -148,22 +145,4 @@
 			}
 		});
 	});
-
-doResize();
-$(window).on('resize', doResize);   
-
-
-
-
-function doResize() {
-	if ($(window).width() <= 1160){  
-
-		$('.right_sidebar_preview, .right_sidebar').on('click', function() {
-			$('.right_sidebar_preview').toggleClass('showsidebarpreview');
-			$('.right_sidebar').toggleClass('showsidebar');
-		});
-	}
-}
-
-
 </script>

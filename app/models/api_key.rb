@@ -10,6 +10,7 @@ class ApiKey
   end
 
   field :key, type: String
+  field :version, type: String
 
   belongs_to :user
 end

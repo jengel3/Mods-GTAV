@@ -123,30 +123,43 @@
 				</div>
 				<div class="right_sidebar_preview"><div class="sidebar_expand_button"> < </div></div>
 				<div class="right_sidebar">
-					<% if current_user %>
 					<div class="userprofilebox">
 						<div class="userinfo_profilewrap">
+							<% if current_user %>
 							<div class="user_avatar_wrap"><%= avatar(current_user) %></div>
 							<div class="userinfo">
-								<div class="username"><%= current_user.username %></div>
+								<div class="username"><%= current_user.username %><div class="user_online_indicator"></div></div>
 								<div class="userdesc">Mod Creator</div>
 							</div>
-							<table class="userstats">
-								<tr>
-									<td class="stat_title"><img class="user_stat_icon accentcolor" src="<%= asset_path('hearticon.png') %>" /></td>
-									<td class="stat_title"><img class="user_stat_icon accentcolor" src="<%= asset_path('commenticon.png') %>" /></td>
-									<td class="stat_title"><img class="user_stat_icon accentcolor" src="<%= asset_path('downloadicon.png') %>" /></td>
-								</tr>
-								<tr>
-									<td><span class="stat_amount">41</span></td>
-									<td><span class="stat_amount">206</span></td>
-									<td> <span class="stat_amount">0</span></td>
-								</tr>
-							</table>
+							<% else %>
+
+
+							<input class="registerbutton" type="submit" value="Register" />
+							<p class="signin_option">Have an account? <a class="signinlink" href="" onclick="return false;">Sign in.</a></p>
+							<div class="inputwrap signinwrap">
+								<input class="login-input" name="username" placeholder="Username" autocomplete="off" type="text" />
+								<input class="login-input" name="signinpassword" placeholder="Password" autocomplete="off" type="password" />
+								<input class="submit_login_data" type="submit" value="Submit" />
+								<div class="forgotwrap"> <a class="forgotlink" href="" onclick="return false;">forgot details?</a></div>
+								<a href=""><img class="steamsignin" src="<%= asset_path('steamsignin.png') %>" alt="Sign In with Steam" /></a>
+							</div>
+							<div class="inputwrap registerwrap">
+								<input class="register-input" name="email" placeholder="Email" autocomplete="off" type="text" />
+								<input class="register-input" name="username" placeholder="Username" autocomplete="off" type="text" />
+								<input class="register-input" name="password" placeholder="Password" autocomplete="off" type="password" />
+								<input class="register-input" name="passwordconfirm" placeholder="Confirm Password" autocomplete="off" type="password" />
+								<input class="submit_login_data" type="submit" value="Submit" />
+								<a href=""><img class="steamsignin" src="<%= asset_path('steamsignin.png') %>" alt="Sign In with Steam" /></a>
+							</div>	
+							<div class="inputwrap resetpasswordwrap"> 
+								<input class="resetpassword-input" name="email" placeholder="Email" autocomplete="off" type="text" />
+								<input class="submit_login_data" type="submit" value="Submit" />
+								<div class="forgotwrap">An email will be sent to your account with instructions on changing your password</div>
+							</div>
+							<% end %>
 						</div>
 
-					</div>   
-					<% end %>
+					</div> 
 					<div class="subcategoriesbox">
 						<h3>Subcategories</h3>
 						<div class="subcategories_wrap">

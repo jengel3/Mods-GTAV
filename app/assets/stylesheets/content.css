@@ -448,7 +448,8 @@ a.likecomment_button:hover {
     margin-top:11px;
     text-align: left;
     margin-left:14px;
-    width:300px;
+    width:290px;
+    overflow-x: hidden;
 }
 .contentpage_individual_screen_wrap {
     display: inline-block;
