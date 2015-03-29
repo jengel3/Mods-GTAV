@@ -5,7 +5,6 @@
 //= require blueimp-file-upload/js/jquery.fileupload
 //= require blueimp-file-upload/js/jquery.fileupload-process
 //= require blueimp-file-upload/js/jquery.fileupload-image
-//= require parallax.min
 //= require base
 //= require submissions
 //= require jquery.tooltipster.min
