@@ -1,7 +1,6 @@
 <head>
 	<title><%= content_for?(:title) ? yield(:title) + ' :: Mods-GTAV ' : 'Mods-GTAV' %></title>
 	<%= stylesheet_link_tag "application" %>
-	<%= javascript_include_tag "application" %>
 	<link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=Asap:400,700' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=Niconne' rel='stylesheet' type='text/css'>
@@ -125,7 +124,7 @@
 				</div>
 				<div class="right_sidebar_preview"><div class="sidebar_expand_button"> < </div></div>
 				<div class="right_sidebar">
-					<a href="#" class="close_sidebar">&#10006;</a>
+					<a href="#" class="close_sidebar" pm>&#10006;</a>
 					<div class="userprofilebox">
 						<div class="userinfo_profilewrap">
 							<% if current_user %>
@@ -153,7 +152,7 @@
 
 							<input class="registerbutton" type="submit" value="Register" />
 							<p class="signin_option">Have an account? <a class="signinlink" href="" onclick="return false;">Sign in.</a></p>
-							<div class="inputwrap signinwrap">
+							<div class="inputwrap signinwrap" style='display: none;'>
 								<%= form_for(:user, url: user_session_path) do |f| %>
 								<%= f.text_field :login, class: 'login-input', autocomplete: 'off', type: 'text', placeholder: 'Email or Username' %>
 								<%= f.password_field :password, class: 'login-input', autocomplete: 'off', type: 'password', placeholder: 'Password' %>
@@ -162,7 +161,7 @@
 								<%= link_to image_tag('steamsignin.png', alt: 'Sign in with Steam', class: 'steamsignin'), user_omniauth_authorize_path(:steam) %></a>
 								<% end %>
 							</div>
-							<div class="inputwrap registerwrap">
+							<div class="inputwrap registerwrap" style='display: none;'>
 								<%= form_for(:user, url: user_registration_path) do |f| %>
 								<%= f.email_field :email, class: 'register-input', autocomplete: 'off', type: 'text', placeholder: 'Email' %>
 								<%= f.text_field :username, class: 'register-input', autocomplete: 'off', type: 'text', placeholder: 'Username' %>
@@ -172,7 +171,7 @@
 								<%= link_to image_tag('steamsignin.png', alt: 'Sign in with Steam', class: 'steamsignin'), user_omniauth_authorize_path(:steam) %></a>
 								<% end %>
 							</div>	
-							<div class="inputwrap resetpasswordwrap">
+							<div class="inputwrap resetpasswordwrap" style='display: none;'>
 								<%= form_for(:user, url: user_password_path) do |f| %>
 								<%= f.email_field :email, autofocus: true, class: 'resetpassword-input', autocomplete: 'off', type: 'email', placeholder: 'Email' %>
 								<div class="forgotwrap">An email will be sent to your account with instructions on changing your password</div>
@@ -231,5 +230,6 @@
 
 		</div>
 	</div>
-
+	<%= javascript_include_tag "application" %>
+	<%= content_for(:scripts) %>
 </body>

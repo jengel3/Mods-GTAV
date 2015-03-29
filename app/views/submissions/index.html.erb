@@ -15,6 +15,7 @@
     </div>
 </div>
 <% end %>
+<%= content_for :scripts do %>
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('.submissiondate').hide();
@@ -29,3 +30,4 @@
 		});
     });
 </script>
+<% end %>

@@ -65,7 +65,12 @@ class User
   def self.from_steam(auth)
     new_user = where(provider: auth.provider, uid: auth.uid).first_or_initialize do |user|
       user.email = "#{auth.uid}@steam-provider.com"
-      user.username = auth['info']['nickname']
+      temp = auth['info']['nickname']
+      if User.where(username: temp)
+        user.username = temp + Devise.friendly_token[1, 3]
+      else
+        user.username = auth['info']['nickname']
+      end
       user.password = Devise.friendly_token[0, 20]
     end
     new_user.save(:validate => false)
