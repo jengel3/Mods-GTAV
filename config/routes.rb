@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :users
+  # devise_for :users, :controllers => { sessions: 'sessions', registrations: 'registrations', :omniauth_callbacks => 'users/omniauth_callbacks', :passwords => 'passwords' }
+  devise_for :users, :controllers => { :omniauth_callbacks => 'users/omniauth_callbacks' }
   
   resources :submissions do
     resources :images
@@ -8,7 +9,7 @@ Rails.application.routes.draw do
 
   root 'submissions#index'
 
-  namespace :api, defaults: { format: :json } do
+  namespace :api, defaults: { :format => :json } do
     namespace :v1 do
       resources :submissions do
         resources :comments

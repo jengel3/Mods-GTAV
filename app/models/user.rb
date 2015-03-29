@@ -2,9 +2,10 @@ class User
   include Mongoid::Document
   include Mongoid::Timestamps::Created
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+  # :confirmable, :lockable, :timeoutable
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :trackable, :validatable
+  devise :omniauthable, :omniauth_providers => [:steam]
 
   validates :username, presence: true, uniqueness: true, length: { maximum: 16 }
   validates_format_of :username, :with => /\A[A-Za-z0-9_-]+\Z/
@@ -32,6 +33,9 @@ class User
   field :username, type: String
   field :admin, type: Boolean, default: false
 
+  field :provider, type: String
+  field :uid, type: String
+
   field :ip_history, type: Array, default: []
 
   has_many :submissions, :dependent => :destroy
@@ -56,5 +60,15 @@ class User
     else
       super
     end
+  end
+
+  def self.from_steam(auth)
+    new_user = where(provider: auth.provider, uid: auth.uid).first_or_initialize do |user|
+      user.email = "#{auth.uid}@steam-provider.com"
+      user.username = auth['info']['nickname']
+      user.password = Devise.friendly_token[0, 20]
+    end
+    new_user.save(:validate => false)
+    return new_user
   end
 end

@@ -125,12 +125,28 @@
 				</div>
 				<div class="right_sidebar_preview"><div class="sidebar_expand_button"> < </div></div>
 				<div class="right_sidebar">
+					<a href="#" class="close_sidebar">&#10006;</a>
 					<div class="userprofilebox">
 						<div class="userinfo_profilewrap">
 							<% if current_user %>
 							<div class="user_avatar_wrap"><%= avatar(current_user) %></div>
 							<div class="userinfo">
-								<div class="username"><%= current_user.username %><div class="user_online_indicator"></div></div>
+								<div class="username">
+									<div id="contentoptions">
+										<ul>
+											<li>
+												<a class="usernamelink" href="gtaprofile.html"><%= current_user.username %><span class="comments_downarrowsymbol username_downarrowsymbol">&#x25BC;</span></a>
+												<ul>
+													<li><a href="#">View Profile</a></li>
+													<li><a href="#">Edit Profile</a></li>
+													<li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+												</ul>
+											</li>
+										</ul>
+									</div>
+
+									<div class="user_online_indicator"></div>
+								</div>
 								<div class="userdesc">Mod Creator</div>
 							</div>
 							<% else %>
@@ -143,7 +159,7 @@
 								<%= f.password_field :password, class: 'login-input', autocomplete: 'off', type: 'password', placeholder: 'Password' %>
 								<%= f.submit 'Submit', class: 'submit_login_data' %>
 								<div class="forgotwrap"> <a class="forgotlink" href="" onclick="return false;">forgot details?</a></div>
-								<a href=""><img class="steamsignin" src="<%= asset_path('steamsignin.png') %>" alt="Sign In with Steam" /></a>
+								<%= link_to image_tag('steamsignin.png', alt: 'Sign in with Steam', class: 'steamsignin'), user_omniauth_authorize_path(:steam) %></a>
 								<% end %>
 							</div>
 							<div class="inputwrap registerwrap">
@@ -153,7 +169,7 @@
 								<%= f.password_field :password, class: 'register-input', autocomplete: 'off', type: 'password', placeholder: 'Password' %>
 								<%= f.password_field :password_confirmation, class: 'register-input', autocomplete: 'off', type: 'password', placeholder: 'Confirm Password' %>
 								<%= f.submit 'Submit', class: 'submit_login_data' %>
-								<a href=""><img class="steamsignin" src="<%= asset_path('steamsignin.png') %>" alt="Sign In with Steam" /></a>
+								<%= link_to image_tag('steamsignin.png', alt: 'Sign in with Steam', class: 'steamsignin'), user_omniauth_authorize_path(:steam) %></a>
 								<% end %>
 							</div>	
 							<div class="inputwrap resetpasswordwrap">

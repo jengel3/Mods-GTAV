@@ -1,6 +1,6 @@
 function doResize() {
 	if ($(window).width() <= 1160){  
-		$('.right_sidebar_preview, .right_sidebar').on('click', function() {
+		$('.right_sidebar_preview, .close_sidebar').on('click', function() {
 			toggleSidebar();
 		});
 	}
@@ -20,6 +20,7 @@ function toggleSidebar() {
 function toggleSidebarClasses() {
 	$('.right_sidebar_preview').toggleClass('showsidebarpreview');
 	$('.right_sidebar').toggleClass('showsidebar');
+	$('.close_sidebar').css('display', 'inline');
 }
 
 function handleSidebarLoad() {
