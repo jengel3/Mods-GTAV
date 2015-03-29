@@ -3,6 +3,7 @@
 	*= require content
 	*= require index
 	*= require upload
+	*= require profile
 	*= require tooltipster
 	*= require tooltipster-light
 	*= require magnific-popup/dist/magnific-popup

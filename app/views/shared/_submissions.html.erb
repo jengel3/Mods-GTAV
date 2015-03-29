@@ -1,0 +1,17 @@
+<% submissions.each do |submission| %>
+<div class="modwrap">
+    <div class="mod_thumb_and_title_wrap">
+        <div class="modthumbnailwrap">
+            <div class="submissiondate"><%= relative(submission.updated_at) %></div>
+            <a href="<%= submission_path(submission) %>"><img class="modthumbnail" src="<%= image_path('thumbnail5.jpg') %>" /></a>
+        </div>
+        <div class="modtitlewrap">
+            <%= link_to submission.name, submission_path(submission), class: 'modtitle' %>
+        </div>
+    </div>
+    <div class="mod_creator_and_download_wrap">
+        <div class="mod_creator"><%= link_to submission.creator.username, profile_path(submission.creator.username) %></div>
+        <div class="downloadcount"><%= submission.total_downloads %> <img src="<%= asset_path('downloadcounticon.png') %>" alt="" /></div>
+    </div>
+</div>
+<% end %>

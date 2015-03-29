@@ -122,118 +122,107 @@
 					<img src="<%= asset_path('searchbutton.png') %>" class="searchbutton accentcolor" />     
 				</div>
 			</div>
-			<div class="mainpagewrap">
-				<div class="mainpage">
-					<%= yield %>
+			<% if params[:action] == 'profile' %>
+			<div class="profile_section_wrap">
+				<div class="profile_left_panel">
+					<h3><% @user.username %></h3>
+					<div class="avatarwrap">
+						<%= avatar @user, size: 80 %>
+					</div>
+					<a href="" class="emailuser">Email</a>
+					<div class="user_reputation_wrap">
+						<%= image_tag ('hearticon.png'), alt: 'Hearts' %>
+						<p>7,562</p>
+					</div>
 				</div>
-				<div class="right_sidebar_preview"><div class="sidebar_expand_button"> < </div></div>
-				<div class="right_sidebar">
-					<a href="#" class="close_sidebar" pm>&#10006;</a>
-					<div class="userprofilebox">
-						<div class="userinfo_profilewrap">
-							<% if current_user %>
-							<div class="user_avatar_wrap"><%= avatar(current_user) %></div>
-							<div class="userinfo">
-								<div class="username">
-									<div id="contentoptions">
-										<ul>
-											<li>
-												<a class="usernamelink" href="gtaprofile.html"><%= current_user.username %><span class="comments_downarrowsymbol username_downarrowsymbol">&#x25BC;</span></a>
-												<ul>
-													<li><a href="#">View Profile</a></li>
-													<li><a href="#">Edit Profile</a></li>
-													<li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
-												</ul>
-											</li>
-										</ul>
-									</div>
+				<div class="profile_content_panel">
+					<div class="upper_content_panel">
+						<a href="#" class="useroptions">Report User</a>
+					</div>
+					<div class="lower_content_panel">
+						<div class="profile_information_section">
+							<h3>Information</h3>
+							<p class="profile_info_and_stats_text"><b>Last Active</b><br /><span><%= short(@user.last_sign_in_at) %></span></p>
+							<p class="profile_info_and_stats_text"><b>Joined</b><br /><span><%= short(@user.created_at) %></span></p>
+						</div>
+						<div class="profile_bio_section">
+							<h3>Biography</h3>
+							<p><%= @user.biography %></p>
+							</div>
+							<div class="profile_stats_section">
+								<h3>Statistics</h3>
+								<p class="profile_info_and_stats_text"><b>Mods Submitted</b><br /><span><%= @user.submissions.count %></span></p>
+								<p class="profile_info_and_stats_text"><b>Most Liked</b><br /><a href="">Police Helicopter</a></p>
+								<p class="profile_info_and_stats_text"><b>Most Downloaded</b><br /><a href="">Ford F-150</a></p>
+							</div>            
+						</div>
+					</div>
+					<div class="profile_upper_backing">
 
-									<div class="user_online_indicator"></div>
+					</div>
+				</div>
+				<% end %>
+				<div class="mainpagewrap">
+					<div class="mainpage">
+						<%= yield %>
+					</div>
+					<div class="right_sidebar_preview"><div class="sidebar_expand_button"> < </div></div>
+					<div class="right_sidebar">
+						<a href="#" class="close_sidebar" pm>&#10006;</a>
+						<div class="userprofilebox">
+							<div class="userinfo_profilewrap">
+								<%= render 'shared/auth' %>
+							</div>
+						</div> 
+						<div class="subcategoriesbox">
+							<h3>Subcategories</h3>
+							<div class="subcategories_wrap">
+								<div class="subcategory">
+									<p>All</p>
 								</div>
-								<div class="userdesc">Mod Creator</div>
-							</div>
-							<% else %>
-
-							<input class="registerbutton" type="submit" value="Register" />
-							<p class="signin_option">Have an account? <a class="signinlink" href="" onclick="return false;">Sign in.</a></p>
-							<div class="inputwrap signinwrap" style='display: none;'>
-								<%= form_for(:user, url: user_session_path) do |f| %>
-								<%= f.text_field :login, class: 'login-input', autocomplete: 'off', type: 'text', placeholder: 'Email or Username' %>
-								<%= f.password_field :password, class: 'login-input', autocomplete: 'off', type: 'password', placeholder: 'Password' %>
-								<%= f.submit 'Submit', class: 'submit_login_data' %>
-								<div class="forgotwrap"> <a class="forgotlink" href="" onclick="return false;">forgot details?</a></div>
-								<%= link_to image_tag('steamsignin.png', alt: 'Sign in with Steam', class: 'steamsignin'), user_omniauth_authorize_path(:steam) %></a>
-								<% end %>
-							</div>
-							<div class="inputwrap registerwrap" style='display: none;'>
-								<%= form_for(:user, url: user_registration_path) do |f| %>
-								<%= f.email_field :email, class: 'register-input', autocomplete: 'off', type: 'text', placeholder: 'Email' %>
-								<%= f.text_field :username, class: 'register-input', autocomplete: 'off', type: 'text', placeholder: 'Username' %>
-								<%= f.password_field :password, class: 'register-input', autocomplete: 'off', type: 'password', placeholder: 'Password' %>
-								<%= f.password_field :password_confirmation, class: 'register-input', autocomplete: 'off', type: 'password', placeholder: 'Confirm Password' %>
-								<%= f.submit 'Submit', class: 'submit_login_data' %>
-								<%= link_to image_tag('steamsignin.png', alt: 'Sign in with Steam', class: 'steamsignin'), user_omniauth_authorize_path(:steam) %></a>
-								<% end %>
-							</div>	
-							<div class="inputwrap resetpasswordwrap" style='display: none;'>
-								<%= form_for(:user, url: user_password_path) do |f| %>
-								<%= f.email_field :email, autofocus: true, class: 'resetpassword-input', autocomplete: 'off', type: 'email', placeholder: 'Email' %>
-								<div class="forgotwrap">An email will be sent to your account with instructions on changing your password</div>
-								<% end %>
-							</div>
-							<% end %>
-						</div>
-
-					</div> 
-					<div class="subcategoriesbox">
-						<h3>Subcategories</h3>
-						<div class="subcategories_wrap">
-							<div class="subcategory">
-								<p>All</p>
-							</div>
-							<div class="subcategory">
-								<p>Jeep</p>
-							</div>
-							<div class="subcategory active_subcategory">
-								<p>Lamborghini</p>
-							</div>
-							<div class="subcategory">
-								<p>Ford</p>
-							</div>
-							<div class="subcategory">
-								<p>Nissan</p>
-							</div>
-							<div class="subcategory">
-								<p>Subaru</p>
-							</div>
-							<div class="subcategory">
-								<p>Ferrari</p>
+								<div class="subcategory">
+									<p>Jeep</p>
+								</div>
+								<div class="subcategory active_subcategory">
+									<p>Lamborghini</p>
+								</div>
+								<div class="subcategory">
+									<p>Ford</p>
+								</div>
+								<div class="subcategory">
+									<p>Nissan</p>
+								</div>
+								<div class="subcategory">
+									<p>Subaru</p>
+								</div>
+								<div class="subcategory">
+									<p>Ferrari</p>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			<% if params[:controller] == 'submissions' && params[:action] == 'index' %>
-			<div class="paginationfooter">
-				<div class="paginationwrap">
-					<a href="" class="pagination_prev_button"><div class="pagination_link">Prev</div></a>
-					<div class="pagination_numbers_wrap">
-						<a href="" class="pagenumber"><div class="pagination_link">1</div></a>a>
-						<a href="" class="pagenumber activepagenumber"><div class="pagination_link">2</div></a>
-						<a href="" class="pagenumber"><div class="pagination_link">3</div></a>
-						<a href="" class="pagenumber"><div class="pagination_link" >4</div></a>
-						<a href="" class="pagenumber"><div class="pagination_link">5</div></a>
-						<a href="" class="pagenumber"><div class="pagination_link">6</div></a>
-						<a href="" class="pagenumber"><div class="pagination_link">...</div></a>
-						<a href="" class="pagenumber"><div class="pagination_link">18</div></a>
+				<% if params[:controller] == 'submissions' && params[:action] == 'index' %>
+				<div class="paginationfooter">
+					<div class="paginationwrap">
+						<a href="" class="pagination_prev_button"><div class="pagination_link">Prev</div></a>
+						<div class="pagination_numbers_wrap">
+							<a href="" class="pagenumber"><div class="pagination_link">1</div></a>a>
+							<a href="" class="pagenumber activepagenumber"><div class="pagination_link">2</div></a>
+							<a href="" class="pagenumber"><div class="pagination_link">3</div></a>
+							<a href="" class="pagenumber"><div class="pagination_link" >4</div></a>
+							<a href="" class="pagenumber"><div class="pagination_link">5</div></a>
+							<a href="" class="pagenumber"><div class="pagination_link">6</div></a>
+							<a href="" class="pagenumber"><div class="pagination_link">...</div></a>
+							<a href="" class="pagenumber"><div class="pagination_link">18</div></a>
+						</div>
+						<a href="" class="pagination_next_button"><div class="pagination_link">Next</div></a>        
 					</div>
-					<a href="" class="pagination_next_button"><div class="pagination_link">Next</div></a>        
 				</div>
-			</div>
-			<% end %>
+				<% end %>
 
+			</div>
 		</div>
-	</div>
-	<%= javascript_include_tag "application" %>
-	<%= content_for(:scripts) %>
-</body>
+		<%= javascript_include_tag "application" %>
+		<%= content_for(:scripts) %>
+	</body>

@@ -42,4 +42,10 @@ class Submission
   def thumbnails
     images.where(:location => "Thumbnail")
   end
+
+  def can_manage(user = nil)
+    if user
+      user.admin || creator == user
+    end
+  end
 end

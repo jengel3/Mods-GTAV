@@ -10,6 +10,10 @@ module ApplicationHelper
     time.strftime("%B #{time.day.ordinalize}, %Y - %l:%M %p")
   end
 
+  def short(time)
+    time.strftime("%B #{time.day.ordinalize}, %Y")
+  end
+
   def bake_markdown(text)
     html = Kramdown::Document.new(text.gsub(/\n\r/,"<br/>")).to_html
     sanitized = Sanitize.fragment(html, :elements => @@elems)

@@ -1,0 +1,204 @@
+.profile_section_wrap {
+    width: 1150px;
+    height:290px;
+    background-color:#394861;
+    margin:0 auto;
+    position: relative;
+}
+
+.profile_upper_backing {
+    width:100%;
+    height:100px;
+    border-bottom:2px solid #f1f1f1;
+    background-image: url('resources/profileback.png');
+}
+.profile_left_panel {
+    position:absolute;
+    width:236px;
+    height:100%;
+    background-color: transparent;
+    text-align: center;
+}
+.profile_left_panel h3 {
+    color:white;
+    font-weight: normal;
+}
+.profile_left_panel .avatarwrap {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border:2px solid #f1f1f1;
+    margin: 0 auto;
+    overflow: hidden;
+    margin-bottom:35px;
+}
+.profile_left_panel .avatarwrap img {
+    width:80px;
+    height:80px;
+}
+.profile_left_panel a.emailuser {
+    text-decoration: none;
+    color:white;
+    background-color: #ff5a5f;
+    padding:8px 45px 10px 45px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+.profile_left_panel a.emailuser:hover {
+    background-color: #fa5358;
+}
+.profile_left_panel .user_reputation_wrap {
+    color:#f1f1f1;
+    margin-top:30px;
+}
+.profile_left_panel .user_reputation_wrap img {
+    display: inline-block;
+}
+.profile_left_panel .user_reputation_wrap p {
+    margin:0;
+    padding:0;
+    display: inline-block;
+    vertical-align: top;
+    color:#fff;
+}
+.profile_content_panel {
+    position: absolute;
+    width:912px;
+    height:100%;
+    right:0;
+}
+.profile_content_panel .upper_content_panel {
+    width:670px;
+    height:76px;
+}
+
+.upper_content_panel a.useroptions {
+    color:#f1f1f1;
+    float:right;
+    font-size:14px;
+    margin-top:5px;
+    margin-right:5px;
+    text-decoration: none;
+}
+.profile_content_panel .lower_content_panel {
+    width:100%;
+    height:214px;
+}
+.profile_content_panel .lower_content_panel .profile_information_section {
+    height:100%;
+    width:184px;
+    background-color: #425067;
+    display: inline-block;
+    margin-right:15px;
+    
+}
+.profile_content_panel .lower_content_panel .profile_bio_section {
+    height:100%;
+    width:265px;
+    background-color: #425067;
+    display: inline-block;
+    vertical-align: top;
+    margin-right:16px;
+}
+.profile_content_panel .lower_content_panel .profile_bio_section p {
+    padding:12px;
+    margin:0;
+    color:#f1f1f1;
+    font-size:14px;
+    text-align: center;
+}
+.profile_content_panel .lower_content_panel .profile_stats_section {
+    height:100%;
+    width:184px;
+    background-color: #425067;
+    display: inline-block;
+    vertical-align: top;
+}
+.profile_content_panel .lower_content_panel h3 {
+    font-weight: bold;
+    font-size:16px;
+    background-color: #ff5a5f;
+    background-color:#5a89ff;
+    text-align: center;
+    height:22px;
+    border-bottom:2px solid #f1f1f1;
+    margin:0;
+    padding:0;
+    padding-top:2px;
+    color:#fff;
+    -webkit-border-top-left-radius: 3px;
+    -webkit-border-top-right-radius: 3px;
+    -moz-border-radius-topleft: 3px;
+    -moz-border-radius-topright: 3px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    -webkit-box-shadow: 0px -3px 5px 0px rgba(0,0,0,0.13);
+    -moz-box-shadow: 0px -3px 5px 0px rgba(0,0,0,0.13);
+    box-shadow: 0px -3px 5px 0px rgba(0,0,0,0.13);
+}
+
+.profile_info_and_stats_text {
+    color:#fdfdfd;
+    font-size:14px;
+    margin:0;
+    padding:12px 12px 6px 12px;
+    text-align: center;
+}
+.profile_info_and_stats_text a {
+    text-decoration: none;
+    color:#d4d4d4;
+    font-size:14px;
+}
+.profile_info_and_stats_text span {
+    color:#d4d4d4;
+    font-size:14px;
+}
+
+
+
+.profile_mod_categories_wrap {
+    width:100%;
+    height:44px;
+    background-color:#fdfdfd;
+    -webkit-box-shadow: 0px 1px 7px 0px rgba(0,0,0,0.07);
+    -moz-box-shadow: 0px 1px 7px 0px rgba(0,0,0,0.07);
+    box-shadow: 0px 1px 7px 0px rgba(0,0,0,0.07);
+    text-align:left;
+}
+.profile_mod_categories_wrap ul {
+    margin:0;
+    margin-left:-10px;
+}
+
+.profile_mod_categories_wrap li {
+    display: inline-block;
+    width:102px;
+    list-style-type: none;
+    text-align: center;
+    margin-top:10px;
+}
+.profile_mod_categories_wrap li a {
+    text-decoration: none;
+    color:#4f4f4f;
+
+}.profile_mod_categories_wrap li a:hover {
+    font-weight:bold;
+}
+.profilepage_subcategoriesbox h3 {
+    margin-top:11px;
+}
+
+
+@media(max-width:1160px) {  
+ 
+    .profile_section_wrap {
+        width:900px;
+    }
+    .profile_left_panel {
+        width: 220px;
+    }
+    .profile_content_panel {
+        width: 680px;
+    }
+}

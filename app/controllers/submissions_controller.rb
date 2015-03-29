@@ -2,6 +2,7 @@ class SubmissionsController < ApplicationController
   include CommentsHelper
   before_filter :set_submission, only: [:destroy, :edit, :update]
   before_filter :authenticate_user!, only: [:destroy, :edit, :create, :new, :update]
+
   def index
     @submissions = Submission.all
   end
@@ -22,6 +23,7 @@ class SubmissionsController < ApplicationController
   end
 
   def destroy
+    return redirect_to root_path, :alert => 'No permission.' unless @submission.can_manage(current_user)
     @submission.destroy
   end
 
@@ -30,6 +32,7 @@ class SubmissionsController < ApplicationController
   end
 
   def edit
+    return redirect_to root_path, :alert => 'No permission.' unless @submission.can_manage(current_user)
   end
 
   def create

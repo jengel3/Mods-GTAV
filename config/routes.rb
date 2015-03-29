@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   root 'submissions#index'
 
+  get '/p/:username', to: 'application#profile', as: 'profile'
+
   namespace :api, defaults: { :format => :json } do
     namespace :v1 do
       resources :submissions do
