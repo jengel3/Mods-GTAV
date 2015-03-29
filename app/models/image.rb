@@ -2,7 +2,7 @@ class Image
   include Rails.application.routes.url_helpers
   include Mongoid::Document
 
-  before_create :remove_old, :if => :is_main?
+  before_create :remove_old
 
   field :caption, type: String
   field :location, type: String, default: "Main"
@@ -11,11 +11,9 @@ class Image
   mount_uploader :image, ImageUploader
 
   def remove_old
-    submission.images.where(:location => "Main")
-  end
-
-  def is_main?
-    location == 'Main'
+    if self.location == 'Main'
+      submission.images.where(:location => "Main").destroy_all
+    end
   end
 
   belongs_to :submission

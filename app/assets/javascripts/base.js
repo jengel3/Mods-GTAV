@@ -39,27 +39,30 @@ function humanFileSize(bytes, si) {
 		++u;
 	} while(bytes >= thresh);
 	return bytes.toFixed(1)+' '+units[u];
-};
+}
 
 $(document).ready(function(){
 	$('.submissiondate').hide();
 	$('.inputwrap').hide();
-	$('.resetpasswordwrap').hide();		
+	$('.resetpasswordwrap').hide();	
 
 	$('.registerbutton').on('click', function() {
 		$('.signinwrap').hide();
 		$('.resetpasswordwrap').hide();
 		$('.registerwrap').fadeIn(200);
+		$('.registerwrap #user_email').focus();
 	});
 	$('.signinlink').on('click', function() {
 		$('.registerwrap').hide();
 		$('.resetpasswordwrap').hide();
 		$('.signinwrap').fadeIn(200);
+		$('.signinwrap #user_login').focus();
 	});
 	$('.forgotlink').on('click', function() {
 		$('.signinwrap').hide();
 		$('.registerwrap').hide();
 		$('.resetpasswordwrap').fadeIn(200);
+		$('.resetpasswordwrap #user_email').focus();
 	});
 	$('.tooltip').tooltipster({
 		theme: 'tooltipster-light'
