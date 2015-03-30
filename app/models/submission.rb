@@ -14,10 +14,12 @@ class Submission
   field :download_count, type: Integer, default: 0
   field :approved_at, type: Time
 
+  field :category
+  field :sub_category
+
   field :like_count, type: Integer, default: 0
   field :dislike_count, type: Integer, default: 0
-
-  field :total_downloads, type: Integer, default: 0
+  field :download_count, type: Integer, default: 0
 
   alias_attribute :title, :name
   alias_attribute :description, :body

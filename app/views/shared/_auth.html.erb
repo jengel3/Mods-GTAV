@@ -5,7 +5,7 @@
 		<div id="contentoptions">
 			<ul>
 				<li>
-					<a class="usernamelink" href="gtaprofile.html"><%= current_user.username %><span class="comments_downarrowsymbol username_downarrowsymbol">&#x25BC;</span></a>
+					<a class="usernamelink" href="<%= profile_path(current_user.username) %>"><%= current_user.username %><span class="comments_downarrowsymbol username_downarrowsymbol">&#x25BC;</span></a>
 					<ul>
 						<li><%= link_to 'View Profile', profile_path(current_user.username) %></li>
 						<li><a href="#">Edit Profile</a></li>

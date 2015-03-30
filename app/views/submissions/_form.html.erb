@@ -50,35 +50,14 @@
     <%= f.text_area :body, placeholder: 'Detailed mod description' %>
   </div>
   <div class="contentpage_commentswrap uploadmod_categorieswrap">
-<!--         <fieldset>
-            <legend>Category</legend>
-            <select class="maincategory" size="8">
-                <option>Tools</option>
-                <option>Maps</option>
-                <option>Vehicles</option>
-                <option>Textures</option>
-                <option>Script</option>
-                <option>Misc</option>
-                <option>Weapons</option>
-                <option>Player</option>
-            </select>
-        </fieldset>
-        <fieldset>
-            <legend>SubCategory</legend>
-            <select class="maincategory" size="8">
-                <option>Ford</option>
-                <option>Maserati</option>
-                <option>Nissan</option>
-                <option>Hummer</option>
-                <option>Lamborghini</option>
-                <option>Mercedes</option>
-                <option>VolksWagon</option>
-                <option>BMW</option>
-                <option>Cadillac</option>
-                <option>VolksWagon</option>
-                <option>BMW</option>
-            </select>
-          </fieldset> -->
-        </div>
-        <% end %>
-      </div>
+    <fieldset>
+      <legend>Category</legend>
+      <%= f.select(:category, options_for_select([['Tools', 'tools'], ['Maps', 'maps'], ['Vehicles', 'vehicles'], ['Textures', 'textures'], ['Script', 'script'], ['Misc', 'misc'], ['Weapons', 'weapons'], ['Player', 'player']], "Tools"), {}, {:class=>'maincategory', size: "8" }) %>
+    </fieldset>
+    <fieldset>
+      <legend>SubCategory</legend>
+      <%= f.select(:sub_category, options_for_select([['Ford', 'ford'], ['Maserati', 'maserati'], ['Nissan', 'nissan']], "Tools"), {}, {:class=>'maincategory', size: "8" }) %>
+    </fieldset>
+  </div>
+  <% end %>
+</div>

@@ -97,10 +97,10 @@ input.uploadmod_title:focus {
     margin-left:0px;
     width: 472px;
 }
-.uploadmod_categorieswrap form {
+.uploadmod_categorieswrap fieldset {
     display: inline-block;
     vertical-align: top;
-    width:220px;
+    width: auto;
     text-align:center;
 }
 .uploadmod_categorieswrap fieldset {

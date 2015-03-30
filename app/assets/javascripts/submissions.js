@@ -9,7 +9,10 @@ $(document).ready(function () {
 				$("#upload_btn").off('click');
 				uploadedCount += 1;
 				if (uploadedCount == willUploadCount) {
-					location.reload();
+					$('.progress-bar span').text('Upload complete! Refreshing...'); 
+					setTimeout(function(){ 
+						location.reload();
+					}, 1000);
 				}
 			},
 			add: function (e, data) {
