@@ -1,5 +1,6 @@
 class Upload
   include Mongoid::Document
+  include GlobalID::Identification
   include Mongoid::Timestamps::Created
 
   field :name, type: String, default: ""

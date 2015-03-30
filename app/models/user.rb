@@ -38,11 +38,15 @@ class User
   field :provider, type: String
   field :uid, type: String
 
-  field :ip_history, type: Array, default: []
-
   has_many :submissions, :dependent => :destroy
   has_many :comments, :dependent => :destroy
-  has_one :api_key
+  has_one :api_key, :dependent => :destroy
+
+  # Submission likes
+  has_many :liked_submissions, :class_name => "Like", :dependent => :destroy
+  has_many :disliked_submissions, :class_name => "Dislike", :dependent => :destroy
+  # Comment likes
+  # has_many :liked_comments, :class_name => "Like", :inverse_of => :liker
 
   ## Confirmable
   # field :confirmation_token,   type: String

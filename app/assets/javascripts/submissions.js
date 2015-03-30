@@ -52,5 +52,44 @@ $('.uploadmod_individual_screenshot_wrap').click(function(e) {
 	e.preventDefault();
 	$('.open-screenshot').magnificPopup('open');
 })
+} else if ($('.downloadbutton_link').length) {
+	console.warn('Display page discovered.')
+	$('#like').click(function() {
+		$.ajax({
+			type: "POST",
+			url: $('#like').attr('data-url'),
+			success: function(data, status, xhr) {
+				if (data.status === 'removed like') {
+					$('#like').css('border', '1px solid #c2c2c2');
+					$('#like img').addClass('grayscale');
+				} else if (data.status == 'liked submission') {
+					$('#like').css('border', '1px solid #8fc78b');
+					$('#dislike').css('border', '1px solid #c2c2c2');
+					$('#dislike img').addClass('grayscale');
+					$('#like img').removeClass('grayscale');
+				}
+			},
+			dataType: 'json'
+		});
+	});
+
+	$('#dislike').click(function() {
+		$.ajax({
+			type: "POST",
+			url: $('#dislike').attr('data-url'),
+			success: function(data, status, xhr) {
+				if (data.status === 'removed dislike') {
+					$('#dislike').css('border', '1px solid #c2c2c2');
+					$('#dislike img').addClass('grayscale');
+				} else if (data.status == 'disliked submission') {
+					$('#dislike').css('border', '1px solid #4DA2DE');
+					$('#like').css('border', '1px solid #c2c2c2');
+					$('#like img').addClass('grayscale');
+					$('#dislike img').removeClass('grayscale');
+				}
+			},
+			dataType: 'json'
+		});
+	});
 }
 });

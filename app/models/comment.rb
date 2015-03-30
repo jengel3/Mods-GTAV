@@ -10,4 +10,6 @@ class Comment
 
   belongs_to :user
   belongs_to :submission
+  
+  # has_many :likes, :as => :likable, :dependent => :destroy
 end

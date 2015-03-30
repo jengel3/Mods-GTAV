@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   resources :submissions do
     resources :images
     resources :comments
+    post :like
+    post :dislike
   end
 
   root 'submissions#index'

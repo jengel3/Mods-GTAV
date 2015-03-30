@@ -9,11 +9,11 @@
     margin-bottom:10px;
 }
 .contentpage_basic_mod_info_wrap {
- height:354px;
- width:565px;
- display: inline-block;
- margin:0;
- margin-left:5px;
+   height:354px;
+   width:565px;
+   display: inline-block;
+   margin:0;
+   margin-left:5px;
 }
 
 .contentpage_titlewrap {
@@ -150,12 +150,24 @@
 
 .likebutton {
     width: 61px;
+    border: 1px solid #c2c2c2;
+    /* Liked: */
+    /*border: 1px solid #8fc78b;*/
+}
+
+.liked {
     border: 1px solid #8fc78b;
 }
 
 .dislikebutton {
     width: 74px;
     border: 1px solid #c2c2c2;
+    /*Disliked*/
+    /*border: 1px solid #4DA2DE;*/
+}
+
+.disliked {
+    border: 1px solid #4DA2DE;
 }
 
 .ratingbutton_text {

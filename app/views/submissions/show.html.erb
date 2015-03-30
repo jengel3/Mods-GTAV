@@ -25,20 +25,19 @@
 			<% @submission.thumbnails.each do |thumb| %>
 			<a href=""><div class="contentpage_individual_screen_wrap"><img class="contentpage_screenshot" src="<%= thumb.image_url(:thumb) %>" /></div></a>
 			<% end %>
-			
 		</div>
 	</div>
 	<div class="contentpage_likebar_wrap">
 		<a class="downloadbutton_link" href=""><div class="downloadbutton downloadbuttonsmall">
 			<div class="downloadbutton_text downloadbutton_textsmall">Download</div>
 		</div></a>
-		<div class="ratingbutton likebutton">
-			<img src="<%= asset_path('likebuttonicon.png') %>" class="ratingbuttonicon" />
+		<div class="ratingbutton likebutton" id='like' data-url="<%= submission_like_path(@submission, format: :json) %>">
+			<img src="<%= asset_path('like.png') %>" class="ratingbuttonicon <%= @submission.has_liked(current_user) ? '' : 'grayscale' %>" />
 			<div class="ratingbutton_text">Like</div>
 		</div>
-		<div class="ratingbutton dislikebutton">
-			<img src="<%= asset_path('dislikebuttonicon.png') %>" class="ratingbuttonicon" />
-			<div  class="ratingbutton_text">Disike</div>
+		<div class="ratingbutton dislikebutton" id='dislike' data-url="<%= submission_dislike_path(@submission, format: :json) %>">
+			<img src="<%= asset_path('dislikecolor.png') %>" class="ratingbuttonicon <%= @submission.has_disliked(current_user) ? '' : 'grayscale' %>" />
+			<div  class="ratingbutton_text">Dislike</div>
 		</div>
 		<div class="ratingresults">86 people like this mod</div>
 	</div>

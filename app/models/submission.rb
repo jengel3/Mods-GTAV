@@ -10,7 +10,6 @@ class Submission
   field :name, type: String
   field :body, type: String
   field :baked_body, type: String
-  field :type, type: String
   field :download_count, type: Integer, default: 0
   field :approved_at, type: Time
 
@@ -20,6 +19,7 @@ class Submission
   field :like_count, type: Integer, default: 0
   field :dislike_count, type: Integer, default: 0
   field :download_count, type: Integer, default: 0
+  field :avg_rating, type: Integer, default: 0
 
   alias_attribute :title, :name
   alias_attribute :description, :body
@@ -28,10 +28,12 @@ class Submission
 
   belongs_to :creator, class_name: 'User', inverse_of: :submissions
   validates :name, uniqueness: true, presence: true
-  # validates :type, presence: true # Add inclusion
   
-  has_many :comments
-  has_many :images
+  has_many :comments, :dependent => :destroy
+  has_many :images, :dependent => :destroy
+
+  has_many :likes, :as => :likable, :dependent => :destroy
+  has_many :dislikes, :as => :dislikable, :dependent => :destroy
 
   def bake_description
     self.baked_body = bake_markdown(self.body)
@@ -49,5 +51,19 @@ class Submission
     if user
       user.admin || creator == user
     end
+  end
+
+  def has_liked(user = nil)
+    if user
+      return likes.where(:user => user).exists?
+    end
+    return false
+  end
+
+  def has_disliked(user = nil)
+    if user
+      return dislikes.where(:user => user).exists?
+    end
+    return false
   end
 end
