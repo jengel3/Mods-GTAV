@@ -35,6 +35,17 @@ class Submission
   has_many :likes, :as => :likable, :dependent => :destroy
   has_many :dislikes, :as => :dislikable, :dependent => :destroy
 
+  def update_rating
+    if dislike_count > like_count
+      self.avg_rating = (dislike_count - like_count) * -1
+    elsif like_count > dislike_count
+      self.avg_rating = like_count - dislike_count
+    else
+      self.avg_rating = 0
+    end
+    self.save
+  end
+
   def bake_description
     self.baked_body = bake_markdown(self.body)
   end

@@ -19,6 +19,15 @@ class SubmissionsController < ApplicationController
     @sort = params[:c_sort] ||= session['c_sort'] ||= @sort_options.values[0]
     session['c_sort'] = @sort
     @comments = comment_sort(@submission.comments.unscoped.all).page(params[:c_page]).per(10).reject(&:new_record?)
+    @rating = nil
+    if current_user
+      if @submission.has_liked(current_user)
+        return @rating = 'like'
+      elsif @submission.has_disliked(current_user)
+        @rating = 'dislike'
+      end
+    end
+
   end
 
   def like
@@ -27,17 +36,22 @@ class SubmissionsController < ApplicationController
     current_like = @submission.likes.where(:user => current_user).first
     if current_like
       current_like.destroy
+      @submission.like_count -= 1
+      @submission.update_rating
       respond_to do |format|
-        format.json { render json: { :status => 'removed like' }, status: 200 }
+        format.json { render json: { :status => 'removed like', :count => @submission.avg_rating }, status: 200 }
       end
     else
       current_dislike = @submission.dislikes.where(:user => current_user).first
       if current_dislike
+        @submission.dislike_count -= 1
         current_dislike.destroy
       end
       @submission.likes.create(:user => current_user)
+      @submission.like_count += 1
+      @submission.update_rating
       respond_to do |format|
-        format.json { render json: { :status => 'liked submission' }, status: 200 }
+        format.json { render json: { :status => 'liked submission', :count => @submission.avg_rating }, status: 200 }
       end
     end
   end
@@ -48,17 +62,22 @@ class SubmissionsController < ApplicationController
     current_dislike = @submission.dislikes.where(:user => current_user).first
     if current_dislike
       current_dislike.destroy
+      @submission.dislike_count -= 1
+      @submission.update_rating
       respond_to do |format|
-        format.json { render json: { :status => 'removed dislike' }, status: 200 }
+        format.json { render json: { :status => 'removed dislike', :count => @submission.avg_rating }, status: 200 }
       end
     else
       current_like = @submission.likes.where(:user => current_user).first
       if current_like
+        @submission.like_count -= 1
         current_like.destroy
       end
       @submission.dislikes.create(:user => current_user)
+      @submission.dislike_count += 1
+      @submission.update_rating
       respond_to do |format|
-        format.json { render json: { :status => 'disliked submission' }, status: 200 }
+        format.json { render json: { :status => 'disliked submission', :count => @submission.avg_rating }, status: 200 }
       end
     end
   end

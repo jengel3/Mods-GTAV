@@ -68,6 +68,7 @@ $('.uploadmod_individual_screenshot_wrap').click(function(e) {
 					$('#dislike img').addClass('grayscale');
 					$('#like img').removeClass('grayscale');
 				}
+				$('#rating').text(Math.abs(data.count) + ' ' + ((data.count > 1 || data.count == 0) ? 'people' : 'person') + ' ' + (data.count < 0 ? 'dislike' : 'like') + (Math.abs(data.count) === 1 ? 's' : '') + ' this mod');
 			},
 			dataType: 'json'
 		});
@@ -87,6 +88,7 @@ $('.uploadmod_individual_screenshot_wrap').click(function(e) {
 					$('#like img').addClass('grayscale');
 					$('#dislike img').removeClass('grayscale');
 				}
+				$('#rating').text(Math.abs(data.count) + ' ' + ((data.count > 1 || data.count == 0) ? 'people' : 'person') + ' ' + (data.count < 0 ? 'dislike' : 'like') + (Math.abs(data.count) === 1 ? 's' : '') + ' this mod');
 			},
 			dataType: 'json'
 		});

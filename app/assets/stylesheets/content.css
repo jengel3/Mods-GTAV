@@ -148,9 +148,12 @@
     margin-right: 3px;
 }
 
+.neither {
+    border: 1px solid #c2c2c2;
+}
+
 .likebutton {
     width: 61px;
-    border: 1px solid #c2c2c2;
     /* Liked: */
     /*border: 1px solid #8fc78b;*/
 }
@@ -161,7 +164,6 @@
 
 .dislikebutton {
     width: 74px;
-    border: 1px solid #c2c2c2;
     /*Disliked*/
     /*border: 1px solid #4DA2DE;*/
 }
