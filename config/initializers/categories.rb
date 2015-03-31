@@ -1,0 +1,1 @@
+CATEGORIES = {:vehicles => ["Jeep", "Lamborghini", "Ford", "Nissan", "Subaru", "Ferrari"], :weapons => ["SMG", "Assault Rifle", "Sniper", "Shotgun"], :maps => ["Real Life", "Island", "Large", "Medium", "Small"], :textures => ["High Resolution"]}

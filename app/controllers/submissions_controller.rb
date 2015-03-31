@@ -24,6 +24,7 @@ class SubmissionsController < ApplicationController
     }
     if category
       @submissions = @submissions.where(:category => category)
+      @subcategories = CATEGORIES[category.to_sym] || nil
     end
     if subcategory
       @submissions = @submissions.where(:sub_category => subcategory)

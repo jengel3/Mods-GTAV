@@ -4,4 +4,17 @@ module SubmissionsHelper
     type += 's' if submission.avg_rating.abs == 1
     submission.avg_rating.abs.to_s + ' ' + 'person'.pluralize(submission.avg_rating.abs) + ' ' + type + ' this mod.'
   end
+
+  def active_cat(category)
+    category == params[:category] || (params[:action] == 'home' && category == 'home') ? 'active_menu_item' : ''
+  end
+
+  def active_sub(subcategory)
+    param = params[:subcategory]
+    if param && param != 'all'
+      param.humanize.titleize == subcategory ? 'active_subcategory' : ''
+    elsif (!param || param == 'all') && subcategory == 'all'
+      'active_subcategory'
+    end
+  end
 end
