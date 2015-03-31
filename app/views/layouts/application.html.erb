@@ -68,7 +68,11 @@
 
 	<div class="fullpagewrap">
 		<div class="logoheader">
-		</div>
+            <div class="innerlogoheader">
+                <a href="#"><img class="logo" src="<%= asset_path('modsgtalogo.png') %>" /></a>
+                <a href="#"><img class="twitter" src="<%= asset_path('twitterlogo.png') %>" /></a>
+            </div>
+        </div>
 		<div class="header">
 			<div class="navigation_bar_wrap">
 				<ul>
@@ -214,7 +218,7 @@
 				<div class="mainpage">
 					<%= yield %>
 				</div>
-				<div class="right_sidebar_preview"><div class="sidebar_expand_button"> < </div></div>
+				<div class="right_sidebar_preview"><div class="sidebar_expand_button"> <img src="<%= asset_path('expandsidebar.png') %>" alt="<" /> </div></div>
 				<div class="right_sidebar">
 					<a href="#" class="close_sidebar" pm>&#10006;</a>
 					<div class="userprofilebox">
