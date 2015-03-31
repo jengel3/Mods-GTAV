@@ -3,7 +3,7 @@
     <div class="mod_thumb_and_title_wrap">
         <div class="modthumbnailwrap">
             <div class="submissiondate"><%= relative(submission.updated_at) %></div>
-            <a href="<%= submission_path(submission) %>"><img class="modthumbnail" src="<%= image_path('thumbnail5.jpg') %>" /></a>
+            <a href="<%= submission_path(submission) %>"><%= submission.main_image ? image_tag(submission.main_image.image_url(:preview)) : '' %></a>
         </div>
         <div class="modtitlewrap">
             <%= link_to submission.name, submission_path(submission), class: 'modtitle' %>

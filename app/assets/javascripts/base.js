@@ -1,5 +1,5 @@
 function doResize() {
-	if ($(window).width() <= 1160){  
+	if ($(window).width() <= 1160) {  
 		$('.right_sidebar_preview, .close_sidebar').on('click', function(e) {
 			e.preventDefault();
 			toggleSidebar();
@@ -72,5 +72,7 @@ $(document).ready(function() {
 	});
 	doResize();
 	$(window).on('resize', doResize);
-	handleSidebarLoad();  
+	if ($(window).width() <= 1160) { 
+		handleSidebarLoad();  
+	}
 });

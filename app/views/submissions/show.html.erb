@@ -23,7 +23,7 @@
 		<div class="contentpage_screenshots_wrap">
 
 			<% @submission.thumbnails.each do |thumb| %>
-			<a href=""><div class="contentpage_individual_screen_wrap"><img class="contentpage_screenshot" src="<%= thumb.image_url(:thumb) %>" /></div></a>
+			<a href="" class="screen_wrapper"><div class="contentpage_individual_screen_wrap"><img class="contentpage_screenshot" src="<%= thumb.image_url(:thumb) %>" title='Click to display original image'/></div></a>
 			<% end %>
 		</div>
 	</div>
@@ -85,48 +85,3 @@
 		<div class="load_comments_wrap"><input class="load_comments_button" type="submit" value="Load More" /></div>
 	</div>
 </div>
-
-
-<%= content_for :scripts do %>
-<script type="text/javascript">
-	var current_page = 1;
-	$(document).ready(function(){
-		$('.collapse_description_icon').on('click', function() {
-			$('.contentpage_descriptionwrap').addClass('collapse_description');
-			$('.contentpage_commentswrap').addClass('commentswrap_expanded');
-			$('.expand_description').addClass('expand_description_show_icon');
-		});
-
-		$('.expand_description').on('click', function() {
-			$('.contentpage_descriptionwrap').removeClass('collapse_description');
-			$('.contentpage_commentswrap').removeClass('commentswrap_expanded');
-			$('.expand_description').removeClass('expand_description_show_icon');
-		});
-
-		$(".usercommentwrap").on({
-			mouseenter: function () {
-				$('.likecomment_button', this).show();
-			},
-			mouseleave: function () {
-				$('.likecomment_button', this).hide();
-			}
-		});
-
-		$('.load_comments_wrap').click(loadComments);
-	});
-
-	function loadComments() {
-		var api_url = $('.contentpage_commentswrap').attr('data-api');
-		var sort = $('.contentpage_commentswrap').attr('data-sort');
-
-		current_page += 1;
-		$.getJSON(api_url + '?c_sort=' + sort + '&c_page=' + current_page, function(data) {
-			var parent = $('.load_comments_wrap');
-			$.each( data, function( key, val ) {
-				$(parent).before("<div class='usercommentwrap'><div class='commentname'>" + val['user']['username'] + " <div class='likecomment_score'>+3 <a href='' class='likecomment_button'>Like</a></div></div><div class='commenttext'>" + val['text'] + "</div></div>")
-
-			});
-		});
-	}
-</script>
-<% end %>

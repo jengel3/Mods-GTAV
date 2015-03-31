@@ -53,7 +53,7 @@ $('.uploadmod_individual_screenshot_wrap').click(function(e) {
 	$('.open-screenshot').magnificPopup('open');
 })
 } else if ($('.downloadbutton_link').length) {
-	console.warn('Display page discovered.')
+	// Likes and dislikes
 	$('#like').click(function() {
 		$.ajax({
 			type: "POST",
@@ -93,5 +93,54 @@ $('.uploadmod_individual_screenshot_wrap').click(function(e) {
 			dataType: 'json'
 		});
 	});
+
+	$('.screen_wrapper').click(function(e) {
+		e.preventDefault();
+		console.log(e);
+		var src = '';
+		src = $(e.target).attr('src');
+		var new_src = src.replace('thumb_', '');
+		$('.contentpage_mainthumb img').attr('src', new_src);
+	});
+
+	// Random display options
+	$('.collapse_description_icon').on('click', function() {
+		$('.contentpage_descriptionwrap').addClass('collapse_description');
+		$('.contentpage_commentswrap').addClass('commentswrap_expanded');
+		$('.expand_description').addClass('expand_description_show_icon');
+	});
+
+	$('.expand_description').on('click', function() {
+		$('.contentpage_descriptionwrap').removeClass('collapse_description');
+		$('.contentpage_commentswrap').removeClass('commentswrap_expanded');
+		$('.expand_description').removeClass('expand_description_show_icon');
+	});
+
+
+	// Comments
+	$(".usercommentwrap").on({
+		mouseenter: function () {
+			$('.likecomment_button', this).show();
+		},
+		mouseleave: function () {
+			$('.likecomment_button', this).hide();
+		}
+	});
+
+	var current_page = 1;
+	function loadComments() {
+		var api_url = $('.contentpage_commentswrap').attr('data-api');
+		var sort = $('.contentpage_commentswrap').attr('data-sort');
+
+		current_page += 1;
+		$.getJSON(api_url + '?c_sort=' + sort + '&c_page=' + current_page, function(data) {
+			var parent = $('.load_comments_wrap');
+			$.each( data, function( key, val ) {
+				$(parent).before("<div class='usercommentwrap'><div class='commentname'>" + val['user']['username'] + " <div class='likecomment_score'>+3 <a href='' class='likecomment_button'>Like</a></div></div><div class='commenttext'>" + val['text'] + "</div></div>")
+
+			});
+		});
+	}
+	$('.load_comments_wrap').click(loadComments);
 }
 });
