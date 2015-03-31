@@ -1,4 +1,5 @@
 <% if current_user %>
+<!-- Logged in user -->
 <div class="user_avatar_wrap"><%= avatar(current_user) %></div>
 <div class="userinfo">
 	<div class="username">
@@ -19,10 +20,43 @@
 	</div>
 	<div class="userdesc">Mod Creator</div>
 </div>
+<!-- User stats -->
+<tr>
+	<td class="stat_title"><img class="user_stat_icon accentcolor" src="<%= asset_path('hearticon.png') %>" /></td>
+	<td class="stat_title"><img class="user_stat_icon accentcolor" src="<%= asset_path('commenticon.png') %>" /></td>
+	<td class="stat_title"><img class="user_stat_icon accentcolor" src="<%= asset_path('downloadicon.png') %>" /></td>
+</tr>
+<tr>
+	<td><span class="stat_amount">0</span></td>
+	<td><span class="stat_amount"><%= current_user.comments.count %></span></td>
+	<td> <span class="stat_amount">0</span></td>
+</tr>
+<!-- End stats -->
+<!-- End logged in user -->
 <% else %>
 
 <input class="registerbutton" type="submit" value="Register" />
 <p class="signin_option">Have an account? <a class="signinlink" href="" onclick="return false;">Sign in.</a></p>
+
+<!-- Guest user -->
+<div class="user_avatar_wrap"><%= image_tag('default-avatar.png') %></div>
+<div class="userinfo">
+	<div class="username">
+		<div id="contentoptions">
+			<ul>
+				<li>
+					<a class="usernamelink" href="#" onclick="return false;">Guest User</a>
+				</li>
+			</ul>
+		</div>
+
+		<div class="user_online_indicator"></div>
+	</div>
+	<div class="userdesc">Visitor</div>
+</div>
+<!-- End guest user -->
+
+<!-- Authentication forms -->
 <div class="inputwrap signinwrap" style='display: none;'>
 	<%= form_for(:user, url: user_session_path) do |f| %>
 	<%= f.text_field :login, class: 'login-input', autocomplete: 'off', type: 'text', placeholder: 'Email or Username' %>
@@ -48,4 +82,5 @@
 	<div class="forgotwrap">An email will be sent to your account with instructions on changing your password</div>
 	<% end %>
 </div>
+<!-- End authentication forms -->
 <% end %>
