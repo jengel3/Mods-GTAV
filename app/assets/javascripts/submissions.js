@@ -139,5 +139,29 @@ $('.uploadmod_individual_screenshot_wrap').click(function(e) {
 		});
 	}
 	$('.load_comments_wrap').click(loadComments);
+
+	function likeComment(e) {
+		e.preventDefault();
+		$.ajax({
+			type: "POST",
+			url: $(e.target).attr('data-url'),
+			success: function(data, status, xhr) {
+				if (data.status === 'removed like') {
+					$(e.target).removeClass('liked_comment');
+					$(e.target).parent().removeClass('liked_comment');
+				} else if (data.status == 'liked comment') {
+					$(e.target).addClass('liked_comment');
+					$(e.target).parent().addClass('liked_comment');
+				}
+				var parent = $(e.target).parent();
+				var a = $(parent).find('a');
+				$(parent).html('+' + data.count);
+				$(parent).append(a);
+				a.click(likeComment);
+			},
+			dataType: 'json'
+		});
+	}
+	$('.likecomment_button').click(likeComment);
 }
 });

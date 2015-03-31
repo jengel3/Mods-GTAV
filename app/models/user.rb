@@ -43,9 +43,10 @@ class User
   has_one :api_key, :dependent => :destroy
 
   # Submission likes
-  has_many :liked_submissions, :class_name => "Like", :dependent => :destroy
-  has_many :disliked_submissions, :class_name => "Dislike", :dependent => :destroy
-  # has_many :liked_comments, :class_name => "Like", :dependent => :destroy
+  has_many :liked_submissions, :as => :likable, :dependent => :destroy
+  has_many :disliked_submissions, :as => :dislikable, :dependent => :destroy
+  has_many :liked_comments, :as => :likable, :dependent => :destroy
+  has_many :blog_posts, :inverse_of => :author, :dependent => :destroy
 
   ## Confirmable
   # field :confirmation_token,   type: String

@@ -139,6 +139,7 @@
 		<div class="fullcontentwrap">
 			<div class="sorting_options_wrap">
 				<div class="modsortingoptions_wrap">
+					<% if params[:controller] == 'submissions' && params[:action] == 'index' %>
 					<div id="modsortingoptions">
 						<ul>
 							<li><a href="<%= url_for(:sort => @sort_options[@sort]) %>"><%= @sort %><span class="downarrowsymbol"><img src="<%= asset_path('downarrow.png') %>" /></span></a>
@@ -163,6 +164,7 @@
 							</li>
 						</ul>
 					</div>
+					<% end %>
 				</div>
 				<% if params[:controller] == 'submissions' && params[:action] == 'show' %>
 				<%= link_to 'Edit Mod', edit_submission_path(@submission), class: 'addmodbutton editmodbutton' %>

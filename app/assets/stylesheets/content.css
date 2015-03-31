@@ -331,8 +331,8 @@ a.likecomment_button {
     color: #8a8989;
     text-decoration: none;
 }
-a.likecomment_button:hover {
-    color:#42b84a;
+.liked_comment {
+    color:#42b84a !important;
 }
 .commenttext {
     font-size:15px;

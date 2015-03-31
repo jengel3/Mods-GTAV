@@ -1,5 +1,27 @@
 class CommentsController < ApplicationController
   before_filter :authenticate_user!, only: [:create]
+
+  def like
+    return render json: { :status => "not authenticated" } if !current_user
+    @comment = Comment.find(params[:comment_id])
+    current_like = @comment.likes.where(:user => current_user).first
+    if current_like
+      current_like.destroy
+      @comment.like_count -= 1
+      @comment.save
+      respond_to do |format|
+        format.json { render json: { :status => 'removed like', :count => @comment.like_count }, status: 200 }
+      end
+    else
+      @comment.likes.create(:user => current_user)
+      @comment.like_count += 1
+      @comment.save
+      respond_to do |format|
+        format.json { render json: { :status => 'liked comment', :count => @comment.like_count }, status: 200 }
+      end
+    end
+  end
+
   def create
     @comment = Comment.new(comment_params)
     @submission = Submission.find(params[:submission_id])

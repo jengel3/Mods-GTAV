@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   
   resources :submissions do
     resources :images
-    resources :comments
+    resources :comments do
+      post :like
+    end
     post :like
     post :dislike
   end

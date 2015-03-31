@@ -50,38 +50,5 @@
 		<div class="contentpage_uploaddate tooltip" title='<%= exact(@submission.created_at) %>'><b>Upload Date:</b> <%= relative(@submission.created_at) %></div>
 		<div class="contentpage_lastupdated tooltip" title='<%= exact(@submission.updated_at) %>'><b>Last Updated:</b> <%= relative(@submission.updated_at) %></div>
 	</div>
-	<div class="contentpage_commentswrap" data-api="<%= url_for([:api, :v1, @submission, :comments]) %>" data-sort="<%= @sort %>">
-		<div class="contentpage_headertitles">Comments
-
-			<div id="contentoptions">
-				<ul>
-					<li>
-						<% if @sort && @sort_options.key(@sort) %>
-						<a href="#current"><%= @sort_options.key(@sort) %> <span class="downarrowsymbol">&#x25BC;</span></a>
-						<% @sort_options.delete(@sort_options.key(@sort)) %>
-						<% else %>
-						<a href="#current"><%= @sort_options.keys[0] %> <span class="downarrowsymbol">&#x25BC;</span></a>
-						<% @sort_options.delete(@sort_options.keys[0]) %>
-						<% end %>
-						<ul>
-							<% @sort_options.each do |k, v| %>
-							<li><%= link_to k, params.merge(c_sort: v) %></li>
-							<% end %>
-						</ul>
-					</li>
-				</ul>
-			</div>
-		</div>
-		<%= form_for([@submission, @submission.comments.build]) do |f| %>
-		<%= f.text_field :text, class: 'commentinput', placeholder: 'What do you think?' %>
-		<%= f.submit 'Submit', class: 'comment_submit_button' %>
-		<% end %>
-		<% @comments.each do |comment| %>
-		<div class="usercommentwrap">
-			<div class="commentname"><%= comment.user.username %> <div class="likecomment_score">+3 <a href="" class="likecomment_button">Like</a></div></div>
-			<div class="commenttext"><%= comment.text %></div>
-		</div>
-		<% end %>
-		<div class="load_comments_wrap"><input class="load_comments_button" type="submit" value="Load More" /></div>
-	</div>
+	<%= render 'comments' %>
 </div>
