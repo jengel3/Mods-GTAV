@@ -19,4 +19,8 @@ module ApplicationHelper
     sanitized = Sanitize.fragment(html, :elements => @@elems)
     return sanitized
   end
+
+  def active_cat(category)
+    category == params[:category] || (params[:action] == 'home' && category == 'home') ? 'active_menu_item' : ''
+  end
 end

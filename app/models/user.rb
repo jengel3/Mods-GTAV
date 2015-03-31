@@ -45,8 +45,7 @@ class User
   # Submission likes
   has_many :liked_submissions, :class_name => "Like", :dependent => :destroy
   has_many :disliked_submissions, :class_name => "Dislike", :dependent => :destroy
-  # Comment likes
-  # has_many :liked_comments, :class_name => "Like", :inverse_of => :liker
+  # has_many :liked_comments, :class_name => "Like", :dependent => :destroy
 
   ## Confirmable
   # field :confirmation_token,   type: String

@@ -1,19 +1,10 @@
 $(document).ready(function () {
-	var willUploadCount = 0;
-	var uploadedCount = 0;
 	var uploadStarted = false;
 	if ($('#fileupload').length) {
 		$('#fileupload').fileupload({
 			dataType: 'json',
 			done: function (e, data) {
 				$("#upload_btn").off('click');
-				uploadedCount += 1;
-				if (uploadedCount == willUploadCount) {
-					$('.progress-bar span').text('Upload complete! Refreshing...'); 
-					setTimeout(function(){ 
-						location.reload();
-					}, 1000);
-				}
 			},
 			add: function (e, data) {
 				$('.open-screenshot').magnificPopup('open');
@@ -41,6 +32,12 @@ $(document).ready(function () {
 				var progress = parseInt(data.loaded / data.total * 100, 10);
 				$('.progress-bar span').text(progress + '%');
 				$('.progress-bar span').css('width', progress + '%');
+				if (progress >= 100) {
+					$('.progress-bar span').text('Upload complete! Refreshing...'); 
+					setTimeout(function(){ 
+						location.reload();
+					}, 1000);
+				}
 			}
 		});
 $('.open-screenshot').magnificPopup({

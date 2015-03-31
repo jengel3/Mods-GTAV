@@ -71,12 +71,17 @@ input.uploadmod_title:focus {
 }
 .uploadmod_screenshots_wrap {
     margin-top:6px;
-    height:312px;
-    max-height:312px;
+    height:318px;
+    max-height:314px;
+    width:302px;
+    margin-left:6px;
+}
+.uploadmod_inner_screenshots_wrap {
+    height:auto;
+    min-height:302px;
     border:1px solid #c3cbd7;
     width:282px;
-    margin-left:6px;
-    margin-left:6px;
+    padding-bottom:10px;
 }
 .uploadmod_addsceenshot {
     text-decoration: none;

@@ -4,7 +4,19 @@ class SubmissionsController < ApplicationController
   before_filter :authenticate_user!, only: [:destroy, :edit, :create, :new, :update]
 
   def index
+    category = params[:category]
+    subcategory = params[:subcategory]
+    sort = params[:sort]
     @submissions = Submission.all
+    if category
+      @submissions = @submissions.where(:category => category)
+    end
+    if subcategory
+      @submissions = @submissions.where(:sub_category => subcategory)
+    end
+    if sort
+      @submissions = @submissions 
+    end
   end
 
   def show
@@ -27,7 +39,6 @@ class SubmissionsController < ApplicationController
         @rating = 'dislike'
       end
     end
-
   end
 
   def like
@@ -119,7 +130,27 @@ class SubmissionsController < ApplicationController
   end
 
   def submission_params
-    params.require(:submission).permit(:body, :name)
+    params.require(:submission).permit(:body, :name, :category, :sub_category)
+  end
+
+  def time_sort(timeframe)
+    case timeframe.downcase
+    when 'now'
+    when 'week'
+    when 'month'
+    when 'all'
+    else
+    end
+  end
+
+  def reg_sort(sort)
+    case sort.downcase
+    when 'newest'
+    when 'updated'
+    when 'downloads'
+    when 'likes'
+    else
+    end
   end
 
 end

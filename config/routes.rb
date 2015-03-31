@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     post :dislike
   end
 
+  get '/c/(:category/(:subcategory))', to: 'submissions#index', as: 'category'
+
   root 'submissions#index'
 
   get '/p/:username', to: 'application#profile', as: 'profile'
