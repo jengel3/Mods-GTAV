@@ -158,9 +158,9 @@ class SubmissionsController < ApplicationController
     when 'today'
       submissions.where(:approved_at.gte => Time.now - 24.hours)
     when 'week'
-      submissions.where(:approved_at.gta => Time.now - 7.days)
+      submissions.where(:approved_at.gte => Time.now - 7.days)
     when 'month'
-      submissions.where(:approved_at.gta => Time.now - 1.month)
+      submissions.where(:approved_at.gte => Time.now - 1.month)
     else
       submissions
     end

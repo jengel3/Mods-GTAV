@@ -42,10 +42,10 @@ class User
   has_many :comments, :dependent => :destroy
   has_one :api_key, :dependent => :destroy
 
-  # Submission likes
-  has_many :liked_submissions, :as => :likable, :dependent => :destroy
-  has_many :disliked_submissions, :as => :dislikable, :dependent => :destroy
-  has_many :liked_comments, :as => :likable, :dependent => :destroy
+  # likes
+  has_many :liked_submissions, :as => :likable, :dependent => :destroy, class_name: 'Like'
+  has_many :disliked_submissions, :as => :dislikable, :dependent => :destroy, class_name: 'Dislike'
+  has_many :liked_comments, :as => :likable, :dependent => :destroy, class_name: 'Like'
   has_many :blog_posts, :inverse_of => :author, :dependent => :destroy
 
   ## Confirmable

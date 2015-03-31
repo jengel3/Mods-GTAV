@@ -11,7 +11,7 @@ class Submission
   field :body, type: String
   field :baked_body, type: String
   field :download_count, type: Integer, default: 0
-  field :approved_at, type: Time
+  field :approved_at, type: Time, default: Time.now
 
   field :category
   field :sub_category

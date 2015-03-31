@@ -1,5 +1,5 @@
-class RegistrationsController < Devise::RegistrationsController
-  # respond_to :json
+class Users::RegistrationsController < Devise::RegistrationsController
+  respond_to :json
 
   # def create
   #  super

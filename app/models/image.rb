@@ -4,7 +4,6 @@ class Image
 
   before_create :remove_old
 
-  field :caption, type: String
   field :location, type: String, default: "Main"
 
   validates :location, presence: true, inclusion: { in: %w[Thumbnail Main] }
