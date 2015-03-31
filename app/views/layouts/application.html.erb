@@ -137,21 +137,24 @@
 				<div class="modsortingoptions_wrap">
 					<div id="modsortingoptions">
 						<ul>
-							<li><a href="#">Newest<span class="downarrowsymbol"><img src="<%= asset_path('downarrow.png') %>" /></span></a>
+							<li><a href="<%= url_for(:sort => @sort_options[@sort]) %>"><%= @sort %><span class="downarrowsymbol"><img src="<%= asset_path('downarrow.png') %>" /></span></a>
 								<ul>
-									<li><a href="#">Popular</a></li>
-									<li><a href="#">Most Liked</a></li>
+									<% @sort_options.delete(@sort) %>
+									<% @sort_options.each do |k, v| %>
+									<li><%= link_to k, params.merge(:sort => v) %></li>
+									<% end %>
 								</ul>
 							</li>
 						</ul>
 					</div>
 					<div id="modsortingoptions">
 						<ul>
-							<li><a href="#">Now<span class="downarrowsymbol"><img src="<%= asset_path('downarrow.png') %>" /></span></a>
+							<li><a href="<%= url_for(:time => @time_options[@time]) %>"><%= @time %><span class="downarrowsymbol"><img src="<%= asset_path('downarrow.png') %>" /></span></a>
 								<ul>
-									<li><a href="#">This Week</a></li>
-									<li><a href="#">This Month</a></li>
-									<li><a href="#">All Time</a></li>
+									<% @time_options.delete(@time) %>
+									<% @time_options.each do |k, v| %>
+									<li><%= link_to k, params.merge(:time => v) %></li>
+									<% end %>
 								</ul>
 							</li>
 						</ul>

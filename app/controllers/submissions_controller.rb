@@ -6,17 +6,36 @@ class SubmissionsController < ApplicationController
   def index
     category = params[:category]
     subcategory = params[:subcategory]
-    sort = params[:sort]
+    @sort = params[:sort]
+    @time = params[:time]
     @submissions = Submission.all
+    @sort_options = {
+      'Newest' => 'newest',
+      'Oldest' => 'oldest',
+      'Updated' => 'updated',
+      'Popular' => 'downloads',
+      'Most Liked' => 'likes'
+    }
+    @time_options = {
+      'Now' => 'today', 
+      'This Week' => 'week',
+      'This Month' => 'month',
+      'All Time' => 'all'
+    }
     if category
       @submissions = @submissions.where(:category => category)
     end
     if subcategory
       @submissions = @submissions.where(:sub_category => subcategory)
     end
-    if sort
-      @submissions = @submissions 
+    if @sort
+      @submissions = reg_sort(@sort, @submissions) 
     end
+    if @time && @time != 'all'
+      @submissions = time_sort(@time, @submissions)
+    end
+    @sort = @sort_options.key(@sort) || @sort_options.keys[0]
+    @time = @time_options.key(@time) || @time_options.keys[0]
   end
 
   def show
@@ -133,24 +152,33 @@ class SubmissionsController < ApplicationController
     params.require(:submission).permit(:body, :name, :category, :sub_category)
   end
 
-  def time_sort(timeframe)
+  def time_sort(timeframe, submissions)
     case timeframe.downcase
-    when 'now'
+    when 'today'
+      submissions.where(:approved_at.gte => Time.now - 24.hours)
     when 'week'
+      submissions.where(:approved_at.gta => Time.now - 7.days)
     when 'month'
-    when 'all'
+      submissions.where(:approved_at.gta => Time.now - 1.month)
     else
+      submissions
     end
   end
 
-  def reg_sort(sort)
+  def reg_sort(sort, submissions)
     case sort.downcase
     when 'newest'
+      submissions.desc('approved_at')
+    when 'oldest'
+      submissions.asc('approved_at')
     when 'updated'
+      submissions.desc('last_updated')
     when 'downloads'
+      submissions.desc('download_count')
     when 'likes'
+      submissions.desc('avg_rating')
     else
+      submissions
     end
   end
-
 end
