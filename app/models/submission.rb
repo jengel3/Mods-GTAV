@@ -31,6 +31,7 @@ class Submission
   
   has_many :comments, :dependent => :destroy
   has_many :images, :dependent => :destroy
+  has_many :uploads, :dependent => :destroy
 
   has_many :likes, :as => :likable, :dependent => :destroy
   has_many :dislikes, :as => :dislikable, :dependent => :destroy
@@ -56,6 +57,10 @@ class Submission
 
   def thumbnails
     images.where(:location => "Thumbnail")
+  end
+
+  def latest
+    uploads.desc(:created_at).first
   end
 
   def can_manage(user = nil)

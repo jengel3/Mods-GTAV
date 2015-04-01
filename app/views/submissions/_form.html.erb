@@ -16,7 +16,7 @@
   </div>
   <div class="contentpage_download_and_screenshots_wrap uploadmod_download_and_screenshots_wrap">
     <div class="uploadmod_buttons_wrap">
-      <input type="submit" value="Add File" class="uploadmod_buttons" />
+      <a href="#file-popup" class='open-file'><input type="button" value="Add File" class="uploadmod_buttons" /></a>
       <%= f.submit 'Save', class: 'uploadmod_buttons' %>
     </div>
     <div class='upload_select' style='display: none;'>
@@ -30,21 +30,6 @@
         <div class="uploadmod_individual_screenshot_wrap"><a href="#screenshot-popup" class='open-screenshot'><img class="uploadmod_addsceenshot" src="<%= asset_path('upload_thumb.png') %>" ></img></a></div>
       </div>
     </div>
-  </div>
-
-  <div id="screenshot-popup" class="popup mfp-hide">
-    <p>Use this popup to upload images to represent your submission.</p>
-
-    <p>Before uploading, make sure to select a location to display your images in.</p>
-    <input id="fileupload" type="file" name="images[]" data-url="images.json" style='display: none' multiple>
-    <table>
-      <tbody id="file-body">
-      </tbody>
-    </table>
-    <div class="progress-bar" style='display: none;'>
-      <span style="width: 0%"></span>
-    </div>
-    <input type="submit" value='Upload' id="upload_btn" class="upload_submit_button">
   </div>
 
   <a class="expand_description">&#62;</a>
@@ -63,3 +48,42 @@
   </div>
   <% end %>
 </div>
+
+<div id="screenshot-popup" class="popup mfp-hide">
+  <p>Use this popup to upload images to represent your submission.</p>
+
+  <p>Before uploading, make sure to select a location to display your images in.</p>
+  <input id="fileupload" type="file" name="images[]" data-url="images.json" style='display: none' multiple>
+  <table>
+    <tbody id="file-body">
+    </tbody>
+  </table>
+  <div class="progress-bar" style='display: none;'>
+    <span style="width: 0%"></span>
+  </div>
+  <input type="submit" value='Upload' id="upload_btn" class="upload_submit_button">
+</div>
+
+<% if params[:action] == 'edit' %>
+<div id="file-popup" class="popup mfp-hide">
+  <p>Upload your files here. You <b>must</b> enter a name to represent this version, but a changelog is <i>optional</i>.</p>
+
+  <%= form_for [@submission, @submission.uploads.build] do |f| %>
+  <p class='input-group'>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </p>
+  <p class='input-group'>
+    <%= f.label :changelog %>
+    <%= f.text_field :changelog %>
+  </p>
+  <p class='input-group'>
+    <%= f.label :upload %>
+    <%= f.file_field :upload %>
+  </p>
+  <p class='input-group'>
+    <%= f.submit 'Upload' %>
+  </p>
+  <% end %>
+</div>
+<% end %>

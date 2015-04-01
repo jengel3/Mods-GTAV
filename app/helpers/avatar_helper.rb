@@ -13,7 +13,7 @@ module AvatarHelper
     options[:d] = options.delete(:default)
     options.delete(:d) unless options[:d]
     
-    default = @@use_default ? '&d=' + CGI.escape(image_full_url('default_avatar.png')) : ''
+    default = @@use_default ? '&d=' + CGI.escape(image_full_url('michaelavatar.png')) : ''
     
     "#{request.ssl? ? 'https://secure' : 'http://www'}.gravatar.com/avatar/#{md5}?#{options.to_param}#{default}"
   end

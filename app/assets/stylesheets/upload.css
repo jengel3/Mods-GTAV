@@ -59,6 +59,10 @@ input.uploadmod_title:focus {
     height:362px;
     width: 290px;
 }
+.uploadmod_buttons_wrap a:link {
+    color: black;
+    text-decoration: none;
+}
 .uploadmod_buttons_wrap {
     text-align: right;
 }

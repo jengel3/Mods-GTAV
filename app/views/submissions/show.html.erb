@@ -16,12 +16,19 @@
 		
 	</div>
 	<div class="contentpage_download_and_screenshots_wrap">
-		<div class="modfilename">Wickerville.zip (34mb)</div>
-		<a class="downloadbutton_link" href=""><div class="downloadbutton">
+		<% latest = @submission.latest %>
+		<% if latest %>
+		<div class="modfilename"><%= latest.upload.file.filename + ' (' + latest.size + ')' %></div>
+		<a class="downloadbutton_link" href="<%= url_for [@submission, :download] %>"><div class="downloadbutton">
 			<div class="downloadbutton_text">Download</div>
 		</div></a>
+		<% elsif @submission.can_manage(current_user) %>
+		<div class="modfilename nouploads">No files uploaded.</div>
+		<a class="downloadbutton_link" href="<%= url_for [:edit, @submission] %>"><div class="downloadbutton">
+			<div class="downloadbutton_text">Upload File</div>
+		</div></a>
+		<% end %>
 		<div class="contentpage_screenshots_wrap">
-
 			<% @submission.thumbnails.each do |thumb| %>
 			<a href="" class="screen_wrapper"><div class="contentpage_individual_screen_wrap"><img class="contentpage_screenshot" src="<%= thumb.image_url(:thumb) %>" title='Click to display original image'/></div></a>
 			<% end %>

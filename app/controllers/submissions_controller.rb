@@ -1,6 +1,6 @@
 class SubmissionsController < ApplicationController
   include CommentsHelper
-  before_filter :set_submission, only: [:destroy, :edit, :update]
+  before_filter :set_submission, only: [:destroy, :edit, :update, :download]
   before_filter :authenticate_user!, only: [:destroy, :edit, :create, :new, :update]
 
   def index
@@ -111,6 +111,12 @@ class SubmissionsController < ApplicationController
         format.json { render json: { :status => 'disliked submission', :count => @submission.avg_rating }, status: 200 }
       end
     end
+  end
+
+  def download
+    latest = @submission.latest
+    return if !latest
+    send_file latest.upload.path
   end
 
   def destroy

@@ -19,4 +19,8 @@ module ApplicationHelper
     sanitized = Sanitize.fragment(html, :elements => @@elems)
     return sanitized
   end
+
+  def get_request_ip
+    request.headers['X-Forwarded-For'] || request.ip
+  end
 end

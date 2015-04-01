@@ -6,8 +6,12 @@ Rails.application.routes.draw do
     resources :comments do
       post :like
     end
+    resources :uploads do
+      get :download
+    end
     post :like
     post :dislike
+    get :download
   end
 
   get '/c/(:category/(:subcategory))', to: 'submissions#index', as: 'category'
