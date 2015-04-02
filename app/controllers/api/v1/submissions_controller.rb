@@ -69,7 +69,7 @@ class Api::V1::SubmissionsController < Api::V1::BaseController
 
     # Only allow a trusted parameter "white list" through.
     def submission_params
-      fields = [:name, :body, :type]
+      fields = [:name, :body, :category, :sub_category]
       params.permit(fields)
     end
   end

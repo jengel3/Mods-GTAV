@@ -24,10 +24,12 @@ class Submission
   alias_attribute :title, :name
   alias_attribute :description, :body
 
+  validates :name, uniqueness: true, presence: true
+  # Do category validations, inclusion, custom
+
   slug :name, history: true
 
   belongs_to :creator, class_name: 'User', inverse_of: :submissions
-  validates :name, uniqueness: true, presence: true
   
   has_many :comments, :dependent => :destroy
   has_many :images, :dependent => :destroy

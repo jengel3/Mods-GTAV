@@ -14,6 +14,8 @@ class Comment
   
   has_many :likes, :as => :likable, :dependent => :destroy
 
+  index({ submission_id: 1 }, { unique: true, name: "comment_sub_index" })
+
   def has_liked(user = nil)
     if user
       return likes.where(:user => user).exists?

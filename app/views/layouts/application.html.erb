@@ -166,7 +166,7 @@
 					</div>
 					<% end %>
 				</div>
-				<% if params[:controller] == 'submissions' && params[:action] == 'show' %>
+				<% if params[:controller] == 'submissions' && params[:action] == 'show' && @submission.can_manage(current_user) %>
 				<%= link_to 'Edit Mod', edit_submission_path(@submission), class: 'addmodbutton editmodbutton' %>
 				<% else %>
 				<%= link_to 'Add Mod +', new_submission_path, class: 'addmodbutton' %>
