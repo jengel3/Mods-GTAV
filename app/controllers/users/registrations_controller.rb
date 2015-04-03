@@ -7,8 +7,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   def edit
-    @user = current_user
-    puts @user.errors.to_json, "ERRORS ADAMMT"
   end
 
   def update
@@ -26,8 +24,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
       sign_in @user, :bypass => true
       redirect_to profile_path(@user.username), :notice => "Updated account settings."
     else
-      puts @user.errors.to_json, 'errors'
-      redirect_to edit_user_registration_path, :alert => "Failed to update settings" 
+      clean_up_passwords @user
+      respond_with @user
     end
   end
 end  

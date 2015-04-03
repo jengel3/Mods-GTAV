@@ -38,6 +38,8 @@ class User
   field :provider, type: String
   field :uid, type: String
 
+  field :steam_id, type: String
+
   field :email_approval, type: Boolean, default: true
   field :email_reports, type: Boolean, default: true
   field :email_comments, type: Boolean, default: true
