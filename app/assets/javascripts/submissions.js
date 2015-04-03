@@ -148,8 +148,11 @@ $(document).ready(function() {
       $.getJSON(api_url + '?c_sort=' + sort + '&c_page=' + current_page, function(data) {
         var parent = $('.load_comments_wrap');
         $.each(data, function(key, val) {
-          $(parent).before("<div class='usercommentwrap'><div class='commentname'>" + val['user']['username'] + " <div class='likecomment_score'>+3 <a href='' class='likecomment_button'>Like</a></div></div><div class='commenttext'>" + val['text'] + "</div></div>")
-
+          var template = $('.comment-template').html();
+          template = template.replace('{{username}}', val['user']['username']).replace('{{count}}', 0).replace('/{{liked}}/g', 'liked_comment').replace('{{id}}', val['id']).replace('{{text}}', val['text'])
+          var new_comment = $(parent).before(template);
+          $('.likecomment_button').off();
+          $('.likecomment_button').click(likeComment);
         });
       });
     }

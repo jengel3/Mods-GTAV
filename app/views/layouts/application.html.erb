@@ -256,20 +256,7 @@
 			</div>
 			<% if params[:controller] == 'submissions' && params[:action] == 'index' %>
 			<div class="paginationfooter">
-				<div class="paginationwrap">
-					<a href="" class="pagination_prev_button"><div class="pagination_link">Prev</div></a>
-					<div class="pagination_numbers_wrap">
-						<a href="" class="pagenumber"><div class="pagination_link">1</div></a>a>
-						<a href="" class="pagenumber activepagenumber"><div class="pagination_link">2</div></a>
-						<a href="" class="pagenumber"><div class="pagination_link">3</div></a>
-						<a href="" class="pagenumber"><div class="pagination_link" >4</div></a>
-						<a href="" class="pagenumber"><div class="pagination_link">5</div></a>
-						<a href="" class="pagenumber"><div class="pagination_link">6</div></a>
-						<a href="" class="pagenumber"><div class="pagination_link">...</div></a>
-						<a href="" class="pagenumber"><div class="pagination_link">18</div></a>
-					</div>
-					<a href="" class="pagination_next_button"><div class="pagination_link">Next</div></a>        
-				</div>
+				<%= paginate @submissions %>
 			</div>
 			<% end %>
 

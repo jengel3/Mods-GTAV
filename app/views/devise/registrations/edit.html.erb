@@ -22,59 +22,62 @@
     <%= f.text_field :username, placeholder: 'Change Username' %>
 
     <h5>Avatar:</h5>
-    <div class="avatar_display">
-
-    </div>
+    <% if resource.avatar? %>
+    <%= image_tag resource.avatar, class: 'avatar_display' %>
+    <% else %>
+    <div class="avatar_display"></div>
+    <% end %>
     <div class="add_avatar_wrap">
-      <input type="Submit" value="Add Image" />
-      <p><b>Note:</b> Your avatar must be a square image for the aspect ratio to 
-        display correctly.</p>
-      </div>
+      <%= f.file_field :avatar %>
+      <p><b>Note:</b> Your avatar must be a square image for the aspect ratio to display correctly.</p>
+      <%= f.check_box :remove_avatar %>
+      Remove avatar
     </div>
   </div>
+</div>
 
-  <h4 class="editpage_subheadings"><img src="<%= asset_path('email25.png') %>" />Email</h4>
-  <div class="editprofile_editcontentbox">
+<h4 class="editpage_subheadings"><img src="<%= asset_path('email25.png') %>" />Email</h4>
+<div class="editprofile_editcontentbox">
 
-    <div class="email_notifications_wrap">    
+  <div class="email_notifications_wrap">    
 
-      <h5 class="email_notification_title">Notification Types</h5>
-      <div class="switch_wrap">
-        <div class="email_switch_label">Mod Approval</div>
-        <div class="switch">
-
-          <%= f.check_box(:email_approval, { class: 'cmn-toggle cmn-toggle-round', id: 'cmn-toggle-1' }) %>
-          <label for="cmn-toggle-1"></label>
-        </div>  
-      </div>
-
-      <div class="switch_wrap">
-        <div class="email_switch_label">Mod Reports</div>
-        <div class="switch">
-
-         <%= f.check_box(:email_reports, { class: 'cmn-toggle cmn-toggle-round', id: 'cmn-toggle-2' }) %>
-         <label for="cmn-toggle-2"></label>
-       </div>  
-     </div> 
-
-
-     <div class="switch_wrap">
-      <div class="email_switch_label">Comments</div>
+    <h5 class="email_notification_title">Notification Types</h5>
+    <div class="switch_wrap">
+      <div class="email_switch_label">Mod Approval</div>
       <div class="switch">
 
-       <%= f.check_box(:email_comments, { class: 'cmn-toggle cmn-toggle-round', id: 'cmn-toggle-3' }) %>
-       <label for="cmn-toggle-3"></label>
+        <%= f.check_box(:email_approval, { class: 'cmn-toggle cmn-toggle-round', id: 'cmn-toggle-1' }) %>
+        <label for="cmn-toggle-1"></label>
+      </div>  
+    </div>
+
+    <div class="switch_wrap">
+      <div class="email_switch_label">Mod Reports</div>
+      <div class="switch">
+
+       <%= f.check_box(:email_reports, { class: 'cmn-toggle cmn-toggle-round', id: 'cmn-toggle-2' }) %>
+       <label for="cmn-toggle-2"></label>
      </div>  
-   </div>
+   </div> 
+
 
    <div class="switch_wrap">
-    <div class="email_switch_label">Mods-GTAV News</div>
+    <div class="email_switch_label">Comments</div>
     <div class="switch">
 
-     <%= f.check_box(:email_news, { class: 'cmn-toggle cmn-toggle-round', id: 'cmn-toggle-4' }) %>
-     <label for="cmn-toggle-4"></label>
+     <%= f.check_box(:email_comments, { class: 'cmn-toggle cmn-toggle-round', id: 'cmn-toggle-3' }) %>
+     <label for="cmn-toggle-3"></label>
    </div>  
- </div> 
+ </div>
+
+ <div class="switch_wrap">
+  <div class="email_switch_label">Mods-GTAV News</div>
+  <div class="switch">
+
+   <%= f.check_box(:email_news, { class: 'cmn-toggle cmn-toggle-round', id: 'cmn-toggle-4' }) %>
+   <label for="cmn-toggle-4"></label>
+ </div>  
+</div> 
 </div>
 
 <div class="change_email_wrap">

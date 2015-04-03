@@ -1,3 +1,9 @@
+<div class="comment-template" style="display: none;">
+	<div class="usercommentwrap">
+		<div class="commentname">{{username}} <div class="likecomment_score {{liked}}">+{{count}} <a href="#" class="{{liked}} likecomment_button" data-url='<%= '/submissions/' + @submission.slug + '/comments/{{id}}' + '/like' %>'>Like</a></div></div>
+		<div class="commenttext">{{text}}</div>
+	</div>
+</div>
 <div class="contentpage_commentswrap" data-api="<%= url_for([:api, :v1, @submission, :comments]) %>" data-sort="<%= @sort %>">
 	<div class="contentpage_headertitles">Comments
 		<div id="contentoptions">

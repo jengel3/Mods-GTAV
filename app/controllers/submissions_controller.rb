@@ -35,6 +35,7 @@ class SubmissionsController < ApplicationController
     if @time && @time != 'all'
       @submissions = time_sort(@time, @submissions)
     end
+    @submissions = @submissions.page(params[:page]).per(21)
     @sort = @sort_options.key(@sort) || @sort_options.keys[0]
     @time = @time_options.key(@time) || @time_options.keys[0]
   end

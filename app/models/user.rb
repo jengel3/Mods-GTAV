@@ -10,6 +10,8 @@ class User
   validates :username, presence: true, uniqueness: true, length: { maximum: 16 }
   validates_format_of :username, :with => /\A[A-Za-z0-9_-]+\Z/
 
+  mount_uploader :avatar, AvatarUploader
+
   attr_accessor :login
 
   ## Database authenticatable
@@ -50,9 +52,10 @@ class User
   has_one :api_key, :dependent => :destroy
 
   # likes
-  has_many :liked_submissions, :as => :likable, :dependent => :destroy, class_name: 'Like'
+  has_many :liked_submissions, :as => :likable, :dependent => :destroy, :inverse_of => :user
   has_many :disliked_submissions, :as => :dislikable, :dependent => :destroy, class_name: 'Dislike'
-  has_many :liked_comments, :as => :likable, :dependent => :destroy, class_name: 'Like'
+  has_many :liked_comments, :as => :likable, :dependent => :destroy, :inverse_of => :user
+  
   has_many :blog_posts, :inverse_of => :author, :dependent => :destroy
 
   ## Confirmable

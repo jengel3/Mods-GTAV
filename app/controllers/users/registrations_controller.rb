@@ -15,9 +15,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     password_changed = !user[:password].to_s.strip.blank?
 
     update_completed = if password_changed
-      @user.update_with_password(user.permit(:biography, :username, :email_approval, :email_reports, :email_comments, :email_news, :email, :password, :password_confirmation, :current_password))
+      @user.update_with_password(user.permit(:biography, :username, :email_approval, :email_reports, :email_comments, :email_news, :email, :avatar, :remove_avatar, :password, :password_confirmation, :current_password))
     else
-      @user.update_without_password(user.permit(:biography, :username, :email_approval, :email_reports, :email_comments, :email_news, :email))
+      @user.update_without_password(user.permit(:biography, :username, :email_approval, :email_reports, :email_comments, :email_news, :email, :avatar, :remove_avatar))
     end
 
     if update_completed
