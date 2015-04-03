@@ -1,5 +1,6 @@
 $(document).ready(function() {
   var uploadStarted = false;
+  var fileCount = 0;
   if ($('#fileupload').length) {
     $('#fileupload').fileupload({
       dataType: 'json',
@@ -11,15 +12,18 @@ $(document).ready(function() {
         $("#upload_btn").on('click', function() {
           data.submit();
           if (!uploadStarted) {
-            $('.progress-bar').css('display', 'inherit');
+            // $('.progress-bar').css('display', 'inherit');
             uploadStarted = true;
           }
         });
         $.each(data.files, function(index, file) {
-          var body = $('#file-body');
-          file.context = $('<tr><td class="img_td"><img class="upload_preview" height="60" src="' + URL.createObjectURL(file) + '"/></td><td>' + file.name + '</td><td>' + humanFileSize(file.size) + '</td><td>' + $('.upload_select').html() + '</td></tr>').appendTo(body);
+          var body = $('#file-table');
+          file.context = $('<tr><td><div class="imgwrap"><img src="' + URL.createObjectURL(file) + '"/></div></td><td>' + file.name + '</td><td>' + humanFileSize(file.size) + '</td><td>' + $('.upload_select').html() + '</td></tr><tr class="spacer"></tr>').appendTo(body);
+          if (fileCount === 0) {
+            file.context.find('select').val("Main");
+          }
+          fileCount += 1;
         });
-        willUploadCount += 1;
       },
       submit: function(e, data) {
         $.each(data.files, function(index, file) {
