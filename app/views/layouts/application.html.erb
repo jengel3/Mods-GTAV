@@ -179,7 +179,7 @@
 			<% if params[:action] == 'profile' %>
 			<div class="profile_section_wrap">
 				<div class="profile_left_panel">
-					<h3><% @user.username %></h3>
+					<h3><%= @user.username %></h3>
 					<div class="avatarwrap">
 						<%= avatar @user, size: 80 %>
 					</div>
