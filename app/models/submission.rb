@@ -10,7 +10,6 @@ class Submission
   field :name, type: String
   field :body, type: String
   field :baked_body, type: String
-  field :download_count, type: Integer, default: 0
   field :approved_at, type: Time, default: Time.now
 
   field :category
@@ -25,6 +24,9 @@ class Submission
   alias_attribute :description, :body
 
   validates :name, uniqueness: true, presence: true
+  validates :description, presence: true
+  validates :category, presence: true
+  validates :sub_category, presence: true
   # Do category validations, inclusion, custom
 
   slug :name, history: true
@@ -37,6 +39,13 @@ class Submission
 
   has_many :likes, :as => :likable, :dependent => :destroy
   has_many :dislikes, :as => :dislikable, :dependent => :destroy
+
+  index({ sub_category: 1 }, { unique: false, name: "category_index" })
+  index({ category: 1 }, { unique: false, name: "subcategory_index" })
+
+  def to_s
+    name
+  end
 
   def update_rating
     if dislike_count > like_count

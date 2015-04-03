@@ -1,5 +1,5 @@
 class ImageSerializer < ActiveModel::Serializer
-  attributes :id, :caption, :location
+  attributes :id, :location
 
   has_one :submission
 

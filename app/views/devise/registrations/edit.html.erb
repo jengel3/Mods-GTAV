@@ -1,39 +1,110 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<%= form_for(:user, as: :user, url: user_registration_path, html: {method: :put}) do |f| %>
+<div class="editprofile_top_panel_wrap">
+  <h3>Profile Settings</h3>
+  <%= f.submit "Save Changes" %>
+</div>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+<div class="editprofile_error_box">
+  <% @user.errors.full_messages.each do |msg| %>
+  <li><%= msg %></li>
   <% end %>
+</div>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+<h4 class="editpage_subheadings"><img src="<%= asset_path('pen25.png') %>"/>About Me</h4>
+<div class="editprofile_editcontentbox">
+  <%= f.text_area :biography, class: 'about_me', placeholder: 'Your Bio (displays on profile)' %>
+  <div class="username_and_avatar_wrap">
+    <label>Username:</label>
+    <%= f.text_field :username, placeholder: 'Change Username' %>
+
+    <h5>Avatar:</h5>
+    <div class="avatar_display">
+
+    </div>
+    <div class="add_avatar_wrap">
+      <input type="Submit" value="Add Image" />
+      <p><b>Note:</b> Your avatar must be a square image for the aspect ratio to 
+        display correctly.</p>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
+  <h4 class="editpage_subheadings"><img src="<%= asset_path('email25.png') %>" />Email</h4>
+  <div class="editprofile_editcontentbox">
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
-  </div>
+    <div class="email_notifications_wrap">    
 
-  <div class="actions">
-    <%= f.submit "Update" %>
+      <h5 class="email_notification_title">Notification Types</h5>
+      <div class="switch_wrap">
+        <div class="email_switch_label">Mod Approval</div>
+        <div class="switch">
+
+          <%= f.check_box(:email_approval, { class: 'cmn-toggle cmn-toggle-round', id: 'cmn-toggle-1' }) %>
+          <label for="cmn-toggle-1"></label>
+        </div>  
+      </div>
+
+      <div class="switch_wrap">
+        <div class="email_switch_label">Mod Reports</div>
+        <div class="switch">
+
+         <%= f.check_box(:email_reports, { class: 'cmn-toggle cmn-toggle-round', id: 'cmn-toggle-2' }) %>
+         <label for="cmn-toggle-2"></label>
+       </div>  
+     </div> 
+
+
+     <div class="switch_wrap">
+      <div class="email_switch_label">Comments</div>
+      <div class="switch">
+
+       <%= f.check_box(:email_comments, { class: 'cmn-toggle cmn-toggle-round', id: 'cmn-toggle-3' }) %>
+       <label for="cmn-toggle-3"></label>
+     </div>  
+   </div>
+
+   <div class="switch_wrap">
+    <div class="email_switch_label">Mods-GTAV News</div>
+    <div class="switch">
+
+     <%= f.check_box(:email_news, { class: 'cmn-toggle cmn-toggle-round', id: 'cmn-toggle-4' }) %>
+     <label for="cmn-toggle-4"></label>
+   </div>  
+ </div> 
+</div>
+
+<div class="change_email_wrap">
+  <h5 class="email_notification_title">Change Account Email</h5>
+  <ul>
+    <li><b>Note:</b> To change your email you must enter the following information. Click on Save Changes (top) when complete.</li>
+    <li>
+      <label>Email</label>
+      <%= f.email_field :email %>
+    </li>
+  </ul>
+</div>
+
+</div>
+
+<h4 class="editpage_subheadings"><img src="<%= asset_path('lock26.png') %>" />Password</h4>
+<div class="editprofile_editcontentbox">
+  <div class="change_email_wrap change_password_wrap">
+    <h5 class="email_notification_title">Change Account Password</h5>
+    <ul>
+      <li><b>Note:</b> To change your password you must enter the following information. Click on Save Changes (top) when complete.</li>
+      <li>
+        <label>New Password</label>
+        <%= f.password_field :password %>
+      </li>
+      <li>
+        <label>Confirm Password</label>
+        <%= f.password_field :password_confirmation %>
+      </li>
+      <li>
+        <label>Current Password</label>
+        <%= f.password_field :current_password %>
+      </li>
+    </ul>
   </div>
+</div>
 <% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>

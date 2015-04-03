@@ -116,6 +116,7 @@ class SubmissionsController < ApplicationController
   def download
     latest = @submission.latest
     return if !latest
+    # handle download count
     send_file latest.upload.path
   end
 

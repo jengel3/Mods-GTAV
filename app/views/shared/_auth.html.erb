@@ -9,7 +9,7 @@
 					<a class="usernamelink" href="<%= profile_path(current_user.username) %>"><%= current_user.username %><span class="comments_downarrowsymbol username_downarrowsymbol">&#x25BC;</span></a>
 					<ul>
 						<li><%= link_to 'View Profile', profile_path(current_user.username) %></li>
-						<li><a href="#">Edit Profile</a></li>
+						<li><%= link_to 'Edit Profile', edit_user_registration_path %></li>
 						<li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
 					</ul>
 				</li>
@@ -37,10 +37,7 @@
 <!-- End logged in user -->
 <% else %>
 
-<input class="registerbutton" type="submit" value="Register" />
-<p class="signin_option">Have an account? <a class="signinlink" href="" onclick="return false;">Sign in.</a></p>
 
-<!-- Guest user -->
 <div class="user_avatar_wrap"><%= image_tag('michaelavatar.png') %></div>
 <div class="userinfo">
 	<div class="username">
@@ -56,7 +53,10 @@
 	</div>
 	<div class="userdesc">Visitor</div>
 </div>
-<!-- End guest user -->
+
+<input class="registerbutton" type="submit" value="Register" />
+<p class="signin_option">Have an account? <a class="signinlink" href="" onclick="return false;">Sign in.</a></p>
+
 
 <!-- Authentication forms -->
 <div class="inputwrap signinwrap" style='display: none;'>

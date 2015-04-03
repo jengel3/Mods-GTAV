@@ -9,11 +9,11 @@
     margin-bottom:10px;
 }
 .contentpage_basic_mod_info_wrap {
-   height:354px;
-   width:565px;
-   display: inline-block;
-   margin:0;
-   margin-left:5px;
+ height:354px;
+ width:565px;
+ display: inline-block;
+ margin:0;
+ margin-left:5px;
 }
 
 .contentpage_titlewrap {
@@ -486,4 +486,9 @@ a.likecomment_button {
     right:0;
     bottom:0;
     margin:auto;
+}
+
+img.grayscale {
+    -webkit-filter: grayscale(1); -webkit-filter: grayscale(100%);
+    filter: gray; filter: grayscale(100%);
 }

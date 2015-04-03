@@ -45,7 +45,8 @@ $(document).ready(function() {
     $('.open-screenshot').magnificPopup({
       type: 'inline',
       midClick: true,
-      mainClass: 'mfp-fade'
+      removalDelay: 500,
+      mainClass: 'mfp-zoom-in'
     });
     $('.uploadmod_individual_screenshot_wrap').click(function(e) {
       e.preventDefault();
@@ -55,7 +56,8 @@ $(document).ready(function() {
     $('.open-file').magnificPopup({
       type: 'inline',
       midClick: true,
-      mainClass: 'mfp-fade'
+      removalDelay: 500,
+      mainClass: 'mfp-zoom-in'
     });
   } else if ($('.downloadbutton_link').length) {
     // Likes and dislikes
@@ -73,7 +75,9 @@ $(document).ready(function() {
             $('#dislike img').addClass('grayscale');
             $('#like img').removeClass('grayscale');
           }
-          $('#rating').text(Math.abs(data.count) + ' ' + (data.count === 1 ? 'person' : 'people') + ' ' + (data.count < 0 ? 'dislike' : 'like') + (Math.abs(data.count) === 1 ? 's' : '') + ' this mod');
+          if (data.status !== 'not authenticated') {
+            $('#rating').text(Math.abs(data.count) + ' ' + (data.count === 1 ? 'person' : 'people') + ' ' + (data.count < 0 ? 'dislike' : 'like') + (Math.abs(data.count) === 1 ? 's' : '') + ' this mod');
+          } 
         },
         dataType: 'json'
       });
@@ -93,7 +97,9 @@ $(document).ready(function() {
             $('#like img').addClass('grayscale');
             $('#dislike img').removeClass('grayscale');
           }
-          $('#rating').text(Math.abs(data.count) + ' ' + (data.count === 1 ? 'person' : 'people') + ' ' + (data.count < 0 ? 'dislike' : 'like') + (Math.abs(data.count) === 1 ? 's' : '') + ' this mod');
+          if (data.status !== 'not authenticated') {
+            $('#rating').text(Math.abs(data.count) + ' ' + (data.count === 1 ? 'person' : 'people') + ' ' + (data.count < 0 ? 'dislike' : 'like') + (Math.abs(data.count) === 1 ? 's' : '') + ' this mod');
+          } 
         },
         dataType: 'json'
       });

@@ -1,33 +1,32 @@
+<% new_record = @submission.new_record? %>
 <div class="contentpage_wrap">
   <%= form_for(@submission) do |f| %>
   <div class="contentpage_basic_mod_info_wrap uploadmod_basic_mod_info_wrap">
-
     <div class="contentpage_titlewrap">
       <%= f.text_field :name, class: 'uploadmod_title', placeholder: 'Title' %>
-
     </div>
     <div class="contentpage_mainthumb uploadmod_mainthumb">
-      <% if !@submission.main_image %>
-      <a href=""><p>&#43; Add Thumbnail</p></a>
-      <% end %>
       <img class="contentpage_mainthumb_img" src="<%= @submission.main_image ? @submission.main_image.image_url : '' %>" alt="" />
     </div>
 
   </div>
   <div class="contentpage_download_and_screenshots_wrap uploadmod_download_and_screenshots_wrap">
     <div class="uploadmod_buttons_wrap">
+      <% if !new_record %>
       <a href="#file-popup" class='open-file'><input type="button" value="Add File" class="uploadmod_buttons" /></a>
+      <% end %>
       <%= f.submit 'Save', class: 'uploadmod_buttons' %>
-    </div>
-    <div class='upload_select' style='display: none;'>
-      <%= select_tag :location, options_for_select([["Main Image", "Main"], ["Screenshot", "Thumbnail"]], "Thumbnail"), {} %>
     </div>
     <div class="contentpage_screenshots_wrap uploadmod_screenshots_wrap">
       <div class='uploadmod_inner_screenshots_wrap'>
+        <% if !new_record %>
         <% @submission.thumbnails.each do |thumb| %>
         <div class="uploadmod_individual_screenshot_wrap"><img src="<%= thumb.image_url(:thumb) %>" /></div>
         <% end %>
         <div class="uploadmod_individual_screenshot_wrap"><a href="#screenshot-popup" class='open-screenshot'><img class="uploadmod_addsceenshot" src="<%= asset_path('upload_thumb.png') %>" ></img></a></div>
+        <% else %>
+        <p align='center'>Save your submission before adding images or files!</p>
+        <% end %>
       </div>
     </div>
   </div>
@@ -49,7 +48,12 @@
   <% end %>
 </div>
 
-<div id="screenshot-popup" class="popup mfp-hide">
+<% if !new_record %>
+<div class='upload_select' style='display: none;'>
+  <%= select_tag :location, options_for_select([["Main Image", "Main"], ["Screenshot", "Thumbnail"]], "Thumbnail"), {} %>
+</div>
+
+<div id="screenshot-popup" class="popup mfp-hide mfp-with-anim">
   <p>Use this popup to upload images to represent your submission.</p>
 
   <p>Before uploading, make sure to select a location to display your images in.</p>
@@ -64,8 +68,7 @@
   <input type="submit" value='Upload' id="upload_btn" class="upload_submit_button">
 </div>
 
-<% if params[:action] == 'edit' %>
-<div id="file-popup" class="popup mfp-hide">
+<div id="file-popup" class="popup mfp-hide mfp-with-anim">
   <p>Upload your files here. You <b>must</b> enter a name to represent this version, but a changelog is <i>optional</i>.</p>
 
   <%= form_for [@submission, @submission.uploads.build] do |f| %>

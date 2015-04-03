@@ -38,6 +38,11 @@ class User
   field :provider, type: String
   field :uid, type: String
 
+  field :email_approval, type: Boolean, default: true
+  field :email_reports, type: Boolean, default: true
+  field :email_comments, type: Boolean, default: true
+  field :email_news, type: Boolean, default: true
+
   has_many :submissions, :dependent => :destroy
   has_many :comments, :dependent => :destroy
   has_one :api_key, :dependent => :destroy
@@ -58,6 +63,10 @@ class User
   # field :failed_attempts, type: Integer, default: 0 # Only if lock strategy is :failed_attempts
   # field :unlock_token,    type: String # Only if unlock strategy is :email or :both
   # field :locked_at,       type: Time
+
+  def to_s
+    username
+  end
 
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
