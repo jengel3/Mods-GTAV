@@ -3,15 +3,16 @@
     <div class="mod_thumb_and_title_wrap">
         <div class="modthumbnailwrap">
             <div class="submissiondate"><%= relative(submission.updated_at) %></div>
-            <% main = submission.main_image %>
-            <a href="<%= submission_path(submission) %>"><%= main ? image_tag(main.image_url(:preview)) : '' %></a>
+            <% main = submission.fetch_display %>
+            <a href="<%= submission_path(submission) %>"><%= main ? image_tag(main['image']['preview']['url']) : '' %></a>
         </div>
         <div class="modtitlewrap">
             <%= link_to submission.name, submission_path(submission), class: 'modtitle' %>
         </div>
     </div>
     <div class="mod_creator_and_download_wrap">
-        <div class="mod_creator"><%= link_to submission.creator.username, profile_path(submission.creator.username) %></div>
+        <% creator = submission.fetch_creator %>
+        <div class="mod_creator"><%= link_to creator, profile_path(creator) %></div>
         <div class="downloadcount"><%= submission.download_count %> <img src="<%= asset_path('downloadcounticon.png') %>" alt="" /></div>
     </div>
 </div>

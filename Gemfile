@@ -61,6 +61,9 @@ end
 group :development do
   gem 'better_errors'
   gem 'thin'
+  gem 'rack-mini-profiler'
+  gem 'byebug'
+  gem 'web-console', '~> 2.0'
 end
 
 group :development, :staging, :test do
@@ -70,8 +73,6 @@ end
 group :development, :test do 
   gem 'rspec-rails' 
   gem 'factory_girl_rails'
-  gem 'byebug'
-  gem 'web-console', '~> 2.0'
 end 
 
 group :test do 

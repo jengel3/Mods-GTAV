@@ -6,12 +6,13 @@
 				<%= @submission.name %>
 			</div>
 			<div class="contentpage_modcreator">
-				by <%= @submission.creator.username %>
+				by <%= @submission.fetch_creator %>
 			</div>
 			
 		</div>
 		<div class="contentpage_mainthumb">
-			<img class="contentpage_mainthumb_img" src="<%= @submission.main_image ? @submission.main_image.image_url : '' %>" alt="Main Thumbnail" />
+			<% main = @submission.fetch_display %>
+			<img class="contentpage_mainthumb_img" src="<%= main ? main['image']['url'] : '' %>" alt="Main Thumbnail" />
 		</div>
 		
 	</div>

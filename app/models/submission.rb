@@ -20,6 +20,8 @@ class Submission
   field :download_count, type: Integer, default: 0
   field :avg_rating, type: Integer, default: 0
 
+  field :last_favorited, type: Time, default: nil
+
   alias_attribute :title, :name
   alias_attribute :description, :body
 
@@ -42,6 +44,42 @@ class Submission
 
   index({ sub_category: 1 }, { unique: false, name: "category_index" })
   index({ category: 1 }, { unique: false, name: "subcategory_index" })
+
+  class << self
+    def for_category(category)
+      where(:category => category)
+    end
+
+    def for_subcategory(subcategory)
+      where(:sub_category => subcategory)
+    end
+
+    def favorited(count = 3)
+      where(:last_favorited.exists => true).desc(:last_favorited).limit(count)
+    end
+  end
+
+  def fetch_creator(force = false)
+    key = "SUBMISSION:CREATOR:#{id}"
+    result = REDIS.get(key)
+    if !result || force
+      result = creator.username
+      REDIS.set(key, result)
+      REDIS.expire(key, 24.hours)
+    end
+    return result
+  end
+
+  def fetch_display(force = false)
+    key = "SUBMISSION:DISPLAY:#{id}"
+    result = REDIS.get(key)
+    if !result || force
+      result = main_image.to_json
+      REDIS.set(key, result)
+      REDIS.expire(key, 24.hours)
+    end
+    return JSON.load(result)
+  end
 
   def to_s
     name

@@ -1,5 +1,6 @@
 class SubmissionsController < ApplicationController
   include CommentsHelper
+  include ApplicationHelper
   before_filter :set_submission, only: [:destroy, :edit, :update, :download]
   before_filter :authenticate_user!, only: [:destroy, :edit, :create, :new, :update]
 
@@ -41,7 +42,7 @@ class SubmissionsController < ApplicationController
   end
 
   def show
-    @submission = Submission.includes(:images).find(params[:id])
+    @submission = Submission.find(params[:id])
     @sort_options = {
       'Oldest First' => 'oldest',
       'Newest First' => 'newest',
@@ -118,6 +119,7 @@ class SubmissionsController < ApplicationController
     latest = @submission.latest
     return if !latest
     # handle download count
+    @submission.downloads.create(:ip => get_request_ip)
     send_file latest.upload.path
   end
 
