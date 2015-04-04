@@ -21,7 +21,10 @@
       <div class='uploadmod_inner_screenshots_wrap'>
         <% if !new_record %>
         <% @submission.thumbnails.each do |thumb| %>
-        <div class="uploadmod_individual_screenshot_wrap"><img src="<%= thumb.image_url(:thumb) %>" /></div>
+        <div class="uploadmod_individual_screenshot_wrap">
+          <img src="<%= thumb.image_url(:thumb) %>" />
+          <a href="<%= url_for [@submission, thumb] %>" class="close">&#10006;</a>
+        </div>
         <% end %>
         <div class="uploadmod_individual_screenshot_wrap"><a href="#screenshot-popup" class='open-screenshot'><img class="uploadmod_addsceenshot" src="<%= asset_path('upload_thumb.png') %>" ></img></a></div>
         <% else %>

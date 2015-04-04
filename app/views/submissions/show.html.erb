@@ -30,7 +30,9 @@
 		<% end %>
 		<div class="contentpage_screenshots_wrap">
 			<% @submission.thumbnails.each do |thumb| %>
-			<a href="" class="screen_wrapper"><div class="contentpage_individual_screen_wrap"><img class="contentpage_screenshot" src="<%= thumb.image_url(:thumb) %>" title='Click to display original image'/></div></a>
+			<div class="contentpage_individual_screen_wrap">
+			<img class="contentpage_screenshot" src="<%= thumb.image_url(:thumb) %>" title='Click to display original image'/>
+			</div>
 			<% end %>
 		</div>
 	</div>

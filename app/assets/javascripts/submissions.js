@@ -12,7 +12,7 @@ $(document).ready(function() {
         $("#upload_btn").on('click', function() {
           data.submit();
           if (!uploadStarted) {
-            // $('.progress-bar').css('display', 'inherit');
+            $('.progress-bar').css('display', 'inherit');
             uploadStarted = true;
           }
         });
@@ -45,6 +45,25 @@ $(document).ready(function() {
           }, 1000);
         }
       }
+    });
+    $('.close').click(function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      var url = $(e.target).attr('href');
+      $.ajax({
+        type: "DELETE",
+        url: url,
+        success: function(data, status, xhr) {
+          if (data.status === 'destroyed') {
+            $(e.target).parent().fadeOut("slow", function() {
+              this.remove();
+            });
+          } else {
+            console.error('Error:', data);
+          }
+        },
+        dataType: 'json'
+      });
     });
     $('.open-screenshot').magnificPopup({
       type: 'inline',
@@ -80,7 +99,7 @@ $(document).ready(function() {
             $('#like img').removeClass('grayscale');
           }
           if (data.status !== 'not authenticated') {
-            $('#rating').text(Math.abs(data.count) + ' ' + (data.count === 1 ? 'person' : 'people') + ' ' + (data.count < 0 ? 'dislike' : 'like') + (Math.abs(data.count) === 1 ? 's' : '') + ' this mod');
+            $('#rating').text(Math.abs(data.count) + ' ' + (Math.abs(data.count) === 1 ? 'person' : 'people') + ' ' + (data.count < 0 ? 'dislike' : 'like') + (Math.abs(data.count) === 1 ? 's' : '') + ' this mod');
           } 
         },
         dataType: 'json'
@@ -102,16 +121,15 @@ $(document).ready(function() {
             $('#dislike img').removeClass('grayscale');
           }
           if (data.status !== 'not authenticated') {
-            $('#rating').text(Math.abs(data.count) + ' ' + (data.count === 1 ? 'person' : 'people') + ' ' + (data.count < 0 ? 'dislike' : 'like') + (Math.abs(data.count) === 1 ? 's' : '') + ' this mod');
+            $('#rating').text(Math.abs(data.count) + ' ' + (Math.abs(data.count) === 1 ? 'person' : 'people') + ' ' + (data.count < 0 ? 'dislike' : 'like') + (Math.abs(data.count) === 1 ? 's' : '') + ' this mod');
           } 
         },
         dataType: 'json'
       });
     });
 
-    $('.screen_wrapper').click(function(e) {
+    $('.contentpage_screenshot').click(function(e) {
       e.preventDefault();
-      console.log(e);
       var src = '';
       src = $(e.target).attr('src');
       var new_src = src.replace('thumb_', '');
