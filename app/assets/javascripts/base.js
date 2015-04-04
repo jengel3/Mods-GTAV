@@ -48,6 +48,28 @@ function humanFileSize(bytes, si) {
 
 $(document).ready(function() {
 	$('.submissiondate').hide();
+	$('.likecounter').hide();
+
+	$(".modthumbnailwrap").on({
+		mouseenter: function () {
+			$('.likecounter', this).stop().fadeIn(200);
+			$('.submissiondate', this).stop().fadeIn(200);
+		},
+		mouseleave: function () {
+			$('.likecounter', this).fadeOut(20);
+			$('.submissiondate', this).stop().fadeOut(100);
+		}
+	});
+
+	$(".likecounter").on({
+		mouseenter: function () {
+			$(this).stop().animate({background: 'transparent'}, 'fast');
+			$(this).stop().animateAuto("width", 100);
+		},
+		mouseleave: function () {
+			$(this).stop().animate({width: '40px'}, 'fast');
+		}
+	});
 
 	$('.registerbutton').on('click', function() {
 		$('.signinwrap').hide();

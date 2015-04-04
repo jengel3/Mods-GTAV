@@ -8,6 +8,7 @@
 *= require tooltipster-light
 *= require magnific-popup/dist/magnific-popup
 *= require edituser
+*= require home
 */
 
 .mfp-zoom-in .mfp-with-anim {

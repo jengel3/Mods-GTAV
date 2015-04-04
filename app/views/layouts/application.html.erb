@@ -217,7 +217,7 @@
 			</div>
 			<% end %>
 			<div class="mainpagewrap">
-				<div class="mainpage">
+				<div class="mainpage <%= params[:controller] == 'home' ? 'homepage' : '' %>">
 					<%= yield %>
 				</div>
 				<div class="right_sidebar_preview"><div class="sidebar_expand_button"> <img src="<%= asset_path('expandsidebar.png') %>" alt="<" /> </div></div>

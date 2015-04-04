@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
-  namespace :api do
-  namespace :v1 do
-    get 'documentation/index'
-    end
-  end
+  get 'home/index'
 
   devise_for :users, :controllers => { sessions: 'users/sessions', registrations: 'users/registrations', :omniauth_callbacks => 'users/omniauth_callbacks', :passwords => 'users/passwords' }
   
@@ -22,7 +18,8 @@ Rails.application.routes.draw do
 
   get '/c/(:category/(:subcategory))', to: 'submissions#index', as: 'category'
 
-  root 'submissions#index'
+  get '/home', to: 'home#index'
+  root 'home#index'
 
   get '/p/:username', to: 'application#profile', as: 'profile'
 
