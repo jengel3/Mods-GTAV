@@ -6,7 +6,7 @@
       <%= f.text_field :name, class: 'uploadmod_title', placeholder: 'Title' %>
     </div>
     <div class="contentpage_mainthumb uploadmod_mainthumb">
-      <img class="contentpage_mainthumb_img" src="<%= @submission.main_image ? @submission.main_image.image_url : '' %>" alt="" />
+      <img class="contentpage_mainthumb_img" src="<%= @submission.main_image ? @submission.main_image.image_url : '' %>" alt="Upload a Main Image" />
     </div>
 
   </div>
@@ -52,39 +52,19 @@
 <div class='upload_select' style='display: none;'>
   <%= select_tag :location, options_for_select([["Main Image", "Main"], ["Screenshot", "Thumbnail"]], "Thumbnail"), {} %>
 </div>
-<!-- 
-<div id="screenshot-popup" class="popup mfp-hide mfp-with-anim">
-  <p>Use this popup to upload images to represent your submission.</p>
-
-  <p>Before uploading, make sure to select a location to display your images in.</p>
-  <input id="fileupload" type="file" name="images[]" data-url="images.json" style='display: none' multiple>
-  <table>
-    <tbody id="file-body">
-    </tbody>
-  </table>
-  <div class="progress-bar" style='display: none;'>
-    <span style="width: 0%"></span>
-  </div>
-  <input type="submit" value='Upload' id="upload_btn" class="upload_submit_button">
-</div>
- -->
 <div id="screenshot-popup" class="imageupload_popup_wrap mfp-hide mfp-with-anim">
   <h3>Image Upload</h3>
   <h4>Drag and drop to upload more images!</h4>
-  <input id="fileupload" type="file" name="images[]" data-url="images.json" style='display: none' multiple>
-  <table cellspacing="0" id="file-table">
-    
-  </table>
+  <table cellspacing="0" id="file-table"></table>
 
   <div class="progress-bar" style='display: none;'>
     <span style="width: 0%"></span>
   </div>
 
   <div class="bottom_buttons_wrap">
-    <input class="upload" type=submit value="Upload" />
-    <input class="addimage" type="submit" value="Add Image" />
+    <input class="upload" type=submit value="Upload" id="upload_btn" />
+    <input id="fileupload" class="addimage" type="file" name="images[]" data-url="images.json" multiple value="Add Image">
   </div>
-
 </div>
 
 <div id="file-popup" class="popup mfp-hide mfp-with-anim">
