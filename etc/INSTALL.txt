@@ -6,9 +6,8 @@ apt-get install nodejs -y
 apt-get install nodejs-legacy -y
 apt-get install npm -y
 
-apt-get install nano -y
-apt-get install mongodb -y
-gpg --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3
+apt-get install nano -
+ygpg --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3
 curl -L get.rvm.io | bash -s stable
 source /usr/local/rvm/scripts/rvm
 rvm requirements

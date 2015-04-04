@@ -1,37 +1,12 @@
-class Submission
+class Submission < ActiveRecord::Base
   include ApplicationHelper
-  include Mongoid::Document
-  include Mongoid::Timestamps
-  include GlobalID::Identification
-  include Mongoid::Slug
 
   before_save :bake_description
-
-  field :name, type: String
-  field :body, type: String
-  field :baked_body, type: String
-  field :approved_at, type: Time, default: Time.now
-
-  field :category
-  field :sub_category
-
-  field :like_count, type: Integer, default: 0
-  field :dislike_count, type: Integer, default: 0
-  field :download_count, type: Integer, default: 0
-  field :avg_rating, type: Integer, default: 0
-
-  field :last_favorited, type: Time, default: nil
-
-  alias_attribute :title, :name
-  alias_attribute :description, :body
 
   validates :name, uniqueness: true, presence: true
   validates :description, presence: true
   validates :category, presence: true
   validates :sub_category, presence: true
-  # Do category validations, inclusion, custom
-
-  slug :name, history: true
 
   belongs_to :creator, class_name: 'User', inverse_of: :submissions
   
@@ -39,11 +14,8 @@ class Submission
   has_many :images, :dependent => :destroy
   has_many :uploads, :dependent => :destroy
 
-  has_many :likes, :as => :likable, :dependent => :destroy
-  has_many :dislikes, :as => :dislikable, :dependent => :destroy
-
-  index({ sub_category: 1 }, { unique: false, name: "category_index" })
-  index({ category: 1 }, { unique: false, name: "subcategory_index" })
+  # has_many :likes, :as => :likable, :dependent => :destroy
+  # has_many :dislikes, :as => :dislikable, :dependent => :destroy
 
   class << self
     def for_category(category)

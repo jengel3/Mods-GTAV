@@ -1,6 +1,4 @@
-class ApiKey
-  include Mongoid::Document
-  include Mongoid::Timestamps::Created
+class ApiKey < ActiveRecord::Base
   before_create :generate_token
 
   def generate_token
@@ -8,9 +6,6 @@ class ApiKey
       self.key = SecureRandom.hex
     end while ApiKey.where(key: key).first
   end
-
-  field :key, type: String
-  field :version, type: String
 
   belongs_to :user
 end

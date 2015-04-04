@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  get 'home/index'
-
-  devise_for :users, :controllers => { sessions: 'users/sessions', registrations: 'users/registrations', :omniauth_callbacks => 'users/omniauth_callbacks', :passwords => 'users/passwords' }
+  devise_for :users
+  # devise_for :users, :controllers => { sessions: 'users/sessions', registrations: 'users/registrations', :omniauth_callbacks => 'users/omniauth_callbacks', :passwords => 'users/passwords' }
   
   resources :submissions do
     resources :images

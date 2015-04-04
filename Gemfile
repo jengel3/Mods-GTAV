@@ -21,20 +21,18 @@ gem 'devise'
 gem 'omniauth-steam'
 
 # File uploads
-gem 'carrierwave-mongoid'
+gem 'carrierwave'
 gem 'mini_magick'
 
 # Database
-gem 'mongoid'
-gem 'bson_ext'
-gem 'mongoid_paranoia'
-gem 'bcrypt-ruby', '~> 3.0.0'
-gem 'mongoid-slug'
+gem 'pg'
+gem 'friendly_id', '~> 5.1.0'
+gem "paranoia", "~> 2.1.1"
+gem 'annotate', '~> 2.6.6'
+
+# Other
 gem 'kaminari'
 gem 'sanitize'
-
-# Searching
-gem 'mongoid-elasticsearch'
 
 # Caching
 gem 'redis'

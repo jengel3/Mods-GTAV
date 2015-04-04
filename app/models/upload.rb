@@ -1,13 +1,4 @@
-class Upload
-  include Mongoid::Document
-  include GlobalID::Identification
-  include Mongoid::Timestamps::Created
-
-  field :name, type: String, default: ""
-  field :changelog, type: String, default: ""
-  field :approved_at, type: Time, default: nil
-  field :size, type: String
-
+class Upload < ActiveRecord::Base
   belongs_to :submission
 
   validates :name, presence: true
