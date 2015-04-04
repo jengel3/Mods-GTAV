@@ -5,7 +5,6 @@ class CreateApiKeys < ActiveRecord::Migration
       t.string :version
       t.string :user_id
 
-      t.timestamps null: false
     end
   end
 end

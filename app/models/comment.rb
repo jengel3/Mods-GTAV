@@ -1,5 +1,6 @@
 class Comment < ActiveRecord::Base
-
+  acts_as_paranoid
+  
   validates :text, presence: true
 
   belongs_to :user

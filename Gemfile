@@ -27,7 +27,7 @@ gem 'mini_magick'
 # Database
 gem 'pg'
 gem 'friendly_id', '~> 5.1.0'
-gem "paranoia", "~> 2.1.1"
+gem 'paranoia', '~> 2.1.1'
 gem 'annotate', '~> 2.6.6'
 
 # Other

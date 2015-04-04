@@ -1,5 +1,6 @@
 class Submission < ActiveRecord::Base
   include ApplicationHelper
+  extend FriendlyId
 
   before_save :bake_description
 
@@ -16,6 +17,9 @@ class Submission < ActiveRecord::Base
 
   # has_many :likes, :as => :likable, :dependent => :destroy
   # has_many :dislikes, :as => :dislikable, :dependent => :destroy
+
+  friendly_id :name, use: [:slugged, :finders]
+
 
   class << self
     def for_category(category)
