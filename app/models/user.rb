@@ -34,13 +34,14 @@ class User < ActiveRecord::Base
   :recoverable, :rememberable, :trackable, :validatable
   devise :omniauthable, :omniauth_providers => [:steam]
 
-  has_many :submissions, :dependent => :destroy
+  has_many :submissions, :inverse_of => :creator, :dependent => :destroy, :foreign_key => 'creator_id'
   has_many :comments, :dependent => :destroy
   has_one :api_key, :dependent => :destroy
 
-  # has_many :liked_submissions, :as => :likable, :dependent => :destroy, :inverse_of => :user
-  # has_many :disliked_submissions, :as => :dislikable, :dependent => :destroy, class_name: 'Dislike'
-  # has_many :liked_comments, :as => :likable, :dependent => :destroy, :inverse_of => :user
+  has_many :liked_submissions, :as => :likable, :dependent => :destroy, :inverse_of => :user
+  has_many :disliked_submissions, :as => :dislikable, :dependent => :destroy, class_name: 'Dislike'
+  has_many :liked_comments, :as => :likable, :dependent => :destroy, :inverse_of => :user
+  
   
   has_many :blog_posts, :inverse_of => :author, :dependent => :destroy
 

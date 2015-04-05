@@ -9,10 +9,10 @@
 #  approved_at    :time
 #  category       :string
 #  sub_category   :string
-#  like_count     :integer
-#  dislike_count  :integer
-#  download_count :integer
-#  avg_rating     :integer
+#  like_count     :integer          default(0)
+#  dislike_count  :integer          default(0)
+#  download_count :integer          default(0)
+#  avg_rating     :integer          default(0)
 #  last_favorited :time
 #  creator_id     :integer
 #  created_at     :datetime         not null
@@ -24,10 +24,10 @@ class Submission < ActiveRecord::Base
   include ApplicationHelper
   extend FriendlyId
 
-  before_save :bake_description
+  before_save :bake_body
 
   validates :name, uniqueness: true, presence: true
-  validates :description, presence: true
+  validates :body, presence: true
   validates :category, presence: true
   validates :sub_category, presence: true
 
@@ -36,9 +36,10 @@ class Submission < ActiveRecord::Base
   has_many :comments, :dependent => :destroy
   has_many :images, :dependent => :destroy
   has_many :uploads, :dependent => :destroy
+  has_many :downloads, :dependent => :destroy
 
-  # has_many :likes, :as => :likable, :dependent => :destroy
-  # has_many :dislikes, :as => :dislikable, :dependent => :destroy
+  has_many :likes, :as => :likable, :dependent => :destroy
+  has_many :dislikes, :as => :dislikable, :dependent => :destroy
 
   friendly_id :name, use: [:slugged, :finders]
 
@@ -50,10 +51,6 @@ class Submission < ActiveRecord::Base
 
     def for_subcategory(subcategory)
       where(:sub_category => subcategory)
-    end
-
-    def favorited(count = 3)
-      where(:last_favorited.exists => true).desc(:last_favorited).limit(count)
     end
   end
 
@@ -72,7 +69,9 @@ class Submission < ActiveRecord::Base
     key = "SUBMISSION:DISPLAY:#{id}"
     result = REDIS.get(key)
     if !result || force
-      result = main_image.to_json
+      main = main_image
+      return nil if !main
+      result = main.to_json
       REDIS.set(key, result)
       REDIS.expire(key, 24.hours)
     end
@@ -94,7 +93,7 @@ class Submission < ActiveRecord::Base
     self.save
   end
 
-  def bake_description
+  def bake_body
     self.baked_body = bake_markdown(self.body)
   end
 
@@ -107,7 +106,7 @@ class Submission < ActiveRecord::Base
   end
 
   def latest
-    uploads.desc(:created_at).first
+    uploads.order('created_at DESC').first
   end
 
   def can_manage(user = nil)

@@ -3,7 +3,6 @@
 # Table name: uploads
 #
 #  id            :integer          not null, primary key
-#  name          :string
 #  changelog     :text
 #  approved_at   :time
 #  size          :string
@@ -11,12 +10,13 @@
 #  upload        :string
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
+#  version       :string
 #
 
 class Upload < ActiveRecord::Base
   belongs_to :submission
 
-  validates :name, presence: true
+  validates :version, presence: true
 
   mount_uploader :upload, UploadUploader
 

@@ -19,6 +19,6 @@ module SubmissionsHelper
   end
 
   def favorites
-    Submission.where(:favorited_at.exists => true).desc(:favorited_at).limit(3)
+    Submission.where(:favorited_at.exists => true).order('favorited_at DESC').limit(3)
   end
 end

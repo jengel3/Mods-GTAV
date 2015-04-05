@@ -12,7 +12,7 @@
 		</div>
 		<div class="contentpage_mainthumb">
 			<% main = @submission.fetch_display %>
-			<img class="contentpage_mainthumb_img" src="<%= main ? main['image']['url'] : '' %>" alt="Main Thumbnail" />
+			<%= image_tag((main ? main['image']['url'] : ''), alt: "Main Thumbnail", class: 'contentpage_mainthumb_img') %>"
 		</div>
 		
 	</div>

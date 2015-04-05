@@ -4,7 +4,7 @@
 #
 #  id            :integer          not null, primary key
 #  text          :text
-#  like_count    :integer
+#  like_count    :integer          default(0)
 #  user_id       :integer
 #  submission_id :integer
 #  created_at    :datetime         not null

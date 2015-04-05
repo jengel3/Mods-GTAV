@@ -10,8 +10,7 @@
 #  updated_at      :datetime         not null
 #
 
-require 'rails_helper'
-
-RSpec.describe Dislike, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+class Dislike < ActiveRecord::Base
+  belongs_to :dislikable, polymorphic: true
+  belongs_to :user
 end

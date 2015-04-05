@@ -10,4 +10,12 @@
 #
 
 class Download < ActiveRecord::Base
+  before_create :add_download
+  
+  belongs_to :submission
+
+  def add_download
+    submission.download_count += 1
+    submission.save
+  end
 end

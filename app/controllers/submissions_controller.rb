@@ -27,7 +27,7 @@ class SubmissionsController < ApplicationController
       @submissions = @submissions.where(:category => category)
       @subcategories = CATEGORIES[category.to_sym] || nil
     end
-    if subcategory
+    if subcategory && subcategory != 'all'
       @submissions = @submissions.where(:sub_category => subcategory)
     end
     if @sort
@@ -119,7 +119,7 @@ class SubmissionsController < ApplicationController
     latest = @submission.latest
     return if !latest
     # handle download count
-    @submission.downloads.create(:ip => get_request_ip)
+    @submission.downloads.create(:ip_address => get_request_ip)
     send_file latest.upload.path
   end
 
@@ -166,11 +166,11 @@ class SubmissionsController < ApplicationController
   def time_sort(timeframe, submissions)
     case timeframe.downcase
     when 'today'
-      submissions.where(:approved_at.gte => Time.now - 24.hours)
+      submissions.where('approved_at >= ?', Time.now - 24.hours)
     when 'week'
-      submissions.where(:approved_at.gte => Time.now - 7.days)
+      submissions.where('approved_at >= ?', Time.now - 7.days)
     when 'month'
-      submissions.where(:approved_at.gte => Time.now - 1.month)
+      submissions.where('approved_at >= ?', Time.now - 1.month)
     else
       submissions
     end
@@ -179,15 +179,15 @@ class SubmissionsController < ApplicationController
   def reg_sort(sort, submissions)
     case sort.downcase
     when 'newest'
-      submissions.desc('approved_at')
+      submissions.order('approved_at DESC')
     when 'oldest'
-      submissions.asc('approved_at')
+      submissions.order('approved_at ASC')
     when 'updated'
-      submissions.desc('last_updated')
+      submissions.order('last_updated DESC')
     when 'downloads'
-      submissions.desc('download_count')
+      submissions.order('download_count DESC')
     when 'likes'
-      submissions.desc('avg_rating')
+      submissions.order('avg_rating DESC')
     else
       submissions
     end

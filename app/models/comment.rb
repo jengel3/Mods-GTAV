@@ -4,7 +4,7 @@
 #
 #  id            :integer          not null, primary key
 #  text          :text
-#  like_count    :integer
+#  like_count    :integer          default(0)
 #  user_id       :integer
 #  submission_id :integer
 #  created_at    :datetime         not null
@@ -20,7 +20,7 @@ class Comment < ActiveRecord::Base
   belongs_to :user
   belongs_to :submission
   
-  # has_many :likes, :as => :likable, :dependent => :destroy
+  has_many :likes, :as => :likable, :dependent => :destroy
 
   def has_liked(user = nil)
     if user

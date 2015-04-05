@@ -9,10 +9,10 @@
 #  approved_at    :time
 #  category       :string
 #  sub_category   :string
-#  like_count     :integer
-#  dislike_count  :integer
-#  download_count :integer
-#  avg_rating     :integer
+#  like_count     :integer          default(0)
+#  dislike_count  :integer          default(0)
+#  download_count :integer          default(0)
+#  avg_rating     :integer          default(0)
 #  last_favorited :time
 #  creator_id     :integer
 #  created_at     :datetime         not null

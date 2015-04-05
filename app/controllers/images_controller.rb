@@ -4,7 +4,9 @@ class ImagesController < ApplicationController
     @submission = Submission.find(params[:submission_id])
     if params[:images]
       params[:images].each { |image|
-        @image = @submission.images.create(image: image, location: params[:location])
+        @image = @submission.images.build
+        @image.location = params[:location]
+        @image.image = image
         respond_to do |format|
           if @image.save
             format.json { render json: @image }

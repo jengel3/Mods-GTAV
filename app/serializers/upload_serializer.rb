@@ -3,7 +3,6 @@
 # Table name: uploads
 #
 #  id            :integer          not null, primary key
-#  name          :string
 #  changelog     :text
 #  approved_at   :time
 #  size          :string
@@ -11,6 +10,7 @@
 #  upload        :string
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
+#  version       :string
 #
 
 class UploadSerializer < ActiveModel::Serializer

@@ -8,8 +8,7 @@
 #  likable_id   :integer
 #
 
-require 'rails_helper'
-
-RSpec.describe Like, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+class Like < ActiveRecord::Base
+  belongs_to :likable, polymorphic: true
+  belongs_to :user
 end

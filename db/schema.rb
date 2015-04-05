@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150404180024) do
+ActiveRecord::Schema.define(version: 20150405152018) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,15 +32,24 @@ ActiveRecord::Schema.define(version: 20150404180024) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "text"
-    t.integer  "like_count"
+    t.integer  "like_count",    default: 0
     t.integer  "user_id"
     t.integer  "submission_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.datetime "deleted_at"
   end
 
   add_index "comments", ["deleted_at"], name: "index_comments_on_deleted_at", using: :btree
+  add_index "comments", ["submission_id"], name: "index_comments_on_submission_id", using: :btree
+
+  create_table "dislikes", force: :cascade do |t|
+    t.string   "dislikable_type"
+    t.integer  "dislikable_id"
+    t.integer  "user_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
 
   create_table "downloads", force: :cascade do |t|
     t.inet     "ip_address"
@@ -70,6 +79,14 @@ ActiveRecord::Schema.define(version: 20150404180024) do
     t.datetime "updated_at",    null: false
   end
 
+  add_index "images", ["submission_id"], name: "index_images_on_submission_id", using: :btree
+
+  create_table "likes", force: :cascade do |t|
+    t.string  "likable_type"
+    t.string  "user_id"
+    t.integer "likable_id"
+  end
+
   create_table "submissions", force: :cascade do |t|
     t.string   "name"
     t.text     "body"
@@ -77,21 +94,20 @@ ActiveRecord::Schema.define(version: 20150404180024) do
     t.time     "approved_at"
     t.string   "category"
     t.string   "sub_category"
-    t.integer  "like_count"
-    t.integer  "dislike_count"
-    t.integer  "download_count"
-    t.integer  "avg_rating"
+    t.integer  "like_count",     default: 0
+    t.integer  "dislike_count",  default: 0
+    t.integer  "download_count", default: 0
+    t.integer  "avg_rating",     default: 0
     t.time     "last_favorited"
     t.integer  "creator_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.string   "slug"
   end
 
   add_index "submissions", ["slug"], name: "index_submissions_on_slug", unique: true, using: :btree
 
   create_table "uploads", force: :cascade do |t|
-    t.string   "name"
     t.text     "changelog"
     t.time     "approved_at"
     t.string   "size"
@@ -99,15 +115,18 @@ ActiveRecord::Schema.define(version: 20150404180024) do
     t.string   "upload"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.string   "version"
   end
 
+  add_index "uploads", ["submission_id"], name: "index_uploads_on_submission_id", using: :btree
+
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                  default: "",   null: false
+    t.string   "encrypted_password",     default: "",   null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,    null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
@@ -121,13 +140,15 @@ ActiveRecord::Schema.define(version: 20150404180024) do
     t.string   "provider"
     t.string   "uid"
     t.string   "steam_id"
-    t.boolean  "email_approval"
-    t.boolean  "email_reports"
-    t.boolean  "email_comments"
-    t.boolean  "email_news"
+    t.boolean  "email_approval",         default: true
+    t.boolean  "email_reports",          default: true
+    t.boolean  "email_comments",         default: true
+    t.boolean  "email_news",             default: true
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["uid", "provider"], name: "index_users_on_uid_and_provider", using: :btree
+  add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
 end
