@@ -3,7 +3,7 @@ require 'faker'
 namespace :db do
   desc "Populate a database with real life data"
   task :populate => :environment do
-    count = 25
+    count = 150
     count.times do 
       pass = Faker::Internet.password
       username = Faker::Internet.user_name(nil, %w(_))[0..13] + rand(100).to_s
@@ -15,17 +15,22 @@ namespace :db do
       category = CATEGORIES.keys.sample
       subcategory = CATEGORIES[category].sample
 
-      submission = Submission.create(:creator => user, 
-        :name => Faker::Commerce.product_name, 
+      submission = user.submissions.create!(:name => Faker::Commerce.product_name + rand(1000).to_s, 
         :body => Faker::Lorem.paragraph,
         :category => category.downcase,
         :sub_category => subcategory.downcase.gsub(' ', '_'))
       
-      image = Image.new(:submission => submission, :location => "Main")
+      image = submission.images.build(:location => "Main")
       image.image.store!(File.open(File.join(Rails.root, 'spec', 'data', "thumbnail#{rand 1..7}.jpg")))
       image.save
+
+
+      dlcount = rand(200)
+      dlcount.times do
+        submission.downloads.create!(:ip_address => Faker::Internet.ip_v4_address)
+      end
       
-      puts "Created user with username #{user.username} who owns the submission '#{submission.name}' that has an image."
+      puts "Created user with username #{user.username} who owns the submission '#{submission.name}' that has an image and #{dlcount} downloads."
     end
   end
 end

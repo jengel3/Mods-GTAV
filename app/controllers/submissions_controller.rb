@@ -118,7 +118,6 @@ class SubmissionsController < ApplicationController
   def download
     latest = @submission.latest
     return if !latest
-    # handle download count
     @submission.downloads.create(:ip_address => get_request_ip)
     send_file latest.upload.path
   end

@@ -18,7 +18,18 @@ module SubmissionsHelper
     end
   end
 
+  def top_developers
+    developers = User.all.joins(:submissions => :downloads).where('downloads.created_at >= ?', DateTime.now - 1.week).group("users.id").order("count(users.id) DESC").limit(6).count
+    developers
+  end
+
   def favorites
-    Submission.where(:favorited_at.exists => true).order('favorited_at DESC').limit(3)
+    favorites = Submission.where('favorited_at IS NOT NULL').limit(3)
+    favorites
+  end
+
+  def top_submissions
+    submissions = Submission.all.joins(:downloads).where('downloads.created_at >= ?', DateTime.now - 1.week).group('submissions.id').order("count(submissions.id) DESC")
+    submissions
   end
 end
