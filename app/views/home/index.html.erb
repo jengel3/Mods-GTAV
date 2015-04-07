@@ -2,7 +2,7 @@
 <div class="homepage_featuredwrap_large">
    <h3>Featured Modifications</h3>
    <div class="mainimgwrap">
-      <%= link_to image_tag(feat[0]['fetch_display']['image']['url']), feat[0]['path'] if feat %>
+      <%= link_to image_tag(feat[0]['fetch_display']['image']['url']), feat[0]['path'] if feat.length > 0 %>
    </div>
 </div>
 <div class="homepage_note_and_mostpopular_wrap">
@@ -25,7 +25,7 @@
    </table>
 </div>
 <div class="homepage_featuredwrap_small">
-   <%= render 'shared/featured', submissions: feat[1..2] if feat %>
+   <%= render 'shared/featured', submissions: feat[1..2] if feat.length > 3 %>
 </div>
 <div class="homepage_twitterwrap">
    <h3><img src="<%= asset_path('twitterlogo.png') %>" />#Mod of the Day</h3>
@@ -65,7 +65,8 @@
 
 </table>
 <div class="homepage_featuredwrap_small">
-   <%= render 'shared/featured', submissions: feat[3..5] if feat %>
+<% puts feat.length, 'len' %>
+   <%= render 'shared/featured', submissions: feat[3..5] if feat.length == 6 %>
 </div>
 <div class="homepage_twitterwrap">
    <h3><img src="<%= asset_path('twitterlogo.png') %>" />Rockstar Games</h3>

@@ -36,7 +36,7 @@ module SubmissionsHelper
   end
 
   def top_submissions(time_period = DateTime.now - 1.week)
-    key = 'STAT:TOP_DEVS'
+    key = 'STAT:TOP_SUBMISSIONS'
     result = REDIS.get(key)
     if !result
       submissions = Submission.all.joins(:downloads).where('downloads.created_at >= ?', time_period).group('submissions.id').order("count(submissions.id) DESC").limit(6).count    
