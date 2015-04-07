@@ -1,13 +1,13 @@
 <% submissions.each do |submission| %>
 <div class="homepage_featured_modwrap">
    <div class="imgwrap">
-      <%= link_to image_tag(submission.fetch_display['image']['preview']['url']), submission_path(submission) %>
+      <%= link_to image_tag(submission['fetch_display']['image']['url']), submission['path'] %>
    </div>
    <div class="featured_moddetailswrap">
-      <a href="<%= submission_path(submission) %>"><h4 class="featured_modtitle"><%= submission.name %></h4></a>
-      <h5 class="featured_modcreator"><%= submission.fetch_creator %></h5>
-      <div class="featured_likecount"><img src="<%= asset_path('hearticon.png') %>" /><%= submission.avg_rating %></div>
-      <div class="featured_downloadcount"><img src="<%= asset_path('downloadcounticon.png') %>" /><%= submission.download_count %></div>
+      <a href="<%= submission['path'] %>"><h4 class="featured_modtitle"><%= submission['name'] %></h4></a>
+      <h5 class="featured_modcreator"><%= submission['fetch_creator'] %></h5>
+      <div class="featured_likecount"><img src="<%= asset_path('hearticon.png') %>" /><%= submission['avg_rating'] %></div>
+      <div class="featured_downloadcount"><img src="<%= asset_path('downloadcounticon.png') %>" /><%= submission['download_count'] %></div>
    </div>
 </div>
 <% end %>

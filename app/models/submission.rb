@@ -21,6 +21,7 @@
 #
 
 class Submission < ActiveRecord::Base
+  include Rails.application.routes.url_helpers
   include ApplicationHelper
   extend FriendlyId
 
@@ -80,6 +81,10 @@ class Submission < ActiveRecord::Base
 
   def to_s
     name
+  end
+
+  def path
+    submission_path(self)
   end
 
   def update_rating

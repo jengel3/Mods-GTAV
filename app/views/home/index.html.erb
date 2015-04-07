@@ -2,7 +2,7 @@
 <div class="homepage_featuredwrap_large">
    <h3>Featured Modifications</h3>
    <div class="mainimgwrap">
-      <%= link_to image_tag(feat[0].fetch_display['image']['url']), submission_path(feat[0]) %>
+      <%= link_to image_tag(feat[0]['fetch_display']['image']['url']), feat[0]['path'] %>
    </div>
 </div>
 <div class="homepage_note_and_mostpopular_wrap">
@@ -16,10 +16,9 @@
    <table class="this_week_most_popular_wrap">
       <th>This Week's Most Popular</th>
       <% top_submissions.each do |k, v| %>
-      <% submission = Submission.find(k) %>
       <tr>
-         <td class="modtitle"><%= link_to submission.name, submission_path(submission) %></td>
-         <td class="downloads"><%= v %></td>
+         <td class="modtitle"><%= link_to k, v['path'] %></td>
+         <td class="downloads"><%= v['downloads'] %></td>
       </tr>
       <% end %>
 
@@ -32,13 +31,13 @@
    <h3><img src="<%= asset_path('twitterlogo.png') %>" />#Mod of the Day</h3>
    <div class="homepage_twittercollectionwrap">
       <a class="twitter-timeline" href="/Mods_GTAV/timelines/582640610567434241" height="230px" width="370"  data-tweet-limit="1" data-chrome="nofooter noheader noborders transparent noscrollbar" data-widget-id="582641796481617920">Mod of the Day</a>
-      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+      <script async defer>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
    </div>
    <div class="twitter_bottom_margin_fix"></div>
 </div>
 <div class="horizontal_mod_display">
    <h3>Trending Now</h3>
-   <%= render 'shared/submissions', submissions: top_downloads(DateTime.now - 12.hours) %>
+   <%= render 'shared/cached', submissions: trending_now %>
 </div>
 <div class="horizontal_mod_display">
    <h3>Our Favorites</h3>
@@ -58,9 +57,8 @@
 <table class="this_week_most_popular_wrap most_popular_users">
    <th>This Week's Top Developers</th>
    <% top_developers.each do |k, v| %>
-   <% user = User.find(k) %>
    <tr>
-      <td class="modtitle"><%= link_to user.username, profile_path(user.username) %></td>
+      <td class="modtitle"><%= link_to k, profile_path(k) %></td>
       <td class="downloads"><%= v %></td>
    </tr>
    <% end %>
@@ -78,11 +76,11 @@
 </div>
 <div class="horizontal_mod_display">
    <h3>Today's Most Liked</h3>
-   <%= render 'shared/submissions', submissions: top_likes(DateTime.now - 24.hours) %>
+   <%= render 'shared/cached', submissions: top_likes(DateTime.now - 24.hours) %>
 </div>
 <div class="horizontal_mod_display">
    <h3>Today's Most Downloaded</h3>
-   <%= render 'shared/submissions', submissions: top_downloads(DateTime.now - 24.hours) %>
+   <%= render 'shared/cached', submissions: today_downloads %>
 </div>
 <h3 class="homepage_recent">Recent Modifications</h3>
 <div class="homepage_recent_mods_wrap">
