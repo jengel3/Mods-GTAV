@@ -18,7 +18,5 @@ class UploadSerializer < ActiveModel::Serializer
 
   has_one :submission
 
-  def id
-    object.id.to_s
-  end
+
 end

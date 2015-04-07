@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150405152018) do
+ActiveRecord::Schema.define(version: 20150406222535) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,14 +48,12 @@ ActiveRecord::Schema.define(version: 20150405152018) do
     t.integer  "dislikable_id"
     t.integer  "user_id"
     t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
   end
 
   create_table "downloads", force: :cascade do |t|
     t.inet     "ip_address"
     t.integer  "submission_id"
     t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -76,15 +74,15 @@ ActiveRecord::Schema.define(version: 20150405152018) do
     t.integer  "submission_id"
     t.string   "image"
     t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
   end
 
   add_index "images", ["submission_id"], name: "index_images_on_submission_id", using: :btree
 
   create_table "likes", force: :cascade do |t|
-    t.string  "likable_type"
-    t.string  "user_id"
-    t.integer "likable_id"
+    t.string   "likable_type"
+    t.string   "user_id"
+    t.integer  "likable_id"
+    t.datetime "created_at"
   end
 
   create_table "submissions", force: :cascade do |t|
@@ -114,7 +112,6 @@ ActiveRecord::Schema.define(version: 20150405152018) do
     t.integer  "submission_id"
     t.string   "upload"
     t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
     t.string   "version"
   end
 
@@ -132,7 +129,6 @@ ActiveRecord::Schema.define(version: 20150405152018) do
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
     t.datetime "created_at"
-    t.datetime "updated_at"
     t.string   "username"
     t.boolean  "admin"
     t.text     "biography"

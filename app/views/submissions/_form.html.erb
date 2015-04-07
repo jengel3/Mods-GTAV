@@ -70,25 +70,41 @@
   </div>
 </div>
 
-<div id="file-popup" class="popup mfp-hide mfp-with-anim">
-  <p>Upload your files here. You <b>must</b> enter a version to represent this upload, but a changelog is <i>optional</i>.</p>
+<div id="file-popup" class="imageupload_popup_wrap fileupload_popup_wrap mfp-hide mfp-with-anim">
+  <h3>File Upload</h3>
+  <h4>Browse for file!</h4>
+  <p>This form allows you to upload a new version of your content submission. A version to represent this file is <b>required</b> but a changelog is <i>optional</i>.</p>
+  <ul>
+    <li>Read the site rules before uploading any content.</li>
+    <li>We recommend uploading only .zip files, but .rar and .tar files also work.</li>
+  </ul>
 
-  <%= form_for [@submission, @submission.uploads.build] do |f| %>
-  <p class='input-group'>
-    <%= f.label :version %>
-    <%= f.text_field :version %>
-  </p>
-  <p class='input-group'>
-    <%= f.label :changelog %>
-    <%= f.text_area :changelog %>
-  </p>
-  <p class='input-group'>
-    <%= f.label :upload %>
-    <%= f.file_field :upload %>
-  </p>
-  <p class='input-group'>
-    <%= f.submit 'Upload' %>
-  </p>
+  <%= form_for([@submission, @submission.uploads.build]) do |f| %>
+  <table cellspacing="0">
+    <tr>
+    <td><%= f.file_field :upload %></td>
+    </tr>
+    <tr class="spacer"></tr>
+    <tr>
+      <td>
+        <%= f.label :version, 'Version:' %>
+        <%= f.text_field :version, class: 'version' %>
+      </td>
+    </tr>
+    <tr class="spacer"></tr>
+    <tr>
+      <td>
+        <%= f.label :changelog, 'Changelog:' %>
+        <%= f.text_area :changelog, placeholder: 'Optional changelog...' %>
+      </td>
+    </tr>
+    <tr class="spacer"></tr>
+  </table>
+
+  <div class="bottom_buttons_wrap">
+    <%= f.submit 'Upload', class: 'upload' %>
+  </div>
   <% end %>
+
 </div>
 <% end %>

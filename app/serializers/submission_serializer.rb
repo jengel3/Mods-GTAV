@@ -25,7 +25,5 @@ class SubmissionSerializer < ActiveModel::Serializer
 
   has_one :creator
   has_many :comments
-  def id
-    object.id.to_s
-  end
+
 end

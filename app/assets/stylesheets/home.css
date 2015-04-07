@@ -168,6 +168,11 @@ table.this_week_most_popular_wrap td.downloads {
     margin-left:10px;
 }
 
+.featured_moddetailswrap a:link, .featured_moddetailswrap a:visited {
+    color:#4f4f4f;
+    text-decoration: none;
+}
+
 .featured_moddetailswrap h4 {
     margin:0;
     color:#4f4f4f;
