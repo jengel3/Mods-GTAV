@@ -14,10 +14,17 @@ module ApplicationHelper
     time.strftime("%B #{time.day.ordinalize}, %Y")
   end
 
-  def bake_markdown(text)
-    html = Kramdown::Document.new(text.gsub(/\n\r/,"<br/>")).to_html
-    sanitized = Sanitize.fragment(html, :elements => @@elems)
-    return sanitized
+  def active_cat(category)
+    category == params[:category] || (params[:controller] == 'home' && category == 'home') || (@submission && @submission.category == category) ? 'active_menu_item' : ''
+  end
+
+  def active_sub(subcategory)
+    param = params[:subcategory]
+    if param && param != 'all'
+      param.humanize.titleize == subcategory ? 'active_subcategory' : ''
+    elsif (!param || param == 'all') && subcategory == 'all'
+      'active_subcategory'
+    end
   end
 
   def get_request_ip
