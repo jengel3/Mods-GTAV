@@ -55,7 +55,15 @@ module SubmissionsHelper
   end
 
   def favorites
-    Submission.where.not(:last_favorited => nil).order('last_favorited DESC').limit(3)
+    key = 'STAT:FAVORITES'
+    result = REDIS.get(key)
+    if !result
+      submissions = Submission.where.not(:last_favorited => nil).order('last_favorited DESC').limit(3)
+      result = submissions.to_json(:only => [:name, :avg_rating, :download_count, :updated_at], :methods => [:path, :fetch_creator, :fetch_display])
+      REDIS.set(key, result)
+      REDIS.expire(key, 12.hours)
+    end
+    return JSON.load(result)
   end
 
   # helper method, do not use raw
