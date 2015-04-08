@@ -151,7 +151,7 @@ class SubmissionsController < ApplicationController
     if @submission.update_attributes(submission_params)
       return redirect_to @submission, :notice => "Successfully saved your changes."
     else
-      return redirect_to @submission, :alert => 'Unable to save your changes.'
+      render 'edit'
     end
   end
 

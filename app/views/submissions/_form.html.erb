@@ -1,3 +1,12 @@
+<div class="content_error_box">
+  <% if @submission.errors.any? %>
+  <ul>
+    <% @submission.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+  <% end %>
+</div>
 <% new_record = @submission.new_record? %>
 <div class="contentpage_wrap">
   <%= form_for(@submission) do |f| %>
@@ -6,7 +15,8 @@
       <%= f.text_field :name, class: 'uploadmod_title', placeholder: 'Title' %>
     </div>
     <div class="contentpage_mainthumb uploadmod_mainthumb">
-      <img class="contentpage_mainthumb_img" src="<%= @submission.main_image ? @submission.main_image.image_url : 'mainplaceholder.png' %>" alt="Upload a Main Image" />
+      <% main = @submission.main_image %>
+      <img class="contentpage_mainthumb_img" src="<%= main ? main.image_url : '' %>" alt="Upload a Main Image" />
     </div>
 
   </div>
@@ -41,11 +51,15 @@
   <div class="contentpage_commentswrap uploadmod_categorieswrap">
     <fieldset>
       <legend>Category</legend>
-      <%= f.select(:category, options_for_select([['Tools', 'tools'], ['Maps', 'maps'], ['Vehicles', 'vehicles'], ['Textures', 'textures'], ['Script', 'script'], ['Misc', 'misc'], ['Weapons', 'weapons'], ['Player', 'player']], @submission.category), {}, {:class=>'maincategory', size: "8" }) %>
+      <%= f.select(:category, options_for_select(CATEGORIES.map{ |k, v| [k.to_s.capitalize, k.to_s] }, @submission.category), {}, {:class=>'maincategory', size: "8" }) %>
     </fieldset>
     <fieldset>
       <legend>SubCategory</legend>
-      <%= f.select(:sub_category, options_for_select([['Ford', 'ford'], ['Maserati', 'maserati'], ['Nissan', 'nissan']], @submission.sub_category), {}, {:class=>'maincategory', size: "8" }) %>
+      <% if @submission.category %>
+      <%= f.select(:sub_category, options_for_select(CATEGORIES[@submission.category.downcase.to_sym].map{ |k| [k, k.downcase.gsub(' ', '_')] }, @submission.sub_category), {}, { :class=>'maincategory', size: "8" }) %>
+      <% else %>
+      <%= f.select(:sub_category, [], {:include_blank => 'None Specified'}, { :class=>'maincategory', size: "8" } ) %>
+      <% end %>
     </fieldset>
   </div>
   <% end %>
@@ -82,7 +96,7 @@
   <%= form_for([@submission, @submission.uploads.build]) do |f| %>
   <table cellspacing="0">
     <tr>
-    <td><%= f.file_field :upload %></td>
+      <td><%= f.file_field :upload %></td>
     </tr>
     <tr class="spacer"></tr>
     <tr>
@@ -107,4 +121,21 @@
   <% end %>
 
 </div>
+<% end %>
+<%= content_for :scripts do %>
+<script>
+  window.categories = JSON.parse('<%= CATEGORIES.to_json.html_safe %>');
+  $("#submission_category").change(function(e) {
+    console.log(e);
+    var category = $(e.target).val().toLowerCase();
+    console.log(category);
+    var subcategories = window.categories[category];
+    if (subcategories === null) console.error("Sub categories not found.");
+    $("#submission_sub_category").empty();
+    for (var x = 0; x < subcategories.length; x++) {
+      var current = subcategories[x];
+      $("#submission_sub_category").append("<option value=" + current.toLowerCase() + ">" + current + "</option>");
+    }
+  });
+</script>
 <% end %>

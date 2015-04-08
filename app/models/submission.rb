@@ -26,12 +26,13 @@ class Submission < ActiveRecord::Base
   extend FriendlyId
 
   before_save :bake_body
+  before_save :delete_sub
 
   validates :name, uniqueness: true, presence: true
   validates :body, presence: true
   validates :category, presence: true
-  validates :sub_category, presence: true
-  validate :categories, :if => :are_present?
+  validates :sub_category, presence: true, :if => lambda { |r| r.category != "misc" }
+  validate :categories, :if => lambda { |r| r.category != "misc" && !(r.category.nil? && r.sub_category.nil?)}
 
   belongs_to :creator, class_name: 'User', inverse_of: :submissions
   
@@ -55,16 +56,19 @@ class Submission < ActiveRecord::Base
     end
   end
 
-  def are_present?
-    !(category.nil? && sub_category.nil?)
+  def delete_sub
+    self.sub_category = nil if category == "misc"
   end
 
   def categories
-    if CATEGORIES[category.to_sym]
-      subs = CATEGORIES[category.to_sym]
-      errors.add(:sub_category, "is invalid.") unless subs.include?(sub_category)
-    else
-      errors.add(:category, "is invalid.")
+    if category
+      if CATEGORIES[category.to_sym]
+        subs = CATEGORIES[category.to_sym]
+        sub = sub_category.gsub('_', ' ').titleize
+        errors.add(:sub_category, "is invalid.") unless subs.include?(sub)
+      else
+        errors.add(:category, "is invalid.")
+      end
     end
   end
 
