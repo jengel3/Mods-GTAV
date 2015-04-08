@@ -228,10 +228,11 @@
 						</div>
 					</div> 
 					<div class="subcategoriesbox">
+						<% if params[:controller] == 'submissions' && params[:action] == 'index' %>
 						<h3>Subcategories</h3>
 						<div class="subcategories_wrap">
 							<a href="<%= url_for :subcategory => 'all' %>">
-							<div class="subcategory <%= active_sub('all') %>">
+								<div class="subcategory <%= active_sub('all') %>">
 									<p>All</p>
 								</div>
 							</a>
@@ -245,11 +246,12 @@
 							<% end %>
 							<% end %>
 							<a href="<%= url_for :subcategory => 'other' %>">
-							<div class="subcategory <%= active_sub('Other') %>">
+								<div class="subcategory <%= active_sub('Other') %>">
 									<p>Other</p>
 								</div>
 							</a>
 						</div>
+						<% end %>
 					</div>
 				</div>
 			</div>
