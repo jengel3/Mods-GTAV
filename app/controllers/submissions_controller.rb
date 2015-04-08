@@ -66,6 +66,7 @@ class SubmissionsController < ApplicationController
   def like
     return render json: { :status => "not authenticated"} if !current_user
     set_submission
+    return render json: { :status => "can not rate own content" } if current_user == @submission.creator
     current_like = @submission.likes.where(:user => current_user).first
     if current_like
       current_like.destroy
@@ -92,6 +93,7 @@ class SubmissionsController < ApplicationController
   def dislike
     return render json: { :status => "not authenticated"} if !current_user
     set_submission
+    return render json: { :status => "can not rate own content" } if current_user == @submission.creator
     current_dislike = @submission.dislikes.where(:user => current_user).first
     if current_dislike
       current_dislike.destroy

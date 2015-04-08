@@ -6,6 +6,7 @@
 #  likable_type :string
 #  user_id      :string
 #  likable_id   :integer
+#  created_at   :datetime
 #
 
 class Like < ActiveRecord::Base

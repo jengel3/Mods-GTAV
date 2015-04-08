@@ -9,7 +9,6 @@
 #  submission_id :integer
 #  upload        :string
 #  created_at    :datetime         not null
-#  updated_at    :datetime         not null
 #  version       :string
 #
 

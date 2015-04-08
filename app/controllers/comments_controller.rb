@@ -4,6 +4,7 @@ class CommentsController < ApplicationController
   def like
     return render json: { :status => "not authenticated" } if !current_user
     @comment = Comment.find(params[:comment_id])
+    return render json: { :status => "can not like own comment" } if current_user == @comment.user
     current_like = @comment.likes.where(:user => current_user).first
     if current_like
       current_like.destroy

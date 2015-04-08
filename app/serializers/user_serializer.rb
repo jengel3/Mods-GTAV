@@ -14,7 +14,6 @@
 #  current_sign_in_ip     :inet
 #  last_sign_in_ip        :inet
 #  created_at             :datetime
-#  updated_at             :datetime
 #  username               :string
 #  admin                  :boolean
 #  biography              :text
@@ -22,10 +21,10 @@
 #  provider               :string
 #  uid                    :string
 #  steam_id               :string
-#  email_approval         :boolean
-#  email_reports          :boolean
-#  email_comments         :boolean
-#  email_news             :boolean
+#  email_approval         :boolean          default(TRUE)
+#  email_reports          :boolean          default(TRUE)
+#  email_comments         :boolean          default(TRUE)
+#  email_news             :boolean          default(TRUE)
 #
 
 class UserSerializer < ActiveModel::Serializer

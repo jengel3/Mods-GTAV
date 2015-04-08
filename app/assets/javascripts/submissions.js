@@ -98,9 +98,13 @@ $(document).ready(function() {
             $('#dislike img').addClass('grayscale');
             $('#like img').removeClass('grayscale');
           }
-          if (data.status !== 'not authenticated') {
+          if (data.status === 'not authenticated') {
+            $('#rating').text('Log in to rate content!');
+          } else if (data.status === 'can not rate own content') {
+            $('#rating').text('You can not rate this!');
+          } else {
             $('#rating').text(Math.abs(data.count) + ' ' + (Math.abs(data.count) === 1 ? 'person' : 'people') + ' ' + (data.count < 0 ? 'dislike' : 'like') + (Math.abs(data.count) === 1 ? 's' : '') + ' this mod');
-          } 
+          }
         },
         dataType: 'json'
       });
@@ -120,9 +124,13 @@ $(document).ready(function() {
             $('#like img').addClass('grayscale');
             $('#dislike img').removeClass('grayscale');
           }
-          if (data.status !== 'not authenticated') {
+          if (data.status === 'not authenticated') {
+            $('#rating').text('Log in to rate content!');
+          } else if (data.status === 'can not rate own content') {
+            $('#rating').text('You can not rate this!');
+          } else {
             $('#rating').text(Math.abs(data.count) + ' ' + (Math.abs(data.count) === 1 ? 'person' : 'people') + ' ' + (data.count < 0 ? 'dislike' : 'like') + (Math.abs(data.count) === 1 ? 's' : '') + ' this mod');
-          } 
+          }
         },
         dataType: 'json'
       });
@@ -192,6 +200,8 @@ $(document).ready(function() {
           } else if (data.status == 'liked comment') {
             $(e.target).addClass('liked_comment');
             $(e.target).parent().addClass('liked_comment');
+          } else {
+            return;
           }
           var parent = $(e.target).parent();
           var a = $(parent).find('a');

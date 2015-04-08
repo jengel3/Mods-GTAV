@@ -14,7 +14,6 @@
 #  current_sign_in_ip     :inet
 #  last_sign_in_ip        :inet
 #  created_at             :datetime
-#  updated_at             :datetime
 #  username               :string
 #  admin                  :boolean
 #  biography              :text
@@ -22,10 +21,10 @@
 #  provider               :string
 #  uid                    :string
 #  steam_id               :string
-#  email_approval         :boolean
-#  email_reports          :boolean
-#  email_comments         :boolean
-#  email_news             :boolean
+#  email_approval         :boolean          default(TRUE)
+#  email_reports          :boolean          default(TRUE)
+#  email_comments         :boolean          default(TRUE)
+#  email_news             :boolean          default(TRUE)
 #
 
 class User < ActiveRecord::Base
@@ -38,9 +37,9 @@ class User < ActiveRecord::Base
   has_many :comments, :dependent => :destroy
   has_one :api_key, :dependent => :destroy
 
-  has_many :liked_submissions, :as => :likable, :dependent => :destroy, :inverse_of => :user
+  has_many :liked_submissions, :as => :likable, :dependent => :destroy, :inverse_of => :user, class_name: 'Like'
   has_many :disliked_submissions, :as => :dislikable, :dependent => :destroy, class_name: 'Dislike'
-  has_many :liked_comments, :as => :likable, :dependent => :destroy, :inverse_of => :user
+  has_many :liked_comments, :as => :likable, :dependent => :destroy, :inverse_of => :user, class_name: 'Like'
   
   
   has_many :blog_posts, :inverse_of => :author, :dependent => :destroy

@@ -1,7 +1,4 @@
-require 'kramdown'
-require 'sanitize'
 module ApplicationHelper
-  @@elems = ['b', 'i', 'a', 'del', 'em', 'br', 'strong']
   def relative(time)
     time_ago_in_words(time) + " ago"
   end

@@ -71,13 +71,14 @@
     margin-top:6px;
 }
 
-.mod_creator {
+.mod_creator, .mod_creator a:link, .mod_creator a:visited {
     display: inline-block;
     float: left;
     font-size:14px;
     color: #4e96a8;
     margin-left:8px;
     font-weight: normal;
+    text-decoration: none;
 }
 .downloadcount {
     display: inline-block;

@@ -22,7 +22,7 @@
 
 class Submission < ActiveRecord::Base
   include Rails.application.routes.url_helpers
-  include ApplicationHelper
+  include SubmissionsHelper
   extend FriendlyId
 
   before_save :bake_body
@@ -31,6 +31,7 @@ class Submission < ActiveRecord::Base
   validates :body, presence: true
   validates :category, presence: true
   validates :sub_category, presence: true
+  validate :categories, :if => :are_present?
 
   belongs_to :creator, class_name: 'User', inverse_of: :submissions
   
@@ -44,7 +45,6 @@ class Submission < ActiveRecord::Base
 
   friendly_id :name, use: [:slugged, :finders]
 
-
   class << self
     def for_category(category)
       where(:category => category)
@@ -54,6 +54,20 @@ class Submission < ActiveRecord::Base
       where(:sub_category => subcategory)
     end
   end
+
+  def are_present?
+    !(category.nil? && sub_category.nil?)
+  end
+
+  def categories
+    if CATEGORIES[category.to_sym]
+      subs = CATEGORIES[category.to_sym]
+      errors.add(:sub_category, "is invalid.") unless subs.include?(sub_category)
+    else
+      errors.add(:category, "is invalid.")
+    end
+  end
+
 
   def fetch_creator(force = false)
     key = "SUBMISSION:CREATOR:#{id}"
