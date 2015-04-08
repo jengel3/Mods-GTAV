@@ -126,9 +126,7 @@
 <script>
   window.categories = JSON.parse('<%= CATEGORIES.to_json.html_safe %>');
   $("#submission_category").change(function(e) {
-    console.log(e);
     var category = $(e.target).val().toLowerCase();
-    console.log(category);
     var subcategories = window.categories[category];
     if (subcategories === null) console.error("Sub categories not found.");
     $("#submission_sub_category").empty();
