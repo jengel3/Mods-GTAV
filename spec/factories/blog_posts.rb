@@ -9,7 +9,7 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-
+require 'faker'
 FactoryGirl.define do
   factory :blog_post do
     author { create(:user) }

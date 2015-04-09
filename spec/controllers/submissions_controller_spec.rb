@@ -1,33 +1,46 @@
-require 'rails_helper'
-
-RSpec.describe SubmissionsController, type: :controller do
-
-  describe "GET #index" do
-    it "returns http success" do
+RSpec.describe SubmissionsController do
+  describe "GET index" do
+    it "shows no submissions" do
       get :index
-      expect(response).to have_http_status(:success)
+      expect(assigns(:submissions)).to eq([])
+    end
+
+    it "shows new submissions" do 
+      submission = create(:submission)
+      get :index
+      expect(assigns(:submissions)).to eq([submission])
     end
   end
 
-  describe "GET #show" do
-    it "returns http success" do
-      get :show
-      expect(response).to have_http_status(:success)
+  describe "GET show" do
+    it "should render show template" do
+      submission = create(:submission)
+      get :show, id: submission.id
+      expect(response).to render_template("show")
     end
   end
 
-  describe "GET #new" do
-    it "returns http success" do
-      get :new
-      expect(response).to have_http_status(:success)
+  describe "POST like" do
+    it "should return unauthenticated" do
+      submission = create(:submission)
+      post :like, submission_id: submission.id
+      expect(JSON.parse(response.body)['status']).to eq("not authenticated")
     end
-  end
 
-  describe "GET #edit" do
-    it "returns http success" do
-      get :edit
-      expect(response).to have_http_status(:success)
+    it "should disallow own content rating" do
+      user = create(:user)
+      sign_in user
+      submission = create(:submission, creator: user)
+      post :like, submission_id: submission.id
+      expect(JSON.parse(response.body)['status']).to eq("can not rate own content")
     end
-  end
 
+    it "should return a liked status" do
+      Like.delete_all
+      user = create(:user)
+      sign_in user
+      submission = create(:submission)
+      post :like, submission_id: submission.id, format: :json
+      expect(JSON.parse(response.body)['status']).to eq("liked submission")
+    end
 end

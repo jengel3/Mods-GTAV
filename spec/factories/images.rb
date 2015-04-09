@@ -8,7 +8,7 @@
 #  image         :string
 #  created_at    :datetime         not null
 #
-
+require 'faker'
 FactoryGirl.define do
   factory :image do
     submission { create(:submission) }

@@ -7,7 +7,7 @@
 #  version :string
 #  user_id :string
 #
-
+require 'faker'
 FactoryGirl.define do
   factory :api_key do
     key { Faker::Lorem.characters(25) }

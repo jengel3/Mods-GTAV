@@ -7,7 +7,7 @@
 #  submission_id :integer
 #  created_at    :datetime         not null
 #
-
+require 'faker'
 FactoryGirl.define do
   factory :download do
     submission { create(:submission) }

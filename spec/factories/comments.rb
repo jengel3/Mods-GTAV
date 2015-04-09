@@ -11,7 +11,7 @@
 #  updated_at    :datetime         not null
 #  deleted_at    :datetime
 #
-
+require 'faker'
 FactoryGirl.define do
   factory :comment do
     text { Faker::Lorem.paragraph }

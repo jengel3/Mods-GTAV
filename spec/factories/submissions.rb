@@ -19,15 +19,14 @@
 #  updated_at     :datetime         not null
 #  slug           :string
 #
-
+require 'faker'
 FactoryGirl.define do
   factory :submission do
     name { Faker::App.name }
     body { Faker::Lorem.paragraph(3) }
     approved_at { DateTime.now }
     category { CATEGORIES.keys.sample.to_s }
-    sub_category { CATEGORIES[sub_category.to_sym].sample.downcase.gsub(' ', '_') }
-    last_favorited { nil }
+    sub_category { CATEGORIES[category.to_sym].sample.downcase.gsub(' ', '_') }
     creator { create(:user) }
   end
 end

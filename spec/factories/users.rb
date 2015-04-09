@@ -28,10 +28,9 @@
 #
 
 require 'faker'
-
 FactoryGirl.define do
   factory :user do
-    username { Faker::Internet.user_name[0..15] }
+    username { Faker::Internet.user_name(nil, %w(_))[0..13] + rand(100).to_s }
     email { Faker::Internet.email }
     admin { false }
     pass = Faker::Internet.password
