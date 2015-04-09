@@ -5,4 +5,4 @@
         <% end %>
     </ul>
 </div>
-<%= render 'shared/submissions', submissions: @user.submissions.where(:category => params[:category]) %>
+<%= render 'shared/submissions', submissions: params[:category] ? @user.submissions.where(:category => params[:category]) : @user.submissions %>
