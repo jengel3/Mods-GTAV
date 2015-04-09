@@ -12,9 +12,8 @@
 
 FactoryGirl.define do
   factory :blog_post do
-    author_id 1
-body "MyText"
-title "MyString"
+    author { create(:user) }
+    title { Faker::Lorem.sentence }
+    body { Faker::Lorem.paragraph(3) }
   end
-
 end

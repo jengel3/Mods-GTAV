@@ -11,9 +11,8 @@
 
 FactoryGirl.define do
   factory :image do
-    location "MyString"
-submission_id 1
-image "MyString"
+    submission { create(:submission) }
+    location { "Main" }
+    image { File.open(File.join(Rails.root, 'spec', 'data', 'thumbnail1.jpg')) }
   end
-
 end

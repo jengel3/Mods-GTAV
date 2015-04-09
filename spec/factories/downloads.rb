@@ -10,8 +10,7 @@
 
 FactoryGirl.define do
   factory :download do
-    ip_address ""
-submission_id 1
+    submission { create(:submission) }
+    ip_address { Faker::Internet.ip_v4_address }
   end
-
 end

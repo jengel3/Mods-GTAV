@@ -11,9 +11,6 @@
 
 FactoryGirl.define do
   factory :like do
-    likable_type "MyString"
-user_id "MyString"
-likable_id 1
+    
   end
-
 end

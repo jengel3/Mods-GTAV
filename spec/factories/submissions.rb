@@ -22,18 +22,12 @@
 
 FactoryGirl.define do
   factory :submission do
-    name "MyString"
-body "MyText"
-baked_body "MyText"
-approved_at "2015-04-04 12:11:14"
-category "MyString"
-sub_category "MyString"
-like_count 1
-dislike_count 1
-download_count 1
-avg_rating 1
-last_favorited "2015-04-04 12:11:14"
-creator_id 1
+    name { Faker::App.name }
+    body { Faker::Lorem.paragraph(3) }
+    approved_at { DateTime.now }
+    category { CATEGORIES.keys.sample.to_s }
+    sub_category { CATEGORIES[sub_category.to_sym].sample.downcase.gsub(' ', '_') }
+    last_favorited { nil }
+    creator { create(:user) }
   end
-
 end

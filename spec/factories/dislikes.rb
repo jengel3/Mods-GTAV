@@ -11,9 +11,5 @@
 
 FactoryGirl.define do
   factory :dislike do
-    dislikable_type "MyString"
-dislikable_id 1
-user_id 1
   end
-
 end

@@ -12,13 +12,13 @@
 #  version       :string
 #
 
+require 'faker'
 FactoryGirl.define do
   factory :upload do
-    name "MyString"
-changelog "MyText"
-approved_at "2015-04-04 12:12:56"
-size "MyString"
-submission_id 1
+    submission { create(:submission) }
+    verison { Faker::App.version }
+    changelog { Faker::Lorem.paragraph }
+    approved_at { DateTime.now }
+    upload { File.open(File.join(Rails.root, 'spec', 'data', 'data.zip')) }
   end
-
 end

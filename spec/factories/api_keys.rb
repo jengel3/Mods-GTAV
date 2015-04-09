@@ -10,9 +10,8 @@
 
 FactoryGirl.define do
   factory :api_key do
-    key "MyString"
-version "MyString"
-user_id "MyString"
+    key { Faker::Lorem.characters(25) }
+    version { "V1" }
+    user { create(:user) }
   end
-
 end
