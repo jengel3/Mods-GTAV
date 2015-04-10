@@ -1,3 +1,4 @@
+<%= content_for(:title, "Home") %>
 <% feat = featured %>
 <div class="homepage_featuredwrap_large">
    <h3>Featured Modifications</h3>
@@ -44,14 +45,17 @@
    <%= render 'shared/cached', submissions: favorites %>
 </div>
 <div class="homepage_youtube_wrap">
-   <h3><img src="<%= asset_path('youtubelogo.png') %>" />Community Videos</h3>
+   <h3 id="videos"><img src="<%= asset_path('youtubelogo.png') %>" />Community Videos</h3>
    <div class="youtube_videos_wrap">
-      <a href=""><img src="http://img.youtube.com/vi/BWO6VDxSg4o/mqdefault.jpg" /></a>
-      <a href=""><img src="http://img.youtube.com/vi/GE4tbjiQ-Ew/mqdefault.jpg" /></a>
-      <a href=""><img src="http://img.youtube.com/vi/BWO6VDxSg4o/mqdefault.jpg" /></a>
-      <a href=""><img src="http://img.youtube.com/vi/GE4tbjiQ-Ew/mqdefault.jpg" /></a>
-      <a href=""><img src="http://img.youtube.com/vi/BWO6VDxSg4o/mqdefault.jpg" /></a>
-      <a href=""><img src="http://img.youtube.com/vi/GE4tbjiQ-Ew/mqdefault.jpg" /></a>
+      <% Video.order('created_at ASC').each do |v| %>
+      <%= link_to image_tag(v.thumb), v.url %>
+      <% end %>
+      <% if current_user.admin %>
+      <%= form_for Video.new do |f| %>
+      <%= f.text_field :url %>
+      <%= f.submit 'Submit' %>
+      <% end %>
+      <% end %> 
    </div>
 </div>
 <table class="this_week_most_popular_wrap most_popular_users">

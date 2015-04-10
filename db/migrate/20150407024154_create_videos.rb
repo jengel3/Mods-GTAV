@@ -4,6 +4,7 @@ class CreateVideos < ActiveRecord::Migration
       t.string :url
       t.string :name
       t.string :thumb
+      t.integer :user_id
 
       t.datetime :created_at, default: DateTime.now
     end

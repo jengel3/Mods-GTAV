@@ -16,6 +16,8 @@ Rails.application.routes.draw do
     get :download
   end
 
+  resources :videos
+
   get '/c/(:category/(:subcategory))', to: 'submissions#index', as: 'category'
 
   get '/home', to: 'home#index'

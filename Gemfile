@@ -15,6 +15,7 @@ gem 'jquery-ui-rails'
 
 # API 
 gem "active_model_serializers", "~> 0.8.0"
+gem 'httparty'
 
 # Authentication
 gem 'devise'
