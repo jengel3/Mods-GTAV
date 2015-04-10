@@ -9,11 +9,11 @@
     margin-bottom:10px;
 }
 .contentpage_basic_mod_info_wrap {
- height:354px;
- width:565px;
- display: inline-block;
- margin:0;
- margin-left:5px;
+   height:354px;
+   width:565px;
+   display: inline-block;
+   margin:0;
+   margin-left:5px;
 }
 
 .contentpage_titlewrap {
@@ -96,8 +96,8 @@
 }
 
 .downloadbutton:active {
-       border-bottom: 1px solid #2a971f;
-       padding-top:1px;
+ border-bottom: 1px solid #2a971f;
+ padding-top:1px;
 }
 
 .downloadbuttonsmall {

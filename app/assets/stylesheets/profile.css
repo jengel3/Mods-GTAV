@@ -182,23 +182,23 @@
     text-decoration: none;
     color:#4f4f4f;
 
-}.profile_mod_categories_wrap li a:hover {
-    font-weight:bold;
-}
-.profilepage_subcategoriesbox h3 {
-    margin-top:11px;
-}
+    }.profile_mod_categories_wrap li a:hover {
+        font-weight:bold;
+    }
+    .profilepage_subcategoriesbox h3 {
+        margin-top:11px;
+    }
 
 
-@media(max-width:1160px) {  
- 
-    .profile_section_wrap {
-        width:900px;
+    @media(max-width:1160px) {  
+       
+        .profile_section_wrap {
+            width:900px;
+        }
+        .profile_left_panel {
+            width: 220px;
+        }
+        .profile_content_panel {
+            width: 680px;
+        }
     }
-    .profile_left_panel {
-        width: 220px;
-    }
-    .profile_content_panel {
-        width: 680px;
-    }
-}

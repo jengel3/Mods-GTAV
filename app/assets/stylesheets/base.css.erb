@@ -13,28 +13,54 @@ body{
     padding:0;
     height: 100%;
 }
+
+.mfp-zoom-in .mfp-with-anim {
+    opacity: 0;
+    transition: all 0.2s ease-in-out;
+    transform: scale(0.8);
+}
+.mfp-zoom-in.mfp-bg {
+    opacity: 0;
+    transition: all 0.3s ease-out;
+}
+.mfp-zoom-in.mfp-ready .mfp-with-anim {
+    opacity: 1;
+    transform: scale(1);
+}
+.mfp-zoom-in.mfp-ready.mfp-bg {
+    opacity: 0.8;
+}
+.mfp-zoom-in.mfp-removing .mfp-with-anim {
+    transform: scale(0.8);
+    opacity: 0;
+}
+.mfp-zoom-in.mfp-removing.mfp-bg {
+    opacity: 0;
+}
+
+
 .logoheader {
     height:35px;
     background-color:#1e1f25;
 }
-    .innerlogoheader {
-        height:100%;
-        width:1150px;
-        margin:0 auto;
-    }
-    .innerlogoheader img.logo {
-        margin-top:7px;
-        margin-left:4px;
-    }
-    .innerlogoheader img.twitter {
-        margin-top:8px;
-        float:right;
-        margin-right:10px;
-        opacity:0.8;
-    }
-    .innerlogoheader img.twitter:hover {
-        opacity:1;
-    }
+.innerlogoheader {
+    height:100%;
+    width:1150px;
+    margin:0 auto;
+}
+.innerlogoheader img.logo {
+    margin-top:7px;
+    margin-left:4px;
+}
+.innerlogoheader img.twitter {
+    margin-top:8px;
+    float:right;
+    margin-right:10px;
+    opacity:0.8;
+}
+.innerlogoheader img.twitter:hover {
+    opacity:1;
+}
 .header {
     min-height:108px;
     width:100%;
@@ -287,30 +313,30 @@ body{
     }
 
     .searchwrap ::-webkit-input-placeholder {
-       font-style:italic;
-       font-size:15px;
-       color:#b4b4b4;
-   }
+     font-style:italic;
+     font-size:15px;
+     color:#b4b4b4;
+ }
 
-   .searchwrap :-moz-placeholder { /* Firefox 18- */
-       font-style:italic; 
-       font-size:15px;
-       color:#b4b4b4;
-   }
+ .searchwrap :-moz-placeholder { /* Firefox 18- */
+     font-style:italic; 
+     font-size:15px;
+     color:#b4b4b4;
+ }
 
-   .searchwrap ::-moz-placeholder {  /* Firefox 19+ */
-       font-style:italic; 
-       font-size:15px;
-       color:#b4b4b4;
-   }
+ .searchwrap ::-moz-placeholder {  /* Firefox 19+ */
+     font-style:italic; 
+     font-size:15px;
+     color:#b4b4b4;
+ }
 
-   .searchwrap :-ms-input-placeholder {  
-       font-style:italic;  
-       font-size:15px;
-       color:#b4b4b4;
-   }
+ .searchwrap :-ms-input-placeholder {  
+     font-style:italic;  
+     font-size:15px;
+     color:#b4b4b4;
+ }
 
-   .searchbutton{
+ .searchbutton{
     display:inline-block;
     vertical-align: top;
     margin-left:165px;
@@ -340,10 +366,10 @@ body{
 }
 
 .userprofilebox {
- width:100%;
- height:auto;
- margin-bottom:40px;
- margin-top:10px;
+   width:100%;
+   height:auto;
+   margin-bottom:40px;
+   margin-top:10px;
 }
 
 .userinfo_profilewrap {
