@@ -316,11 +316,12 @@ input.comment_submit_button:focus {
     margin-bottom:8px;
 }
 
-.commentname {
+.commentname a:link, .commentname a:visited {
     font-size: 15px;
     font-weight:bold;
     color: #5f5f5f;
     margin-bottom:4px;
+    text-decoration: none;
 }
 .likecomment_score {
     font-weight: normal;

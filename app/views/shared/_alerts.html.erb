@@ -1,0 +1,11 @@
+<% if alert %>
+<div class="alert">
+	<%= alert %>
+	<a href="#" class="close-alert">&#10006;</a>
+</div>
+<% elsif notice %>
+<div class="alert greenalert">
+	<%= notice %>
+	<a href="#" class="close-alert">&#10006;</a>
+</div>
+<% end %>

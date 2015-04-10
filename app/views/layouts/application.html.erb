@@ -217,6 +217,7 @@
 			<% end %>
 			<div class="mainpagewrap">
 				<div class="mainpage <%= params[:controller] == 'home' ? 'homepage' : '' %>">
+					<%= render 'shared/alerts' %>
 					<%= yield %>
 				</div>
 				<div class="right_sidebar_preview"><div class="sidebar_expand_button"> <img src="<%= asset_path('expandsidebar.png') %>" alt="<" /> </div></div>
@@ -276,3 +277,4 @@
 	<%= javascript_include_tag "application" %>
 	<%= content_for(:scripts) %>
 </body>
+<%= render 'shared/contact' %>

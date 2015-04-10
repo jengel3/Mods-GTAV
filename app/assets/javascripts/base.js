@@ -92,6 +92,23 @@ $(document).ready(function() {
 	$('.tooltip').tooltipster({
 		theme: 'tooltipster-light'
 	});
+	function removeAlert() {
+		$('.alert').fadeOut("slow", function() {
+			this.remove();
+		});
+	};
+
+	$('.close-alert').click(function(e) {
+		e.preventDefault();
+		removeAlert();
+	});
+
+	if ($('.close-alert').length) {
+		setTimeout(function() {
+			removeAlert();
+		}, 10000)
+	};
+
 	doResize();
 	$(window).on('resize', doResize);
 	if ($(window).width() <= 1160) { 
