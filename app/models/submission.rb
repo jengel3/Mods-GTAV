@@ -30,9 +30,7 @@ class Submission < ActiveRecord::Base
 
   validates :name, uniqueness: true, presence: true
   validates :body, presence: true
-  validates :category, presence: true
-  validates :sub_category, presence: true, :if => lambda { |r| r.category != "misc" }
-  validate :categories, :if => lambda { |r| r.category != "misc" && !(r.category.nil? && r.sub_category.nil?)}
+  validate :categories
 
   belongs_to :creator, class_name: 'User', inverse_of: :submissions
   
@@ -61,14 +59,19 @@ class Submission < ActiveRecord::Base
   end
 
   def categories
-    if category
+    if category && category != "misc"
       if CATEGORIES[category.to_sym]
         subs = CATEGORIES[category.to_sym]
+        if !sub_category
+          return errors.add(:sub_category, "is missing.")
+        end
         sub = sub_category.gsub('_', ' ').titleize
         errors.add(:sub_category, "is invalid.") unless subs.include?(sub)
       else
         errors.add(:category, "is invalid.")
       end
+    elsif !category
+      errors.add(:category, "is missing.")
     end
   end
 

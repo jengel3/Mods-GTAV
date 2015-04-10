@@ -16,7 +16,7 @@
     </div>
     <div class="contentpage_mainthumb uploadmod_mainthumb">
       <% main = @submission.main_image %>
-      <img class="contentpage_mainthumb_img" src="<%= main ? main.image_url : '' %>" alt="Upload a Main Image" />
+      <%= image_tag (main ? main.image_url : 'add_mainimage_default.png'), class: 'contentpage_mainthumb_img', alt: 'Upload a main image' %>
     </div>
 
   </div>

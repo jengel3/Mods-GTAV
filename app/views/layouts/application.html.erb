@@ -87,13 +87,13 @@
 							<img src="<%= asset_path('toolsicon50.png') %>" alt="Navigation Icon" />
 						</a>
 					</li>
-                    <li class="<%= active_cat('weapons') %>">
+					<li class="<%= active_cat('weapons') %>">
 						<a href="<%= category_path('weapons') %>">
 							<h2>Weapons</h2>
 							<img src="<%= asset_path('weaponsicon50.png') %>" alt="Navigation Icon" />
 						</a>
 					</li>
-                    <li class="<%= active_cat('vehicles') %>">
+					<li class="<%= active_cat('vehicles') %>">
 						<a href="<%= category_path('vehicles') %>">
 							<h2>Vehicles</h2>
 							<img src="<%= asset_path('vehicleicon50.png') %>" alt="Navigation Icon" />
@@ -105,7 +105,7 @@
 							<img src="<%= asset_path('textureicon50.png') %>" alt="Navigation Icon" />
 						</a>
 					</li>
-                    <li class="<%= active_cat('player') %>">
+					<li class="<%= active_cat('player') %>">
 						<a href="<%= category_path('player') %>">
 							<h2>Player</h2>
 							<img src="<%= asset_path('playericon50.png') %>" alt="Navigation Icon" />
@@ -249,6 +249,16 @@
 								<div class="subcategory <%= active_sub('Other') %>">
 									<p>Other</p>
 								</div>
+							</a>
+						</div>
+						<% elsif params[:controller].start_with?('admin') %>
+						<h3>Admin Panels</h3>
+						<div class="subcategories_wrap">
+							<a href="<%= url_for [:admin, :home] %>">
+								<div class="subcategory <%= current_panel('home') %>"><p>Home</p></div>
+							</a>
+							<a href="<%= url_for [:admin, :content] %>">
+								<div class="subcategory <%= current_panel('content') %>"><p>Content Moderation</p></div>
 							</a>
 						</div>
 						<% end %>
