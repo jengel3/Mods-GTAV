@@ -2,6 +2,7 @@ class ImagesController < ApplicationController
   before_filter :authenticate_user!, only: [:create, :destroy]
   def create
     @submission = Submission.find(params[:submission_id])
+    return redirect_to root_path, :alert => 'No permission.' unless @submission.can_manage(current_user)
     if params[:images]
       params[:images].each { |image|
         @image = @submission.images.build
@@ -20,6 +21,7 @@ class ImagesController < ApplicationController
 
   def destroy
     @submission = Submission.find(params[:submission_id])
+    return redirect_to root_path, :alert => 'No permission.' unless @submission.can_manage(current_user)
     @image = @submission.images.find(params[:id])
     if @image.destroy
       respond_to do |format|

@@ -7,6 +7,8 @@ Rails.application.routes.draw do
       post :like
     end
     resources :uploads do
+      post :approve
+      post :deny
       get :download
     end
     post :like
@@ -29,5 +31,10 @@ Rails.application.routes.draw do
         resources :uploads
       end
     end
+  end
+
+  namespace :admin do
+    get '/', to: 'home#index', as: 'home'
+    get '/content', to: 'content#index', as: 'content'
   end
 end

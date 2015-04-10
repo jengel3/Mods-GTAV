@@ -6,9 +6,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #  UserMailer.welcome(@user).deliver_later unless @user.invalid?
   # end
 
-  def edit
-  end
-
   def update
     @user = User.find(current_user.id)
     user = params[:user]

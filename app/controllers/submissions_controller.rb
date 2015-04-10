@@ -9,11 +9,10 @@ class SubmissionsController < ApplicationController
     subcategory = params[:subcategory]
     @sort = params[:sort]
     @time = params[:time]
-    @submissions = Submission.all
+    @submissions = Submission.where('approved_at IS NOT NULL')
     @sort_options = {
       'Newest' => 'newest',
       'Oldest' => 'oldest',
-      'Updated' => 'updated',
       'Popular' => 'downloads',
       'Most Liked' => 'likes'
     }
@@ -183,8 +182,6 @@ class SubmissionsController < ApplicationController
       submissions.order('approved_at DESC')
     when 'oldest'
       submissions.order('approved_at ASC')
-    when 'updated'
-      submissions.order('last_updated DESC')
     when 'downloads'
       submissions.order('download_count DESC')
     when 'likes'

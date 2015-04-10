@@ -27,4 +27,8 @@ module ApplicationHelper
   def get_request_ip
     request.headers['X-Forwarded-For'] || request.ip
   end
+
+  def require_admin
+    return redirect_to root_path unless (current_user && current_user.admin)
+  end
 end

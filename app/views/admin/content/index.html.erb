@@ -1,0 +1,19 @@
+<table class="footable metro-red">
+	<thead>
+		<th>Submission</th>
+		<th>Upload Version</th>
+		<th>Uploaded</th>
+		<th colspan="2">Actions</th>
+	</thead>
+	<tbody>
+		<% @uploads.each do |upload| %>
+		<tr>
+			<td><%= upload.submission.name %></td>
+			<td><%= upload.version %></td>
+			<td title="Uploaded at <%= exact(upload.created_at) %>" class="tooltip"><%= relative(upload.created_at) %></td>
+			<td><%= link_to 'Approve', [upload.submission, upload, :approve], method: :post %></td>
+			<td><%= link_to 'Deny', [upload.submission, upload, :deny], method: :post %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>

@@ -1,0 +1,81 @@
+.footable {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+  border: 3px solid #52b9e9;
+  font-family: "Open Sans", Arial, Helvetica, sans-serif;
+  color: #444444;
+  background: #efefef;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+}
+.footable.breakpoint > tbody > tr.footable-row-detail {
+  background: #eeeeee;
+}
+.footable.breakpoint > tbody > tr:hover:not(.footable-row-detail) {
+  cursor: pointer;
+}
+.footable.breakpoint > tbody > tr > td.footable-row-detail-cell {
+  background: #fff;
+}
+.footable > tbody img {
+  vertical-align: middle;
+}
+.footable > tbody > tr:hover:not(.footable-row-detail) {
+  background: #dddddd;
+}
+.footable > tbody > tr:hover:not(.footable-row-detail) > td {
+  color: #000000;
+}
+.footable > tbody > tr:last-child > td {
+  border-bottom: none;
+}
+.footable > tbody > tr > td {
+  border-top: 1px solid #dddddd;
+  padding: 10px;
+  text-align: left;
+  border-left: none;
+}
+.footable > tbody > tr > td.footable-row-detail-cell,
+.footable > tbody > tr > td.footable-first-column {
+  border-left: none;
+}
+.footable > thead > tr > th {
+  border-bottom: 1px solid #dddddd;
+  padding: 10px;
+  text-align: left;
+}
+.footable > thead > tr > th,
+.footable > thead > tr > td {
+  background-color: #52b9e9;
+  border: 1px solid #52b9e9;
+  color: #ffffff;
+  border-top: none;
+  border-left: none;
+  font-weight: normal;
+}
+.footable > thead > tr > th.footable-first-column,
+.footable > thead > tr > td.footable-first-column {
+  border-left: none;
+}
+.footable > tfoot > tr > th,
+.footable > tfoot > tr > td {
+  background-color: #52b9e9;
+  border: 1px solid #52b9e9;
+  color: #ffffff;
+  border-top: none;
+  border-left: none;
+  padding: 5px;
+}
+
+.footable.metro-red {
+  border-color: #FF5A5F;
+}
+.footable.metro-red > tfoot > tr > th,
+.footable.metro-red > thead > tr > th,
+.footable.metro-red > tfoot > tr > td,
+.footable.metro-red > thead > tr > td {
+  background-color: #FF5A5F;
+  border-color: #FF5A5F;
+}
