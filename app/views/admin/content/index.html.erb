@@ -19,8 +19,8 @@
 	<tbody>
 		<% @uploads.each do |upload| %>
 		<tr>
-			<td><%= link_to upload.submission.name, upload.submission %></td>
-			<td><%= upload.version %></td>
+			<td><span title="Created by: <%= upload.submission.creator.username %>" class="tooltip"><%= link_to upload.submission.name, upload.submission %></span></td>
+			<td><span title="Changelog: <%= upload.changelog.html_safe if upload.changelog %>" class="tooltip"><%= upload.version %></span></td>
 			<td><span title="Uploaded at <%= exact(upload.created_at) %>" class="tooltip"><%= relative(upload.created_at) %></span></td>
 			<td><%= link_to upload.upload.file.filename, upload.upload.url %></td>
 			<td><%= link_to 'Approve', [upload.submission, upload, :approve], method: :post %></td>
