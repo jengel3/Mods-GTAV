@@ -129,6 +129,7 @@ class Submission < ActiveRecord::Base
   end
 
   def latest
+    return nil if approved_at.nil?
     uploads.order('created_at DESC').first
   end
 

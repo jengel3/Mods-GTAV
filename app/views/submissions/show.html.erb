@@ -24,7 +24,11 @@
 			<div class="downloadbutton_text">Download</div>
 		</div></a>
 		<% elsif @submission.can_manage(current_user) %>
+		<% if @submission.approved_at.nil? && @submission.uploads.count > 0 %>
+		<div class="modfilename nouploads"><%= pluralize(@submission.uploads.count, 'file') %>  waiting for approval.</div>
+		<% else %>
 		<div class="modfilename nouploads">No files uploaded.</div>
+		<% end %>
 		<a class="downloadbutton_link" href="<%= url_for [:edit, @submission] %>"><div class="downloadbutton">
 			<div class="downloadbutton_text">Upload File</div>
 		</div></a>

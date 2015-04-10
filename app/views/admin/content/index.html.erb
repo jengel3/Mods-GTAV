@@ -1,19 +1,34 @@
-<table class="footable metro-red">
+<div id="guide" align="left" style="margin-left: 20px;">
+	<h2>Approval Guide</h2>
+	<ul>
+		<li>Initial files need to be approved, but all further files are automatically approved.</li>
+		<li>When denying a file, you have the option to enter a reason for denying the download.</li>
+		<li>Approve downloads in the order that they were uploaded, from oldest to newest.</li>
+	</ul>
+</div>
+<hr>
+<% if @uploads.any? %>
+<table class="footable gta-orange">
 	<thead>
 		<th>Submission</th>
 		<th>Upload Version</th>
 		<th>Uploaded</th>
+		<th>File</th>
 		<th colspan="2">Actions</th>
 	</thead>
 	<tbody>
 		<% @uploads.each do |upload| %>
 		<tr>
-			<td><%= upload.submission.name %></td>
+			<td><%= link_to upload.submission.name, upload.submission %></td>
 			<td><%= upload.version %></td>
-			<td title="Uploaded at <%= exact(upload.created_at) %>" class="tooltip"><%= relative(upload.created_at) %></td>
+			<td><span title="Uploaded at <%= exact(upload.created_at) %>" class="tooltip"><%= relative(upload.created_at) %></span></td>
+			<td><%= link_to upload.upload.file.filename, upload.upload.url %></td>
 			<td><%= link_to 'Approve', [upload.submission, upload, :approve], method: :post %></td>
 			<td><%= link_to 'Deny', [upload.submission, upload, :deny], method: :post %></td>
 		</tr>
 		<% end %>
 	</tbody>
 </table>
+<% else %>
+<p>No content awaiting approval.</p>
+<% end %>
