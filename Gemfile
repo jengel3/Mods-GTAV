@@ -23,8 +23,6 @@ gem 'omniauth-steam'
 # File uploads
 gem 'carrierwave'
 gem 'mini_magick'
-gem 'remotipart'
-
 
 # Database
 gem 'pg'

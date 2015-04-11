@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150410211528) do
+ActiveRecord::Schema.define(version: 20150411013601) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -151,8 +151,8 @@ ActiveRecord::Schema.define(version: 20150410211528) do
     t.string   "url"
     t.string   "thumb"
     t.integer  "user_id"
-    t.datetime "created_at", default: '2015-04-10 20:59:09', null: false
     t.string   "youtube_id"
+    t.datetime "created_at", null: false
   end
 
 end
