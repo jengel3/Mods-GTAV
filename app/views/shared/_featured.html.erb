@@ -1,7 +1,7 @@
 <% submissions.each do |submission| %>
 <div class="homepage_featured_modwrap">
    <div class="imgwrap">
-      <%= link_to image_tag(submission['fetch_display']['image']['preview']['url']), submission['path'] %>
+      <%= link_to image_tag(submission['fetch_display']['image']['preview']['url'], alt: 'Preview'), submission['path'] %>
    </div>
    <div class="featured_moddetailswrap">
       <a href="<%= submission['path'] %>"><h4 class="featured_modtitle"><%= submission['name'] %></h4></a>

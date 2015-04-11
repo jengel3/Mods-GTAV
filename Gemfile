@@ -6,7 +6,6 @@ gem 'rails', '4.2.1'
 
 # Minify
 gem 'uglifier', '2.7.0'
-gem 'sass-rails'
 
 # Front end
 gem 'jquery-rails'
@@ -24,6 +23,8 @@ gem 'omniauth-steam'
 # File uploads
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'remotipart'
+
 
 # Database
 gem 'pg'

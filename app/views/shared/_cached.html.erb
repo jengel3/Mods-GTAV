@@ -3,7 +3,7 @@
     <div class="mod_thumb_and_title_wrap">
         <div class="modthumbnailwrap">
             <div class="submissiondate"><%= relative(DateTime.parse(submission['updated_at'])) %></div>
-            <a href="<%= submission['path'] %>"><%= image_tag submission['fetch_display']['image']['preview']['url'] %></a>
+            <a href="<%= submission['path'] %>"><%= image_tag submission['fetch_display']['image']['preview']['url'], alt: 'Preview' %></a>
         </div>
         <div class="modtitlewrap">
             <%= link_to submission['name'], submission['path'], class: 'modtitle' %>

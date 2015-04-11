@@ -1,10 +1,10 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   respond_to :json
 
-  # def create
-  #  super
-  #  UserMailer.welcome(@user).deliver_later unless @user.invalid?
-  # end
+  def create
+   super
+   UserMailer.welcome(@user).deliver_later unless @user.invalid?
+  end
 
   def update
     @user = User.find(current_user.id)
