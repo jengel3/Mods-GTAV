@@ -5,6 +5,9 @@ apt-get install git -y
 apt-get install nodejs -y
 apt-get install nodejs-legacy -y
 apt-get install npm -y
+apt-get install postgresql postgresql-contrib -y
+
+# Configure Postgresql database -- psql
 
 apt-get install nano -
 ygpg --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3
@@ -45,3 +48,6 @@ chmod -R 777 public/uploads/tmp
 nano /opt/nginx/conf/nginx.conf & replace with ./nginx.conf
 
 service nginx restart
+
+# Resources
+https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-14-04
