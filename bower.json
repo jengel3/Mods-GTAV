@@ -19,6 +19,7 @@
   ],
   "dependencies": {
     "magnific-popup": "~1.0.0",
-    "blueimp-file-upload": "~9.9.3"
+    "blueimp-file-upload": "~9.9.3",
+    "jq-animations": "*"
   }
 }

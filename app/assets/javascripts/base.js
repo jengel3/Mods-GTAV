@@ -114,4 +114,68 @@ $(document).ready(function() {
 	if ($(window).width() <= 1160) { 
 		handleSidebarLoad();  
 	}
+
+
+	$(document).on('submit', 'form#sign_in', function(e) {
+	}).on('ajax:success', 'form#sign_in', function(e, data, status, xhr) {
+		location.reload(true);
+	}).on('ajax:error', 'form#sign_in', function(e, data, status, xhr) {
+		error = data.responseJSON.error;
+		var wrap = $(e.target).parent();
+		$(wrap).find('.error').text(error);
+		$(wrap).find('.error').css('display', 'inline');
+		$(wrap).find('.error').shake();
+	});
+
+	$(document).on('submit', 'form#register', function(e) {
+	}).on('ajax:success', 'form#register', function(e, data, status, xhr) {
+		location.reload(true);
+	}).on('ajax:error', 'form#register', function(e, data, status, xhr) {
+		errorResponse = data.responseText;
+		var errs = renderErrors(errorResponse);
+		var wrap = $(e.target).parent();
+		$(wrap).find('.error').html(errs);
+		$(wrap).find('.error').css('display', 'inline');
+		$(wrap).find('.error').shake();
+	});
+
+	$(document).on('submit', 'form#password', function(e) {
+	}).on('ajax:success', 'form#password', function(e, data, status, xhr) {
+		var wrap = $(e.target).parent();
+		$(wrap).find('.error').addClass('notice').text("Email sending!");
+		$(wrap).find('.notice').fadeIn("slow");
+		setTimeout(function() {
+			location.reload(true);
+		}, 1500);
+	}).on('ajax:error', 'form#password', function(e, data, status, xhr) {
+		errorResponse = data.responseText;
+		var errs = renderErrors(errorResponse);
+		var wrap = $(e.target).parent();
+		$(wrap).find('.error').html(errs);
+		$(wrap).find('.error').css('display', 'inline');
+		$(wrap).find('.error').shake();
+	});
 });
+
+
+function renderErrors(text) {
+	var parsed = JSON.parse(text);
+	var formattedErrors = [];
+	$.each(parsed['errors'], function( index, value ) {
+		var field_name = index;
+		var errors = value;
+		var uniqueErrors = [];
+		$.each(errors, function(i, el){
+			if($.inArray(el, uniqueErrors) === -1) { 
+				uniqueErrors.push(el);
+				var formatted = capitaliseFirstLetter(field_name.replace('_', ' ')) + " " + el;
+				formattedErrors.push(formatted + "<br/>");
+			}
+		});        
+	});
+	return formattedErrors;
+
+	function capitaliseFirstLetter(str) {
+		return str.charAt(0).toUpperCase() + str.slice(1);
+	}
+}
