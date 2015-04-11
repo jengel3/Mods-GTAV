@@ -166,11 +166,11 @@ class SubmissionsController < ApplicationController
   def time_sort(timeframe, submissions)
     case timeframe.downcase
     when 'today'
-      submissions.where('approved_at >= ?', Time.now - 24.hours)
+      submissions.where('approved_at >= ?', DateTime.now - 24.hours)
     when 'week'
-      submissions.where('approved_at >= ?', Time.now - 7.days)
+      submissions.where('approved_at >= ?', DateTime.now - 7.days)
     when 'month'
-      submissions.where('approved_at >= ?', Time.now - 1.month)
+      submissions.where('approved_at >= ?', DateTime.now - 1.month)
     else
       submissions
     end
