@@ -1,0 +1,20 @@
+<html>
+<head>
+</head>
+<body>
+  <a href="<%= root_url %>">
+    <img src="<%= image_path('modsgtalogo.png') %>"/>
+  </a>
+  <h2 style="margin-top: 0px;">Received a message from <%= @username %></h2>
+  <p style="margin-top: 0px;"><%= raw @inquiry %></p>
+  <p>
+    <%= t 'To respond to this message, reply to ' %>
+    <a href="mailto:<%= @email%>"><%= @email %></a>
+  </p>
+
+  <p>
+    <%= 'No longer want these emails?' %>
+    <a href=<%= unsubscribe_url(email: 'support') %>><%= t '.unsubscribe' %></a>
+  </p>
+</body>
+</html>

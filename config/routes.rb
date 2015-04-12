@@ -18,6 +18,8 @@ Rails.application.routes.draw do
 
   resources :videos
 
+  post '/contact', to: 'application#contact', as: 'contact'
+
   get '/c/(:category/(:subcategory))', to: 'submissions#index', as: 'category'
 
   get '/home', to: 'home#index'

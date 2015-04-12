@@ -115,6 +115,13 @@ $(document).ready(function() {
 		handleSidebarLoad();  
 	}
 
+	$('.open-contact').magnificPopup({
+      type: 'inline',
+      midClick: true,
+      removalDelay: 500,
+      mainClass: 'mfp-zoom-in'
+    });
+
 
 	$(document).on('submit', 'form#sign_in', function(e) {
 	}).on('ajax:success', 'form#sign_in', function(e, data, status, xhr) {
