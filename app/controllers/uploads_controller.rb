@@ -7,9 +7,15 @@ class UploadsController < ApplicationController
     return redirect_to root_path, :alert => 'No permission.' unless @submission.can_manage(current_user)
     @upload = @submission.uploads.new(upload_params)
     if @upload.save
-      redirect_to submission_path(@submission), :notice => 'Successfully uploaded a file.'
+      respond_to do |format|
+        format.json { render json: {:status => "upload successful"}, status: 200 }
+        format.html { redirect_to submission_path(@submission), :notice => 'Successfully uploaded a file.' }
+      end
     else
-      render 'edit'
+      respond_to do |format|
+        format.json { render json: {:errors => @upload.errors}, status: 422 }
+        format.html { render 'edit' }
+      end
     end
   end
 

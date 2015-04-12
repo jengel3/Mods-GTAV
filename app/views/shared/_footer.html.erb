@@ -1,0 +1,26 @@
+<div class="footer">
+    <div class="innerfooterwrap">
+        <div class="footertopwrap">
+            <a href="#" class="gototop">
+                To Top
+            </a>
+            <ul>
+                <li><a href="<%= new_submission_path %>">Add Mod</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">Rules</a></li>
+                <li><a href="https://twitter.com/Mods_GTAV" target="_blank">Twitter</a></li>
+                <% if is_admin? %>
+                <li><a href="<%= admin_home_path %>" target="_blank">Admin</a></li>
+                <% end %>
+            </ul>
+        </div>
+        <div class="footerbottomwrap">
+            <span class="rockstarwrap">Not Associated with <span class="rockstar">Rockstar Games</span></span>
+            <%= image_tag 'modsgtalogo.png', class: 'gta5videoslogo', alt: 'Mods-GTAV' %>
+            <p>in partnership with</p>
+            <%= image_tag 'modsgtalogo.png', class: 'gta5videoslogo', alt: 'Mods-GTAV' %>
+        </div>
+    </div>
+</div>
