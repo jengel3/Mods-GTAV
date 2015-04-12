@@ -7,7 +7,7 @@
 	*= require tooltipster
 	*= require tooltipster-light
 	*= require magnific-popup/dist/magnific-popup
-	*= require edituser
+	*= require users
 	*= require home
 	*= require admin/home
 */
