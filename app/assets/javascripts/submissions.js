@@ -18,7 +18,7 @@ $(document).ready(function() {
         });
         $.each(data.files, function(index, file) {
           var body = $('#file-table');
-          file.context = $('<tr><td><div class="imgwrap"><img src="' + URL.createObjectURL(file) + '"></div></td><td>' + file.name + '</td><td>' + humanFileSize(file.size) + '</td><td>' + $('.upload_select').html() + '</td></tr><tr class="spacer"></tr>').appendTo(body);
+          file.context = $('<tr><td><div class="imgwrap"><img src="' + URL.createObjectURL(file) + '"/></div></td><td>' + file.name + '</td><td>' + humanFileSize(file.size) + '</td><td>' + $('.upload_select').html() + '</td></tr><tr class="spacer"></tr>').appendTo(body);
           if (fileCount === 0) {
             file.context.find('select').val("Main");
           }

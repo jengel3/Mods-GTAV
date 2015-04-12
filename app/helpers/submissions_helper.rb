@@ -9,7 +9,7 @@ module SubmissionsHelper
   end
 
   def bake_markdown(text)
-    html = Kramdown::Document.new(text.gsub(/\n\r/,"<br>")).to_html
+    html = Kramdown::Document.new(text.gsub(/\n\r/,"<br/>")).to_html
     sanitized = Sanitize.fragment(html, :elements => @@elems)
     return sanitized
   end

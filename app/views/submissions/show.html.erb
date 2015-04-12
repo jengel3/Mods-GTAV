@@ -37,7 +37,7 @@
 		<div class="contentpage_screenshots_wrap">
 			<% @submission.thumbnails.each do |thumb| %>
 			<div class="contentpage_individual_screen_wrap">
-			<img class="contentpage_screenshot" src="<%= thumb.image_url(:thumb) %>" title='Click to display original image'>
+			<img class="contentpage_screenshot" src="<%= thumb.image_url(:thumb) %>" title='Click to display original image'/>
 			</div>
 			<% end %>
 		</div>
@@ -47,11 +47,11 @@
 			<div class="downloadbutton_text downloadbutton_textsmall">Download</div>
 		</div></a>
 		<div class="ratingbutton likebutton <%= @rating == 'like' ? 'liked' : 'neither' %>" id='like' data-url="<%= submission_like_path(@submission, format: :json) %>">
-			<img src="<%= asset_path('like.png') %>" class="ratingbuttonicon <%= @rating == 'like' ? '' : 'grayscale' %>" >
+			<img src="<%= asset_path('like.png') %>" class="ratingbuttonicon <%= @rating == 'like' ? '' : 'grayscale' %>" />
 			<div class="ratingbutton_text">Like</div>
 		</div>
 		<div class="ratingbutton dislikebutton <%= @rating == 'dislike' ? 'disliked' : 'neither' %>" id='dislike' data-url="<%= submission_dislike_path(@submission, format: :json) %>">
-			<img src="<%= asset_path('dislikecolor.png') %>" class="ratingbuttonicon <%= @rating == 'dislike' ? '' : 'grayscale' %>" >
+			<img src="<%= asset_path('dislikecolor.png') %>" class="ratingbuttonicon <%= @rating == 'dislike' ? '' : 'grayscale' %>" />
 			<div  class="ratingbutton_text">Dislike</div>
 		</div>
 		<div class="ratingresults" id="rating"><%= rating_text(@submission) %></div>

@@ -13,7 +13,7 @@
     <div class="mod_creator_and_download_wrap">
         <% creator = submission.fetch_creator %>
         <div class="mod_creator"><%= link_to creator, profile_path(creator) %></div>
-        <div class="downloadcount"><%= submission.download_count %> <img src="<%= asset_path('downloadcounticon.png') %>" alt="DL" ></div>
+        <div class="downloadcount"><%= submission.download_count %> <img src="<%= asset_path('downloadcounticon.png') %>" alt="DL" /></div>
     </div>
 </div>
 <% end %>

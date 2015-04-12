@@ -176,7 +176,7 @@ function renderErrors(text) {
 			if($.inArray(el, uniqueErrors) === -1) { 
 				uniqueErrors.push(el);
 				var formatted = capitaliseFirstLetter(field_name.replace('_', ' ')) + " " + el;
-				formattedErrors.push(formatted + "<br>");
+				formattedErrors.push(formatted + "<br/>");
 			}
 		});        
 	});
