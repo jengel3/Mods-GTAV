@@ -1,3 +1,5 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 	<title><%= content_for?(:title) ? yield(:title) + ' :: Mods-GTAV ' : 'Mods-GTAV' %></title>
 	<%= stylesheet_link_tag "application" %>
@@ -6,11 +8,16 @@
 	<link href='https://fonts.googleapis.com/css?family=Niconne' rel='stylesheet' type='text/css'>
 
 	<!-- Social Media Meta -->
-	<meta property="og:title" content="GTA 5 Mods" />
-	<meta property="og:type" content="website" />
-	<meta property="og:url" content="http://www.Mods-GTAV.com" />
-	<meta property="og:image" content="http://i.imgur.com/CPCIBLl.png" />
-	<meta property="og:description" content="The #1 source for GTA 5 Modifications. PC Mods for Grand Theft Auto V include maps, scipts, tools, textures, models and more!" />
+	<meta property="og:title" content="GTA 5 Mods">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="http://www.Mods-GTAV.com">
+	<meta property="og:image" content="http://i.imgur.com/CPCIBLl.png">
+	<meta property="og:description" content="The #1 source for GTA 5 Modifications. PC Mods for Grand Theft Auto V include maps, scipts, tools, textures, models and more!">
+
+	<!-- Why must we support this -->
+	<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
 
 	<!-- Twitter display meta -->
 	<meta name="twitter:card" content="summary">
@@ -68,8 +75,8 @@
 	<div class="fullpagewrap">
 		<div class="logoheader">
 			<div class="innerlogoheader">
-				<a href="<%= root_path %>"><img class="logo" src="<%= asset_path('modsgtalogo.png') %>" /></a>
-				<a href="https://twitter.com/Mods_GTAV" target='_blank'><img class="twitter" src="<%= asset_path('twitterlogo.png') %>" /></a>
+				<a href="<%= root_path %>"><img class="logo" src="<%= asset_path('modsgtalogo.png') %>"></a>
+				<a href="https://twitter.com/Mods_GTAV" target='_blank'><img class="twitter" src="<%= asset_path('twitterlogo.png') %>"></a>
 			</div>
 		</div>
 		<div class="header">
@@ -78,25 +85,25 @@
 					<li class="<%= active_cat('home') %>">
 						<a href="<%= root_path %>">
 							<h2>Home</h2>
-							<img src="<%= asset_path('homeicon50.png') %>" alt="Navigation Icon" />
+							<img src="<%= asset_path('homeicon50.png') %>" alt="Navigation Icon">
 						</a>
 					</li>
 					<li class="<%= active_cat('tools') %>">
 						<a href="<%= category_path('tools') %>">
 							<h2>Tools</h2>
-							<img src="<%= asset_path('toolsicon50.png') %>" alt="Navigation Icon" />
+							<img src="<%= asset_path('toolsicon50.png') %>" alt="Navigation Icon">
 						</a>
 					</li>
 					<li class="<%= active_cat('weapons') %>">
 						<a href="<%= category_path('weapons') %>">
 							<h2>Weapons</h2>
-							<img src="<%= asset_path('weaponsicon50.png') %>" alt="Navigation Icon" />
+							<img src="<%= asset_path('weaponsicon50.png') %>" alt="Navigation Icon">
 						</a>
 					</li>
 					<li class="<%= active_cat('vehicles') %>">
 						<a href="<%= category_path('vehicles') %>">
 							<h2>Vehicles</h2>
-							<img src="<%= asset_path('vehicleicon50.png') %>" alt="Navigation Icon" />
+							<img src="<%= asset_path('vehicleicon50.png') %>" alt="Navigation Icon">
 						</a>
 					</li>
 					<li class="<%= active_cat('textures') %>">
@@ -108,25 +115,25 @@
 					<li class="<%= active_cat('player') %>">
 						<a href="<%= category_path('player') %>">
 							<h2>Player</h2>
-							<img src="<%= asset_path('playericon50.png') %>" alt="Navigation Icon" />
+							<img src="<%= asset_path('playericon50.png') %>" alt="Navigation Icon">
 						</a>
 					</li>
 					<li class="<%= active_cat('maps') %>">
 						<a href="<%= category_path('maps') %>">
 							<h2>Maps</h2>
-							<img src="<%= asset_path('mapsicon50.png') %>" alt="Navigation Icon" />
+							<img src="<%= asset_path('mapsicon50.png') %>" alt="Navigation Icon">
 						</a>
 					</li>
 					<li class="<%= active_cat('script') %>">
 						<a href="<%= category_path('script') %>">
 							<h2>Script</h2>
-							<img src="<%= asset_path('scripticon50.png') %>" alt="Navigation Icon" />
+							<img src="<%= asset_path('scripticon50.png') %>" alt="Navigation Icon">
 						</a>
 					</li>
 					<li class="<%= active_cat('misc') %>">
 						<a href="<%= category_path('misc') %>">
 							<h2>Misc</h2>
-							<img src="<%= asset_path('miscicon50.png') %>" alt="Navigation Icon" />
+							<img src="<%= asset_path('miscicon50.png') %>" alt="Navigation Icon">
 						</a>
 					</li>
 				</ul>
@@ -153,7 +160,7 @@
 					</div>
 					<div id="modsortingoptions">
 						<ul>
-							<li><a href="<%= url_for params.merge(:time => @time_options[@time]) %>"><%= @time %><span class="downarrowsymbol"><img src="<%= asset_path('downarrow.png') %>" /></span></a>
+							<li><a href="<%= url_for params.merge(:time => @time_options[@time]) %>"><%= @time %><span class="downarrowsymbol"><img src="<%= asset_path('downarrow.png') %>"></span></a>
 								<ul>
 									<% @time_options.delete(@time) %>
 									<% @time_options.each do |k, v| %>
@@ -171,8 +178,8 @@
 				<%= link_to 'Add Mod +', new_submission_path, class: 'addmodbutton' %>
 				<% end %>
 				<div class="searchwrap">
-					<input type="text" name="search" class="search" placeholder="Search" />
-					<img src="<%= asset_path('searchbutton.png') %>" class="searchbutton accentcolor" />     
+					<input type="text" name="search" class="search" placeholder="Search">
+					<img src="<%= asset_path('searchbutton.png') %>" class="searchbutton accentcolor">     
 				</div>
 			</div>
 			<% if params[:action] == 'profile' %>
@@ -204,9 +211,9 @@
 						</div>
 						<div class="profile_stats_section">
 							<h3>Statistics</h3>
-							<p class="profile_info_and_stats_text"><b>Mods Submitted</b><br /><span><%= @user.submissions.count %></span></p>
-							<p class="profile_info_and_stats_text"><b>Most Liked</b><br /><a href="">Police Helicopter</a></p>
-							<p class="profile_info_and_stats_text"><b>Most Downloaded</b><br /><a href="">Ford F-150</a></p>
+							<p class="profile_info_and_stats_text"><b>Mods Submitted</b><br><span><%= @user.submissions.count %></span></p>
+							<p class="profile_info_and_stats_text"><b>Most Liked</b><br><a href="">Police Helicopter</a></p>
+							<p class="profile_info_and_stats_text"><b>Most Downloaded</b><br><a href="">Ford F-150</a></p>
 						</div>            
 					</div>
 				</div>
@@ -217,10 +224,15 @@
 			<% end %>
 			<div class="mainpagewrap">
 				<div class="mainpage <%= params[:controller] == 'home' ? 'homepage' : '' %>">
+					<noscript>
+					<div class='alert'>
+						Please enable JavaScript to use Mods-GTAV properly. Many features require Javascript to be enabled.
+					</div>
+					</noscript>
 					<%= render 'shared/alerts' %>
 					<%= yield %>
 				</div>
-				<div class="right_sidebar_preview"><div class="sidebar_expand_button"> <img src="<%= asset_path('expandsidebar.png') %>" alt="<" /> </div></div>
+				<div class="right_sidebar_preview"><div class="sidebar_expand_button"> <img src="<%= asset_path('expandsidebar.png') %>" alt="<"> </div></div>
 				<div class="right_sidebar">
 					<a href="#" class="close_sidebar" pm>&#10006;</a>
 					<div class="userprofilebox">
