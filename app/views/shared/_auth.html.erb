@@ -67,7 +67,7 @@
 	<div class="forgotwrap"> <a class="forgotlink" href="" onclick="return false;">forgot details?</a></div>
 	<%= link_to image_tag('steamsignin.png', alt: 'Sign in with Steam', class: 'steamsignin'), user_omniauth_authorize_path(:steam) %></a>
 	<% end %>
-	<div class='alert error' style='display: none;'>
+	<div class='loginerrorcodes error' style='display: none;'>
 	</div>
 </div>
 <div class="inputwrap registerwrap" style='display: none;'>
@@ -79,7 +79,7 @@
 	<%= f.submit 'Submit', class: 'submit_login_data' %>
 	<%= link_to image_tag('steamsignin.png', alt: 'Sign in with Steam', class: 'steamsignin'), user_omniauth_authorize_path(:steam) %></a>
 	<% end %>
-	<div class='alert error' style='display: none;'>
+	<div class='loginerrorcodes error' style='display: none;'>
 	</div>
 </div>	
 <div class="inputwrap resetpasswordwrap" style='display: none;'>
@@ -87,7 +87,7 @@
 	<%= f.email_field :email, autofocus: true, class: 'resetpassword-input', autocomplete: 'off', type: 'email', placeholder: 'Email' %>
 	<div class="forgotwrap">An email will be sent to your account with instructions on changing your password</div>
 	<% end %>
-	<div class='alert error' style='display: none;'>
+	<div class='loginerrorcodes error' style='display: none;'>
 	</div>
 </div>
 <!-- End authentication forms -->

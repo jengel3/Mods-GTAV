@@ -71,23 +71,23 @@ $(document).ready(function() {
 		}
 	});
 
-	$('.registerbutton').on('click', function() {
-		$('.signinwrap').hide();
-		$('.resetpasswordwrap').hide();
-		$('.registerwrap').fadeIn(200);
-		$('.registerwrap #user_email').focus();
+	$('.right_sidebar .registerbutton').on('click', function() {
+		$('.right_sidebar .signinwrap').hide();
+		$('.right_sidebar .resetpasswordwrap').hide();
+		$('.right_sidebar .registerwrap').fadeIn(200);
+		$('.right_sidebar .registerwrap #user_email').focus();
 	});
-	$('.signinlink').on('click', function() {
-		$('.registerwrap').hide();
-		$('.resetpasswordwrap').hide();
-		$('.signinwrap').fadeIn(200);
-		$('.signinwrap #user_login').focus();
+	$('.right_sidebar .signinlink').on('click', function() {
+		$('.right_sidebar .registerwrap').hide();
+		$('.right_sidebar .resetpasswordwrap').hide();
+		$('.right_sidebar .signinwrap').fadeIn(200);
+		$('.right_sidebar .signinwrap #user_login').focus();
 	});
-	$('.forgotlink').on('click', function() {
-		$('.signinwrap').hide();
-		$('.registerwrap').hide();
-		$('.resetpasswordwrap').fadeIn(200);
-		$('.resetpasswordwrap #user_email').focus();
+	$('.right_sidebar .forgotlink').on('click', function() {
+		$('.right_sidebar .signinwrap').hide();
+		$('.right_sidebar .registerwrap').hide();
+		$('.right_sidebar .resetpasswordwrap').fadeIn(200);
+		$('.right_sidebar .resetpasswordwrap #user_email').focus();
 	});
 	$('.tooltip').tooltipster({
 		theme: 'tooltipster-light'
@@ -130,7 +130,7 @@ $(document).ready(function() {
 		error = data.responseJSON.error;
 		var wrap = $(e.target).parent();
 		$(wrap).find('.error').text(error);
-		$(wrap).find('.error').css('display', 'inline');
+		$(wrap).find('.error').css('display', 'block');
 		$(wrap).find('.error').shake();
 	});
 
@@ -142,7 +142,7 @@ $(document).ready(function() {
 		var errs = renderErrors(errorResponse);
 		var wrap = $(e.target).parent();
 		$(wrap).find('.error').html(errs);
-		$(wrap).find('.error').css('display', 'inline');
+		$(wrap).find('.error').css('display', 'block');
 		$(wrap).find('.error').shake();
 	});
 
@@ -159,10 +159,53 @@ $(document).ready(function() {
 		var errs = renderErrors(errorResponse);
 		var wrap = $(e.target).parent();
 		$(wrap).find('.error').html(errs);
-		$(wrap).find('.error').css('display', 'inline');
+		$(wrap).find('.error').css('display', 'block');
 		$(wrap).find('.error').shake();
 	});
+
+	if ($('.onpagelogintitles').length) {
+		$(document).on('submit', 'form#sign_in_combine', function(e) {
+		}).on('ajax:success', 'form#sign_in_combine', function(e, data, status, xhr) {
+			location.href = '/';
+		}).on('ajax:error', 'form#sign_in_combine', function(e, data, status, xhr) {
+			error = data.responseJSON.error;
+			var wrap = $('.loginerrorcodes');
+			$(wrap).text(error);
+			$(wrap).css('display', 'block');
+			$(wrap).shake();
+		});
+
+		$(document).on('submit', 'form#register_combine', function(e) {
+		}).on('ajax:success', 'form#register_combine', function(e, data, status, xhr) {
+			location.href = '/';
+		}).on('ajax:error', 'form#register_combine', function(e, data, status, xhr) {
+			errorResponse = data.responseText;
+			var errs = renderErrors(errorResponse);
+			var wrap = $('.loginerrorcodes');
+			$(wrap).html(errs);
+			$(wrap).css('display', 'block');
+			$(wrap).shake();
+		});
+
+		$(document).on('submit', 'form#password_combine', function(e) {
+		}).on('ajax:success', 'form#password_combine', function(e, data, status, xhr) {
+			var wrap = $(e.target).parent();
+			$(wrap).find('.error').addClass('notice').text("Email sending! Refreshing..");
+			$(wrap).find('.notice').fadeIn("slow");
+			setTimeout(function() {
+				location.href = '/';
+			}, 1500);
+		}).on('ajax:error', 'form#password_combine', function(e, data, status, xhr) {
+			errorResponse = data.responseText;
+			var errs = renderErrors(errorResponse);
+			var wrap = $('.loginerrorcodes');
+			$(wrap).html(errs);
+			$(wrap).css('display', 'block');
+			$(wrap).shake();
+		});
+	}
 });
+
 
 
 function renderErrors(text) {
@@ -176,7 +219,7 @@ function renderErrors(text) {
 			if($.inArray(el, uniqueErrors) === -1) { 
 				uniqueErrors.push(el);
 				var formatted = capitaliseFirstLetter(field_name.replace('_', ' ')) + " " + el;
-				formattedErrors.push(formatted + "<br/>");
+				formattedErrors.push(formatted + "<br>");
 			}
 		});        
 	});

@@ -1,31 +1,37 @@
-<h2>Sign up</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+<table class="onpagelogintitles">
+  <tr>
+    <td>Login</td>
+    <td>Register</td>
+    <td>Forgot Password</td>
+  </tr>
+</table>
+<div class="onpageloginwrap">
+  <div class="inputwrap signinwrap showlogindata">
+    <%= form_for(resource, as: resource_name, url: user_session_path(format: :json), format: :json, remote: true, :html => {:id => 'sign_in_combine'}) do |f| %>
+    <%= f.text_field :login, class: 'login-input', autocomplete: 'off', type: 'text', placeholder: 'Email or Username' %>
+    <%= f.password_field :password, class: 'login-input', autocomplete: 'off', type: 'password', placeholder: 'Password' %>
+    <%= f.submit 'Submit', class: 'submit_login_data' %>
+    <% end %>
+    <div class="forgotwrap"> <a class="forgotlink" href="" onclick="return false;">forgot details?</a></div>
   </div>
+  <div class="inputwrap registerwrap showlogindata">
+    <%= form_for(:user, url: user_registration_path(format: :json), format: :json, remote: true, :html=> {:id => 'register_combine'}) do |f| %>
+    <%= f.email_field :email, class: 'register-input', autocomplete: 'off', type: 'text', placeholder: 'Email' %>
+    <%= f.text_field :username, class: 'register-input', autocomplete: 'off', type: 'text', placeholder: 'Username' %>
+    <%= f.password_field :password, class: 'register-input', autocomplete: 'off', type: 'password', placeholder: 'Password' %>
+    <%= f.password_field :password_confirmation, class: 'register-input', autocomplete: 'off', type: 'password', placeholder: 'Confirm Password' %>
+    <%= f.submit 'Submit', class: 'submit_login_data' %>
+    <%= link_to image_tag('steamsignin.png', alt: 'Sign in with Steam', class: 'steamsignin'), user_omniauth_authorize_path(:steam) %></a>
+    <% end %>
+  </div>  
+  <div class="inputwrap resetpasswordwrap showlogindata"> 
 
-  <div class="field">
-    <%= f.label :username %>
-    <%= f.text_field :username%>
-  </div>
+    <%= form_for(:user, url: user_password_path(format: :json), format: :json, remote: true, :html => {id: 'password_combine'}) do |f| %>
+    <%= f.email_field :email, autofocus: true, class: 'resetpassword-input', autocomplete: 'off', type: 'email', placeholder: 'Email' %>
+    <%= f.submit 'Submit', class: 'submit_login_data' %>
+    <% end %>
+    <div class="forgotwrap">An email will be sent to your account with instructions on changing your password</div>
+  </div>  
 
-  <div class="field">
-    <%= f.label :password %>
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
+<div class="loginerrorcodes" style='display: none;'>Error Codes Error Codes Error Codes Error Codes Error Codes Error Codes </div>
