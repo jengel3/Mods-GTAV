@@ -8,14 +8,12 @@ class UploadsController < ApplicationController
     @upload = @submission.uploads.new(upload_params)
     if @upload.save
       respond_to do |format|
-        format.json { render json: {:status => "upload successful"}, status: 200 }
-        format.js { render json: {:status => "upload successful"}, status: 200 }
+        format.js
         format.html { redirect_to submission_path(@submission), :notice => 'Successfully uploaded a file.' }
       end
     else
       respond_to do |format|
-        format.json { render json: {:errors => @upload.errors}, status: 422 }
-        format.js { render json: {:errors => @upload.errors}, status: 422 }
+        format.js
         format.html { render 'edit' }
       end
     end

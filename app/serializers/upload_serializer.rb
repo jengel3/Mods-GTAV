@@ -13,9 +13,7 @@
 #
 
 class UploadSerializer < ActiveModel::Serializer
-  attributes :id, :name, :changelog, :approved_at, :created_at
+  attributes :id, :version, :changelog, :approved_at, :created_at
 
   has_one :submission
-
-
 end

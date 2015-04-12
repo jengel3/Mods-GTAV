@@ -16,6 +16,7 @@ class Upload < ActiveRecord::Base
   belongs_to :submission
 
   validates :version, presence: true
+  validates :upload, presence: true
 
   mount_uploader :upload, UploadUploader
 

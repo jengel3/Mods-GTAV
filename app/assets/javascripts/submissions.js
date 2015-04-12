@@ -65,24 +65,24 @@ $(document).ready(function() {
         dataType: 'json'
       });
     });
-    $(document).on('submit', 'form#new_upload', function(e) {
-    }).on('ajax:success', 'form#new_upload', function(e, data, status, xhr) {
-      console.log('called ssss')
-      var wrap = $(e.target).parent();
-      $(wrap).find('.error').addClass('notice').text("File uploaded! Refreshing...");
-      $(wrap).find('.notice').fadeIn("slow");
-      setTimeout(function() {
-        location.reload(true);
-      }, 1500);
-    }).on('ajax:error', 'form#new_upload', function(e, data, status, xhr) {
-      console.log('called', data)
-      errorResponse = data.responseText;
-      var errs = renderErrors(errorResponse);
-      var wrap = $(e.target).parent();
-      $(wrap).find('.error').html(errs);
-      $(wrap).find('.error').css('display', 'inline');
-      $(wrap).find('.error').shake();
-    });
+    // $(document).on('submit', 'form#new_upload', function(e) {
+    // }).on('ajax:success', 'form#new_upload', function(e, data, status, xhr) {
+    //   console.log('SUCCESSDED', data)
+    //   // var wrap = $(e.target).parent();
+    //   // $(wrap).find('.error').addClass('notice').text("File uploaded! Refreshing...");
+    //   // $(wrap).find('.notice').fadeIn("slow");
+    //   // setTimeout(function() {
+    //   //   location.reload(true);
+    //   // }, 1500);
+    // }).on('ajax:error', 'form#new_upload', function(e, data, status, xhr) {
+    //   console.log('ERRORED', data)
+    //   // errorResponse = data.responseText;
+    //   // var errs = renderErrors(errorResponse);
+    //   // var wrap = $(e.target).parent();
+    //   // $(wrap).find('.error').html(errs);
+    //   // $(wrap).find('.error').css('display', 'inline');
+    //   // $(wrap).find('.error').shake();
+    // });
     $('.open-screenshot').magnificPopup({
       type: 'inline',
       midClick: true,
