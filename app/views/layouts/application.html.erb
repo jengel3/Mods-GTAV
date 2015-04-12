@@ -268,7 +268,7 @@
 			</div>
 			<% if params[:controller] == 'submissions' && params[:action] == 'index' %>
 			<div class="paginationfooter">
-				<%= paginate @submissions %>
+				<%= paginate @submissions, per: 2 %>
 			</div>
 			<% end %>
 

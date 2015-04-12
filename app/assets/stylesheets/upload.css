@@ -206,11 +206,6 @@ input.uploadmod_title:focus {
     margin:auto;
 }
 
-body {
-    background-color: rgb(30,30,30);
-    margin:0;
-    padding:0;
-}
 
 .imageupload_popup_wrap {
     width: 590px;
