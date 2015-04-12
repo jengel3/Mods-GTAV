@@ -93,7 +93,7 @@
     <li>We recommend uploading only .zip files, but .rar and .tar files also work.</li>
   </ul>
 
-  <%= form_for([@submission, @submission.uploads.build], format: :json, remote: true, method: :post) do |f| %>
+  <%= form_for([@submission, @submission.uploads.build], format: :json, remote: true, method: :post, html: {:'data-type' => :json, :multipart => true}) do |f| %>
   <table cellspacing="0">
     <tr>
       <td><%= f.file_field :upload %></td>
