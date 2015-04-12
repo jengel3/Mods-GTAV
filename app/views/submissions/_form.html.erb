@@ -23,7 +23,7 @@
   <div class="contentpage_download_and_screenshots_wrap uploadmod_download_and_screenshots_wrap">
     <div class="uploadmod_buttons_wrap">
       <% if !new_record %>
-      <a href="#file-popup" class='open-file'><input type="button" value="Add File" class="uploadmod_buttons" /></a>
+      <a href="#file-popup" class='open-file'><input type="button" value="Add File" class="uploadmod_buttons" ></a>
       <% end %>
       <%= f.submit 'Save', class: 'uploadmod_buttons' %>
     </div>
@@ -32,7 +32,7 @@
         <% if !new_record %>
         <% @submission.thumbnails.each do |thumb| %>
         <div class="uploadmod_individual_screenshot_wrap">
-          <img src="<%= thumb.image_url(:thumb) %>" />
+          <img src="<%= thumb.image_url(:thumb) %>" >
           <a href="<%= url_for [@submission, thumb] %>" class="close">&#10006;</a>
         </div>
         <% end %>
@@ -79,7 +79,7 @@
   </div>
 
   <div class="bottom_buttons_wrap">
-    <input class="upload" type=submit value="Upload" id="upload_btn" />
+    <input class="upload" type=submit value="Upload" id="upload_btn" >
     <input id="fileupload" class="addimage" type="file" name="images[]" data-url="images.json" multiple value="Add Image">
   </div>
 </div>

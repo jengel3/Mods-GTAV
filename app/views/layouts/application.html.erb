@@ -109,7 +109,7 @@
 					<li class="<%= active_cat('textures') %>">
 						<a href="<%= category_path('textures') %>">
 							<h2>Textures</h2>
-							<img src="<%= asset_path('textureicon50.png') %>" alt="Navigation Icon" />
+							<img src="<%= asset_path('textureicon50.png') %>" alt="Navigation Icon">
 						</a>
 					</li>
 					<li class="<%= active_cat('player') %>">
@@ -148,7 +148,7 @@
 					<% if params[:controller] == 'submissions' && params[:action] == 'index' %>
 					<div id="modsortingoptions">
 						<ul>
-							<li><a href="<%= url_for params.merge(:sort => @sort_options[@sort]) %>"><%= @sort %><span class="downarrowsymbol"><img src="<%= asset_path('downarrow.png') %>" /></span></a>
+							<li><a href="<%= url_for params.merge(:sort => @sort_options[@sort]) %>"><%= @sort %><span class="downarrowsymbol"><img src="<%= asset_path('downarrow.png') %>"></span></a>
 								<ul>
 									<% @sort_options.delete(@sort) %>
 									<% @sort_options.each do |k, v| %>
@@ -202,8 +202,8 @@
 					<div class="lower_content_panel">
 						<div class="profile_information_section">
 							<h3>Information</h3>
-							<p class="profile_info_and_stats_text"><b>Last Active</b><br /><span><%= short(@user.last_sign_in_at) %></span></p>
-							<p class="profile_info_and_stats_text"><b>Joined</b><br /><span><%= short(@user.created_at) %></span></p>
+							<p class="profile_info_and_stats_text"><b>Last Active</b><br><span><%= short(@user.last_sign_in_at) %></span></p>
+							<p class="profile_info_and_stats_text"><b>Joined</b><br><span><%= short(@user.created_at) %></span></p>
 						</div>
 						<div class="profile_bio_section">
 							<h3>Biography</h3>
