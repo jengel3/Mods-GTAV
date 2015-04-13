@@ -65,7 +65,7 @@ $(document).ready(function() {
         dataType: 'json'
       });
     });
-    $('.open-contact').magnificPopup({
+    $('.open-screenshot').magnificPopup({
       type: 'inline',
       midClick: true,
       removalDelay: 500,

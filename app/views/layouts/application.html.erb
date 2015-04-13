@@ -177,8 +177,11 @@
 				<%= link_to 'Add Mod +', new_submission_path, class: 'addmodbutton' %>
 				<% end %>
 				<div class="searchwrap">
-					<input type="text" name="search" class="search" placeholder="Search">
-					<img src="<%= asset_path('searchbutton.png') %>" class="searchbutton accentcolor">     
+					<%= form_tag search_path, method: :get, :enforce_utf8 => false do %>
+					<%= text_field 'search', nil, class: 'search', placeholder: 'Search...', value: params[:search] %>
+					<input type="submit" class="searchbutton accentcolor" value=""
+    style="background-image: url(<%= asset_path 'searchbutton.png' %>); width: 26px; height: 26px;" />
+					<% end %>  
 				</div>
 			</div>
 			<% if params[:action] == 'profile' %>

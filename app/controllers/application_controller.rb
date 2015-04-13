@@ -33,6 +33,11 @@ class ApplicationController < ActionController::Base
     redirect_to root_path, :notice => "Successfully sent a message to Mods GTAV. Expect a response soon."
   end
 
+  def search
+    @query = params[:search]
+    @submissions = Submission.search(@query).records
+  end
+
   protected
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:username, 

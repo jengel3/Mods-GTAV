@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150411013601) do
+ActiveRecord::Schema.define(version: 20150413214839) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -89,30 +89,30 @@ ActiveRecord::Schema.define(version: 20150411013601) do
     t.string   "name"
     t.text     "body"
     t.text     "baked_body"
-    t.time     "approved_at"
     t.string   "category"
     t.string   "sub_category"
     t.integer  "like_count",     default: 0
     t.integer  "dislike_count",  default: 0
     t.integer  "download_count", default: 0
     t.integer  "avg_rating",     default: 0
-    t.time     "last_favorited"
     t.integer  "creator_id"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.string   "slug"
+    t.datetime "last_favorited"
+    t.datetime "approved_at"
   end
 
   add_index "submissions", ["slug"], name: "index_submissions_on_slug", unique: true, using: :btree
 
   create_table "uploads", force: :cascade do |t|
     t.text     "changelog"
-    t.time     "approved_at"
     t.string   "size"
     t.integer  "submission_id"
     t.string   "upload"
     t.datetime "created_at",    null: false
     t.string   "version"
+    t.datetime "approved_at"
   end
 
   add_index "uploads", ["submission_id"], name: "index_uploads_on_submission_id", using: :btree

@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   resources :videos
 
   post '/contact', to: 'application#contact', as: 'contact'
+  get '/search', to: 'application#search', as: 'search'
 
   get '/c/(:category/(:subcategory))', to: 'submissions#index', as: 'category'
 

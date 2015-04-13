@@ -10,4 +10,4 @@
 //= require submissions
 //= require jquery.tooltipster.min
 //= require jq-animations/js/animations
-//= require magnific-popup/dist/jquery.magnific-popup.min
+//= require magnific-popup/dist/jquery.magnific-popup

@@ -20,11 +20,14 @@
 #  slug           :string
 #
 
+require 'elasticsearch/model'
 class Submission < ActiveRecord::Base
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
   include Rails.application.routes.url_helpers
   include SubmissionsHelper
   extend FriendlyId
-
+  
   before_save :bake_body
   before_save :delete_sub
 
