@@ -5,7 +5,7 @@
 	*= require upload
 	*= require profile
 	*= require tooltipster/css/tooltipster.css
-	*= require tooltipster/css/tooltipster-light.css
+	*= require tooltipster/css/themes/tooltipster-light.css
 	*= require magnific-popup/dist/magnific-popup
 	*= require users
 	*= require home

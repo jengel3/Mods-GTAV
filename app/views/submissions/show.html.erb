@@ -7,7 +7,7 @@
 				<%= @submission.name %>
 			</div>
 			<div class="contentpage_modcreator">
-				by <%= @submission.fetch_creator %>
+				by <%= link_to @submission.fetch_creator, profile_path(@submission.fetch_creator) %>
 			</div>
 			
 		</div>
