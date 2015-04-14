@@ -17,7 +17,7 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: mods_gta_production
+  database: mods_gtav_production
   pool: 5
-  username: admin
-  password: password
+  username: gtaadmin
+  password: gtapass
