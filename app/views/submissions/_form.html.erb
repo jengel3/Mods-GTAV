@@ -73,11 +73,9 @@
   <h3>Image Upload</h3>
   <h4>Drag and drop to upload more images!</h4>
   <table cellspacing="0" id="file-table"></table>
-
-  <div class="progress-bar" style='display: none;'>
-    <span style="width: 0%"></span>
+  <div class="progressbarwrap">
+    <div class="progressbar"></div>
   </div>
-
   <div class="bottom_buttons_wrap">
     <input class="upload" type=submit value="Upload" id="upload_btn" />
     <input id="fileupload" class="addimage" type="file" name="images[]" data-url="images.json" multiple value="Add Image">
@@ -114,8 +112,7 @@
     </tr>
     <tr class="spacer"></tr>
   </table>
-  <div class='alert error' id='upload-error' style='display: none;'>
-  </div>
+  <div class="fileuploaderrors"></div>
   <div class="bottom_buttons_wrap">
     <%= f.submit 'Upload', class: 'upload' %>
   </div>

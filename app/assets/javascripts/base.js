@@ -128,10 +128,10 @@ $(document).ready(function() {
 		location.reload(true);
 	}).on('ajax:error', 'form#sign_in', function(e, data, status, xhr) {
 		error = data.responseJSON.error;
-		var wrap = $(e.target).parent();
-		$(wrap).find('.error').text(error);
-		$(wrap).find('.error').css('display', 'block');
-		$(wrap).find('.error').shake();
+		var errorList = $('.sidebar_login_errors');
+		$(errorList).text(error);
+		$(errorList).css('display', 'block');
+		$(errorList).shake();
 	});
 
 	$(document).on('submit', 'form#register', function(e) {
@@ -140,10 +140,10 @@ $(document).ready(function() {
 	}).on('ajax:error', 'form#register', function(e, data, status, xhr) {
 		errorResponse = data.responseText;
 		var errs = renderErrors(errorResponse);
-		var wrap = $(e.target).parent();
-		$(wrap).find('.error').html(errs);
-		$(wrap).find('.error').css('display', 'block');
-		$(wrap).find('.error').shake();
+		var errorList = $('.sidebar_login_errors');
+		$(errorList).html(errs);
+		$(errorList).css('display', 'block');
+		$(errorList).shake();
 	});
 
 	$(document).on('submit', 'form#password', function(e) {
@@ -157,10 +157,10 @@ $(document).ready(function() {
 	}).on('ajax:error', 'form#password', function(e, data, status, xhr) {
 		errorResponse = data.responseText;
 		var errs = renderErrors(errorResponse);
-		var wrap = $(e.target).parent();
-		$(wrap).find('.error').html(errs);
-		$(wrap).find('.error').css('display', 'block');
-		$(wrap).find('.error').shake();
+		var errorList = $('.sidebar_login_errors');
+		$(errorList).html(errs);
+		$(errorList).css('display', 'block');
+		$(errorList).shake();
 	});
 
 	if ($('.onpagelogintitles').length) {

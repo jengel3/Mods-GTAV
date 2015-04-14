@@ -1,12 +1,12 @@
 <% if @upload.errors.any? %>
 <% errors = {errors: @upload.errors }.to_json.html_safe %>
 var errs = renderErrors('<%= j errors %>');
-var notice = $('#upload-error');
+var notice = $('.fileuploaderrors');
 $(notice).html(errs);
-$(notice).css('display', 'inline');
+$(notice).css('display', 'block');
 $(notice).shake();
 <% else %>
-var notice = $('#upload-error');
+var notice = $('.fileuploaderrors');
 $(notice).addClass('notice').text("File uploaded! Refreshing...");
 $(notice).fadeIn("slow");
 setTimeout(function() {

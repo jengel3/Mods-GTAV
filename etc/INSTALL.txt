@@ -1,30 +1,50 @@
 apt-get update
-apt-get install curl -y
-apt-get install git -y
-
-apt-get install nodejs -y
-apt-get install nodejs-legacy -y
-apt-get install npm -y
-apt-get install postgresql postgresql-contrib -y
+apt-get install curl git nodejs nodejs-legacy npm postgresql postgresql-contrib nano -y
 
 # Configure Postgresql database -- psql
 
-apt-get install nano -
+cd ~
+
+wget http://download.redis.io/redis-stable.tar.gz
+tar xvzf redis-stable.tar.gz
+cd redis-stable
+make
+
+apt-get install software-properties-common
+apt-get update
+add-apt-repository ppa:webupd8team/java
+apt-get install oracle-java7-installer
+java -version
+
+cd ~
+
+wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-0.90.7.deb
+dpkg -i elasticsearch-0.90.7.deb
+
+
 ygpg --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3
-curl -L get.rvm.io | bash -s stable
-source /usr/local/rvm/scripts/rvm
-rvm requirements
-rvmsudo /usr/bin/apt-get install build-essential openssl libreadline6 libreadline6-dev curl git-core zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt-dev autoconf libc6-dev ncurses-dev automake libtool bison subversion -y
-rvm install 2.0.0
-rvm use 2.0.0 --default
+\curl -L https://get.rvm.io | sudo bash -s stable
+source /etc/profile.d/rvm.sh
+rvm autolibs enable
+rvm --debug requirements ruby
+sudo usermod -a -G gta rvm
+
+## ADD TO ~/.bashrc of all rvm users
+[[ -s /usr/local/rvm/scripts/rvm ]] && source /usr/local/rvm/scripts/rvm
+
+rvm install 2.1.5
+rvm use 2.1.5 --default
 rvm rubygems current
+
+sudo apt-get install libpq-dev
 gem install passenger
 apt-get install libcurl4-openssl-dev -y
 rvmsudo passenger-install-nginx-module
-wget -O init-deb.sh http://library.linode.com/assets/660-init-deb.sh 
+wget -O init-deb.sh https://library.linode.com/assets/660-init-deb.sh 
 sudo mv init-deb.sh /etc/init.d/nginx 
 sudo chmod +x /etc/init.d/nginx 
 sudo /usr/sbin/update-rc.d -f nginx defaults
+
 
 
 cd ~

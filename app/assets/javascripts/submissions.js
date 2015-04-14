@@ -12,7 +12,7 @@ $(document).ready(function() {
         $("#upload_btn").on('click', function() {
           data.submit();
           if (!uploadStarted) {
-            $('.progress-bar').css('display', 'inherit');
+            $('.progressbarwrap').css('display', 'inherit');
             uploadStarted = true;
           }
         });
@@ -36,10 +36,10 @@ $(document).ready(function() {
       },
       progressall: function(e, data) {
         var progress = parseInt(data.loaded / data.total * 100, 10);
-        $('.progress-bar span').text(progress + '%');
-        $('.progress-bar span').css('width', progress + '%');
+        $('.progressbarwrap .progressbar').text(progress + '%');
+        $('.progressbarwrap .progressbar').css('width', progress + '%');
         if (progress >= 100) {
-          $('.progress-bar span').text('Upload complete! Refreshing...');
+          $('.progressbarwrap .progressbar').text('Upload complete! Refreshing...');
           setTimeout(function() {
             location.reload();
           }, 1000);

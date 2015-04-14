@@ -56,8 +56,7 @@
 
 <input class="registerbutton" type="submit" value="Register" />
 <p class="signin_option">Have an account? <a class="signinlink" href="" onclick="return false;">Sign in.</a></p>
-
-
+<div class="sidebar_login_errors" style='display: none;'></div>
 <!-- Authentication forms -->
 <div class="inputwrap signinwrap" style='display: none;'>
 	<%= form_for(:user, url: user_session_path(format: :json), format: :json, remote: true, :html=> {:id => 'sign_in'}) do |f| %>
@@ -67,8 +66,6 @@
 	<div class="forgotwrap"> <a class="forgotlink" href="" onclick="return false;">forgot details?</a></div>
 	<%= link_to image_tag('steamsignin.png', alt: 'Sign in with Steam', class: 'steamsignin'), user_omniauth_authorize_path(:steam) %></a>
 	<% end %>
-	<div class='loginerrorcodes error' style='display: none;'>
-	</div>
 </div>
 <div class="inputwrap registerwrap" style='display: none;'>
 	<%= form_for(:user, url: user_registration_path(format: :json), format: :json, remote: true, :html=> {:id => 'register', class: 'textable'}) do |f| %>
@@ -79,16 +76,12 @@
 	<%= f.submit 'Submit', class: 'submit_login_data' %>
 	<%= link_to image_tag('steamsignin.png', alt: 'Sign in with Steam', class: 'steamsignin'), user_omniauth_authorize_path(:steam) %></a>
 	<% end %>
-	<div class='loginerrorcodes error' style='display: none;'>
-	</div>
 </div>	
 <div class="inputwrap resetpasswordwrap" style='display: none;'>
 	<%= form_for(:user, url: user_password_path(format: :json), format: :json, remote: true, :html => {id: 'password', class: 'textable'}) do |f| %>
 	<%= f.email_field :email, autofocus: true, class: 'resetpassword-input', autocomplete: 'off', type: 'email', placeholder: 'Email' %>
 	<div class="forgotwrap">An email will be sent to your account with instructions on changing your password</div>
 	<% end %>
-	<div class='loginerrorcodes error' style='display: none;'>
-	</div>
 </div>
 <!-- End authentication forms -->
 <% end %>
