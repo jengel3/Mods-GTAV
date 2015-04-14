@@ -1,5 +1,5 @@
 apt-get update
-apt-get install curl git nodejs nodejs-legacy npm postgresql postgresql-contrib nano -y
+apt-get install curl git nodejs nodejs-legacy npm postgresql postgresql-contrib nano imagemagick -y
 
 # Configure Postgresql database -- psql
 
