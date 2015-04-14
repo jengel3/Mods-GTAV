@@ -48,7 +48,7 @@
    <h3 id="videos"><img src="<%= asset_path('youtubelogo.png') %>" />Community Videos</h3>
    <div class="youtube_videos_wrap">
       <% Video.order('created_at ASC').limit(6).each do |v| %>
-      <%= link_to image_tag(v.thumb), v.url %>
+      <%= link_to image_tag(v.thumb, target: '_blank'), v.url %>
       <% end %>
       <% if is_admin? %>
       <%= form_for Video.new do |f| %>
