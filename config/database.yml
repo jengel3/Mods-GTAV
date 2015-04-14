@@ -19,5 +19,6 @@ production:
   encoding: unicode
   database: mods_gtav_production
   pool: 5
+  host: localhost
   username: gtaadmin
   password: gtapass
