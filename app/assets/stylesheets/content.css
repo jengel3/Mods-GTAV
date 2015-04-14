@@ -41,6 +41,15 @@
     display: inline-block;
     vertical-align: top;
 }
+
+.contentpage_modcreator a:link, .contentpage_modcreator a:visited {
+    font-size:22px;
+    color:#6d6d6d;
+    font-family: 'Niconne', cursive;
+    font-weight:bold;
+    text-decoration: none;
+}
+
 .modfilename {
     font-size:13px;
     margin-top:14px;
