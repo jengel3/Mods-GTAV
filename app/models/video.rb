@@ -26,7 +26,7 @@ class Video < ActiveRecord::Base
 
   def set_thumbnail
     return false if !self.youtube_id
-    thumb_uri = "http://img.youtube.com/vi/#{self.youtube_id}/0.jpg"
+    thumb_uri = "https://img.youtube.com/vi/#{self.youtube_id}/mqdefault.jpg"
     self.thumb = thumb_uri 
   end
 end
