@@ -480,6 +480,7 @@ a.likecomment_button {
     margin-bottom:6px;
     text-align: center;
     position:relative;
+    cursor:pointer;
 }
 
 .contentpage_screenshot {
