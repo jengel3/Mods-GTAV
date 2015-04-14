@@ -10,10 +10,10 @@
 			<ul>
 				<li>
 					<% if @sort && @sort_options.key(@sort) %>
-					<a href="#current"><%= @sort_options.key(@sort) %> <span class="downarrowsymbol">&#x25BC;</span></a>
+					<a href="#current"><%= @sort_options.key(@sort) %> <span class="comments_downarrowsymbol">&#x25BC;</span></a>
 					<% @sort_options.delete(@sort_options.key(@sort)) %>
 					<% else %>
-					<a href="#current"><%= @sort_options.keys[0] %> <span class="downarrowsymbol">&#x25BC;</span></a>
+					<a href="#current"><%= @sort_options.keys[0] %> <span class="comments_downarrowsymbol">&#x25BC;</span></a>
 					<% @sort_options.delete(@sort_options.keys[0]) %>
 					<% end %>
 					<ul>
