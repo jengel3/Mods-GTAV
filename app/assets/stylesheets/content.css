@@ -402,9 +402,10 @@ a.likecomment_button {
     font-size:12px;
 }
 
-.downarrowsymbol {
-    font-size:9px;
-    vertical-align: top;
+.comments_downarrowsymbol {
+       font-size:9px;
+       vertical-align: top;
+       margin-top:-10px;
 }
 
 #contentoptions ul ul {
