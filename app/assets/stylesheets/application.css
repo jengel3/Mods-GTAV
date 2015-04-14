@@ -4,8 +4,8 @@
 	*= require index
 	*= require upload
 	*= require profile
-	*= require tooltipster
-	*= require tooltipster-light
+	*= require tooltipster/css/tooltipster.css
+	*= require tooltipster/css/tooltipster-light.css
 	*= require magnific-popup/dist/magnific-popup
 	*= require users
 	*= require home

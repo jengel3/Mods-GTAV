@@ -8,6 +8,6 @@
 //= require blueimp-file-upload/js/jquery.fileupload-image
 //= require base
 //= require submissions
-//= require jquery.tooltipster.min
+//= require tooltipster/js/jquery.tooltipster.js
 //= require jq-animations/js/animations
 //= require magnific-popup/dist/jquery.magnific-popup
