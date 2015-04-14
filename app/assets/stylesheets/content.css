@@ -150,6 +150,7 @@
     height:23px;
     vertical-align: top;
     margin-right: 3px;
+    cursor: pointer;
 }
 
 .neither {
@@ -493,6 +494,7 @@ a.likecomment_button {
     right:0;
     bottom:0;
     margin:auto;
+    cursor:pointer;
 }
 
 img.grayscale {

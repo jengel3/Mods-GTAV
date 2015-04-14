@@ -27,6 +27,7 @@ class Submission < ActiveRecord::Base
   include Rails.application.routes.url_helpers
   include SubmissionsHelper
   extend FriendlyId
+  default_scope where('approved_at IS NOT NULL')
   
   before_save :bake_body
   before_save :delete_sub
