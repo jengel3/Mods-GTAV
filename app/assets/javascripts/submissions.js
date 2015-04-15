@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  $('.likecomment_button').hide();
   var uploadStarted = false;
   var fileCount = 0;
   if ($('#fileupload').length) {
