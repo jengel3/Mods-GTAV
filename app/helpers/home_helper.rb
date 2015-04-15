@@ -88,7 +88,7 @@ module HomeHelper
     return JSON.load(result)
   end
 
-  def featured(min = 100, time_period = DateTime.now - 1.week, num = 1)
+  def featured(min = 5, time_period = DateTime.now - 1.week, num = 1)
     key = "STAT:FEATURED:#{num}:#{min}"
     result = REDIS.get(key)
     if !result
