@@ -116,11 +116,11 @@ $(document).ready(function() {
 	}
 
 	$('.open-contact').magnificPopup({
-      type: 'inline',
-      midClick: true,
-      removalDelay: 500,
-      mainClass: 'mfp-zoom-in'
-    });
+		type: 'inline',
+		midClick: true,
+		removalDelay: 500,
+		mainClass: 'mfp-zoom-in'
+	});
 
 
 	$(document).on('submit', 'form#sign_in', function(e) {
@@ -163,6 +163,7 @@ $(document).ready(function() {
 		$(errorList).shake();
 	});
 
+
 	if ($('.onpagelogintitles').length) {
 		$(document).on('submit', 'form#sign_in_combine', function(e) {
 		}).on('ajax:success', 'form#sign_in_combine', function(e, data, status, xhr) {
@@ -204,9 +205,31 @@ $(document).ready(function() {
 			$(wrap).shake();
 		});
 	}
+	var page = 1;
+	var continueScroll = true;
+	var isLoading = false;
+	if ($('.homepage_recent_mods_wrap').length) {
+		$(window).scroll(function() {
+			if(continueScroll && $(window).scrollTop() + $(window).height() > $(document).height() - 25) {
+				if (!isLoading) {
+					isLoading = true;
+					setTimeout(function() {
+						page += 1;
+						loadMore(page, function() {
+							isLoading = false;
+						});
+					}, 500);
+				}
+			}
+		});
+	}
 });
 
-
+function loadMore(page, callback) {
+	$.getScript($('.homepage_recent_mods_wrap').attr('data-url') + '?page=' + page, function( data, textStatus, jqxhr ) {
+		callback();
+	});
+}
 
 function renderErrors(text) {
 	var parsed = JSON.parse(text);

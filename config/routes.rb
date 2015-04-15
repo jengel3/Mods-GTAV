@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   get '/c/(:category/(:subcategory))', to: 'submissions#index', as: 'category'
 
   get '/home', to: 'home#index'
+  get '/home/infinite', to: 'home#infinite'
   root 'home#index'
 
   get '/p/:username', to: 'application#profile', as: 'profile'
