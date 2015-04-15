@@ -6,6 +6,7 @@ gem 'rails', '4.2.1'
 
 # Minify
 gem 'uglifier', '2.7.0'
+gem 'yui-compressor'
 
 # Front end
 gem 'jquery-rails'
