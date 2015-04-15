@@ -1,5 +1,4 @@
 $(document).ready(function() {
-  $('.likecomment_button').hide();
   var uploadStarted = false;
   var fileCount = 0;
   if ($('#fileupload').length) {
@@ -169,6 +168,8 @@ $(document).ready(function() {
         $('.likecomment_button', this).hide();
       }
     });
+
+    $('.likecomment_button').hide();
 
     var current_page = 1;
 
