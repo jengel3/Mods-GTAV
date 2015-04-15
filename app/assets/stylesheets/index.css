@@ -97,3 +97,9 @@
     color: #a7a7a7;
     margin-right:9px;
 }
+
+.downloadcount img {
+        margin-top:3px;
+        width:12px;
+        height:12px;
+    }
