@@ -14,7 +14,7 @@ module CommentsHelper
     when 'creator'
       comments.where(:user => @submission.creator).order('created_at ASC')
     when 'admin'
-      comments.where(:user_id.in => User.where(:admin => true).distinct(:_id)).order('created_at ASC')
+      comments
     else
       comments.order('created_at ASC')
     end

@@ -51,7 +51,7 @@ class SubmissionsController < ApplicationController
     }
     @sort = params[:c_sort] ||= session['c_sort'] ||= @sort_options.values[0]
     session['c_sort'] = @sort
-    @comments = comment_sort(@submission.comments.unscoped.all).page(params[:c_page]).per(12).reject(&:new_record?)
+    @comments = comment_sort(@submission.comments).page(params[:c_page]).per(12).reject(&:new_record?)
     @rating = nil
     if current_user
       if @submission.has_liked(current_user)
