@@ -36,10 +36,8 @@ class ApplicationController < ActionController::Base
   def search
     @query = params[:search][0] ||= params[:search]
     if @query.strip.blank?
-      puts "not"
       @submissions = []
     else
-      puts "searched"
       @submissions = Submission.search(@query).records
     end
   end
