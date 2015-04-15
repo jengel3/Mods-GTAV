@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
   def search
     @query = params[:search]
 
-    @submissions = @query.nil? ? [] : Submission.search(@query).records
+    @submissions = @query.present? ? Submission.search(@query).records : []
   end
 
   protected
