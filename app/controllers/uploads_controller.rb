@@ -6,6 +6,9 @@ class UploadsController < ApplicationController
     @submission = Submission.find(params[:submission_id])
     return redirect_to root_path, :alert => 'No permission.' unless @submission.can_manage(current_user)
     @upload = @submission.uploads.new(upload_params)
+    if @submission.approved_at
+      @upload.approved_at = DateTime.now
+    end
     if @upload.save
       respond_to do |format|
         format.js
@@ -29,6 +32,8 @@ class UploadsController < ApplicationController
     @submission = @upload.submission
     @submission.approved_at = DateTime.now
     @submission.save
+    @upload.approved_at = DateTime.now
+    @upload.save
     redirect_to [:admin, :content], :notice => "Successfully approved a submission."
   end
 

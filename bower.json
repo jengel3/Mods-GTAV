@@ -21,6 +21,7 @@
     "magnific-popup": "~1.0.0",
     "blueimp-file-upload": "~9.9.3",
     "jq-animations": "*",
-    "tooltipster": "~3.3.0"
+    "tooltipster": "~3.3.0",
+    "loaders.css": "~0.1.0"
   }
 }

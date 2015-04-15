@@ -88,8 +88,5 @@
 </div>
 <h3 class="homepage_recent">Recent Modifications</h3>
 <div class="homepage_recent_mods_wrap">
-   <%= render 'shared/submissions', submissions: Submission.all.order('approved_at DESC').limit(15) %>
-</div>
-<div class="homepage_load_more_wrap">
-   <input type="submit" class="homepage_load_more"value="Load More" />
+   <%= render 'shared/submissions', submissions: @submissions %>
 </div>

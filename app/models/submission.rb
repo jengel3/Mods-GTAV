@@ -6,18 +6,18 @@
 #  name           :string
 #  body           :text
 #  baked_body     :text
-#  approved_at    :time
 #  category       :string
 #  sub_category   :string
 #  like_count     :integer          default(0)
 #  dislike_count  :integer          default(0)
 #  download_count :integer          default(0)
 #  avg_rating     :integer          default(0)
-#  last_favorited :time
 #  creator_id     :integer
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #  slug           :string
+#  last_favorited :datetime
+#  approved_at    :datetime
 #
 
 require 'elasticsearch/model'
@@ -27,7 +27,7 @@ class Submission < ActiveRecord::Base
   include Rails.application.routes.url_helpers
   include SubmissionsHelper
   extend FriendlyId
-  default_scope { where('approved_at IS NOT NULL') }
+  scope :approved, -> { where('submissions.approved_at IS NOT NULL') }
   
   before_save :bake_body
   before_save :delete_sub

@@ -4,12 +4,12 @@
 #
 #  id            :integer          not null, primary key
 #  changelog     :text
-#  approved_at   :time
 #  size          :string
 #  submission_id :integer
 #  upload        :string
 #  created_at    :datetime         not null
 #  version       :string
+#  approved_at   :datetime
 #
 
 class Upload < ActiveRecord::Base

@@ -179,8 +179,7 @@
 				<div class="searchwrap">
 					<%= form_tag search_path, method: :get, :enforce_utf8 => false do %>
 					<%= text_field 'search', nil, class: 'search', placeholder: 'Search...', value: params[:search] %>
-					<input type="submit" class="searchbutton accentcolor" value=""
-    style="background-image: url(<%= asset_path 'searchbutton.png' %>); width: 26px; height: 26px;" />
+					<input type="submit" class="searchbutton accentcolor" value="" style="background-image: url(<%= asset_path 'searchbutton.png' %>); width: 26px; height: 26px;" />
 					<% end %>  
 				</div>
 			</div>
@@ -191,15 +190,15 @@
 					<div class="avatarwrap">
 						<%= avatar @user, size: 80 %>
 					</div>
-					<a href="" class="emailuser">Email</a>
+					<!-- <a href="" class="emailuser">Email</a> -->
 					<div class="user_reputation_wrap">
 						<%= image_tag ('hearticon.png'), alt: 'Hearts' %>
-						<p>7,562</p>
+						<p></p>
 					</div>
 				</div>
 				<div class="profile_content_panel">
 					<div class="upper_content_panel">
-						<a href="#report" class="useroptions">Report User</a>
+						<!-- <a href="#report" class="useroptions">Report User</a> -->
 					</div>
 					<div class="lower_content_panel">
 						<div class="profile_information_section">
@@ -214,8 +213,8 @@
 						<div class="profile_stats_section">
 							<h3>Statistics</h3>
 							<p class="profile_info_and_stats_text"><b>Mods Submitted</b><br><span><%= @user.submissions.count %></span></p>
-							<p class="profile_info_and_stats_text"><b>Most Liked</b><br><a href="">Police Helicopter</a></p>
-							<p class="profile_info_and_stats_text"><b>Most Downloaded</b><br><a href="">Ford F-150</a></p>
+							<p class="profile_info_and_stats_text"><b>Most Liked</b><br><a href="">Coming Soon</a></p>
+							<p class="profile_info_and_stats_text"><b>Most Downloaded</b><br><a href="">Coming Soon</a></p>
 						</div>            
 					</div>
 				</div>
