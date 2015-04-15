@@ -42,5 +42,6 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/', to: 'home#index', as: 'home'
     get '/content', to: 'content#index', as: 'content'
+    post '/flush', to: 'home#flush', as: 'flush'
   end
 end
