@@ -1,9 +1,6 @@
 <head>
 	<title><%= content_for?(:title) ? yield(:title) + ' :: Mods-GTAV ' : 'Mods-GTAV' %></title>
 	<%= stylesheet_link_tag "application" %>
-	<link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
-	<link href='https://fonts.googleapis.com/css?family=Asap:400,700' rel='stylesheet' type='text/css'>
-	<link href='https://fonts.googleapis.com/css?family=Niconne' rel='stylesheet' type='text/css'>
 
 	<!-- Social Media Meta -->
 	<meta charset="utf-8">
@@ -289,6 +286,8 @@
 		</div>
 	</div>
 	<%= render 'shared/footer' %> 
+	<link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Niconne' rel='stylesheet' type='text/css'>
 	<%= javascript_include_tag "application" %>
 	<%= content_for(:scripts) %>
 </body>
