@@ -6,7 +6,6 @@ gem 'rails', '4.2.1'
 
 # Minify
 gem 'uglifier', '2.7.0'
-gem 'yui-compressor'
 
 # Front end
 gem 'jquery-rails'
@@ -14,7 +13,7 @@ gem 'kramdown'
 gem 'jquery-ui-rails'
 
 # API 
-gem "active_model_serializers", "~> 0.8.0"
+gem 'active_model_serializers', '~> 0.8.0'
 gem 'httparty'
 
 # Authentication
