@@ -8,4 +8,4 @@
     remote:        data-remote
 -%>
 
-<a href="<%= url %>" class="pagenumber<%= ' activepagenumber' if page.current? %>" data-remote="<%= remote %>" rel="<%= page.next? ? 'next' : page.prev? ? 'prev' : nil %> "><div class="pagination_link"><%= page %></div></a>
+<a href="<%= url %>" class="pagenumber<%= ' activepagenumber' if page.current? %>" rel="<%= page.next? ? 'next' : page.prev? ? 'prev' : nil %> "><div class="pagination_link"><%= page %></div></a>
