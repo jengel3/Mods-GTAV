@@ -3,7 +3,7 @@ class Api::V1::CommentsController < Api::V1::BaseController
   include CommentsHelper
   def index
     @submission = Submission.find(params[:submission_id])
-    @comments = comment_sort(@submission.comments.unscoped.all).page(params[:c_page]).per(10).reject(&:new_record?)
+    @comments = comment_sort(@submission.comments).page(params[:c_page]).per(10).reject(&:new_record?)
 
     serialized_comments = ActiveModel::ArraySerializer.new(@comments, each_serializer: CommentSerializer)
 

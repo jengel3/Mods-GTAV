@@ -136,13 +136,21 @@ $(document).ready(function() {
       });
     });
 
-
+    var loading = false;
     $('.contentpage_screenshot').click(function(e) {
-      e.preventDefault();
-      var src = '';
-      src = $(e.target).attr('src');
-      var new_src = src.replace('thumb_', '');
-      $('.contentpage_mainthumb img').attr('src', new_src);
+      if (!loading) {
+        loading = true;
+        e.preventDefault();
+        var src = $(e.target).attr('src');;
+        var new_src = src.replace('thumb_', '');
+        $('.contentpage_mainthumb img').attr('src', $('.contentpage_screenshots_wrap').attr('api-loader'));
+        var img = new Image();
+        $(img).one('load', function() {
+          loading = false;
+          $('.contentpage_mainthumb img').attr('src', new_src);
+        });
+        img.src = new_src;
+      }
     });
 
     // Random display options

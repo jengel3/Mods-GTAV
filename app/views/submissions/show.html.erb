@@ -34,7 +34,7 @@
 			<div class="downloadbutton_text">Upload File</div>
 		</div></a>
 		<% end %>
-		<div class="contentpage_screenshots_wrap">
+		<div class="contentpage_screenshots_wrap" api-loader='<%= asset_path "loader.gif" %>'>
 			<% @submission.thumbnails.each do |thumb| %>
 			<div class="contentpage_individual_screen_wrap">
 			<img class="contentpage_screenshot" src="<%= thumb.image_url(:thumb) %>" title='Click to display original image'/>
