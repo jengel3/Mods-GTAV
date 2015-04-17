@@ -1,5 +1,4 @@
 $('<%= j render("shared/submissions", submissions: @submissions) %>').appendTo($('.homepage_recent_mods_wrap'));
 <% if @submissions.last_page? %>
-$('All Content Loaded').appendTo($('.homepage_recent_mods_wrap'));
-continueScroll = false;
+$('<p id="scroll-done">All Content Loaded!</p>').appendTo($('.homepage_recent_mods_wrap'));
 <% end %>

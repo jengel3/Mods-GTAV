@@ -210,6 +210,10 @@ $(document).ready(function() {
 	var isLoading = false;
 	if ($('.homepage_recent_mods_wrap').length) {
 		$(window).scroll(function() {
+			if (!continueScroll || $('#scroll-done').length) {
+				continueScroll = false;
+				return;
+			}
 			if(continueScroll && $(window).scrollTop() + $(window).height() > $(document).height() - 25) {
 				if (!isLoading) {
 					isLoading = true;
