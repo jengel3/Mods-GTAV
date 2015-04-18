@@ -10,7 +10,7 @@ class VidthumbUploader < CarrierWave::Uploader::Base
   end
 
 
-  process resize_to_fit: [130, 100]
+  process resize_to_fit: [130, 73]
 
 
   def extension_white_list

@@ -1,9 +1,9 @@
 class SubmissionsController < ApplicationController
   include CommentsHelper
   include ApplicationHelper
-  before_filter :set_submission, only: [:destroy, :edit, :update, :download]
+  before_filter :set_submission, only: [:destroy, :edit, :update, :download, :favorite]
   before_filter :authenticate_user!, only: [:destroy, :edit, :create, :new, :update]
-
+  before_filter :require_admin, only: [:favorite]
   def index
     category = params[:category]
     subcategory = params[:subcategory]
@@ -38,6 +38,12 @@ class SubmissionsController < ApplicationController
     @submissions = @submissions.page(params[:page]).per(21)
     @sort = @sort_options.key(@sort) || @sort_options.keys[0]
     @time = @time_options.key(@time) || @time_options.keys[0]
+  end
+
+  def favorite
+     @submission.last_favorited = DateTime.now
+     @submission.save
+     redirect_to @submission, alert: "Successfully favorited #{@submission.name}."
   end
 
   def show
