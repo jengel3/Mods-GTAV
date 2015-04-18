@@ -210,7 +210,7 @@
     height: auto;
     padding-right:14px;
     padding-bottom:10px;
-    border-right: 1px dashed #dadada;
+    /*border-right: 1px dashed #dadada;*/
     text-align: left;
     margin-top:14px;
     display: inline-block;
@@ -230,6 +230,7 @@
     color: #8a8989;
     text-decoration: none;
     float:right;
+    cursor: pointer;
 }
 .expand_description {
     width:0px;
@@ -240,15 +241,18 @@
     margin-right:12px;
     margin-left:5px;
     display: none;
-    font-size: 20;
+    font-size: 20px;
 }
 .expand_description_show_icon {
     display: inline-block;
 }
 .descriptionwrap_moddescription {
     color:#393939;
-    font-size: 15px;
-    margin-top: 5px;
+    background-color:rgb(253,253,253);
+    border:1px solid #d8e1ef;
+    font-size: 14px;
+    margin-top: 8px;
+    padding:8px 10px 25px 8px;
 }
 
 .contentpage_uploaddate {
@@ -281,16 +285,18 @@ input.commentinput {
     width: 80%;
     height:32px;
     margin-top:8px;
-    border: 1px solid #dedede;
+    border: 1px solid #d8e1ef;
     padding-left:8px;
     margin-bottom:10px;
     display: inline-block;
     float: left;
     border-right: none;
+    background-color:rgb(253,253,253);
 }
 input.commentinput:focus {
     outline: none;
     border: solid 1px #cecece;
+    background-color:#fff;
     -webkit-box-shadow: 1px 1px 5px #E8E8E8 inset;
     -moz-box-shadow: 1px 1px 5px #E8E8E8 inset;
     box-shadow: 1px 1px 5px #E8E8E8 inset;
@@ -321,7 +327,7 @@ input.comment_submit_button:focus {
     outline:none;
 }
 .usercommentwrap {
-    margin-left:8px;
+    margin-left:5px;
     width: auto;
     margin-bottom:8px;
 }
@@ -350,11 +356,11 @@ a.likecomment_button {
     color:#42b84a !important;
 }
 .commenttext {
-    font-size:15px;
+    font-size:14px;
     font-weight:normal;
     color:#303030;
     padding-bottom:10px;
-    border-bottom: 1px dashed #dadada;
+    border-bottom: 1px solid #d8e1ef;
     max-width: 100%;
     word-wrap:break-word;
 }
