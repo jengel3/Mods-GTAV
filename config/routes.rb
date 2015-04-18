@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     post :like
     post :dislike
     get :download
+    post :favorite
   end
 
   resources :videos

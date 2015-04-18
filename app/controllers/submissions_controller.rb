@@ -2,7 +2,7 @@ class SubmissionsController < ApplicationController
   include CommentsHelper
   include ApplicationHelper
   before_filter :set_submission, only: [:destroy, :edit, :update, :download, :favorite]
-  before_filter :authenticate_user!, only: [:destroy, :edit, :create, :new, :update]
+  before_filter :authenticate_user!, only: [:destroy, :edit, :create, :new, :update, :favorite]
   before_filter :require_admin, only: [:favorite]
   def index
     category = params[:category]
@@ -41,8 +41,7 @@ class SubmissionsController < ApplicationController
   end
 
   def favorite
-     @submission.last_favorited = DateTime.now
-     @submission.save
+     @submission.favorite
      redirect_to @submission, alert: "Successfully favorited #{@submission.name}."
   end
 
@@ -132,6 +131,7 @@ class SubmissionsController < ApplicationController
   def destroy
     return redirect_to root_path, :alert => 'No permission.' unless @submission.can_manage(current_user)
     @submission.destroy
+    redirect_to submissions_path, :notice => "Successfully deleted a submission."
   end
 
   def new

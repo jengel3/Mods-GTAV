@@ -159,4 +159,10 @@ class Submission < ActiveRecord::Base
     end
     return false
   end
+
+  def favorite
+    self.last_favorited = DateTime.now
+    self.save
+    REDIS.del('STAT:FAVORITES')
+  end
 end

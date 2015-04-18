@@ -1,0 +1,30 @@
+<%= content_for :sidebar do %>
+<h3>Manage</h3>
+<div class="subcategories_wrap">
+	<% manager = @submission.can_manage(current_user) %>
+	<% if manager && @submission.new_record? %>
+	<%= link_to root_path do %>
+	<div class="subcategory"><p>Cancel</p></div>
+	<% end %>
+	<% else %>
+	<%= link_to(submission_path(@submission)) do %>
+	<div class="subcategory <%= current_panel('submissions', 'show') %>"><p>View</p></div>
+	<% end %>
+
+	<% if manager %>
+	<%= link_to(edit_submission_path(@submission)) do %>
+	<div class="subcategory <%= current_panel('submissions', 'edit') %>"><p>Edit</p></div>
+	<% end %>
+
+	<%= link_to(submission_path(@submission), method: :delete, data: {confirm: "Are you sure that you want to delete this submission?"}) do %>
+	<div class="subcategory"><p>Delete</p></div>
+	<% end %>
+	<% end %>
+	<% if is_admin? %>
+	<%= link_to(submission_favorite_path(@submission), method: :post) do %>
+	<div class="subcategory"><p>Favorite</p></div>
+	<% end %>
+	<% end %>
+	<% end %>
+</div>
+<% end %>

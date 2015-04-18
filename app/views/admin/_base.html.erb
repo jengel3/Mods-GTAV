@@ -1,0 +1,12 @@
+<%= content_for :sidebar %>
+<h3>Admin Panels</h3>
+<div class="subcategories_wrap">
+	<a href="<%= url_for [:admin, :home] %>">
+		<div class="subcategory <%= current_panel('home') %>"><p>Home</p></div>
+	</a>
+	<a href="<%= url_for [:admin, :content] %>">
+		<div class="subcategory <%= current_panel('content') %>"><p>Content Moderation</p></div>
+	</a>
+	<%= link_to "<div class='subcategory'><p>Flush Cache</p></div>".html_safe, admin_flush_path, method: :post %>
+</div>
+<% end %>
