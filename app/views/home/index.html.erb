@@ -45,17 +45,11 @@
    <%= render 'shared/cached', submissions: favorites %>
 </div>
 <div class="homepage_youtube_wrap">
-   <h3 id="videos"><img src="<%= asset_path('youtubelogo.png') %>" />Community Videos</h3>
+   <h3 id="videos"><a href="#commvideo-popup" class="add-comm-video"><img src="<%= asset_path('youtubelogo.png') %>" /></a>Community Videos</h3>
    <div class="youtube_videos_wrap">
       <% Video.order('created_at DESC').limit(6).each do |v| %>
-      <%= link_to image_tag(v.thumb), v.url, target: '_blank' %>
+      <%= link_to image_tag(v.vidthumb.url), v.url, target: '_blank' %>
       <% end %>
-      <% if is_admin? %>
-      <%= form_for Video.new do |f| %>
-      <%= f.text_field :url %>
-      <%= f.submit 'Submit' %>
-      <% end %>
-      <% end %> 
    </div>
 </div>
 <table class="this_week_most_popular_wrap most_popular_users">
@@ -90,3 +84,26 @@
 <div class="homepage_recent_mods_wrap" data-url="/home/infinite.js">
    <%= render 'shared/submissions', submissions: @submissions %>
 </div>
+
+<% if is_admin? %>
+<div id="commvideo-popup" class="imageupload_popup_wrap mfp-hide mfp-with-anim">
+   <h3>Community Videos</h3>
+   <h4>Enter a URL to generate a new video.</h4>
+   <%= form_for Video.new do |f| %>
+   <%= f.label :url %><%= f.text_field :url, class: 'contactboxes' %>
+   <table cellspacing="0" id="file-table" style='display: none;' class='vid-display'>
+      <tr>
+         <td>
+           <div class="imgwrap" id="vidimg"><img src="" alt="Thumb"/></div>
+         </td>
+         <td id='vidurl'><a href=""></a></td>
+         <td id='vidid'></td>
+      </tr>
+   </table>
+   <div class="bottom_buttons_wrap">
+      <%= f.submit "Save", class: 'upload', id: 'upload_btn' %>
+   </div>
+   <div class="fileuploaderrors" id='videoerrors' style="display: none;"></div>
+   <% end %>
+</div>
+<% end %>

@@ -63,7 +63,7 @@
 			<%= @submission.baked_body.html_safe %>
 		</div>
 		<div class="contentpage_uploaddate"><b>Upload Date:</b><span class="tooltip" title='<%= exact(@submission.created_at) %>'> <%= relative(@submission.created_at) %></span></div>
-		<div class="contentpage_lastupdated"><b>Last Updated:</b><span class="tooltip"title='<%= exact(@submission.updated_at) %>'> <%= relative(@submission.updated_at) %></span></div>
+		<div class="contentpage_lastupdated"><b>Last Updated:</b><span class="tooltip" title='<%= exact(@submission.last_updated) %>'> <%= relative(@submission.last_updated) || "N/A" %></span></div>
 	</div>
 	<%= render 'comments' %>
 </div>

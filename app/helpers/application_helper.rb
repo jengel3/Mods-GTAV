@@ -1,10 +1,18 @@
 module ApplicationHelper
   def relative(time)
-    time_ago_in_words(time) + " ago"
+    if time
+      time_ago_in_words(time) + " ago"
+    else
+      nil
+    end
   end
 
   def exact(time)
-    time.strftime("%B #{time.day.ordinalize}, %Y - %l:%M %p")
+    if time
+      time.strftime("%B #{time.day.ordinalize}, %Y - %l:%M %p")
+    else
+      nil
+    end
   end
 
   def short(time)

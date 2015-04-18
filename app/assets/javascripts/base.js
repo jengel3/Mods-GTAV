@@ -122,6 +122,31 @@ $(document).ready(function() {
 		mainClass: 'mfp-zoom-in'
 	});
 
+	$('.add-comm-video').magnificPopup({
+		type: 'inline',
+		midClick: true,
+		removalDelay: 500,
+		mainClass: 'mfp-zoom-in'
+	});
+
+	$('#video_url').keyup(function(e) {
+		try {
+			var yurl = $(e.target).val();
+			var id = yurl.split('v=')[1].substring(0, 11);
+			var thumb = 'https://img.youtube.com/vi/' + id + '/mqdefault.jpg'
+			$("#vidimg img").attr('src', thumb);
+			$("#vidurl a").attr('href', yurl);
+			$("#vidurl a").text(yurl);
+			$("#vidid").text(id);
+			$('.vid-display').css('display', 'inline');
+			$('#videoerrors').fadeOut(100);
+		} catch (e) {
+			console.error(e)
+			$('.vid-display').css('display', 'none');
+			$('#videoerrors').text("Unable to load thumbnail. Confirm the ID is valid.");
+			$('#videoerrors').css('display', 'block');
+		}
+	});
 
 	$(document).on('submit', 'form#sign_in', function(e) {
 	}).on('ajax:success', 'form#sign_in', function(e, data, status, xhr) {

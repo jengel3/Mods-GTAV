@@ -11,22 +11,20 @@
 #
 
 class Video < ActiveRecord::Base
+  mount_uploader :vidthumb, VidthumbUploader
   belongs_to :user
-
-  before_validation :set_youtube_id
-  before_validation :set_thumbnail
 
   validates :url, presence: true
   validates :youtube_id, presence: true
   validates :thumb, presence: true
 
-  def set_youtube_id
-    self.youtube_id = self.url.split("v=")[1][0..11]
+  def self.youtube_id(url)
+    return url.split("v=")[1][0..11]
   end
 
-  def set_thumbnail
-    return false if !self.youtube_id
-    thumb_uri = "https://img.youtube.com/vi/#{self.youtube_id}/mqdefault.jpg"
-    self.thumb = thumb_uri 
+  def self.thumb_url(id)
+    return false if !id
+    thumb_uri = "https://img.youtube.com/vi/#{id}/mqdefault.jpg"
+    return thumb_uri 
   end
 end

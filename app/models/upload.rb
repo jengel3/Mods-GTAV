@@ -14,6 +14,7 @@
 
 class Upload < ActiveRecord::Base
   belongs_to :submission
+  after_create :set_updated
 
   validates :version, presence: true
   validates :upload, presence: true
@@ -22,5 +23,12 @@ class Upload < ActiveRecord::Base
 
   def display_text
     upload.filename + ' ' + self.size
+  end
+
+  def set_updated
+    if submission.approved_at
+      submission.last_updated = DateTime.now
+      submission.save
+    end
   end
 end

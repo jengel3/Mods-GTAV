@@ -31,6 +31,7 @@ class UploadsController < ApplicationController
     @upload = Upload.find(params[:upload_id])
     @submission = @upload.submission
     @submission.approved_at = DateTime.now
+    @submission.last_updated = DateTime.now
     @submission.save
     @upload.approved_at = DateTime.now
     @upload.save
