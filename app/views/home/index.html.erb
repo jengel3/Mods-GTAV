@@ -45,7 +45,11 @@
    <%= render 'shared/cached', submissions: favorites %>
 </div>
 <div class="homepage_youtube_wrap">
+   <% if is_admin? %>
    <h3 id="videos"><a href="#commvideo-popup" class="add-comm-video"><img src="<%= asset_path('youtubelogo.png') %>" /></a>Community Videos</h3>
+   <% else %>
+   <h3 id="videos"><img src="<%= asset_path('youtubelogo.png') %>" />Community Videos</h3>
+   <% end %>
    <div class="youtube_videos_wrap">
       <% Video.order('created_at DESC').limit(6).each do |v| %>
       <%= link_to image_tag(v.vidthumb.url), v.url, target: '_blank' %>
