@@ -20,7 +20,7 @@
 <div class="subcategories_wrap">
 	<a href="<%= url_for :subcategory => 'all' %>">
 		<div class="subcategory <%= active_sub('all') %>">
-			<p>All</p>
+			<p><%= t 'common.all' %></p>
 		</div>
 	</a>
 	<% if params[:category] && @subcategories %>
@@ -34,7 +34,7 @@
 	<% end %>
 	<a href="<%= url_for :subcategory => 'other' %>">
 		<div class="subcategory <%= active_sub('Other') %>">
-			<p>Other</p>
+			<p><%= t 'common.other' %></p>
 		</div>
 	</a>
 </div>

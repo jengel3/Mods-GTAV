@@ -2,42 +2,42 @@
     <div class="innerfooterwrap">
         <div class="footertopwrap">
             <a href="#" class="gototop">
-                To Top
+                <%= t('.to_top') %>
             </a>
             <ul>
-                <li><a href="<%= new_submission_path %>">Add Mod</a></li>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#contact-popup" class="open-contact">Contact Us</a></li>
-                <li><a href="#">FAQ</a></li>
-                <li><a href="#">Rules</a></li>
-                <li><a href="https://twitter.com/Mods_GTAV" target="_blank">Twitter</a></li>
+                <li><a href="<%= new_submission_path %>"><%= t('.add_mod') %></a></li>
+                <li><a href="#"><%= t('.about_us') %></a></li>
+                <li><a href="#contact-popup" class="open-contact"><%= t('.contact_us') %></a></li>
+                <li><a href="#"><%= t('.faq') %></a></li>
+                <li><a href="#"><%= t('.rules') %></a></li>
+                <li><a href="https://twitter.com/Mods_GTAV" target="_blank"><%= t('.twitter') %></a></li>
                 <% if is_admin? %>
-                <li><a href="<%= admin_home_path %>" target="_blank">Admin</a></li>
+                <li><a href="<%= admin_home_path %>" target="_blank"><%= t('Admin') %></a></li>
                 <% end %>
             </ul>
         </div>
         <div class="footerbottomwrap">
-            <span class="rockstarwrap">Not Associated with <span class="rockstar">Rockstar Games</span></span>
+            <span class="rockstarwrap"><%= t('.not_associated') %> <span class="rockstar"><%= t('common.rockstar_games') %></span></span>
             <%= image_tag 'modsgtalogo.png', class: 'gta5videoslogo', alt: 'Mods-GTAV' %>
-            <p>in partnership with</p>
+            <p><%= t('.in_partnership') %></p>
             <%= image_tag 'modsgtalogo.png', class: 'gta5videoslogo', alt: 'Mods-GTAV' %>
         </div>
     </div>
 </div>
 
 <div id="contact-popup" class="imageupload_popup_wrap mfp-hide mfp-with-anim">
-    <h3>Contact</h3>
-    <h4>You should recieve a response within 48 hours.</h4>
+    <h3><%= t('contact.title') %></h3>
+    <h4><%= t('contact.response') %></h4>
     <%= form_tag contact_path, method: :post do %>
     <div class="contact-popup">
-        <%= label_tag 'username' %><%= text_field :contact, :username, value: (current_user ? current_user.username : ''), class: 'contactboxes' %>
-        <%= label_tag 'email' %><%= email_field :contact, :email, value: (current_user ? current_user.email : ''), class: 'contactboxes' %>
-        <%= label_tag 'message' %><%= text_area :contact, :message, value: '', class: 'contactboxes', rows: "7", placeholder: 'Provide as much detail as possible...' %>
+        <%= label_tag 'username', t('users.username') %><%= text_field :contact, :username, value: (current_user ? current_user.username : ''), class: 'contactboxes' %>
+        <%= label_tag 'email', t('users.email') %><%= email_field :contact, :email, value: (current_user ? current_user.email : ''), class: 'contactboxes' %>
+        <%= label_tag 'message', t('contact.message') %><%= text_area :contact, :message, value: '', class: 'contactboxes', rows: "7", placeholder: t('contact.please_provide') %>
     </div>
     <div align='center' class="g-recaptcha" data-sitekey="6LfAOwUTAAAAANYzYWge_qoRJ7xDV-DshF8__6J_"></div>
 
     <div class="bottom_buttons_wrap">
-        <%= submit_tag 'Send', class: 'upload' %>
+        <%= submit_tag t('common.send'), class: 'upload' %>
     </div>
     <% end %>
     <script src='https://www.google.com/recaptcha/api.js' async defer></script>

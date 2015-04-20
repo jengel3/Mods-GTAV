@@ -1,11 +1,11 @@
 <div class="comment-template" style="display: none;">
 	<div class="usercommentwrap">
-		<div class="commentname">{{username}} <div class="likecomment_score {{liked}}">+{{count}} <a href="#" class="{{liked}} likecomment_button" data-url='<%= '/submissions/' + @submission.slug + '/comments/{{id}}' + '/like' %>'>Like</a></div></div>
+		<div class="commentname">{{username}} <div class="likecomment_score {{liked}}">+{{count}} <a href="#" class="{{liked}} likecomment_button" data-url='<%= '/submissions/' + @submission.slug + '/comments/{{id}}' + '/like' %>'><%= t('common.like') %></a></div></div>
 		<div class="commenttext">{{text}}</div>
 	</div>
 </div>
 <div class="contentpage_commentswrap" data-api="<%= url_for([:api, :v1, @submission, :comments]) %>" data-sort="<%= @sort %>">
-	<div class="contentpage_headertitles">Comments
+	<div class="contentpage_headertitles"><%= t('.comments') %>
 		<div id="contentoptions">
 			<ul>
 				<li>
@@ -27,12 +27,12 @@
 	</div>
 	<%= form_for([@submission, @submission.comments.build]) do |f| %>
 	<%= f.text_field :text, class: 'commentinput', placeholder: 'What do you think?' %>
-	<%= f.submit 'Submit', class: 'comment_submit_button' %>
+	<%= f.submit t(".submit"), class: 'comment_submit_button' %>
 	<% end %>
 	<% @comments.each do |comment| %>
 	<% liked = comment.has_liked(current_user) %>
 	<div class="usercommentwrap">
-		<div class="commentname"><%= link_to comment.user.username, profile_path(comment.user.username) %> <div class="likecomment_score <%= liked ? 'liked_comment' : '' %>">+<%= comment.like_count %> <a href="#" class="<%= liked ? 'liked_comment' : '' %> likecomment_button" data-url='<%= url_for [@submission, comment, :like] %>'>Like</a></div></div>
+		<div class="commentname"><%= link_to comment.user.username, profile_path(comment.user.username) %> <div class="likecomment_score <%= liked ? 'liked_comment' : '' %>">+<%= comment.like_count %> <a href="#" class="<%= liked ? 'liked_comment' : '' %> likecomment_button" data-url='<%= url_for [@submission, comment, :like] %>'><%= t('common.like') %></a></div></div>
 		<div class="commenttext" title="Created <%= relative(comment.created_at) %> (<%= exact(comment.created_at) %>)"><%= comment.text %></div>
 	</div>
 	<% end %>

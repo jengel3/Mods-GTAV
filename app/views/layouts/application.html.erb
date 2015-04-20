@@ -79,55 +79,55 @@
 				<ul>
 					<li class="<%= active_cat('home') %>">
 						<a href="<%= root_path %>">
-							<h2>Home</h2>
+							<h2><%= t('.home') %></h2>
 							<img src="<%= asset_path('homeicon50.png') %>" alt="Navigation Icon">
 						</a>
 					</li>
 					<li class="<%= active_cat('tools') %>">
 						<a href="<%= category_path('tools') %>">
-							<h2>Tools</h2>
+							<h2><%= t('.tools') %></h2>
 							<img src="<%= asset_path('toolsicon50.png') %>" alt="Navigation Icon">
 						</a>
 					</li>
 					<li class="<%= active_cat('weapons') %>">
 						<a href="<%= category_path('weapons') %>">
-							<h2>Weapons</h2>
+							<h2><%= t('.weapons') %></h2>
 							<img src="<%= asset_path('weaponsicon50.png') %>" alt="Navigation Icon">
 						</a>
 					</li>
 					<li class="<%= active_cat('vehicles') %>">
 						<a href="<%= category_path('vehicles') %>">
-							<h2>Vehicles</h2>
+							<h2><%= t('.vehicles') %></h2>
 							<img src="<%= asset_path('vehicleicon50.png') %>" alt="Navigation Icon">
 						</a>
 					</li>
 					<li class="<%= active_cat('textures') %>">
 						<a href="<%= category_path('textures') %>">
-							<h2>Textures</h2>
+							<h2><%= t('.textures') %></h2>
 							<img src="<%= asset_path('textureicon50.png') %>" alt="Navigation Icon" />
 						</a>
 					</li>
 					<li class="<%= active_cat('player') %>">
 						<a href="<%= category_path('player') %>">
-							<h2>Player</h2>
+							<h2><%= t('.player') %></h2>
 							<img src="<%= asset_path('playericon50.png') %>" alt="Navigation Icon">
 						</a>
 					</li>
 					<li class="<%= active_cat('maps') %>">
 						<a href="<%= category_path('maps') %>">
-							<h2>Maps</h2>
+							<h2><%= t('.maps') %></h2>
 							<img src="<%= asset_path('mapsicon50.png') %>" alt="Navigation Icon">
 						</a>
 					</li>
 					<li class="<%= active_cat('script') %>">
 						<a href="<%= category_path('script') %>">
-							<h2>Script</h2>
+							<h2><%= t('.script') %></h2>
 							<img src="<%= asset_path('scripticon50.png') %>" alt="Navigation Icon">
 						</a>
 					</li>
 					<li class="<%= active_cat('misc') %>">
 						<a href="<%= category_path('misc') %>">
-							<h2>Misc</h2>
+							<h2><%= t('.misc') %></h2>
 							<img src="<%= asset_path('miscicon50.png') %>" alt="Navigation Icon">
 						</a>
 					</li>
@@ -168,13 +168,13 @@
 					<% end %>
 				</div>
 				<% if params[:controller] == 'submissions' && params[:action] == 'show' && @submission.can_manage(current_user) %>
-				<%= link_to 'Edit Mod', edit_submission_path(@submission), class: 'addmodbutton editmodbutton' %>
+				<%= link_to t('.edit_mod'), edit_submission_path(@submission), class: 'addmodbutton editmodbutton' %>
 				<% else %>
-				<%= link_to 'Add Mod +', new_submission_path, class: 'addmodbutton' %>
+				<%= link_to t('.add_mod'), new_submission_path, class: 'addmodbutton' %>
 				<% end %>
 				<div class="searchwrap">
 					<%= form_tag search_path, method: :get, :enforce_utf8 => false do %>
-					<%= text_field 'search', nil, class: 'search', placeholder: 'Search...', value: params[:search] %>
+					<%= text_field 'search', nil, class: 'search', placeholder: t('.search'), value: params[:search] %>
 					<input type="submit" class="searchbutton accentcolor" value="" style="background-image: url(<%= asset_path 'searchbutton.png' %>); width: 26px; height: 26px;" />
 					<% end %>  
 				</div>
@@ -188,7 +188,7 @@
 					</div>
 					<!-- <a href="" class="emailuser">Email</a> -->
 					<div class="user_reputation_wrap">
-						<%= image_tag ('hearticon.png'), alt: 'Hearts' %>
+						<%= image_tag ('hearticon.png'), alt: t('.hearts') %>
 						<p></p>
 					</div>
 				</div>
@@ -199,18 +199,18 @@
 					<div class="lower_content_panel">
 						<div class="profile_information_section">
 							<h3>Information</h3>
-							<p class="profile_info_and_stats_text"><b>Last Active</b><br /><span><%= short(@user.last_sign_in_at) %></span></p>
-							<p class="profile_info_and_stats_text"><b>Joined</b><br /><span><%= short(@user.created_at) %></span></p>
+							<p class="profile_info_and_stats_text"><b><%= t('profile.last_active') %></b><br /><span><%= short(@user.last_sign_in_at) %></span></p>
+							<p class="profile_info_and_stats_text"><b><%= t('profile.joined') %></b><br /><span><%= short(@user.created_at) %></span></p>
 						</div>
 						<div class="profile_bio_section">
-							<h3>Biography</h3>
+							<h3><%= t('.biography') %></h3>
 							<p><%= @user.biography %></p>
 						</div>
 						<div class="profile_stats_section">
-							<h3>Statistics</h3>
-							<p class="profile_info_and_stats_text"><b>Mods Submitted</b><br><span><%= @user.submissions.count %></span></p>
-							<p class="profile_info_and_stats_text"><b>Most Liked</b><br><a href="">Coming Soon</a></p>
-							<p class="profile_info_and_stats_text"><b>Most Downloaded</b><br><a href="">Coming Soon</a></p>
+							<h3><%= t('.statistics') %></h3>
+							<p class="profile_info_and_stats_text"><b><%= t('.mods_submitted') %></b><br><span><%= @user.submissions.count %></span></p>
+							<p class="profile_info_and_stats_text"><b><%= t('.most_liked') %></b><br><a href=""><%= t('misc.coming_soon') %></a></p>
+							<p class="profile_info_and_stats_text"><b><%= t('.most_downloads') %></b><br><a href=""><%= t('misc.coming_soon') %></a></p>
 						</div>            
 					</div>
 				</div>
@@ -222,9 +222,7 @@
 			<div class="mainpagewrap">
 				<div class="mainpage <%= params[:controller] == 'home' ? 'homepage' : '' %>">
 					<noscript>
-					<div class='alert'>
-						Please enable JavaScript to use Mods-GTAV properly. Many features require Javascript to be enabled.
-					</div>
+					<div class='alert'><%= t('.enable_javascript') %></div>
 					</noscript>
 					<%= render 'shared/alerts' %>
 					<%= yield %>
