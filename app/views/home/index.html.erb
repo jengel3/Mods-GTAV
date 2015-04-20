@@ -9,7 +9,7 @@
 <div class="homepage_note_and_mostpopular_wrap">
    <div class="homepage_website_note">
       <%= image_tag 'homenote.png', alt: t('.note') %>
-      <p><%= t('.welcome_to') %> <a href="<%= root_path %>">Mods-GTAV</a>. <%= t('.we_are_excited') %> <a href="<%= new_submission_path %>"><%= t('common.upload') %></a> <%= t('.your_own_mod') %>
+      <p><%= t '.welcome_note', home: "<a href='#{root_path}'>Mods-GTAV</a>", upload: "<a href='#{new_submission_path}'>#{t('common.upload')}</a>" %>
       </p>
    </div>
    <table class="this_week_most_popular_wrap">
