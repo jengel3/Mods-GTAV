@@ -12,20 +12,20 @@
   <%= form_for(@submission) do |f| %>
   <div class="contentpage_basic_mod_info_wrap uploadmod_basic_mod_info_wrap">
     <div class="contentpage_titlewrap">
-      <%= f.text_field :name, class: 'uploadmod_title', placeholder: 'Title' %>
+      <%= f.text_field :name, class: 'uploadmod_title', placeholder: '<%= t(".title") %>' %>
     </div>
     <div class="contentpage_mainthumb uploadmod_mainthumb">
       <% main = @submission.main_image %>
-      <%= image_tag (main ? main.image_url : 'add_mainimage_default.png'), class: 'contentpage_mainthumb_img', alt: 'Upload a main image' %>
+      <%= image_tag (main ? main.image_url : 'add_mainimage_default.png'), class: 'contentpage_mainthumb_img', alt: t('.upload_main') %>
     </div>
 
   </div>
   <div class="contentpage_download_and_screenshots_wrap uploadmod_download_and_screenshots_wrap">
     <div class="uploadmod_buttons_wrap">
       <% if !new_record %>
-      <a href="#file-popup" class='open-file'><input type="button" value="Add File" class="uploadmod_buttons" /></a>
+      <a href="#file-popup" class='open-file'><input type="button" value="<%= t('.add_file') %>" class="uploadmod_buttons" /></a>
       <% end %>
-      <%= f.submit 'Save', class: 'uploadmod_buttons' %>
+      <%= f.submit t('common.save'), class: 'uploadmod_buttons' %>
     </div>
     <div class="contentpage_screenshots_wrap uploadmod_screenshots_wrap">
       <div class='uploadmod_inner_screenshots_wrap'>
@@ -38,7 +38,7 @@
         <% end %>
         <div class="uploadmod_individual_screenshot_wrap"><a href="#screenshot-popup" class='open-screenshot'><img class="uploadmod_addsceenshot" src="<%= asset_path('upload_thumb.png') %>" ></img></a></div>
         <% else %>
-        <p align='center'>Save your submission before adding images or files!</p>
+        <p align='center'><%= t('.save_before') %></p>
         <% end %>
       </div>
     </div>
@@ -50,15 +50,15 @@
   </div>
   <div class="contentpage_commentswrap uploadmod_categorieswrap">
     <fieldset>
-      <legend>Category</legend>
+      <legend><%= t('.category') %></legend>
       <%= f.select(:category, options_for_select(CATEGORIES.map{ |k, v| [k.to_s.capitalize, k.to_s] }, @submission.category), {}, {:class=>'maincategory', size: "8" }) %>
     </fieldset>
     <fieldset>
-      <legend>SubCategory</legend>
+      <legend><%= t('.subcategory') %></legend>
       <% if @submission.category %>
       <%= f.select(:sub_category, options_for_select(CATEGORIES[@submission.category.downcase.to_sym].map{ |k| [k, k.downcase.gsub(' ', '_')] }, @submission.sub_category), {}, { :class=>'maincategory', size: "8" }) %>
       <% else %>
-      <%= f.select(:sub_category, [], {:include_blank => 'None Specified'}, { :class=>'maincategory', size: "8" } ) %>
+      <%= f.select(:sub_category, [], {:include_blank => t('.none_specified')}, { :class=>'maincategory', size: "8" } ) %>
       <% end %>
     </fieldset>
   </div>
@@ -70,25 +70,25 @@
   <%= select_tag :location, options_for_select([["Main Image", "Main"], ["Screenshot", "Thumbnail"]], "Thumbnail"), {} %>
 </div>
 <div id="screenshot-popup" class="imageupload_popup_wrap mfp-hide mfp-with-anim">
-  <h3>Image Upload</h3>
-  <h4>Drag and drop to upload more images!</h4>
+  <h3><%= t('.image_upload') %></h3>
+  <h4><%= t('.image_upload_instructions') %></h4>
   <table cellspacing="0" id="file-table"></table>
   <div class="progressbarwrap">
     <div class="progressbar"></div>
   </div>
   <div class="bottom_buttons_wrap">
-    <input class="upload" type=submit value="Upload" id="upload_btn" />
-    <input id="fileupload" class="addimage" type="file" name="images[]" data-url="images.json" multiple value="Add Image">
+    <input class="upload" type="submit" value="<%= t('common.upload') %>" id="upload_btn" />
+    <input id="fileupload" class="addimage" type="file" name="images[]" data-url="images.json" multiple value="<%= t('.add_image') %>">
   </div>
 </div>
 
 <div id="file-popup" class="imageupload_popup_wrap fileupload_popup_wrap mfp-hide mfp-with-anim">
-  <h3>File Upload</h3>
-  <h4>Browse for file!</h4>
-  <p>This form allows you to upload a new version of your content submission. A version to represent this file is <b>required</b> but a changelog is <i>optional</i>.</p>
+  <h3><%= t('.file_upload') %></h3>
+  <h4><%= t('.file_subheader') %></h4>
+  <p><%= t('.file_instructions_html') %></p>
   <ul>
-    <li>Read the site rules before uploading any content.</li>
-    <li>We recommend uploading only .zip files, but .rar and .tar files also work.</li>
+    <li><%= t('.file_instructions_one') %></li>
+    <li><%= t('.file_instructions_two') %></li>
   </ul>
 
   <%= form_for([@submission, @submission.uploads.build], method: :post, html: {:multipart => true, :remote => true, format: :js}) do |f| %>
@@ -99,22 +99,22 @@
     <tr class="spacer"></tr>
     <tr>
       <td>
-        <%= f.label :version, 'Version:' %>
+        <%= f.label :version, t('.version') + ':' %>
         <%= f.text_field :version, class: 'version' %>
       </td>
     </tr>
     <tr class="spacer"></tr>
     <tr>
       <td>
-        <%= f.label :changelog, 'Changelog:' %>
-        <%= f.text_area :changelog, placeholder: 'Optional changelog...' %>
+        <%= f.label :changelog, t('.changelog') + ':' %>
+        <%= f.text_area :changelog, placeholder: t('.optional_changelog') %>
       </td>
     </tr>
     <tr class="spacer"></tr>
   </table>
   <div class="fileuploaderrors"></div>
   <div class="bottom_buttons_wrap">
-    <%= f.submit 'Upload', class: 'upload' %>
+    <%= f.submit t('common.upload'), class: 'upload' %>
   </div>
   <% end %>
 

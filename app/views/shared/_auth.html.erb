@@ -8,9 +8,9 @@
 				<li>
 					<a class="usernamelink" href="<%= profile_path(current_user.username) %>"><%= current_user.username %><span class="comments_downarrowsymbol username_downarrowsymbol">&#x25BC;</span></a>
 					<ul>
-						<li><%= link_to 'View Profile', profile_path(current_user.username) %></li>
-						<li><%= link_to 'Edit Profile', edit_user_registration_path %></li>
-						<li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+						<li><%= link_to t('users.view_profile'), profile_path(current_user.username) %></li>
+						<li><%= link_to t('users.edit_profile'), edit_user_registration_path %></li>
+						<li><%= link_to t('users.logout'), destroy_user_session_path, method: :delete %></li>
 					</ul>
 				</li>
 			</ul>
@@ -18,7 +18,7 @@
 
 		<div class="user_online_indicator"></div>
 	</div>
-	<div class="userdesc">Mod Creator</div>
+	<div class="userdesc"><%= t('users.mod_creator_role') %></div>
 </div>
 <!-- User stats -->
 <table class="userstats">
@@ -44,43 +44,43 @@
 		<div id="contentoptions">
 			<ul>
 				<li>
-					<a class="usernamelink" href="#" onclick="return false;">Guest User</a>
+					<a class="usernamelink" href="#" onclick="return false;"><%= t('users.guest_user') %></a>
 				</li>
 			</ul>
 		</div>
 
 		<div class="user_online_indicator"></div>
 	</div>
-	<div class="userdesc">Visitor</div>
+	<div class="userdesc"><%= t('.visitor') %></div>
 </div>
 
 <input class="registerbutton" type="submit" value="Register" />
-<p class="signin_option">Have an account? <a class="signinlink" href="" onclick="return false;">Sign in.</a></p>
+<p class="signin_option"><%= t('users.have_an_account') %> <a class="signinlink" href="" onclick="return false;"><%= t('users.sign_in') %></a></p>
 <div class="sidebar_login_errors" style='display: none;'></div>
 <!-- Authentication forms -->
 <div class="inputwrap signinwrap" style='display: none;'>
 	<%= form_for(:user, url: user_session_path(format: :json), format: :json, remote: true, :html=> {:id => 'sign_in'}) do |f| %>
-	<%= f.text_field :login, class: 'login-input', autocomplete: 'off', type: 'text', placeholder: 'Email or Username' %>
-	<%= f.password_field :password, class: 'login-input', autocomplete: 'off', type: 'password', placeholder: 'Password' %>
-	<%= f.submit 'Submit', class: 'submit_login_data' %>
-	<div class="forgotwrap"> <a class="forgotlink" href="" onclick="return false;">forgot details?</a></div>
-	<%= link_to image_tag('steamsignin.png', alt: 'Sign in with Steam', class: 'steamsignin'), user_omniauth_authorize_path(:steam) %></a>
+	<%= f.text_field :login, class: 'login-input', autocomplete: 'off', type: 'text', placeholder: t('users.email_or_username') %>
+	<%= f.password_field :password, class: 'login-input', autocomplete: 'off', type: 'password', placeholder: t('users.password') %>
+	<%= f.submit t('common.submit'), class: 'submit_login_data' %>
+	<div class="forgotwrap"> <a class="forgotlink" href="" onclick="return false;"><%= t('users.forgot_details') %></a></div>
+	<%= link_to image_tag('steamsignin.png', alt: t('users.sign_in_steam'), class: 'steamsignin'), user_omniauth_authorize_path(:steam) %></a>
 	<% end %>
 </div>
 <div class="inputwrap registerwrap" style='display: none;'>
 	<%= form_for(:user, url: user_registration_path(format: :json), format: :json, remote: true, :html=> {:id => 'register', class: 'textable'}) do |f| %>
-	<%= f.email_field :email, class: 'register-input', autocomplete: 'off', type: 'text', placeholder: 'Email' %>
-	<%= f.text_field :username, class: 'register-input', autocomplete: 'off', type: 'text', placeholder: 'Username' %>
-	<%= f.password_field :password, class: 'register-input', autocomplete: 'off', type: 'password', placeholder: 'Password' %>
-	<%= f.password_field :password_confirmation, class: 'register-input', autocomplete: 'off', type: 'password', placeholder: 'Confirm Password' %>
-	<%= f.submit 'Submit', class: 'submit_login_data' %>
-	<%= link_to image_tag('steamsignin.png', alt: 'Sign in with Steam', class: 'steamsignin'), user_omniauth_authorize_path(:steam) %></a>
+	<%= f.email_field :email, class: 'register-input', autocomplete: 'off', type: 'text', placeholder: t('users.email') %>
+	<%= f.text_field :username, class: 'register-input', autocomplete: 'off', type: 'text', placeholder: t('users.username') %>
+	<%= f.password_field :password, class: 'register-input', autocomplete: 'off', type: 'password', placeholder: t('users.password') %>
+	<%= f.password_field :password_confirmation, class: 'register-input', autocomplete: 'off', type: 'password', placeholder: t('users.confirm_password') %>
+	<%= f.submit t('common.submit'), class: 'submit_login_data' %>
+	<%= link_to image_tag('steamsignin.png', alt: t('users.sign_in_steam'), class: 'steamsignin'), user_omniauth_authorize_path(:steam) %></a>
 	<% end %>
 </div>	
 <div class="inputwrap resetpasswordwrap" style='display: none;'>
 	<%= form_for(:user, url: user_password_path(format: :json), format: :json, remote: true, :html => {id: 'password', class: 'textable'}) do |f| %>
-	<%= f.email_field :email, autofocus: true, class: 'resetpassword-input', autocomplete: 'off', type: 'email', placeholder: 'Email' %>
-	<div class="forgotwrap">An email will be sent to your account with instructions on changing your password</div>
+	<%= f.email_field :email, autofocus: true, class: 'resetpassword-input', autocomplete: 'off', type: 'email', placeholder: t('users.email') %>
+	<div class="forgotwrap"><%= t('users.email_sent') %></div>
 	<% end %>
 </div>
 <!-- End authentication forms -->

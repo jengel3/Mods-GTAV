@@ -1,21 +1,19 @@
 <%= content_for(:title, "Home") %>
 <% feat = featured %>
 <div class="homepage_featuredwrap_large">
-   <h3>Featured Modifications</h3>
+   <h3><%= t('.featured_modifications') %></h3>
    <div class="mainimgwrap">
       <%= link_to image_tag(feat[0]['fetch_display']['image']['url']), feat[0]['path'] if feat.length >= 1 %>
    </div>
 </div>
 <div class="homepage_note_and_mostpopular_wrap">
    <div class="homepage_website_note">
-      <%= image_tag 'homenote.png', alt: 'Note' %>
-      <p>Hello! Welcome to <a href="<%= root_path %>">Mods-GTAV</a>. We are
-         incredibly excited to launch this project. <a href="<%= new_submission_path %>">Upload</a> your own
-         mod or view other's work.
+      <%= image_tag 'homenote.png', alt: t('.note') %>
+      <p><%= t('.welcome_to') %> <a href="<%= root_path %>">Mods-GTAV</a>. <%= t('.we_are_excited') %> <a href="<%= new_submission_path %>"><%= t('common.upload') %></a> <%= t('.your_own_mod') %>
       </p>
    </div>
    <table class="this_week_most_popular_wrap">
-      <th>This Week's Most Popular</th>
+      <th><%= t('.this_week_popular') %></th>
       <% top_submissions.each do |k, v| %>
       <tr>
          <td class="modtitle"><%= link_to k, v['path'] %></td>
@@ -29,7 +27,7 @@
    <%= render 'shared/featured', submissions: feat[1..2] if feat.length >= 3 %>
 </div>
 <div class="homepage_twitterwrap">
-   <h3><img src="<%= asset_path('twitterlogo.png') %>" />#Mod of the Day</h3>
+   <h3><img src="<%= asset_path('twitterlogo.png') %>" />#<%= t('.mod_of_the_day') %></h3>
    <div class="homepage_twittercollectionwrap">
       <a class="twitter-timeline" href="/Mods_GTAV/timelines/582640610567434241" height="230px" width="370"  data-tweet-limit="1" data-chrome="nofooter noheader noborders transparent noscrollbar" data-widget-id="582641796481617920">Mod of the Day</a>
       <script async defer>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
@@ -37,18 +35,18 @@
    <div class="twitter_bottom_margin_fix"></div>
 </div>
 <div class="horizontal_mod_display">
-   <h3>Trending Now</h3>
+   <h3><%= t('.trending_now') %></h3>
    <%= render 'shared/cached', submissions: trending_now %>
 </div>
 <div class="horizontal_mod_display">
-   <h3>Our Favorites</h3>
+   <h3><%= t('.our_favorites') %></h3>
    <%= render 'shared/cached', submissions: favorites %>
 </div>
 <div class="homepage_youtube_wrap">
    <% if is_admin? %>
-   <h3 id="videos"><a href="#commvideo-popup" class="add-comm-video"><img src="<%= asset_path('youtubelogo.png') %>" /></a>Community Videos</h3>
+   <h3 id="videos"><a href="#commvideo-popup" class="add-comm-video"><img src="<%= asset_path('youtubelogo.png') %>" /></a><%= t('.community_videos') %></h3>
    <% else %>
-   <h3 id="videos"><img src="<%= asset_path('youtubelogo.png') %>" />Community Videos</h3>
+   <h3 id="videos"><img src="<%= asset_path('youtubelogo.png') %>" /><%= t('.community_videos') %></h3>
    <% end %>
    <div class="youtube_videos_wrap">
       <% Video.order('created_at DESC').limit(6).each do |v| %>
@@ -57,7 +55,7 @@
    </div>
 </div>
 <table class="this_week_most_popular_wrap most_popular_users">
-   <th>This Week's Top Developers</th>
+   <th><%= t('.this_week_devs') %></th>
    <% top_developers.each do |k, v| %>
    <tr>
       <td class="modtitle"><%= link_to k, profile_path(k) %></td>
@@ -70,21 +68,21 @@
    <%= render 'shared/featured', submissions: feat[3..5] if feat.length == 6 %>
 </div>
 <div class="homepage_twitterwrap">
-   <h3><img src="<%= asset_path('twitterlogo.png') %>" />Rockstar Games</h3>
+   <h3><img src="<%= asset_path('twitterlogo.png') %>" /><%= t('common.rockstar_games') %></h3>
    <div class="homepage_twittercollectionwrap twitter_rockstar_wrap">
       <a class="twitter-timeline" href="https://twitter.com/RockstarGames" height="370px" width="370"  data-chrome="nofooter noheader noborders transparent noscrollbar" data-widget-id="582689589661278208">Tweets by @RockstarGames</a>
       <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
    </div>
 </div>
 <div class="horizontal_mod_display">
-   <h3>Today's Most Liked</h3>
+   <h3><%= t('.today_likes') %></h3>
    <%= render 'shared/cached', submissions: top_likes(DateTime.now - 24.hours) %>
 </div>
 <div class="horizontal_mod_display">
-   <h3>Today's Most Downloaded</h3>
+   <h3><%= t('.today_downloads') %></h3>
    <%= render 'shared/cached', submissions: today_downloads %>
 </div>
-<h3 class="homepage_recent">Recent Modifications</h3>
+<h3 class="homepage_recent"><%= t('.recent_modifications') %></h3>
 <div class="homepage_recent_mods_wrap" data-url="/home/infinite.js">
    <%= render 'shared/submissions', submissions: @submissions %>
 </div>
@@ -105,7 +103,7 @@
       </tr>
    </table>
    <div class="bottom_buttons_wrap">
-      <%= f.submit "Save", class: 'upload', id: 'upload_btn' %>
+      <%= f.submit t('common.save'), class: 'upload', id: 'upload_btn' %>
    </div>
    <div class="fileuploaderrors" id='videoerrors' style="display: none;"></div>
    <% end %>

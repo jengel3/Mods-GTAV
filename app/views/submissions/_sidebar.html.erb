@@ -4,25 +4,25 @@
 	<% manager = @submission.can_manage(current_user) %>
 	<% if @submission.new_record? %>
 	<%= link_to root_path do %>
-	<div class="subcategory"><p>Cancel</p></div>
+	<div class="subcategory"><p><%= t('.cancel') %></p></div>
 	<% end %>
 	<% else %>
 	<%= link_to(submission_path(@submission)) do %>
-	<div class="subcategory <%= current_panel('submissions', 'show') %>"><p>View</p></div>
+	<div class="subcategory <%= current_panel('submissions', 'show') %>"><p><%= t('.view') %></p></div>
 	<% end %>
 
 	<% if manager %>
 	<%= link_to(edit_submission_path(@submission)) do %>
-	<div class="subcategory <%= current_panel('submissions', 'edit') %>"><p>Edit</p></div>
+	<div class="subcategory <%= current_panel('submissions', 'edit') %>"><p><%= t('.edit') %></p></div>
 	<% end %>
 
 	<%= link_to(submission_path(@submission), method: :delete, data: {confirm: "Are you sure that you want to delete this submission?"}) do %>
-	<div class="subcategory"><p>Delete</p></div>
+	<div class="subcategory"><p><%= t('.delete') %></p></div>
 	<% end %>
 	<% end %>
 	<% if is_admin? %>
 	<%= link_to(submission_favorite_path(@submission), method: :post) do %>
-	<div class="subcategory"><p>Favorite</p></div>
+	<div class="subcategory"><p><%= t '.favorite' %></p></div>
 	<% end %>
 	<% end %>
 	<% end %>

@@ -7,5 +7,5 @@
     remote:        data-remote
 -%>
 <% unless current_page.last? %>
-<a href="<%= url %>" class="pagination_prev_button" rel='next'><div class="pagination_link">Next</div></a>
+<a href="<%= url %>" class="pagination_prev_button" rel='next'><div class="pagination_link"><%= t('pagination.next') %></div></a>
 <% end %>
