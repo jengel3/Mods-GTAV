@@ -12,9 +12,7 @@ en:
       today_downloads: "Today's Most Downloaded"
       today_likes: "Today's Most Liked"
       note: "Note"
-      welcome_to: "Hello! Welcome to"
-      we_are_excited: "We are incredibly excited to launch this project."
-      your_own_mod: "your own mod or view other's work."
+      welcome_note: "Hello! Welcome to %{home}. We are incredibly excited to launch this project. %{upload} your own mod or view other's work."
   layouts:
     application:
       home: "Home"
