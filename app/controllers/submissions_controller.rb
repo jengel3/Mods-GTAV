@@ -42,7 +42,7 @@ class SubmissionsController < ApplicationController
 
   def favorite
      @submission.favorite
-     redirect_to @submission, alert: "Successfully favorited #{@submission.name}."
+     redirect_to @submission, alert: t('favorite.successfully_favorited', name: @submission.name)
   end
 
   def show
@@ -129,9 +129,9 @@ class SubmissionsController < ApplicationController
   end
 
   def destroy
-    return redirect_to root_path, :alert => 'No permission.' unless @submission.can_manage(current_user)
+    return redirect_to root_path, :alert => t('database.no_permission') unless @submission.can_manage(current_user)
     @submission.destroy
-    redirect_to submissions_path, :notice => "Successfully deleted a submission."
+    redirect_to submissions_path, :notice => t('submissions.successfully_deleted')
   end
 
   def new
@@ -139,22 +139,22 @@ class SubmissionsController < ApplicationController
   end
 
   def edit
-    return redirect_to root_path, :alert => 'No permission.' unless @submission.can_manage(current_user)
+    return redirect_to root_path, :alert => t('database.no_permission') unless @submission.can_manage(current_user)
   end
 
   def create
     @submission = Submission.new(submission_params)
     @submission.creator = current_user
     if @submission.save
-      redirect_to @submission, :notice => "Successfully created a new submission!"
+      redirect_to @submission, :notice => t('submissions.successfully_created')
     else
-      render 'edit', :alert => "Failed to save your submission."
+      render 'edit', :alert => t('submissions.failed_save')
     end
   end
 
   def update
     if @submission.update_attributes(submission_params)
-      return redirect_to @submission, :notice => "Successfully saved your changes."
+      return redirect_to @submission, :notice => t('database.successfully_saved_changes')
     else
       render 'edit'
     end

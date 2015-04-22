@@ -10,16 +10,16 @@ class VideosController < ApplicationController
     @video.thumb = Video.thumb_url(@video.youtube_id)
     @video.remote_vidthumb_url = @video.thumb
     if @video.save
-      redirect_to root_path, :notice => "Added a new community video."
+      redirect_to root_path, :notice => t('videos.success')
     else
-      redirect_to root_path, :alert => "Unable to add the video. #{@video.errors.full_messages}"
+      redirect_to root_path, :alert => t('videos.failed')
     end
   end
 
   def destory
     @video = Video.find(params[:id])
     @video.destory
-    redirec_to root_path, :notice => "Removed a community video."
+    redirec_to root_path, :notice => t('videos.removed')
   end
 
   private

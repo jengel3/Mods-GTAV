@@ -29,9 +29,9 @@ class CommentsController < ApplicationController
     @comment.submission = @submission
     @comment.user = current_user
     if @comment.save
-      redirect_to @submission, notice: "Successfully commented on #{@submission.name}."
+      redirect_to @submission, notice: t('comments.commented_on', name: @submission.name)
     else
-      redirect_to @submission, alert: 'Failed to save your comment. Please try again.'
+      redirect_to @submission, alert: t('comments.comment_failed')
     end
   end
 

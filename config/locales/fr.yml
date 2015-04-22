@@ -1,0 +1,102 @@
+fr:
+  database:
+    user: "Utilisateur"
+    not_found: "%{kind} n'est pas trouvé."
+    no_permission: "Aucune autorisation"
+    is_invalid: "est invalide"
+    is_missing: "est absent"
+    successfuly_saved_changes: "sauvegardé vos modifications avec succès"
+  comments:
+    commented_on: "remarqué sur %{name} avec succès"
+    comment_failed: "Échoué sauvegarder vos commentaires. Essayez encore s'il vous plait"
+  favorites:
+    successfully_favorited: "fait %{name} ton favori avec succès"
+  home:
+    index:
+      featured_modifications: "illustrés modifications"
+      this_week_popular: "Les plus populaires cette semaine."
+      mod_of_the_day: "Mod du Jour"
+      our_favorites: "Nos préférés"
+      this_week_devs: "Les développateurs de cette semaine."
+  categories:
+    home: "Page d'accueil"
+    tools: "Outils"
+    weapons: "Armes"
+    vehicles: "Véhicules"
+    textures: "Textures"
+    player: "Joueur"
+    maps: "Cartes"
+    script: "Ecriture"
+    misc: "Divers"
+  layouts:
+    application:
+      search: "Trouver"
+      hearts: "Cœurs"
+      add_mod: "Ajouter Mod+"
+      edit_mod: "Editer Mod"
+  profile:
+    joined: "Rejoint"
+    mods_submitted: "Les mods soumis"
+    most_liked: "Le plus aimé"
+    most_downloaded: "Le plus téléchargé"
+  submissions:
+    denied: "dénie"
+    approved: "approuve"
+    show:
+      by_author: "de"
+      download: "Télécharger"
+      downloads: "Téléchargements"
+      upload_file: "Télécharger vers un serveur un document"
+    sidebar:
+      cancel: "Annuler"
+      edit: "Editer"
+      delete: "Effacer"
+      view: "Voir"
+      favorite: "Aimer"
+    comments:
+      comments: "Commentaires"
+      submit: "Soumettre"
+    form:
+      title: "Titre"
+      add_file: "Ajouter un fichier"
+      category: "Catégorie"
+      subcategory: "Sous-catégorie"
+      save_before: "Sauver votre soumission avant vous ajoutez une image ou un document."
+      add_image: "Ajouter une image"
+      file_upload: "Télécharger vers un serveur un document"
+      file_subheader: "Chercher un document"
+      image_upload: "Télécharger vers un serveur une image"
+  users:
+    mod_creator_role: "Le créateur du Mod"
+    guest_user: "Visiteur"
+    visitor: "Visiteur"
+    have_an_account: "Est-ce que vous avez un compte"
+    sign_in: "Se connecter"
+    sign_in_steam: "Se connecter avec Steam"
+    email_or_username: "Email ou nom d'utilisateur"
+    password: "Mot de passe"
+    confirm_password: "Confirmez le mot de passe"
+    username: "Nom d'utilisateur"
+    email: "Email"
+  shared:
+    footer:
+      twitter: "Twitter"
+  pagination:
+    next: "Suivant"
+    prev: "Précédent"
+  common:
+    all: "Tout"
+    other: "Autre"
+    like: "Aimer"
+    dislike: "Ne pas aimer"
+    save: "Save"
+    upload: "Télécharger vers un serveur"
+    submit: "Soumettre"
+    send: "Envoyer"
+    rockstar_games: "Les Gueules"
+  misc:
+    preview: "Avant-première"
+    coming_soon: "A venir"
+  errors:
+    expired: "a expiré, s'il vous plaît demander un nouveau"
+    not_found: "Ne pas trouver"

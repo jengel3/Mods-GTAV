@@ -4,7 +4,7 @@ class UploadsController < ApplicationController
   before_filter :require_admin, only: [:approve]
   def create
     @submission = Submission.find(params[:submission_id])
-    return redirect_to root_path, :alert => 'No permission.' unless @submission.can_manage(current_user)
+    return redirect_to root_path, :alert => t('database.no_permission') unless @submission.can_manage(current_user)
     @upload = @submission.uploads.new(upload_params)
     if @submission.approved_at
       @upload.approved_at = DateTime.now
@@ -12,7 +12,7 @@ class UploadsController < ApplicationController
     if @upload.save
       respond_to do |format|
         format.js
-        format.html { redirect_to submission_path(@submission), :notice => 'Successfully uploaded a file.' }
+        format.html { redirect_to submission_path(@submission), :notice => t('submissions.successfully_uploaded') }
       end
     else
       respond_to do |format|
@@ -35,7 +35,7 @@ class UploadsController < ApplicationController
     @submission.save
     @upload.approved_at = DateTime.now
     @upload.save
-    redirect_to [:admin, :content], :notice => "Successfully approved a submission."
+    redirect_to [:admin, :content], :notice => t('submissions.successfully_action', action: t('submissions.approved'))
   end
 
   def deny
@@ -44,7 +44,7 @@ class UploadsController < ApplicationController
     @upload.destroy
     @submission.approved_at = nil
     @submission.save
-    redirect_to [:admin, :content], :notice => "Successfully denied a submission."
+    redirect_to [:admin, :content], :notice => t('submissions.successfully_action', action: t('submissions.denied'))
   end
 
   private
