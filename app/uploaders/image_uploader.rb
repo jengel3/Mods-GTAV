@@ -5,7 +5,6 @@ class ImageUploader < CarrierWave::Uploader::Base
   version :preview, if: :is_main?
   version :thumb
 
-  # Choose what kind of storage to use for this uploader:
   storage :file
   # storage :fog
 

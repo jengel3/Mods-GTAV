@@ -1,11 +1,19 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :set_locale
   include ApplicationHelper
   
+  def set_locale
+    logger.debug "* Accept-Language: #{request.env['HTTP_ACCEPT_LANGUAGE']}"
+    I18n.locale = extract_locale_from_accept_language_header ||= params[:lang] ||= I18n.default_locale
+    logger.debug "* Locale set to '#{I18n.locale}'"
+  end
+
+
   def profile
     @user = User.where(:username => params[:username]).first
-    return redirect_to root_path, :alert => "User not found." if !@user
+    return redirect_to root_path, :alert => t('database.not_found', :kind => t('database.user')) if !@user
   end
 
   def contact
@@ -13,13 +21,13 @@ class ApplicationController < ActionController::Base
     request_ip = get_request_ip
     captcha_resp = params["g-recaptcha-response"]
     if !captcha_resp || captcha_resp.blank?
-      flash[:alert] = "Please complete the captcha."
+      flash[:alert] = t('contact.complete_captcha')
       return redirect_to root_path
     end
     google_resp = HTTParty.get("https://www.google.com/recaptcha/api/siteverify?secret=#{sec}&response=#{captcha_resp}&remoteip=#{request_ip}")
     result = JSON.parse(google_resp.body)
     if !result['success']
-      flash[:alert] = "It appears that you are a bot. Please try again."
+      flash[:alert] = t('contact.bot')
       return redirect_to root_path
     end
     form = params[:contact]
@@ -27,10 +35,10 @@ class ApplicationController < ActionController::Base
     username = form[:username]
     message = form[:message]
     if email.empty? || username.empty? || message.empty?
-      return redirect_to root_path, :alert => "Please fill in all fields."
+      return redirect_to root_path, :alert => t('contact.please_fill')
     end
     UserMailer.contact(username, email, message).deliver_later
-    redirect_to root_path, :notice => "Successfully sent a message to Mods GTAV. Expect a response soon."
+    redirect_to root_path, :notice => t('contact.successfully_sent')
   end
 
   def search
@@ -54,5 +62,10 @@ class ApplicationController < ActionController::Base
       :email_approval, :email_comments, :email_reports, 
       :email_news, :username, :email, :password, 
       :password_confirmation, :current_password) }
+  end
+
+  private
+  def extract_locale_from_accept_language_header
+    request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
   end
 end

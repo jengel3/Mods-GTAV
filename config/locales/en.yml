@@ -1,4 +1,16 @@
 en:
+  database:
+    user: "User"
+    not_found: "%{kind} not found."
+    no_permission: "No permission."
+    is_invalid: "is invalid"
+    is_missing: "is missing"
+    successfuly_saved_changes: "Successfully saved your changes."
+  comments:
+    commented_on: "Successfully commented on %{name}."
+    comment_failed: "Failed to save your comment. Please try again."
+  favorites:
+    successfully_favorited: "Successfully favorited %{name}."
   home:
     index:
       featured_modifications: "Featured Modifications"
@@ -12,18 +24,19 @@ en:
       today_downloads: "Today's Most Downloaded"
       today_likes: "Today's Most Liked"
       note: "Note"
-      welcome_note: "Hello! Welcome to %{home}. We are incredibly excited to launch this project. %{upload} your own mod or view other's work."
+      welcome_note_html: "Hello! Welcome to %{home}. We are incredibly excited to launch this project. %{upload} your own mod or view other's work."
+  categories:
+    home: "Home"
+    tools: "Tools"
+    weapons: "Weapons"
+    vehicles: "Vehicles"
+    textures: "Textures"
+    player: "Player"
+    maps: "Maps"
+    script: "Script"
+    misc: "Misc"
   layouts:
     application:
-      home: "Home"
-      tools: "Tools"
-      weapons: "Weapons"
-      vehicles: "Vehicles"
-      textures: "Textures"
-      player: "Player"
-      maps: "Maps"
-      script: "Script"
-      misc: "Misc"
       search: "Search..."
       hearts: "Hearts"
       enable_javascript: "Please enable JavaScript to use Mods-GTAV properly. Many features require Javascript to be enabled."
@@ -38,6 +51,13 @@ en:
     most_downloaded: "Most Downloaded"
     statistics: "Statistics"
   submissions:
+    failed_save: "Failed to save your submission."
+    successfully_created: "Successfully created a new submission!"
+    successfully_deleted: "Successfully deleted a submission."
+    successfully_action: "Successfully %{action} a submission."
+    denied: "denied"
+    approved: "approved"
+    successfully_uploaded: "Successfully uploaded a file."
     show:
       by_author: "by"
       download: "Download"
@@ -108,6 +128,10 @@ en:
     title: "Contact"
     response: "You should recieve a response within 48 hours."
     please_provide: "Provide as much detail as possible..."
+    please_fill: "Please fill in all fields."
+    bot: "It appears that you are a bot. Please try again."
+    complete_captcha: "Please complete the captcha."
+    successfully_sent: "Successfully sent a message to Mods GTAV. Expect a response soon."
   devise:
     failure:
       already_authenticated: "You are already signed in."
@@ -134,6 +158,10 @@ en:
   pagination:
     next: "Next"
     prev: "Prev"
+  videos:
+    removed: "Successfully removed a community video."
+    failed: "Unable to add the video."
+    success: "Added a new community video."
   common:
     all: "All"
     other: "Other"
@@ -148,6 +176,5 @@ en:
     preview: "Preview"
     coming_soon: "Coming Soon"
   errors:
-      expired: "has expired, please request a new one"
-      not_found: "not found"
-      not_locked: "was not locked"
+    expired: "has expired, please request a new one"
+    not_found: "not found"

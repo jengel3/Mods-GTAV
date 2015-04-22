@@ -43,8 +43,4 @@ module ApplicationHelper
   def is_admin?
     current_user && current_user.admin
   end
-
-  def sidebar_category(text, url, current=nil)
-    link_to "<div class='subcategory #{current ? current_panel(current) : ''}''><p>#{text}</p></div>".html_safe, url
-  end
 end
