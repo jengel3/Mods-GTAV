@@ -2,7 +2,7 @@
 <h3>Manage</h3>
 <div class="subcategories_wrap">
 	<% manager = @submission.can_manage(current_user) %>
-	<% if manager && @submission.new_record? %>
+	<% if @submission.new_record? %>
 	<%= link_to root_path do %>
 	<div class="subcategory"><p>Cancel</p></div>
 	<% end %>
