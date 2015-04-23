@@ -1,6 +1,6 @@
 input.uploadmod_title  {
     width:300px;
-    height:30px;
+    height:27px;
     margin-left:10px;
     margin-top:5px;
     outline:none;
@@ -268,7 +268,7 @@ input.uploadmod_title:focus {
 .imageupload_popup_wrap td {
     width:130px;
     padding:3px;
-    height:86
+    height:80px;
 }
 
 .imageupload_popup_wrap td:nth-child(4) {

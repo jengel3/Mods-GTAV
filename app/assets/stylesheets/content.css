@@ -282,7 +282,7 @@
     margin-right:22px;
 }
 input.commentinput {
-    width: 80%;
+    width: 78%;
     height:32px;
     margin-top:8px;
     border: 1px solid #d8e1ef;
@@ -295,7 +295,6 @@ input.commentinput {
 }
 input.commentinput:focus {
     outline: none;
-    border: solid 1px #cecece;
     background-color:#fff;
     -webkit-box-shadow: 1px 1px 5px #E8E8E8 inset;
     -moz-box-shadow: 1px 1px 5px #E8E8E8 inset;
@@ -305,7 +304,7 @@ input.comment_submit_button{
     color:#6094c5;
     display: inline-block;
     width:20%;
-    height: 32px;
+    height: 36px;
     background-color: white;
     border: 1px solid #dedede;
     float: right;
