@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html lang="<%= I18n.locale %>">
 <head>
 	<title><%= content_for?(:title) ? yield(:title) + ' :: Mods-GTAV ' : 'Mods-GTAV' %></title>
 	<%= stylesheet_link_tag "application" %>
@@ -74,12 +75,10 @@
 				<a href="<%= root_path %>"><img class="logo" src="<%= asset_path('modsgtalogo.png') %>"></a>
 				<a href="https://twitter.com/Mods_GTAV" target='_blank'><img class="twitter" src="<%= asset_path('twitterlogo.png') %>"></a>
                 <div class="language_flags_wrap">
-                <img src="<%= asset_path('russianflag.png') %>" alt="Russian" >
-                <img src="<%= asset_path('spanishflag.png') %>" alt="Spanish" >
-                <img src="<%= asset_path('englishflag.png') %>" alt="English" >
-                <img src="<%= asset_path('germanflag.png') %>" alt="German" >
-                <img src="<%= asset_path('brazilflag.png') %>" alt="Portuguese" >
-            </div>
+                	<%= link_to image_tag('englishflag.png', alt: 'English'), lang_path('en') %>
+                	<%= link_to image_tag('russianflag.png', alt: 'Russian'), lang_path('ru') %>
+                	<%= link_to image_tag('germanflag.png', alt: 'German'), lang_path('de') %>
+	            </div>
 			</div>
 		</div>
 		<div class="header">
@@ -264,3 +263,4 @@
 	<%= javascript_include_tag "application" %>
 	<%= content_for(:scripts) %>
 </body>
+</html>

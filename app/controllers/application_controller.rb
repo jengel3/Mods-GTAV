@@ -21,6 +21,7 @@ class ApplicationController < ActionController::Base
     else
       session[:lang] = params[:lang]
     end
+    return redirect_to :back
   end
 
   def profile

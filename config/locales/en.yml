@@ -175,6 +175,7 @@ en:
   misc:
     preview: "Preview"
     coming_soon: "Coming Soon"
+    invalid_language: "Invalid Language."
   errors:
     expired: "has expired, please request a new one"
     not_found: "not found"

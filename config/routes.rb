@@ -21,7 +21,7 @@ Rails.application.routes.draw do
 
   post '/contact', to: 'application#contact', as: 'contact'
   get '/search', to: 'application#search', as: 'search'
-
+  get '/lang/:lang', to: 'application#set_lang', as: 'lang'
   get '/c/(:category/(:subcategory))', to: 'submissions#index', as: 'category'
 
   get '/home', to: 'home#index'
