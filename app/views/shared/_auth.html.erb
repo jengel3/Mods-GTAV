@@ -64,7 +64,7 @@
 	<%= f.password_field :password, class: 'login-input', autocomplete: 'off', type: 'password', placeholder: t('users.password') %>
 	<%= f.submit t('common.submit'), class: 'submit_login_data' %>
 	<div class="forgotwrap"> <a class="forgotlink" href="" onclick="return false;"><%= t('users.forgot_details') %></a></div>
-	<%= link_to image_tag('steamsignin.png', alt: t('users.sign_in_steam'), class: 'steamsignin'), user_omniauth_authorize_path(:steam) %></a>
+	<%= link_to image_tag('steamsignin.png', alt: t('users.sign_in_steam'), class: 'steamsignin'), user_omniauth_authorize_path(:steam) %>
 	<% end %>
 </div>
 <div class="inputwrap registerwrap" style='display: none;'>
@@ -74,7 +74,7 @@
 	<%= f.password_field :password, class: 'register-input', autocomplete: 'off', type: 'password', placeholder: t('users.password') %>
 	<%= f.password_field :password_confirmation, class: 'register-input', autocomplete: 'off', type: 'password', placeholder: t('users.confirm_password') %>
 	<%= f.submit t('common.submit'), class: 'submit_login_data' %>
-	<%= link_to image_tag('steamsignin.png', alt: t('users.sign_in_steam'), class: 'steamsignin'), user_omniauth_authorize_path(:steam) %></a>
+	<%= link_to image_tag('steamsignin.png', alt: t('users.sign_in_steam'), class: 'steamsignin'), user_omniauth_authorize_path(:steam) %>
 	<% end %>
 </div>	
 <div class="inputwrap resetpasswordwrap" style='display: none;'>

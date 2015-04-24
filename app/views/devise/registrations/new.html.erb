@@ -21,7 +21,7 @@
     <%= f.password_field :password, class: 'register-input', autocomplete: 'off', type: 'password', placeholder: 'Password' %>
     <%= f.password_field :password_confirmation, class: 'register-input', autocomplete: 'off', type: 'password', placeholder: 'Confirm Password' %>
     <%= f.submit 'Submit', class: 'submit_login_data' %>
-    <%= link_to image_tag('steamsignin.png', alt: 'Sign in with Steam', class: 'steamsignin'), user_omniauth_authorize_path(:steam) %></a>
+    <%= link_to image_tag('steamsignin.png', alt: 'Sign in with Steam', class: 'steamsignin'), user_omniauth_authorize_path(:steam) %>
     <% end %>
   </div>  
   <div class="inputwrap resetpasswordwrap showlogindata"> 

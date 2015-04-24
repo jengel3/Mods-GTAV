@@ -30,7 +30,7 @@
    <h3><img src="<%= asset_path('twitterlogo.png') %>" alt="Twitter" />#<%= t('.mod_of_the_day') %></h3>
    <div class="homepage_twittercollectionwrap">
       <a class="twitter-timeline" href="/Mods_GTAV/timelines/582640610567434241" height="230px" width="370"  data-tweet-limit="1" data-chrome="nofooter noheader noborders transparent noscrollbar" data-widget-id="582641796481617920">Mod of the Day</a>
-      <script async defer>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
    </div>
    <div class="twitter_bottom_margin_fix"></div>
 </div>
@@ -46,11 +46,11 @@
    <% if is_admin? %>
    <h3 id="videos"><a href="#commvideo-popup" class="add-comm-video"><img src="<%= asset_path('youtubelogo.png') %>" alt="Youtube" /></a><%= t('.community_videos') %></h3>
    <% else %>
-   <h3 id="videos"><img src="<%= asset_path('youtubelogo.png') %>" /><%= t('.community_videos') %></h3>
+   <h3 id="videos"><img src="<%= asset_path('youtubelogo.png') %>" alt="Youtube" /><%= t('.community_videos') %></h3>
    <% end %>
    <div class="youtube_videos_wrap">
       <% Video.order('created_at DESC').limit(6).each do |v| %>
-      <%= link_to image_tag(v.vidthumb.url), v.url, target: '_blank' %>
+      <%= link_to image_tag(v.vidthumb.url, alt: "Youtube Video"), v.url, target: '_blank' %>
       <% end %>
    </div>
 </div>
