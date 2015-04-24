@@ -23,14 +23,14 @@
 <!-- User stats -->
 <table class="userstats">
 	<tr>
-		<td class="stat_title"><img class="user_stat_icon accentcolor" src="<%= asset_path('hearticon.png') %>" /></td>
-		<td class="stat_title"><img class="user_stat_icon accentcolor" src="<%= asset_path('commenticon.png') %>" /></td>
-		<td class="stat_title"><img class="user_stat_icon accentcolor" src="<%= asset_path('downloadicon.png') %>" /></td>
+		<td class="stat_title"><img class="user_stat_icon accentcolor" src="<%= asset_path('hearticon.png') %>" alt="Heart" /></td>
+		<td class="stat_title"><img class="user_stat_icon accentcolor" src="<%= asset_path('commenticon.png') %>" alt="Comment" /></td>
+		<td class="stat_title"><img class="user_stat_icon accentcolor" src="<%= asset_path('downloadicon.png') %>" alt="Download" /></td>
 	</tr>
 	<tr>
 		<td><span class="stat_amount">0</span></td>
 		<td><span class="stat_amount"><%= current_user.comments.count %></span></td>
-		<td> <span class="stat_amount">0</span></td>
+		<td><span class="stat_amount">0</span></td>
 	</tr>
 </table>
 <!-- End stats -->
@@ -38,7 +38,7 @@
 <% else %>
 
 
-<div class="user_avatar_wrap"><%= image_tag('michaelavatar.png') %></div>
+<div class="user_avatar_wrap"><%= image_tag('michaelavatar.png', alt: "Michael") %></div>
 <div class="userinfo">
 	<div class="username">
 		<div id="contentoptions">

@@ -47,11 +47,11 @@
 			<div class="downloadbutton_text downloadbutton_textsmall"><%= '.download' %></div>
 		</div></a>
 		<div class="ratingbutton likebutton <%= @rating == 'like' ? 'liked' : 'neither' %>" id='like' data-url="<%= submission_like_path(@submission, format: :json) %>">
-			<img src="<%= asset_path('like.png') %>" class="ratingbuttonicon <%= @rating == 'like' ? '' : 'grayscale' %>" />
+			<img src="<%= asset_path('like.png') %>" class="ratingbuttonicon <%= @rating == 'like' ? '' : 'grayscale' %>" alt="Like" />
 			<div class="ratingbutton_text"><%= t 'common.like' %></div>
 		</div>
 		<div class="ratingbutton dislikebutton <%= @rating == 'dislike' ? 'disliked' : 'neither' %>" id='dislike' data-url="<%= submission_dislike_path(@submission, format: :json) %>">
-			<img src="<%= asset_path('dislikecolor.png') %>" class="ratingbuttonicon <%= @rating == 'dislike' ? '' : 'grayscale' %>" />
+			<img src="<%= asset_path('dislikecolor.png') %>" class="ratingbuttonicon <%= @rating == 'dislike' ? '' : 'grayscale' %>" alt="Dislike" />
 			<div  class="ratingbutton_text"><%= t 'common.dislike' %></div>
 		</div>
 		<div class="ratingresults" id="rating"><%= rating_text(@submission) %></div>

@@ -6,8 +6,8 @@
    <div class="featured_moddetailswrap">
       <a href="<%= submission['path'] %>"><h4 class="featured_modtitle"><%= submission['name'] %></h4></a>
       <h5 class="featured_modcreator"><%= submission['fetch_creator'] %></h5>
-      <div class="featured_likecount"><img src="<%= asset_path('hearticon.png') %>" /><%= submission['avg_rating'] %></div>
-      <div class="featured_downloadcount"><img src="<%= asset_path('downloadcounticon.png') %>" /><%= submission['download_count'] %></div>
+      <div class="featured_likecount"><img src="<%= asset_path('hearticon.png') %>" alt="Likes" /><%= submission['avg_rating'] %></div>
+      <div class="featured_downloadcount"><img src="<%= asset_path('downloadcounticon.png') %>" alt="DL" /><%= submission['download_count'] %></div>
    </div>
 </div>
 <% end %>

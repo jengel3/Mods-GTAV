@@ -73,7 +73,7 @@
 		<div class="logoheader">
 			<div class="innerlogoheader">
 				<a href="<%= root_path %>"><img class="logo" src="<%= asset_path('modsgtalogo.png') %>"></a>
-				<a href="https://twitter.com/Mods_GTAV" target='_blank'><img class="twitter" src="<%= asset_path('twitterlogo.png') %>"></a>
+				<a href="https://twitter.com/Mods_GTAV" target='_blank'><img class="twitter" src="<%= asset_path('twitterlogo.png') %>" alt="Twitter" /></a>
                 <div class="language_flags_wrap">
                 	<%= link_to image_tag('englishflag.png', alt: 'English'), lang_path('en') %>
                 	<%= link_to image_tag('russianflag.png', alt: 'Russian'), lang_path('ru') %>
@@ -150,7 +150,7 @@
 					<% if params[:controller] == 'submissions' && params[:action] == 'index' %>
 					<div id="modsortingoptions">
 						<ul>
-							<li><a href="<%= url_for params.merge(:sort => @sort_options[@sort]) %>"><%= @sort %><span class="downarrowsymbol"><img src="<%= asset_path('downarrow.png') %>" /></span></a>
+							<li><a href="<%= url_for params.merge(:sort => @sort_options[@sort]) %>"><%= @sort %><span class="downarrowsymbol"><img src="<%= asset_path('downarrow.png') %>" alt="\/" /></span></a>
 								<ul>
 									<% @sort_options.delete(@sort) %>
 									<% @sort_options.each do |k, v| %>
@@ -162,7 +162,7 @@
 					</div>
 					<div id="modsortingoptions">
 						<ul>
-							<li><a href="<%= url_for params.merge(:time => @time_options[@time]) %>"><%= @time %><span class="downarrowsymbol"><img src="<%= asset_path('downarrow.png') %>"></span></a>
+							<li><a href="<%= url_for params.merge(:time => @time_options[@time]) %>"><%= @time %><span class="downarrowsymbol"><img src="<%= asset_path('downarrow.png') %>" alt="\/"></span></a>
 								<ul>
 									<% @time_options.delete(@time) %>
 									<% @time_options.each do |k, v| %>

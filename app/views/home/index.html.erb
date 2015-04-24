@@ -27,7 +27,7 @@
    <%= render 'shared/featured', submissions: feat[1..2] if feat.length >= 3 %>
 </div>
 <div class="homepage_twitterwrap">
-   <h3><img src="<%= asset_path('twitterlogo.png') %>" />#<%= t('.mod_of_the_day') %></h3>
+   <h3><img src="<%= asset_path('twitterlogo.png') %>" alt="Twitter" />#<%= t('.mod_of_the_day') %></h3>
    <div class="homepage_twittercollectionwrap">
       <a class="twitter-timeline" href="/Mods_GTAV/timelines/582640610567434241" height="230px" width="370"  data-tweet-limit="1" data-chrome="nofooter noheader noborders transparent noscrollbar" data-widget-id="582641796481617920">Mod of the Day</a>
       <script async defer>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
@@ -44,7 +44,7 @@
 </div>
 <div class="homepage_youtube_wrap">
    <% if is_admin? %>
-   <h3 id="videos"><a href="#commvideo-popup" class="add-comm-video"><img src="<%= asset_path('youtubelogo.png') %>" /></a><%= t('.community_videos') %></h3>
+   <h3 id="videos"><a href="#commvideo-popup" class="add-comm-video"><img src="<%= asset_path('youtubelogo.png') %>" alt="Youtube" /></a><%= t('.community_videos') %></h3>
    <% else %>
    <h3 id="videos"><img src="<%= asset_path('youtubelogo.png') %>" /><%= t('.community_videos') %></h3>
    <% end %>
@@ -68,7 +68,7 @@
    <%= render 'shared/featured', submissions: feat[3..5] if feat.length == 6 %>
 </div>
 <div class="homepage_twitterwrap">
-   <h3><img src="<%= asset_path('twitterlogo.png') %>" /><%= t('common.rockstar_games') %></h3>
+   <h3><img src="<%= asset_path('twitterlogo.png') %>" alt="Twitter" /><%= t('common.rockstar_games') %></h3>
    <div class="homepage_twittercollectionwrap twitter_rockstar_wrap">
       <a class="twitter-timeline" href="https://twitter.com/RockstarGames" height="370px" width="370"  data-chrome="nofooter noheader noborders transparent noscrollbar" data-widget-id="582689589661278208">Tweets by @RockstarGames</a>
       <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
