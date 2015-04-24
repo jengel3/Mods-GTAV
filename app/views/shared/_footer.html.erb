@@ -30,9 +30,9 @@
     <h4><%= t('contact.response') %></h4>
     <%= form_tag contact_path, method: :post do %>
     <div class="contact-popup">
-        <%= label_tag 'username', t('users.username') %><%= text_field :contact, :username, value: (current_user ? current_user.username : ''), class: 'contactboxes' %>
-        <%= label_tag 'email', t('users.email') %><%= email_field :contact, :email, value: (current_user ? current_user.email : ''), class: 'contactboxes' %>
-        <%= label_tag 'message', t('contact.message') %><%= text_area :contact, :message, value: '', class: 'contactboxes', rows: "7", placeholder: t('contact.please_provide') %>
+        <%= label_tag 'username', t('users.username'), for: 'contact_username' %><%= text_field :contact, :username, value: (current_user ? current_user.username : ''), class: 'contactboxes' %>
+        <%= label_tag 'email', t('users.email'), for: 'contact_email' %><%= email_field :contact, :email, value: (current_user ? current_user.email : ''), class: 'contactboxes' %>
+        <%= label_tag 'message', t('contact.message'), for: 'contact_message' %><%= text_area :contact, :message, value: '', class: 'contactboxes', rows: "7", placeholder: t('contact.please_provide') %>
     </div>
     <div align='center' class="g-recaptcha" data-sitekey="6LfAOwUTAAAAANYzYWge_qoRJ7xDV-DshF8__6J_"></div>
 
