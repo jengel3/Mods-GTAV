@@ -5,11 +5,23 @@ class ApplicationController < ActionController::Base
   include ApplicationHelper
   
   def set_locale
-    logger.debug "* Accept-Language: #{request.env['HTTP_ACCEPT_LANGUAGE']}"
-    I18n.locale = extract_locale_from_accept_language_header ||= params[:lang] ||= I18n.default_locale
-    logger.debug "* Locale set to '#{I18n.locale}'"
+    if current_user && current_user.lang
+      return I18n.locale = current_user.lang
+    end
+    I18n.locale = session[:lang] ||= extract_locale_from_accept_language_header ||= params[:lang] ||= I18n.default_locale
   end
 
+  def set_lang
+    if !I18n.available_locales.map(&:to_s).include?(params[:lang])
+      return redirect_to root_path, :alert => t('misc.invalid_language')
+    end
+    if current_user
+      current_user.lang = params[:lang]
+      current_user.save
+    else
+      session[:lang] = params[:lang]
+    end
+  end
 
   def profile
     @user = User.where(:username => params[:username]).first
