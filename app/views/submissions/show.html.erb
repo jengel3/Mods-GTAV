@@ -6,9 +6,6 @@
 			<div class="contentpage_title">
 				<%= @submission.name %>
 			</div>
-			<div class="contentpage_modcreator">
-				<% t '.by_author' %> <%= link_to @submission.fetch_creator, profile_path(@submission.fetch_creator) %>
-			</div>
 			
 		</div>
 		<div class="contentpage_mainthumb">
@@ -30,9 +27,14 @@
 		<% else %>
 		<div class="modfilename nouploads">No files uploaded.</div>
 		<% end %>
-		<a class="downloadbutton_link" href="<%= url_for [:edit, @submission] %>"><div class="downloadbutton">
-			<div class="downloadbutton_text"><%= t '.upload_file' %></div>
-		</div></a>
+		<div class="downloadbutton_wrap">
+        <a class="downloadbutton_link" href="<%= url_for [:edit, @submission] %>">
+            <div class="downloadbutton">
+			 <div class="downloadbutton_text"><%= t '.upload_file' %></div>
+		    </div>
+        </a>
+            <p class="creator">Created by <a href="#"><%= link_to @submission.fetch_creator, profile_path(@submission.fetch_creator) %></a></p>
+        </div>
 		<% end %>
 		<div class="contentpage_screenshots_wrap" api-loader='<%= asset_path "loader.gif" %>'>
 			<% @submission.thumbnails.each do |thumb| %>
