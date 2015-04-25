@@ -15,6 +15,10 @@ $(document).ready(function() {
 						page += 1;
 						loadMore(page, function() {
 							isLoading = false;
+							$('.submissiondate').hide();
+							$('.likecounter').hide();
+							$(".time").timeago();
+							updateTimestamps();
 						});
 					}, 500);
 				}

@@ -22,6 +22,8 @@
     "blueimp-file-upload": "~9.9.3",
     "jq-animations": "*",
     "tooltipster": "~3.3.0",
-    "loaders.css": "~0.1.0"
+    "loaders.css": "~0.1.0",
+    "jquery-timeago": "~1.4.1",
+    "moment": "~2.10.2"
   }
 }

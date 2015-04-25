@@ -33,7 +33,7 @@
 	<% liked = comment.has_liked(current_user) %>
 	<div class="usercommentwrap">
 		<div class="commentname"><%= link_to comment.user.username, profile_path(comment.user.username) %> <div class="likecomment_score <%= liked ? 'liked_comment' : '' %>">+<%= comment.like_count %> <a href="#" class="<%= liked ? 'liked_comment' : '' %> likecomment_button" data-url='<%= url_for [@submission, comment, :like] %>'><%= t('common.like') %></a></div></div>
-		<div class="commenttext" title="Created <%= relative(comment.created_at) %> (<%= exact(comment.created_at) %>)"><%= comment.text %></div>
+		<div class="commenttext" title="Created (<%= exact(comment.created_at) %>)"><%= comment.text %></div>
 	</div>
 	<% end %>
 	<div class="load_comments_wrap"><input class="load_comments_button" type="submit" value="Load More" /></div>

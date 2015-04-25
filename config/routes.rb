@@ -44,5 +44,7 @@ Rails.application.routes.draw do
     get '/', to: 'home#index', as: 'home'
     get '/content', to: 'content#index', as: 'content'
     post '/flush', to: 'home#flush', as: 'flush'
+    post '/moderate', to: 'listings#moderate', as: 'moderation'
+    get '/content/users', to: 'listings#users', as: 'users'
   end
 end

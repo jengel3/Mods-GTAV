@@ -1,0 +1,44 @@
+<%= form_tag admin_moderation_path, :method => :post do %>
+<% if @users.any? %>
+<table class='footable gta-orange'>
+	<thead>
+		<tr>
+			<td><input type="checkbox" id="all" checked='false'></td>
+			<th><%= sortable 'username' %></th>
+			<th><%= sortable 'email' %></th>
+			<th><%= sortable 'admin' %></th>
+			<th><%= sortable 'sign_in_count', 'Login Count' %></th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @users.each do |user| %>
+		<tr>
+			<td class='multi-moderate'><%= check_box_tag("objects[#{user.id}]", 1, false, class: 'content-check') %></td>
+			<td><%= link_to user.username, profile_path(user.username), title: 'Go to profile' %></td>
+			<td><%= link_to user.email, "mailto:#{user.email}", title: 'Send an email' %></td>
+			<td><%= user.admin %></td>
+			<td><%= user.sign_in_count %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+<%= hidden_field_tag :type, 'User' %>
+<div class='action'>
+	<%= select_tag :action, options_for_select([['Delete', 'delete']], "Delete") %>
+	<%= submit_tag 'Confirm', data: { confirm: "Are you sure?" } %>
+</div>
+<%= paginate @users %>
+<%= content_for :scripts do %>
+<script>
+	$(document).ready(function () {
+		$("#all").attr('checked', false);
+		$("#all").change(function () {
+			$("input:checkbox[class=content-check]").prop('checked', this.checked);
+		});
+	});
+</script>
+<% end %>
+<% else %>
+<% end %>
+<% end %>
+<%= render 'admin/base' %>

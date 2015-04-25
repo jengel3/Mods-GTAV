@@ -12,3 +12,7 @@
 //= require tooltipster/js/jquery.tooltipster.js
 //= require jq-animations/js/animations
 //= require magnific-popup/dist/jquery.magnific-popup
+//= require moment/moment.js
+//= require moment/locale/nl
+//= require moment/locale/de
+//= require moment/locale/ru

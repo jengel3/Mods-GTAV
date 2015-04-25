@@ -25,10 +25,21 @@ function humanFileSize(bytes, si) {
 	return bytes.toFixed(1)+' '+units[u];
 }
 
+function updateTimestamps() {
+	var now = moment();
+	$('.time:not(.hastime)').each(function(i, e) {
+		var time = moment($(e).attr('title'));
+
+		$(e).text(time.from(now));
+		$(e).attr('title', time.format('MMMM Do YYYY'));
+		$(e).addClass('hastime');
+	});
+}
 $(document).ready(function() {
+	moment.locale($('html').attr('lang'));
 	$('.submissiondate').hide();
 	$('.likecounter').hide();
-
+	updateTimestamps();
 	$(".modthumbnailwrap").on({
 		mouseenter: function () {
 			$('.likecounter', this).stop().fadeIn(200);
