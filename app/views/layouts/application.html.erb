@@ -77,10 +77,10 @@
 				<a href="<%= root_path %>"><img class="logo" src="<%= asset_path('modsgtalogo.png') %>" alt="Mods-GTAV"></a>
 				<a href="https://twitter.com/Mods_GTAV" target='_blank'><img class="twitter" src="<%= asset_path('twitterlogo.png') %>" alt="Twitter" /></a>
                 <div class="language_flags_wrap">
-                	<%= link_to image_tag('englishflag.png', alt: 'English'), lang_path('en') %>
-                	<%= link_to image_tag('russianflag.png', alt: 'Russian'), lang_path('ru') %>
-                	<%= link_to image_tag('germanflag.png', alt: 'German'), lang_path('de') %>
-                	<%= link_to image_tag('dutchflag.png', alt: 'German'), lang_path('nl') %>
+                	<%= link_to image_tag('flags/englishflag.png', alt: 'English', title: "English (United States)"), lang_path('en') %>
+                	<%= link_to image_tag('flags/russianflag.png', alt: 'Russian', title: "Russian (Russia)"), lang_path('ru') %>
+                	<%= link_to image_tag('flags/germanflag.png', alt: 'German', title: "German (Germany)"), lang_path('de') %>
+                	<%= link_to image_tag('flags/dutchflag.png', alt: 'Dutch', title: "Dutch (Netherlands)"), lang_path('nl') %>
 	            </div>
 			</div>
 		</div>
@@ -90,55 +90,55 @@
 					<li class="<%= active_cat('home') %>">
 						<a href="<%= root_path %>">
 							<h2><%= t('categories.home') %></h2>
-							<img src="<%= asset_path('homeicon50.png') %>" alt="Navigation Icon">
+							<img src="<%= asset_path('homeicon50.png') %>" alt="Home">
 						</a>
 					</li>
 					<li class="<%= active_cat('tools') %>">
 						<a href="<%= category_path('tools') %>">
 							<h2><%= t('categories.tools') %></h2>
-							<img src="<%= asset_path('toolsicon50.png') %>" alt="Navigation Icon">
+							<img src="<%= asset_path('toolsicon50.png') %>" alt="Tools">
 						</a>
 					</li>
 					<li class="<%= active_cat('weapons') %>">
 						<a href="<%= category_path('weapons') %>">
 							<h2><%= t('categories.weapons') %></h2>
-							<img src="<%= asset_path('weaponsicon50.png') %>" alt="Navigation Icon">
+							<img src="<%= asset_path('weaponsicon50.png') %>" alt="Weapons">
 						</a>
 					</li>
 					<li class="<%= active_cat('vehicles') %>">
 						<a href="<%= category_path('vehicles') %>">
 							<h2><%= t('categories.vehicles') %></h2>
-							<img src="<%= asset_path('vehicleicon50.png') %>" alt="Navigation Icon">
+							<img src="<%= asset_path('vehicleicon50.png') %>" alt="Vehicles">
 						</a>
 					</li>
 					<li class="<%= active_cat('textures') %>">
 						<a href="<%= category_path('textures') %>">
 							<h2><%= t('categories.textures') %></h2>
-							<img src="<%= asset_path('textureicon50.png') %>" alt="Navigation Icon" />
+							<img src="<%= asset_path('textureicon50.png') %>" alt="Textures" />
 						</a>
 					</li>
 					<li class="<%= active_cat('player') %>">
 						<a href="<%= category_path('player') %>">
 							<h2><%= t('categories.player') %></h2>
-							<img src="<%= asset_path('playericon50.png') %>" alt="Navigation Icon">
+							<img src="<%= asset_path('playericon50.png') %>" alt="Player">
 						</a>
 					</li>
 					<li class="<%= active_cat('maps') %>">
 						<a href="<%= category_path('maps') %>">
 							<h2><%= t('categories.maps') %></h2>
-							<img src="<%= asset_path('mapsicon50.png') %>" alt="Navigation Icon">
+							<img src="<%= asset_path('mapsicon50.png') %>" alt="Maps">
 						</a>
 					</li>
 					<li class="<%= active_cat('script') %>">
 						<a href="<%= category_path('script') %>">
 							<h2><%= t('categories.script') %></h2>
-							<img src="<%= asset_path('scripticon50.png') %>" alt="Navigation Icon">
+							<img src="<%= asset_path('scripticon50.png') %>" alt="Script">
 						</a>
 					</li>
 					<li class="<%= active_cat('misc') %>">
 						<a href="<%= category_path('misc') %>">
 							<h2><%= t('categories.misc') %></h2>
-							<img src="<%= asset_path('miscicon50.png') %>" alt="Navigation Icon">
+							<img src="<%= asset_path('miscicon50.png') %>" alt="Misc">
 						</a>
 					</li>
 				</ul>
