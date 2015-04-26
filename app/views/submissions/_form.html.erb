@@ -12,7 +12,7 @@
   <%= form_for(@submission) do |f| %>
   <div class="contentpage_basic_mod_info_wrap uploadmod_basic_mod_info_wrap">
     <div class="contentpage_titlewrap">
-      <%= f.text_field :name, class: 'uploadmod_title', placeholder: '<%= t(".title") %>' %>
+      <%= f.text_field :name, class: 'uploadmod_title', placeholder: t(".title") %>
     </div>
     <div class="contentpage_mainthumb uploadmod_mainthumb">
       <% main = @submission.main_image %>

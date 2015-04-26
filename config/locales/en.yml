@@ -59,7 +59,7 @@ en:
     approved: "approved"
     successfully_uploaded: "Successfully uploaded a file."
     show:
-      by_author: "by"
+      created_by: "Created by"
       download: "Download"
       downloads: "Downloads"
       click_original: "Click to display original image"

@@ -2,7 +2,6 @@
 class UploadUploader < CarrierWave::Uploader::Base
 
   storage :file
-  # storage :fog
 
   process :save_file_size
 

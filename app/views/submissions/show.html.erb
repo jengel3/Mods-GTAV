@@ -18,9 +18,14 @@
 		<% latest = @submission.latest %>
 		<% if latest %>
 		<div class="modfilename"><%= latest.upload.file.filename + ' (' + latest.size + ')' %></div>
-		<a class="downloadbutton_link" href="<%= url_for [@submission, :download] %>"><div class="downloadbutton">
-			<div class="downloadbutton_text"><%= t '.download' %></div>
-		</div></a>
+		<div class="downloadbutton_wrap">
+			<a class="downloadbutton_link" href="<%= url_for [@submission, :download] %>">
+				<div class="downloadbutton">
+					<div class="downloadbutton_text"><%= t '.download' %></div>
+				</div>
+			</a>
+			<p class="creator"><%= t('.created_by') %> <%= link_to @submission.fetch_creator, profile_path(@submission.fetch_creator) %></p>
+		</div>
 		<% elsif @submission.can_manage(current_user) %>
 		<% if @submission.approved_at.nil? && @submission.uploads.count > 0 %>
 		<div class="modfilename nouploads"><%= pluralize(@submission.uploads.count, 'file') %>  waiting for approval.</div>
@@ -28,18 +33,17 @@
 		<div class="modfilename nouploads">No files uploaded.</div>
 		<% end %>
 		<div class="downloadbutton_wrap">
-        <a class="downloadbutton_link" href="<%= url_for [:edit, @submission] %>">
-            <div class="downloadbutton">
-			 <div class="downloadbutton_text"><%= t '.upload_file' %></div>
-		    </div>
-        </a>
-            <p class="creator">Created by <a href="#"><%= link_to @submission.fetch_creator, profile_path(@submission.fetch_creator) %></a></p>
-        </div>
+			<a class="downloadbutton_link" href="<%= url_for [:edit, @submission] %>">
+				<div class="downloadbutton">
+					<div class="d"><%= t '.upload_file' %></div>
+				</div>
+			</a>
+		</div>
 		<% end %>
 		<div class="contentpage_screenshots_wrap" api-loader='<%= asset_path "loader.gif" %>'>
 			<% @submission.thumbnails.each do |thumb| %>
 			<div class="contentpage_individual_screen_wrap">
-			<img class="contentpage_screenshot" src="<%= thumb.image_url(:thumb) %>" title='<%= t '.click_original' %>' alt="Screenshot" />
+				<img class="contentpage_screenshot" src="<%= thumb.image_url(:thumb) %>" title='<%= t '.click_original' %>' alt="Screenshot" />
 			</div>
 			<% end %>
 		</div>
@@ -67,7 +71,7 @@
 			<div class="contentpage_lastupdated"><b><%= t('last_updated') %>:</b><span class="tooltip" title='<%= exact(@submission.last_updated) %>'> <%= relative(@submission.last_updated) || "N/A" %></span></div>
 			<div class="contentpage_lastupdated"><b><%= t('.downloads') %>:</b><span> <%= @submission.download_count %></span></div>
 		</div>
-		
+
 	</div>
 	<%= render 'comments' %>
 </div>
