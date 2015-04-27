@@ -1,4 +1,26 @@
 ru:
+  activerecord:
+    errors:
+      models:
+        submission:
+          attributes:
+            category:
+              is_invalid: "is invalid"
+              is_missing: "is missing"
+            sub_category:
+              is_invalid: "is invalid"
+              is_missing: "is missing"
+    attributes:
+      submission:
+        category: "Category"
+        sub_category: "Sub Category"
+        body: "Description"
+      user:
+        username: "Username"
+        biography: "Biography"
+        password: "Password"
+        password_confirmation: "Password Confirmation"
+        avatar: "Avatar"
   home:
     database:
       user: "Пользователь"
@@ -178,3 +200,6 @@ ru:
   errors:
     expired: "срок истек, пожалуйста, запросите новый"
     not_found: "не найдено"
+    messages:
+      blank: "es blanok"
+      is_missing: "es missain"

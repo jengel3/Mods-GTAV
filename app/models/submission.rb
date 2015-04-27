@@ -67,15 +67,15 @@ class Submission < ActiveRecord::Base
       if CATEGORIES[category.to_sym]
         subs = CATEGORIES[category.to_sym]
         if !sub_category
-          return errors.add(:sub_category, t('database.is_missing'))
+          return errors.add(:sub_category, :is_missing)
         end
         sub = sub_category.gsub('_', ' ').titleize
-        errors.add(:sub_category, t('database.is_invalid')) unless subs.include?(sub)
+        errors.add(:sub_category, :is_invalid) unless subs.include?(sub)
       else
-        errors.add(:category, t('database.is_invalid'))
+        errors.add(:category, :is_invalid)
       end
     elsif !category
-      errors.add(:category, t('database.is_missing'))
+      errors.add(:category, :is_missing)
     end
   end
 

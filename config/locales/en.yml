@@ -1,10 +1,24 @@
 en:
+  activerecord:
+    attributes:
+      submission:
+        category: "Category"
+        sub_category: "Sub Category"
+        body: "Description"
+      user:
+        username: "Username"
+        biography: "Biography"
+        password: "Password"
+        password_confirmation: "Password Confirmation"
+        avatar: "Avatar"
+        email: "Email"
+      upload:
+        version: "Version"
+        changelog: "Changelog"
   database:
     user: "User"
     not_found: "%{kind} not found."
     no_permission: "No permission."
-    is_invalid: "is invalid"
-    is_missing: "is missing"
     successfuly_saved_changes: "Successfully saved your changes."
   comments:
     commented_on: "Successfully commented on %{name}."
@@ -179,3 +193,7 @@ en:
   errors:
     expired: "has expired, please request a new one"
     not_found: "not found"
+    messages:
+      blank: "is blank"
+      is_missing: "is missing"
+      is_invalid: "is invalid"
