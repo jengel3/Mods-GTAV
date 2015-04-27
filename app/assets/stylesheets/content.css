@@ -307,16 +307,15 @@
     margin-right:22px;
 }
 input.commentinput {
-    width: 78%;
+    width: 75%;
     height:32px;
     margin-top:8px;
     border: 1px solid #d8e1ef;
     padding-left:8px;
     margin-bottom:10px;
     display: inline-block;
-    float: left;
-    border-right: none;
     background-color:rgb(253,253,253);
+    margin-right:-5px;
 }
 input.commentinput:focus {
     outline: none;
@@ -328,14 +327,14 @@ input.commentinput:focus {
 input.comment_submit_button{
     color:#6094c5;
     display: inline-block;
+    vertical-align: top;
     width:20%;
-    height: 36px;
+    margin-right:10px;
+    height:36px;
     background-color: white;
     border: 1px solid #dedede;
-    float: right;
     margin-top:8px;
     margin-bottom:10px;
-    padding-left:2px;
     font-weight: bold;
     font-size: 14px;
     border-radius:0;
