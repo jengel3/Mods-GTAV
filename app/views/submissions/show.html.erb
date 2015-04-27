@@ -35,9 +35,10 @@
 		<div class="downloadbutton_wrap">
 			<a class="downloadbutton_link" href="<%= url_for [:edit, @submission] %>">
 				<div class="downloadbutton">
-					<div class="d"><%= t '.upload_file' %></div>
+					<div class="downloadbutton_text"><%= t '.download' %></div>
 				</div>
 			</a>
+			<p class="creator"><%= t('.created_by') %> <%= link_to @submission.fetch_creator, profile_path(@submission.fetch_creator) %></p>
 		</div>
 		<% end %>
 		<div class="contentpage_screenshots_wrap" api-loader='<%= asset_path "loader.gif" %>'>
