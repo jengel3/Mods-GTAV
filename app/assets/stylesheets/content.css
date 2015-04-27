@@ -504,10 +504,11 @@ a.likecomment_button {
 
 .contentpage_screenshots_wrap {
     height:228px;
-    overflow:hidden;
+    overflow-x:hidden;
     margin-top:10px;
     text-align: left;
-    width:268px;
+    width:282px;
+    margin-left:3px;
 }
 .contentpage_individual_screen_wrap {
     display: inline-block;
@@ -515,32 +516,30 @@ a.likecomment_button {
     height:69px;
     margin-right:3px;
     margin-left:1px;
-    margin-bottom:7px;
-    border: 1px solid #414141;
-    -webkit-box-shadow: 0px 0px 3px 0px rgba(131,137,146,1);
-    -moz-box-shadow: 0px 0px 3px 0px rgba(131,137,146,1);
-    box-shadow: 0px 0px 2px 0px rgba(131,137,146,1);
+    margin-bottom:7px;   
     position: relative;
     display:inline-block;
     vertical-align: top;
     justify-content:center;
     align-items:center;
-    overflow:hidden;
-    cursor: pointer;
+    overflow: hidden;
 }
 
 .contentpage_individual_screen_wrap img {
     max-width: 125px;
-    /*max-height: 72px;
+    max-height: 67px;
     margin-bottom:8px;
     position: absolute;
     top:0;
     left:0;
     right:0;
     bottom:0;
-    margin:auto;*/
-    min-width:125px;
-    min-height:72px;
+    margin:auto;
+    border: 1px solid #414141;
+    -webkit-box-shadow: 0px 0px 3px 0px rgba(131,137,146,1);
+    -moz-box-shadow: 0px 0px 3px 0px rgba(131,137,146,1);
+    box-shadow: 0px 0px 2px 0px rgba(131,137,146,1);
+    cursor: pointer;
         }
 
 img.grayscale {
