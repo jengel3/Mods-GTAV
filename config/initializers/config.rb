@@ -6,3 +6,8 @@ if ENV["REDISCLOUD_URL"]
 else
   REDIS = Redis.new( :host => "127.0.0.1" )
 end
+require 'elasticsearch/model'
+require 'elasticsearch/transport'
+if ENV['BONSAI_URL']
+ Elasticsearch::Model.client = Elasticsearch::Client.new url: ENV['BONSAI_URL']
+end
