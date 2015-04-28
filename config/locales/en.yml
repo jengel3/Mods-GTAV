@@ -19,7 +19,7 @@ en:
     user: "User"
     not_found: "%{kind} not found."
     no_permission: "No permission."
-    successfuly_saved_changes: "Successfully saved your changes."
+    successfully_saved_changes: "Successfully saved your changes."
   comments:
     commented_on: "Successfully commented on %{name}."
     comment_failed: "Failed to save your comment. Please try again."
