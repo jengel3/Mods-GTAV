@@ -198,3 +198,7 @@ en:
       blank: "is blank"
       is_missing: "is missing"
       is_invalid: "is invalid"
+      taken: "is taken"
+      invalid: "is invalid"
+      too_long: "is too long"
+      too_short: "is too short"
