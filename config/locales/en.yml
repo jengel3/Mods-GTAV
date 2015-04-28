@@ -56,6 +56,15 @@ en:
       enable_javascript: "Please enable JavaScript to use Mods-GTAV properly. Many features require Javascript to be enabled."
       add_mod: "Add Mod +"
       edit_mod: "Edit Mod"
+      sort:
+        newest: "Newest"
+        oldest: "Oldest"
+        downloads: "Downloads"
+        most_liked: "Most Liked"
+        now: "Now"
+        this_week: "This Week"
+        this_month: "This Month"
+        all_time: "All Time"
   profile:
     joined: "Joined"
     last_active: "Last Active"

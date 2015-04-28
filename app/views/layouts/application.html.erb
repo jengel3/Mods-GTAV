@@ -153,11 +153,11 @@
 					<% if params[:controller] == 'submissions' && params[:action] == 'index' %>
 					<div id="modsortingoptions">
 						<ul>
-							<li><a href="<%= url_for params.merge(:sort => @sort_options[@sort]) %>"><%= @sort %><span class="downarrowsymbol"><img src="<%= asset_path('downarrow.png') %>" alt="\/" /></span></a>
+							<li><a href="<%= url_for params.merge(:sort => @sort_options[@sort]) %>"><%= t('.sort.' + @sort.underscore) %><span class="downarrowsymbol"><img src="<%= asset_path('downarrow.png') %>" alt="\/" /></span></a>
 								<ul>
 									<% @sort_options.delete(@sort) %>
 									<% @sort_options.each do |k, v| %>
-									<li><%= link_to k, params.merge(:sort => v) %></li>
+									<li><%= link_to t('.sort.' + k.underscore), params.merge(:sort => v) %></li>
 									<% end %>
 								</ul>
 							</li>
@@ -165,11 +165,11 @@
 					</div>
 					<div id="modsortingoptions">
 						<ul>
-							<li><a href="<%= url_for params.merge(:time => @time_options[@time]) %>"><%= @time %><span class="downarrowsymbol"><img src="<%= asset_path('downarrow.png') %>" alt="\/"></span></a>
+							<li><a href="<%= url_for params.merge(:time => @time_options[@time]) %>"><%= t('.sort.' + @time.underscore) %><span class="downarrowsymbol"><img src="<%= asset_path('downarrow.png') %>" alt="\/"></span></a>
 								<ul>
 									<% @time_options.delete(@time) %>
 									<% @time_options.each do |k, v| %>
-									<li><%= link_to k, params.merge(:time => v) %></li>
+									<li><%= link_to t('.sort.' + k.underscore), params.merge(:time => v) %></li>
 									<% end %>
 								</ul>
 							</li>

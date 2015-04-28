@@ -59,11 +59,20 @@ ru:
     misc: "Разные"
   layouts:
     application:
-      search: "Поиск..."
-      hearts: "Сердечки"
-      enable_javascript: "Пожалуйста, включите JavaScript, чтобы использовать возможности сайта. Многие его функции требуют включенного JS."
-      add_mod: "Добавить мод+"
-      edit_mod: "Редактировать мод"
+      search: "Search..."
+      hearts: "Hearts"
+      enable_javascript: "Please enable JavaScript to use Mods-GTAV properly. Many features require Javascript to be enabled."
+      add_mod: "Add Mod +"
+      edit_mod: "Edit Mod"
+      sort:
+        newest: "Newasaz"
+        oldest: "Oldz"
+        downloads: "Laodzk"
+        most_liked: "Likado Mosta"
+        now: "Ahora"
+        this_week: "Esta semana"
+        this_month: "Esta mes"
+        all_time: "Todo tiempo"
   profile:
     joined: "Вошел"
     last_active: "Последняя активность"
