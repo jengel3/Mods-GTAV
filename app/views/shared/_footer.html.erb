@@ -8,16 +8,15 @@
                 <li><a href="<%= new_submission_path %>"><%= t('.add_mod') %></a></li>
                 <li><a href="#"><%= t('.about_us') %></a></li>
                 <li><a href="#contact-popup" class="open-contact"><%= t('.contact_us') %></a></li>
-                <li><a href="#"><%= t('.faq') %></a></li>
-                <li><a href="#"><%= t('.rules') %></a></li>
                 <li><a href="https://twitter.com/Mods_GTAV" target="_blank"><%= t('.twitter') %></a></li>
+                <li><a href="https://www.transifex.com/projects/p/mods-gta-website/" target="_blank"><%= t('.translate') %></a></li>
                 <% if is_admin? %>
-                <li><a href="<%= admin_home_path %>" target="_blank"><%= t('Admin') %></a></li>
+                <li><a href="<%= admin_home_path %>" target="_blank"><%= t('.admin') %></a></li>
                 <% end %>
             </ul>
         </div>
         <div class="footerbottomwrap">
-            <span class="rockstarwrap"><%= t('.not_associated') %> <span class="rockstar"><%= t('common.rockstar_games') %></span></span>
+            <span class="rockstarwrap"><%= t('.not_associated') %> <a href="http://www.rockstargames.com" target="_blank"><span class="rockstar"><%= t('common.rockstar_games') %></span></span></a>
             <%= image_tag 'modsgtalogo.png', class: 'gta5videoslogo', alt: 'Mods-GTAV' %>
             <p><%= t('.in_partnership') %></p>
             <%= image_tag 'modsgtalogo.png', class: 'gta5videoslogo', alt: 'Mods-GTAV' %>
